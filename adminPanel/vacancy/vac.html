@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+   <link rel="stylesheet" type="text/css" href="vacancy.css">
+   
+
+</head>
+<body>
+    <form id = "vacancy" name="vacancy"  action=""  method=post ><br>
+
+	<div style="width:100%;text-align:center;">
+    
+	</div>
+	<div class="sep"></div>
+
+<div class = "inputs">
+	
+	<div class="headingbox" id="hBoxDBN" > Full Name </div>
+	<div style="width:100%;text-align:center;">
+    <input type="text" placeholder="Drug Brand Name"  onfocus="headingBoxActive('hBoxDBN')" onfocusout="headingBoxInactive('hBoxDBN')"   name=name /></br>
+	</div>
+	
+	<div class="headingbox" id="hBoxREPO"> Gender </div>
+	<div style="width:100%;text-align:center;">
+	<input type=radio name=ReturnPolicy value=Male onfocus="headingBoxActive('hBoxREPO')" onfocusout="headingBoxInactive('hBoxREPO')"/>Male     <input type=radio name=ReturnPolicy value=Female onfocus="headingBoxActive('hBoxREPO')" onfocusout="headingBoxInactive('hBoxREPO')" />Female<br>
+	</div>
+
+	<div class="headingbox" id="hBoxDA" >Date of Birth </div>
+	<div style="width:100%;text-align:center;">
+    <input type="date" placeholder="Date of Birth" onfocus="headingBoxActive('hBoxDA')" onfocusout="headingBoxInactive('hBoxDA')" name=dob ></br>
+	</div>
+	
+	
+	<div class="headingbox" id="hBoxCOM" > Permanent Addrass  </div>
+	<div style="width:100%;text-align:center;">
+    <input type="text" placeholder="Permanent Addrass" onfocus="headingBoxActive('hBoxCOM')" onfocusout="headingBoxInactive('hBoxCOM')"  name=add /><br>
+	</div>
+	
+	<div class="headingbox" id="hBoxBG"> Current living District </div>
+	<div style="width:100%;text-align:center;">
+
+	
+			
+			<select name=dis  onfocusout="validateList(this, 'bldgrperror')" onfocus="headingBoxInactive('hBoxBG')"  >
+			<option value="Ampara" >Ampara</option>
+			<option value="Anuradhapura" >Anuradhapura</option>
+			<option value="Badulla" >Badulla</option>
+			<option value="Batticaloa">Batticaloa</option>
+			<option value="Colombo">Colombo</option>
+			<option value="Galle">Galle</option>
+			<option value="Gampaha" selected="selected">Gampaha</option>
+			<option value="Hambantota">Hambantota</option>
+			<option value="Jaffna">Jaffna</option>
+			<option value="Kalutara">Kalutara</option>
+			<option value="Kandy">Kandy</option>
+			<option value="Kegalle">Kegalle</option>
+			<option value="Kilinochchi">Kilinochchi</option>
+			<option value="Kurunegala">Kurunegala</option>
+			<option value="Mannar">Mannar</option>
+			<option value="Matale">Matale</option>
+			<option value="Matara">Matara</option>
+			<option value="Moneragala">Moneragala</option>
+			<option value="Mullaitivu">Mullaitivu</option>
+			<option value="Nuwara Eliya">Nuwara Eliya</option>
+			<option value="Polonnaruwa">Polonnaruwa</option>
+			<option value="Puttalam">Puttalam</option>
+			<option value="Ratnapura">Ratnapura</option>
+			<option value="Trincomalee">Trincomalee</option>
+			<option value="Vavuniya">Vavuniya</option>
+			<option value="Divorced">AB-</option>
+			</select>
+			</div>
+			<div class="headingbox" id="hBoxCO" > Contact Number  </div>
+	<div style="width:100%;text-align:center;">
+    <input type="text" placeholder="Contact Number" onfocus="headingBoxActive('hBoxCO')" onfocusout="headingBoxInactive('hBoxCO')"  name=Cn /><br>
+	</div>
+	
+	<div class="headingbox" id="hBoxH" > NIC </div>
+	<div style="width:100%;text-align:center;">
+    <input type="text" placeholder="NIC" name=nic onfocus="headingBoxActive('hBoxH')" onfocusout="headingBoxInactive('hBoxH')"  /><br>
+	</div>
+	
+	<div class="headingbox" id="hBoxEM"> E-mail </div>
+			<div style="width:100%;text-align:center;">
+			<input type="text" placeholder="e-mail"  name=emailaddress onfocus="headingBoxActive('hBoxEM')" onfocusout="headingBoxInactive('hBoxEM')" /><br>
+			</div>
+	
+	
+	<div class="headingbox" id="hBoxREP"> Do you have experiences as a pharmacist ? </div>
+	<div style="width:100%;text-align:center;">
+	<input type=radio name=yes value=Yes onfocus="headingBoxActive('hBoxREP')" onfocusout="headingBoxInactive('hBoxREP')"/>Yes     <input type=radio name=no value=no onfocus="headingBoxActive('hBoxREP')" onfocusout="headingBoxInactive('hBoxREP')" />No<br>
+	</div>
+	
+<div class="headingbox" id="hBoxE"> If Yes give information, where and how long? </div>
+			<div style="width:100%;text-align:center;">
+			<input type="text" placeholder=""  name=emailaddress onfocus="headingBoxActive('hBoxE')" onfocusout="headingBoxInactive('hBoxE')" /><br>
+			</div>
+	
+	<div style="width:100%;text-align:center;">
+	<input class="buttonS"  type="submit" name=submit value=SUBMIT   />
+	<input class="buttonS"  type="reset" name=cancel value=CANCEL   />
+	</div>
+			
+			
+			
+			
+			
+			</body>
+			<script>
+   function headingBoxActive(box){
+	var element = document.getElementById(box);
+	element.style.background =  "#0099cc";
+	element.style.color = "white";
+   }
+   
+   function headingBoxInactive(box){
+	var element = document.getElementById(box);
+	element.style.background =  "white";
+	element.style.color = "black";
+   }
+
+</script>
+</html>

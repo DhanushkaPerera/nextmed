@@ -1,0 +1,49 @@
+#header{
+	background-color:#66c2ff;
+	font-family:Baskerville Old Face;
+	border-radius:20px;
+	color: #ffffff;
+	min-width:200px;
+}
+
+img{
+	width:150px;
+	height:150px;
+}
+
+h3{
+	font-family:Curlz MT;
+	font-size:25px;
+	color: #66c2ff;
+}
+
+#column{
+	float:left;
+	min-width:200px;
+	width:20%;
+}
+
+.privilege{
+	border-style: groove;
+	border-color: #66c2ff;
+	height:250px;
+	width:20%;
+	min-width:193px;
+	
+}
+
+body{
+	background:white;
+	text-align:center;
+	font-family:Arial;
+	width:100%;
+}
+
+.wrap{
+	    box-shadow: 
+        0px 0px 0px 5px rgba( 255,255,255,0.4 ), 
+        0px 4px 20px rgba( 0,0,0,0.33 );
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
