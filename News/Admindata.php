@@ -1,26 +1,18 @@
 <?php
 
-		$servername = "localhost";
-		$username = "root";
-		$password = "";
-		$database = "pharmacy";
+		require("../db/db.php");
 		
-		$conn = mysqli_connect($servername,$username,$password,$database);
-		
-		if(!$conn){
-			die("Connection Failed : " . mysqli_connect_error());
-		}
-		
-		$sql = "INSERT INTO news(postnews,date)
-			VALUES ('$_POST[public_notice]' , '$_POST[postdate]')";
+		$sql = "INSERT INTO news('postnews')
+			VALUES ('$_POST[public_notice]')";
 			
-		if(mysqli_query($conn , $sql)){
+		if(mysqli_query($connection , $sql)){
 			echo "New record created Successfully";
 		}
+		
 		else{
-			echo "Error : " . mysqli_error($conn); 
+			echo "Error : " . mysqli_error($connection); 
 		}
 		
-		mysqli_close($conn);
+		mysqli_close($connection);
 
 ?>

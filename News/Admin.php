@@ -15,9 +15,9 @@
 			<div class="sep"></div>
 			
 		<div class = "notice">
-				<div class = "headingbox"> Date </div>
+				<!--div class = "headingbox"> Date </div>
 				<div style="width:100%;text-align:center;">
-				<input type = "date" name = "postdate"  /></br></br>
+				<input type = "date" name = "postdate"  /></br></br-->
 				<textarea name = "public_notice" placeholder="Please type here your notice" rows="10" cols="80"> </textarea></br></br> 
 				<input class = "button" type = "submit" name = "btnSubmit" value = "Save"/>
 		</div>

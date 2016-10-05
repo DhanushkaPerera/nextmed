@@ -128,6 +128,7 @@ img{
 }
 
 .sidemenuitem {
+	color:white;
 	padding: 1em;
 	min-height: 30px;
 	text-align: center;
@@ -141,6 +142,10 @@ img{
 	border-radius: 10px;
 	z-index: 3;
 	transition: all .2s ease-in-out;
+}
+
+.activemenu{
+    background-color: #d1eefd;
 }
 
 .sidemenuitem:hover {
@@ -455,7 +460,7 @@ hr{
     width: 100%; /* Full width */
     height: 100%; /* Full height */
     background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    background-color: rgba(0,0,0,0.8); /* Black w/ opacity */
 	text-align:center;
 	overflow:auto;
 }

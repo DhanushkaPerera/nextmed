@@ -115,14 +115,14 @@
 </div>
 
 	<div class="nav">
-		<div class="sidemenuitem" onclick="hideContents();showSlides();"> <img class="center" src="media\home.png" alt="introduction Icon" style="max-width:60px;height:90%;"> </div>
-		<div class="sidemenuitem" onclick="showContents();showContent('knowyourself');hideSlides();"> <img class="center" src="media\knowyourself.png" alt="Know your self" style="max-width:60px;height:90%;"> </a> </div>
-		<div class="sidemenuitem" onclick="showContents();showContent('aroundus');hideSlides();"> <img class="center" src="media\aroundus.png" alt="around us" style="max-width:60px;height:90%;"> </a></div>
-		<div class="sidemenuitem" onclick="showContents();showContent('alternative');hideSlides();"> <img class="center" src="media\alternative.png" alt="news" style="max-width:60px;height:90%;"> </div>		
-		<div class="sidemenuitem" onclick="showContents();showContent('news');hideSlides();"> <img class="center" src="media\news.png" alt="news" style="max-width:60px;height:90%;">  </div>
-		<div class="sidemenuitem" onclick="showContents();showContent('healthtips');hideSlides();"> <img class="center" src="media\healthtips.png" alt="healthtips" style="max-width:60px;height:90%;">  </div>
-		<div class="sidemenuitem" onclick="showContents();showContent('leaveorder');hideSlides();"> <img class="center" src="media\leaveyourorder.png" alt="leave your order" style="max-width:60px;height:90%;"> </div>
-		<img class="boxshadow" src="media\logo.png" alt="intro" style="max-width:90px;height:100px;" >
+		<div class="sidemenuitem activemenu" onclick="hideContents();showSlides();activeMenu(this);" onmouseover="menuText(this);" onmouseout="menuImage(this);"> <img class="center" src="media\home.png" alt="Home" style="max-width:60px;height:90%;"> </div>
+		<div class="sidemenuitem" onclick="showContents();showContent('knowyourself');hideSlides();activeMenu(this);" onmouseover="menuText(this);" onmouseout="menuImage(this);"> <img class="center" src="media\knowyourself.png" alt="About you" style="max-width:60px;height:90%;"> </a> </div>
+		<div class="sidemenuitem" onclick="showContents();showContent('aroundus');hideSlides();activeMenu(this);" onmouseover="menuText(this);" onmouseout="menuImage(this);"> <img class="center" src="media\aroundus.png" alt="Around us" style="max-width:60px;height:90%;"> </a></div>
+		<div class="sidemenuitem" onclick="showContents();showContent('alternative');hideSlides();activeMenu(this);" onmouseover="menuText(this);" onmouseout="menuImage(this);"> <img class="center" src="media\alternative.png" alt="Search Drugs" style="max-width:60px;height:90%;"> </div>		
+		<div class="sidemenuitem" onclick="showContents();showContent('news');hideSlides();activeMenu(this);" onmouseover="menuText(this);" onmouseout="menuImage(this);"> <img class="center" src="media\news.png" alt="News" style="max-width:60px;height:90%;">  </div>
+		<div class="sidemenuitem" onclick="showContents();showContent('healthtips');hideSlides();activeMenu(this);" onmouseover="menuText(this);" onmouseout="menuImage(this);" > <img class="center" src="media\healthtips.png" alt="Healthtips" style="max-width:60px;height:90%;">  </div>
+		<div class="sidemenuitem" onclick="showContents();showContent('leaveorder');hideSlides();activeMenu(this);" onmouseover="menuText(this);" onmouseout="menuImage(this);" > <img class="center" src="media\leaveyourorder.png" alt="Order Online" style="max-width:60px;height:90%;"> </div>
+		<img class="boxshadow" src="media\logo.png" style="max-width:90px;height:100px;" >
 	</div>
 	
 
@@ -199,7 +199,8 @@
 		<div class="menubuttonimg"> 
 			<img src="media\notification.png"  alt="notifications" style="width:auto;margin:20%;height:60%" onclick="toggleElement('note')">
 
-			</div>
+		</div>
+		
 		<div class="menubuttonimg login"  >
 			<img src="media\login.png" style="width:auto;margin:20%;height:60%;" id="loginIcon" >
 			<div class="loginbox login" id="loginB">
@@ -278,6 +279,8 @@
 
 		</div>
 	</div>
+	</body>
+	
 	<script type="application/javascript">
 	function hideContents(){
 		var element = document.getElementById('contentsID');
@@ -465,7 +468,30 @@
 		toggleElement('loginB');
 		modal.style.display = "block";
 	}
+	
+	function activeMenu(menu){
+		var menus = document.getElementsByClassName("activemenu");
+		menus[0].classList.remove("activemenu");
+		menu.classList.add("activemenu");
+	}
+	
+	function menuText(menu){
+		var image = menu.querySelectorAll(".center");
+		image[0].style.visibility="hidden";
+		menu.innerHTML = "";
+		menu.innerHTML = image[0].alt;
+		menu.appendChild(image[0]);
+		
+	}
+	
+	function menuImage(menu){
+		var image = menu.querySelectorAll(".center");
+		menu.innerHTML = "";
+		menu.appendChild(image[0]);
+		image[0].style.visibility="visible";
+	}
+
 	</script>
 
-</body>
+
 </html>

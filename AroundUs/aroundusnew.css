@@ -4,6 +4,12 @@ body{
 	width:100%;
 }
 
+.aaa{
+	height:400px;
+	width:20%;
+	background:green;
+}
+
 .header{
 	width:100%;
 	min-width:300px;
@@ -106,7 +112,7 @@ p{
 .result{
 	float:left;
 	width:80%;
-	height:400px;
+	height:200px;
 	background:none;
 	font-weight:bold;
 }

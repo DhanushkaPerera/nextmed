@@ -12,23 +12,12 @@
 		<div id = "MyDivName" class = "scroll"> 
 			<?php
 	
-				$servername = "localhost";
-				$username = "root";
-				$password = "";
-				$database = "pharmacy";
-				
-				//Connect Database
-				$conn = mysqli_connect($servername,$username,$password,$database);
-				
-				//Check Connection
-				if(!$conn){
-					die("Connection Failed : " . mysqli_connect_error());
-				}
+				require("../db/db.php");
 				
 				//Retrieve Data
 				$sql = "SELECT * FROM news ORDER BY  date DESC";
 				//$sql = "SELECT DISTINCT username FROM user";
-				$res = mysqli_query($conn , $sql);
+				$res = mysqli_query($db , $sql);
 					
 				if($res){
 					while($row = mysqli_fetch_array($res)){
@@ -36,11 +25,11 @@
 					}
 				}
 				else{
-					echo "Error : " . mysqli_error($conn); 
+					echo "Error : " . mysqli_error($db); 
 				}
 				
-				//Close Connection
-				mysqli_close($conn);
+				//Close connectionection
+				mysqli_close($db);
 			?>
 		</div>
 	</div>

@@ -1,22 +1,11 @@
 <?php
 	
-	$servername = "localhost";
-	$username = "root";
-	$password = "";
-	$database = "pharmacy";
-	
-	//Connect Database
-	$conn = mysqli_connect($servername,$username,$password,$database);
-	
-	//Check Connection
-	if(!$conn){
-		die("Connection Failed : " . mysqli_connect_error());
-	}
+	require("../db/db.php");
 	
 	//Retrieve Data
 	$sql = "SELECT * FROM doctor"; //WHERE specialistname = '$_POST[special]'";
 	//$sql = "SELECT DISTINCT username FROM user";
-	$res = mysqli_query($conn , $sql);
+	$res = mysqli_query($connection , $sql);
 		
 	if($res){
 		echo "<table border = 1>
@@ -31,9 +20,9 @@
 		echo "</table>";
 	}
 	else{
-		echo "Error : " . mysqli_error($conn); 
+		echo "Error : " . mysqli_error($connection); 
 	}
 	
 	//Close Connection
-	mysqli_close($conn);
+	mysqli_close($connection);
 ?>

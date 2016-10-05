@@ -38,33 +38,24 @@
 	</div>
 	
 	<div class = "result">
-			<h4><i>"TAKE CARE OF THE PATIENT AND EVERYTHING <br> ELSE WILL FOLLOW"</i></h4><br><br>
+	
+	
 			
-			<p>Find out what are the details of hosptals in Gampaha District <br> 
+			
+			<p>Find out what are the details of hospitals in Gampaha District <br> 
 			and the doctors who are specialists for each category, <br>
 			You can search for more details.</p>
 	
 <?php
 	
-		$servername = "localhost";
-		$username = "root";
-		$password = "";
-		$database = "pharmacy";
-		
-		//Connect Database
-		$conn = mysqli_connect($servername,$username,$password,$database);
-		
-		//Check Connection
-		if(!$conn){
-			die("Connection Failed : " . mysqli_connect_error());
-		}
+		require("../db/db.php");
 		
 		if(isset($_POST["submitbutton1"])){
 			
 			//Retrieve Data
 			$sql = "SELECT * FROM hospital WHERE location = '$_POST[location]'";
 			//$sql = "SELECT DISTINCT username FROM user";
-			$res = mysqli_query($conn , $sql);
+			$res = mysqli_query($db , $sql);
 				
 			if($res){
 				echo "<table border = 1 >
@@ -79,7 +70,7 @@
 				echo "</table>";
 			}
 			else{
-				echo "Error : " . mysqli_error($conn); 
+				echo "Error : " . mysqli_error($db); 
 			}
 		
 		}
@@ -89,7 +80,7 @@
 				//Retrieve Data
 				$sql = "SELECT * FROM doctor WHERE category = '$_POST[special]'";
 				//$sql = "SELECT DISTINCT username FROM user";
-				$res = mysqli_query($conn , $sql);
+				$res = mysqli_query($db , $sql);
 					
 				if($res){
 					echo "<table border = 1>
@@ -104,13 +95,13 @@
 					echo "</table>";
 				}
 				else{
-					echo "Error : " . mysqli_error($conn); 
+					echo "Error : " . mysqli_error($db); 
 				}
 			}
 		}
 		
-		//Close Connection
-		mysqli_close($conn);
+		//Close connectionection
+		mysqli_close($db);
 		
 ?>
 </div>

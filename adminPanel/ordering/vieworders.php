@@ -4,6 +4,13 @@
 
             $sql="SELECT * FROM `order` ";
             $result=mysqli_query($db,$sql);
+echo"<head>";
+echo'
+        <link rel="stylesheet" href="view.css">
+        
+        ';
+echo"</head>";
+    
 echo "<body bgcolor=#E6E6FA>";
 echo "<table border=1 cellspacing=0 cellpadding=4 > " ;
 echo"<tr bgcolor=grey>";
@@ -21,7 +28,7 @@ echo"</td>";
 echo"<td align=center>";
 echo "<font size=4>";
 echo "<B>";
-echo "Delivery/Pickup No.";
+echo "Delivery/Pickup ";
 echo"</td>";
 echo"<td align=center>";
 echo "<font size=4>";
@@ -46,17 +53,17 @@ echo"</td>";
 echo"<td align=center>";
 echo "<font size=4>";
 echo "<B>";
-echo "Prescription Copy-1";
+echo "Copy1";
 echo"</td>";
 echo"<td align=center>";
 echo "<font size=4>";
 echo "<B>";
-echo "Prescription Copy-2";
+echo " Copy2";
 echo"</td>";
 echo"<td align=center>";
 echo "<font size=4>";
 echo "<B>";
-echo "Prescription Copy-3";
+echo "Copy3";
 echo"</td>";
 
 
@@ -96,11 +103,15 @@ while($row=mysqli_fetch_array($result))
      echo "<br>";
      echo"</td>";
      echo"<td align=center >";
-   
-   echo '<a href='.( $row['Image1'] ).' >';
-   echo "<img src='" .$row['Image1']. "' height='200' width='200'/>";
-    echo "</a>";
+ 
     
+   echo '<a class="lightbox" href='.( $row['Image1'] ).'    >';
+    
+    
+   echo "<img id='myImg1' src='" .$row['Image1']. "' height='70' width='100' class='lightbox' />";
+    
+echo "</a>";
+   
     
     echo "<br>";
      echo"</td>";
@@ -111,10 +122,15 @@ while($row=mysqli_fetch_array($result))
         echo "No copy";
     }
     else{
-     echo '<a href='.( $row['Image2'] ).' >';
-   echo "<img src='" . $row['Image2'] . "' height='200' width='200'/>";
+      
+     echo '<a class="lightbox" href='.( $row['Image2'] ).'>';
+    
+    
+   echo "<img id='myImg1' src='" .$row['Image2']. "' height='70' width='100' class='lightbox' />";
+    
+echo "</a>";
     }
-    echo "</a>";
+   
     
     
     echo "<br>";
@@ -125,18 +141,24 @@ while($row=mysqli_fetch_array($result))
         echo "No copy";
     }
     else{
-     echo '<a href='.( $row['Image3'] ).' >';
-   echo "<img src='" . $row['Image3'] . "' height='200' width='200'/>";
+       
+      echo '<a class="lightbox" href='.( $row['Image3'] ).'    >';
+    
+    
+   echo "<img id='myImg1' src='" .$row['Image3']. "' height='70' width='100' class='lightbox' />";
+    
+echo "</a>";
     }
-   echo "</a>";
+   
     
     
     echo "<br>";
      
     
      echo"</tr>";
-   
+   echo "</div>";
 }
-echo "</table>";
+
+echo"</body>";
 
    ?> 
