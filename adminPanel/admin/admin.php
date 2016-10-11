@@ -2,8 +2,8 @@
 <html >
   <head>
     <meta charset="UTF-8">
-    <title>Pure CSS Tabs</title> 
-        <link rel="stylesheet" href="style.css">
+    
+        <link rel="stylesheet" href="styles2.css">
     </head>
   <body>
 <ul class="tabs">
