@@ -1,18 +1,21 @@
 * { margin:0; padding:0;font-family: Arial; }
+body{
+  width:100%;
+}
 
 #signup {
-    padding: 25px;
-    background: #dcdcfb;
-    box-shadow: 
-        0px 0px 0px 5px rgba( 255,255,255,0.4 ), 
-        0px 4px 20px rgba( 0,0,0,0.33 );
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-    border-radius: 5px;
-    display: table;
-    position: absolute;
-	width:100%;
-	margin: 30px;
+  margin:auto;
+  margin-top:5px;
+  margin-bottom: :5px;
+  padding: 25px;
+  background: #dcdcfb;
+  box-shadow: 
+    0px 0px 0px 5px rgba( 255,255,255,0.4 ), 
+    0px 4px 20px rgba( 0,0,0,0.33 );
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  width:80%;
 }
 
 .close{
@@ -93,7 +96,7 @@
 }
 
 #signup .inputs .buttonS {
-    width: 100%;
+    width: 80%;
 	outline:none;
     margin-top: 20px;
     padding: 15px 0;
@@ -145,7 +148,7 @@
 
 #signup .inputs .buttonDis {
 	outline:none;
-    width: 100%;
+    width: 20%;
     margin-top: 20px;
     padding: 15px 0;
     color: #fff;
@@ -178,8 +181,6 @@
     text-shadow:
         0px 1px 3px rgba(000,000,000,0.3),
         0px 0px 0px rgba(255,255,255,0);
-    display: table;
-    position: static;
     clear: both;
 }
 
@@ -194,7 +195,7 @@
     border: none;
     padding: 13px 10px;
     width: 90%; 
-	margin: auto;
+	!margin: auto;
     margin-bottom: 17px;
     box-shadow: inset 0px 2px 3px rgba( 0,0,0,0.1 );
 	-ms-box-sizing:content-box;
@@ -215,7 +216,7 @@
   display: block;
   position: relative;
   float: left;
-  width: 100%;
+  width: 90%;
   height: 100px;
 	border-bottom: 1px solid #111111;
 }
@@ -304,7 +305,7 @@
 .poperror {
 	opacity:0;
     visibility: visible;
-    width: 300px;
+    width: 80%;
     background-color: white;
     border-radius: 6px;
     padding: 5px 0;
@@ -356,8 +357,4 @@
 	opacity:0;
 }
 
-.column{
-	width:50%;
-	float:left;
-}
 

@@ -3,6 +3,7 @@
 <title>Know yourself</title>
 </head>
 <link rel="stylesheet" type="text/css" href="knowYourself.css">
+<link rel="stylesheet" type="text/css" href="signup.css">
 
 <body>
 

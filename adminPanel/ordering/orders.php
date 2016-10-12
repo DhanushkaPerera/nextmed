@@ -1,6 +1,5 @@
-<!DOCTYPE html>
 <html>
-<head>
+  <head>
     <style>input.textfill {
         float: right;
     }</style>
@@ -61,78 +60,72 @@ function removekid(div) {
             </script>
     </head>
 
-     <body bgcolor="#E6E6FA">
-        <form id=orders name="orders" action="orders_action.php" method="post" enctype="multipart/form-data"  onsubmit="return Validate(this);">
-
-            <table align="Center"  >
-               
-               <tr><td height="40"><br>
-            <div class="headingbox" id="hBoxNIC" > National ID  </div>
-			<div style="width:100%;text-align:center;">
-			<input type="text" placeholder="920290505v" maxlength="13" name=NIC required   autofocus  />
-                   </div>
-			
-			</td></tr>
-            <tr><td height=50 ><div class="headingboxs">Pick up</div>
-                <input   type=radio name=DP  required value="Pickup">
-
-<div style="  float: right;"><div class="headingboxs">
-    Delivery</div>
-                    <input  class="textfill" type=radio name=DP required value="Delivery" onmouseup="textbox(this)" /></div><br><br></td></tr>
-
-
-<tr><td height="50"><div class="headingbox" >Expected Time </div>
-			<div style="width:100%;text-align:center;">
-			<input type="time" id=time  autofocus name=DPTime    onfocusout="hid('timeerror2');" onfocus="show('timeerror2');"min="09:00:00" max="22:00:00" /><br>
-			</div>
-			
-               <div class="poperror" id="timeerror2"> Pharmacy is opened from 9AM to 10PM  </div>
-    <script>
-var input =  document.getElementById('time');
-function validateTime (element) {
-
-var minTime = element.min;
-var maxTime = element.max
-var value = element.value + ':00'
-
-if(minTime > value || value > maxTime) {
-console.log("Time is outside of min/max.");
-}
-
-}       
-   
-</script>  
+<body bgcolor="#E6E6FA">
+  <form id=orders name="orders" action="orders_action.php" method="post" enctype="multipart/form-data" onsubmit="return Validate(this);">
+    <table align="">
+      <tr>
+        <td height="40">
+          <br>
+          <span class="headingbox" id="hBoxNIC"> National ID &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp&nbsp&nbsp&nbsp&nbsp </span>
+          <span style="width:100%;text-align:center;">
+            <input type="text" placeholder="920290505v" maxlength="13" name=NIC required autofocus />
+          </span>
+        </td>
+      </tr>
+      <tr>
+        <td height=50>
+          <span class="headingboxs">Pick up</span>
+          <input type=radio name=DP required value="Pickup">
+          <span style="  float: right;">
+            <span class="headingboxs">
+              Delivery</span>
+            <input class="textfill" type=radio name=DP required value="Delivery" onmouseup="textbox(this)" />
+          </span>
+          <br>
+          <br>
+        </td>
+      </tr>
+      <tr>
+        <td height="50">
+          <span class="headingbox">Expected Time &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp </span>
+          <span style="width:100%;text-align:center;">
+            <input type="time" id=time autofocus name=DPTime onfocusout="hid('timeerror2');" onfocus="show('timeerror2');" min="09:00:00" max="22:00:00" />
+            <br>
+          </span>
+          <span class="poperror" id="timeerror2"> Pharmacy is opened from 9AM to 10PM </span>
+        </td>
+      </tr>
+      <tr>
+        <td height="50">
+          <span class="headingbox" id="hBoxPN"> Phone Number &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp </span>
+          <span style="width:100%;text-align:center;">
+            <input type="text" maxlength=10; autofocus name=Tele />
+            <br>
+          </span>
+          <span class="error" id="phoneerror"> error occured </span>
+          <br>
+        </td>
+      </tr>
+      <tr>
+        <td height="50">
+          <span class="headingbox" id="hBoxEM"> E-mail &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span>
+          <span style="width:100%;text-align:center;">
+            <input type="text" autofocus name=Email placeholder="xxx@gmail.com" />
            
-                </td></tr>
-       
-
-<tr><td height="50"><div class="headingbox" id="hBoxPN"> Phone Number </div>
-			<div style="width:100%;text-align:center;">
-                
-			<input type="text" maxlength=10;  autofocus name=Tele /><br>
-			</div>
-			<div class="error" id="phoneerror" > error occured </div><br></td></tr>
-
-
-			
-
-
-            <tr><td height="50"><div class="headingbox" id="hBoxEM"> E-mail </div>
-			<div style="width:100%;text-align:center;">
-			<input type="text"  autofocus name=Email placeholder="xxx@gmail.com"    /><br>
-			</div>
-			<div class="error" id="emailerror" > error occured </div><br>
-                                                                        
-                </td></tr>
-                         <tr>
-                    <td height="50" width=330><br><div class="headingbox"> Prescription Copy-1</div> <div id="kids">
+          </span>
+          <span class="error" id="emailerror"> error occured </span>
+          
+        </td>
+      </tr>
+         <tr>
+                    <td height="50" width=330><br><div class="headingbox"> Prescription Copy-1 </div> <div id="kids">
 
 <input id="uploadFile" class="disableInputField" placeholder="Choose File" disabled="disabled" />
 
 
-<label class="fileUpload">
+<label class="fileUpload ">
     <input id="uploadBtn" type="file" class="upload" name=Image1 />
-    <span class="uploadBtn">Upload</span>
+    <span class="uploadBtn">Upload </span>
 </label>
     
     
@@ -148,13 +141,13 @@ console.log("Time is outside of min/max.");
                
            
         </div></td></tr>
-
-            <tr><td colspan=5 align=center>
-                <input class="button" type=submit name=submit value=Place >
-                <input class="button" type=reset name=reset value=Cancel> </td></tr>
-            </table>
-
-              </form>
+      <tr>
+        <td colspan=5 align=center>
+          <input class="button" type=submit name=submit value=Place>
+          <input class="button" type=reset name=reset value=Cancel> </td>
+      </tr>
+    </table>
+  </form>
 
 <div id="white-background">
         </div>

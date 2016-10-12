@@ -1,0 +1,21 @@
+#col1 img{
+	
+	float:left;
+	min-width:200px;
+	width:51%;
+	margin-right:25px;
+}
+
+#col2{
+	float:left;
+	min-width:200px;
+	width:44%;
+}
+
+
+h3{
+	font-family:Curlz MT;
+	font-size:25px;
+	color: #66c2ff;
+}
+
