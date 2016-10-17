@@ -1,5 +1,4 @@
-
-        <?php
+ <?php
             require("includes/db.php");
 
             $sql="SELECT * FROM `order` ";
@@ -7,6 +6,13 @@
 echo"<head>";
 echo'
         <link rel="stylesheet" href="view.css">
+            <head>
+<style type="text/css">
+
+
+
+
+</style>
         
         ';
 echo"</head>";
@@ -102,15 +108,19 @@ while($row=mysqli_fetch_array($result))
     echo $row["Email"];
      echo "<br>";
      echo"</td>";
-     echo"<td align=center >";
+    
+    echo"<td align=center height=50px>";
+    
+     
+
+   echo'<div class="ienlarger"><a href='.( $row['Image1'] ).'><img src="' .$row['Image1']. '" alt="thumb" class="resize_thumb" /><span>
+    <img src="' .$row['Image1']. '" alt="large" height=300 width=300 /><br />
+    Copy-1</span></a></div>';
+
+
  
     
-   echo '<a class="lightbox" href='.( $row['Image1'] ).'    >';
-    
-    
-   echo "<img id='myImg1' src='" .$row['Image1']. "' height='70' width='100' class='lightbox' />";
-    
-echo "</a>";
+ 
    
     
     echo "<br>";
@@ -123,40 +133,36 @@ echo "</a>";
     }
     else{
       
-     echo '<a class="lightbox" href='.( $row['Image2'] ).'>';
-    
-    
-   echo "<img id='myImg1' src='" .$row['Image2']. "' height='70' width='100' class='lightbox' />";
-    
-echo "</a>";
+     echo'<div class="ienlarger"><a href='.( $row['Image2'] ).'><img src="' .$row['Image2']. '" alt="thumb" class="resize_thumb" /><span>
+    <img src="' .$row['Image2']. '" alt="large" height=300 width=300 /><br />
+    Copy-2</span></a></div>';
+
     }
    
     
     
     echo "<br>";
      echo"</td>";
-      echo"<td align=center >";
+     echo"<td align=center >";
+    
    
-  if($row['Image3']=="No copy"){
+    if($row['Image3']=="No copy"){
         echo "No copy";
     }
     else{
-       
-      echo '<a class="lightbox" href='.( $row['Image3'] ).'    >';
-    
-    
-   echo "<img id='myImg1' src='" .$row['Image3']. "' height='70' width='100' class='lightbox' />";
-    
-echo "</a>";
+      
+     echo'<div class="ienlarger"><a href='.( $row['Image3'] ).'><img src="' .$row['Image3']. '" alt="thumb" class="resize_thumb" /><span>
+    <img src="' .$row['Image3']. '" alt="large" height=300 width=300 /><br />
+    Copy-3</span></a></div>';
+
     }
-   
     
     
     echo "<br>";
      
     
      echo"</tr>";
-   echo "</div>";
+  
 }
 
 echo"</body>";
