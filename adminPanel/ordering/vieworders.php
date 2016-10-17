@@ -17,7 +17,7 @@ echo'
         ';
 echo"</head>";
     
-echo "<body bgcolor=#E6E6FA>";
+echo "<body >";
 echo "<table border=1 cellspacing=0 cellpadding=4 > " ;
 echo"<tr bgcolor=grey>";
 echo"<td align=center>";
