@@ -45,5 +45,66 @@ tr:nth-child(odd){
 	 background-color:#e6faff;
  }
 
-
  
+.ienlarger {
+	float: left;
+	clear: none; /* set to left or right if needed */
+	padding-bottom: 5px; /* space between thumbs. Dont change this to margin */
+	padding-right: 5px; /* space between thumbs and wrapping text when there is any text around it */
+}
+
+.ienlarger a { 
+	display:block;
+	text-decoration: none;
+/* add cursor:default; to this rule to disable the hand cursor */
+}
+
+.ienlarger a:hover{ /* dont move this positioning to normal state */
+ 	position:relative;
+}
+
+.ienlarger span img {
+	border: 1px solid #FFFFFF; /* adds a border around the image */
+	margin-bottom: 8px; /* pushes the text down from the image */
+}
+
+.ienlarger a span {  /* this is for the large image and the caption */
+	position: absolute;
+	display:none;
+	color: #FFCC00; /* caption text colour */
+	text-decoration: none;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px; /* caption text size */
+	background-color: #000000;
+	font-weight: bold;
+	padding-top: 10px;
+	padding-right: 10px;
+	padding-bottom: 13px;
+	padding-left: 10px;
+}
+
+.ienlarger img { /* leave or IE puts a border around links */
+border-width: 0;
+}
+
+.ienlarger a:hover span { 
+	display:block;
+	top: 50px; 
+	right:20px;
+	z-index: 100;
+	
+/* If you want the pop-up open to the left of thumb, remove the left: 90px; and add  
+right: 90px; This would mean the right side of the pop-up is 90px far from the right side of thumb */	
+
+/* If you want the pop-up open above the thumb, remove the top: 50px; and add  
+bottom: 50px; This would mean the bottom of the pop-up is 50px far from the bottom of thumb */	
+
+/* add cursor:default; to this rule to disable the hand cursor only for the large image */
+}
+
+.resize_thumb {
+	width: 100px; /* enter desired thumb width here */
+	height : auto;
+}
+
+/* smart image enlarger ends here */
