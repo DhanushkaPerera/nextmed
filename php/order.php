@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head><link type="text/css" rel="stylesheet" href="order.css" ></head>
-<body bgcolor="#E6E6FA">
+<body>
     <form action="order_action.php" method="post" enctype="multipart/form-data" >
   
         <table align="Center"  >
