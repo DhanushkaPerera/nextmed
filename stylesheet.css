@@ -308,15 +308,23 @@ contactus{
 	vertical-align: middle;
 	top: 0;
 	bottom: 0;
-	width: 50px;
-	display:inline;
-	line-height:100%;
-
+  transition: all 0.4s;
 }
 
 .menubuttonimg:hover {
-	background:white;
+	background:#d1eefd;
 }
+
+.userlabel{
+  color:blue;
+  font-size:16px;
+  height: 100%;
+  display:table-cell;
+  vertical-align: middle;
+  cursor:default;
+  padding-right:10px;
+}
+
 
 
 .header {
@@ -435,6 +443,7 @@ contactus{
     color: black;
     border: 2px solid #0099cc;
 	vertical-align: middle;
+  cursor:default;
 }
 
 .buttonlogin:hover {
@@ -857,11 +866,4 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a3000000', e
 	box-shadow: 0 0 10px black;
 }
 
-.userlabel{
-  float: left;
-  line-height: 40px;
-  vertical-align: middle;
-  color:blue;
-  font-size:16px;
-}
 

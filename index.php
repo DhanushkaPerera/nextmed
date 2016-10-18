@@ -1,3 +1,12 @@
+<?php
+	session_start();
+	if(isset($_SESSION['login'])&&$_SESSION['login']==1){
+		header('location:/../testing/indexreg.php');
+	}
+	else{
+		
+	}
+?>
 <!DOCTYPE html>
 <html>
 <title> NextMEd </title>
@@ -5,7 +14,7 @@
 	<meta charset="utf-8">
    <link rel="stylesheet" type="text/css" href="stylesheet.css">
 
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+   <script src="jquery/jquery.min.js"></script>
 
    <script>
 	function showContent(element) {
@@ -45,11 +54,7 @@
 	  setTimeout(function(){document.getElementById(element).style.visibility="hidden";}, 500);
 	}
 	
-	function showSignUp(){
-		var modal = document.getElementById("myModal");
-		toggleElement('loginB');
-		modal.style.display = "block";
-	}
+
 
 	window.onclick = function(event) {
 	var items = document.querySelectorAll(".login");
@@ -69,17 +74,13 @@
 	
 	var modal = document.getElementById("myModal");
 		if(event.target==modal){
-			modal.style.display = "none";
+			
 		}
 	}
 	</script>
 	<script>
 	$(document).ready(function(){
 		$("#loginIcon").click(function(event){
-			toggleElement('loginB');
-			event.stopPropagation();
-		});
-		$("#loginb1").click(function(event){
 			toggleElement('loginB');
 			event.stopPropagation();
 		});
@@ -115,7 +116,8 @@
 	
 <div id="myModal" class="modal">
 	<div class="modal-content">
-	<iframe src="signup.htm" style="width:800px; height:1500px;border:0;margin:auto;"></iframe>
+
+	<iframe id="modalFrame" src="Signup/signup.htm" style="width:100%; height:1500px;border:0;margin:auto;"></iframe>
 	</div>
 </div>
 
@@ -131,6 +133,7 @@
 		<div class="sidemenuitem" onclick="showContents();showContent('leaveorder');hideSlides();activeMenu(this);" onmouseover="menuText(this);" onmouseout="menuImage(this);" > <img class="center" src="media\leaveyourorder.png" alt="Order Online" style="max-width:60px;height:90%;"> </div>
 		<img class="boxshadow" src="media\logo.png" style="max-width:90px;height:100px;" >
 	</div>
+	
 
 		
 
@@ -144,18 +147,35 @@
 			
 			<div class="contentitem" id="aroundus" style="height:100%">
 			<div class="heading1"> Around Us </div>
-			<iframe src="AroundUs/Aroundus.html" id="iFrame1" frameborder="0" style="width:100%;height:2700px;position:relative;border:5px solid #d1eefd" allowfullscreen></iframe>
+			<iframe src="AroundUs/aroundusnew.php" id="iFrame1" frameborder="0" style="width:100%;height:2700px;position:relative;border:5px solid #d1eefd" allowfullscreen></iframe>
 			</div>
 			
 			<div class="contentitem" id="alternative"> 
 			<div class="heading1"> Search Drugs <br></div>
-			<iframe src="Search\drugs.htm" id="iFrame1" frameborder="0" style="width:100%;height:2700px;position:relative;border:5px solid #d1eefd" allowfullscreen></iframe>
+			<div id="myModal" class="modalBlock">
+			
+				<div class="modalBlock-content">
+				<br>
+				 <h3>It appears that you are not logged in to view these contents. </h3><br> <br>
+				<button id="loginb2" style="" class="button buttonlogin modalbtn" name="submit" align=center > Login / Sign Up </button>
+				<br>
+			</div></div>
+
 			</div>	
 
 			
 			<div class="contentitem" id="news"> <div class="heading1">News </div>
-
+			<div id="myModal" class="modalBlock">
+			
+				<div class="modalBlock-content">
+				<br>
+				 <h3>It appears that you are not logged in to view these contents. </h3><br> <br>
+				<button id="loginb3" style="" class="button buttonlogin modalbtn" name="submit" > Login / Sign Up </button>
+				<br>
+			</div></div>
+			
 			<iframe src="News/Newsnew.php" id="iFrame1" frameborder="0" style="width:100%;height:1800px;position:relative;border:5px solid #d1eefd" allowfullscreen></iframe>
+
 			</div>
 			
 			<div class="contentitem" id="healthtips"> 
@@ -166,7 +186,14 @@
 			
 			<div class="contentitem" id="leaveorder"> <div class="heading1">Order Online</div>
 			
-
+			<div id="myModal" class="modalBlock">
+			
+				<div class="modalBlock-content">
+				<br>
+				 <h3>It appears that you are not logged in to view these contents. </h3><br> <br>
+				<button id="loginb4" style="" class="button buttonlogin modalbtn" name="submit" > Login / Sign Up </button>
+				<br>
+			</div></div>
 			
 			<iframe src="adminPanel/ordering/orders.php" id="iFrame1" frameborder="0" style="width:100%;height:1800px;position:relative;border:5px solid #d1eefd" allowfullscreen></iframe>
 			
@@ -178,34 +205,53 @@
 
 	
 	<div class="header">
+		<div style="display:table">
+		<div style="display: table-row;height: 100%;">
 		<div class="menubuttonimg"> 
-			<img src="media\notification.png"  alt="notifications" style="width:auto;margin:20%;height:60%" onclick="toggleElement('notify')">
-			<div class="notifybox" id="notify">
-				<img src="media\under-construction.gif"  alt="notifications" style="height:80%">
-				<div class="textnotify" style="color:white">
-				Currently there are no any notifications
+			<div style="display: table-cell;vertical-align: middle;height:100%;padding: 10px">
+				<img src="media\notification.png"  alt="notifications" style="width:auto;height:30px" onclick="toggleElement('note')">
+			</div>	
+		</div>
+		
+		<div class="menubuttonimg login" >
+				<div id="loginIcon">
+					<div style="display: table-cell;vertical-align: middle;height:100%;padding: 10px;">
+						<img src="media\login.png" style="width:auto;height:30px;"  >
+					</div>
+					<div class="userlabel login">
+					Guest
+					</div>
 				</div>
-			</div>
-			</div>
-		<div class="menubuttonimg login"  >
-			<img src="media\login.png" style="width:auto;margin:20%;height:60%" id="loginIcon" >
+			
 			<div class="loginbox login" id="loginB">
-			<form action="php/logout.php" method="post">
 			<br>
-				<div class="textnotify login">
-				<h1> You are logged in </h1>
+				<div class="textnote login">
+				
+				<h1> Login </h1>
 				<br>
 				<hr class="login">
-				<input class="button buttonlogin login" type="submit" name="submit" value="Log out">
+				<div class="inputs">
+				<br>
+				<input type="text" style="width:200px;" placeholder="User Id (email)" class="login" name="email" id="emailin" ><br>
+				<input type="password" style="width:200px;" placeholder="Password"  class="login" name="password" id="passin" ><br>
+				</div>
+				<div class="error" id="passError"> error </div>
+				<br>
+				<input class="button buttonlogin login" name="submit" value="Login" onclick="authenticateUser('emailin', 'passin', 'passError')" >
 				<br>
 				<br>
+				<hr class="login">
+				Or<br>
+				<input class="button buttonlogin login" value="Sign up" style="vertical-align:middle;" onclick="showSignUp()">
 				</div>
 			</form>
 			</div>
-
+		</div>
+		</div>
 		</div>
 	</div>
-		<div id="cf1" class="header1">
+	
+	<div id="cf1" class="header1">
 	<img src="media\log1.png">
 	</div>
 
@@ -253,6 +299,8 @@
 
 		</div>
 	</div>
+	</body>
+	
 	<script type="application/javascript">
 	function hideContents(){
 		var element = document.getElementById('contentsID');
@@ -293,6 +341,131 @@
 		//slides.style.position = "relative";
 	}
 	
+	
+	function authenticateUser(email, password, notify)
+    {
+		var emailIn = document.getElementById(email);
+		var passwordIn = document.getElementById(password);
+		var note = document.getElementById(notify);
+		note.style.opacity="0";
+		if(validateoutNIC(emailIn)){
+			authenticateEmp(emailIn, passwordIn, note);
+		}
+		else{
+			authenticateCst(emailIn, passwordIn, note);
+		}
+		
+	}
+	
+	function authenticateCst(email, password, note)
+    {
+		note.style.opacity="0";
+
+		var xmlhttp = new XMLHttpRequest();
+		
+		xmlhttp.onreadystatechange = function() {
+			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+				var str = xmlhttp.responseText;
+				
+				if(str.localeCompare("Success")==0){
+					window.location = "indexreg.php";
+				}
+				else{
+					note.style.opacity="1";
+					note.innerHTML = "invalid username or password";
+					note.innerHTML = str;
+				}
+			}
+		};
+		xmlhttp.open("GET", "php/login_action_cst.php?email=" + email.value + "&password=" + password.value, true);
+		xmlhttp.send();
+	}
+	
+	function authenticateEmp(nic, password, note)
+    {
+	note.style.opacity="0";
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange = function() {
+		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+			var str = xmlhttp.responseText;
+			if(str.localeCompare("Success")==0){
+				window.location = "adminPanel/index.htm";
+			}
+			else{
+
+				note.style.opacity="1";
+				note.innerHTML = "invalid username or password";
+				
+			}
+		}
+	};
+		xmlhttp.open("GET", "php/login_action_emp.php?nic=" + nic.value + "&password=" + password.value, true);
+		xmlhttp.send();
+    
+	}
+	
+	function validateoutNIC(element){
+		var nicValid = false;
+		var str = element.value;
+		var strl = str.length;
+		var charsToSearch = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "V", "v"];
+		var charsToSearch1 = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
+		
+		if(strl==0){
+			nicValid = false;
+		}
+		else if(strl!=10 && strl!=13&&strl!=0){
+			nicValid = false;
+		}
+		else{
+			if(str.length>10){
+				if(str.charAt(0)!="1" && str.charAt(0)!="2"){
+					nicValid = false;
+				}
+				else if(str.charAt(0)=="1" && str.charAt(1)!="9"){
+					nicValid = false;
+				}
+				else{
+					for(i=0;i<str.length;i++){
+						theChar = str.charAt(i);
+						if (charsToSearch1.indexOf(theChar) == -1) {
+							nicValid = false;
+							break;
+						}
+						if(i==str.length-1) {
+							nicValid = true;
+						}
+					}
+				}
+			}
+			else{
+			for(i=0;i<str.length;i++){
+					theChar = str.charAt(i);
+					if (charsToSearch.indexOf(theChar) == -1) {
+						nicValid = false;
+						break;
+					}
+					if(i==str.length-1){
+						nicValid = true;
+					}
+				}
+			}
+		}
+		return nicValid;
+   }
+   
+    function closeIFrame(){
+		$('#modalFrame').hide();
+		$('#myModal').hide();
+	}
+	function showSignUp(){
+		$('#myModal').show();
+		$('#modalFrame').show();
+		var modal = document.getElementById("myModal");
+		toggleElement('loginB');
+		modal.style.display = "block";
+	}
+	
 	function activeMenu(menu){
 		var menus = document.getElementsByClassName("activemenu");
 		menus[0].classList.remove("activemenu");
@@ -314,7 +487,8 @@
 		menu.appendChild(image[0]);
 		image[0].style.visibility="visible";
 	}
+
 	</script>
 
-</body>
+
 </html>

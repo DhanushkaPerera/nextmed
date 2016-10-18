@@ -22,6 +22,10 @@ $result = mysqli_query($db,$sql);
 if(mysqli_num_rows($result)==1){ //Each entry is unique so the number of rows returned from the db table should be 1
     session_start();          //starting a session if login is successful
     $_SESSION['login']='1'; //creating a session variable
+    $result=mysqli_fetch_array($result);
+    $_SESSION['username']=$result['FName']." ".$result['LName'];
+    $_SESSION['userNIC'] = $result['NIC'];
+    $_SESSION['useremail']=$result['Email'];
 	echo "Success";
     //header('location:/../testing/indexreg.htm');
     
