@@ -158,10 +158,17 @@ while($row=mysqli_fetch_array($result))
     }
     
     
-    echo "<br>";
-     
+  
+ echo "<br>";
+      echo"</td>";
+    echo "<td align=center>";
     
-     echo"</tr>";
+echo "<a href='transfer.php?del=";
+echo $row['OrderNo.'];
+echo "'><input type='button' class='button' value='Complete'></a>";
+echo "<br>";
+echo"</td>";
+    echo "</tr>";
     
 }
 echo"</table>";
