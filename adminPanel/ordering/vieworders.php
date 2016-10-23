@@ -162,9 +162,17 @@ while($row=mysqli_fetch_array($result))
      
     
      echo"</tr>";
-  
+    
 }
-
+echo"</table>";
+  
+echo  "<div margin:auto>
+ <a href='completedorders.php'>
+    
+    <input class='button1' type='button' value='Completed orders'>
+    </a>
+    </div>";
+        
 echo"</body>";
 
-   ?> 
+   ?>  
