@@ -315,6 +315,19 @@ contactus{
 	background:#d1eefd;
 }
 
+.button__badge {
+	background-color: #fa3e3e;
+	border-radius: 2px;
+	color: white;
+
+	padding: 1px 3px;
+	font-size: 10px;
+
+	position: absolute; /* Position the badge within the relatively positioned button */
+	top: 0;
+	right: 0;
+}
+
 .userlabel{
   color:blue;
   font-size:16px;
@@ -513,10 +526,9 @@ hr{
 	box-shadow:inset 0px -1px 12px #ffffff;
 	border-radius: 20px;
 	padding:10px;
-background: -moz-linear-gradient(top, rgba(0,0,0,0.64) 0%, rgba(0,0,0,0.64) 13%, rgba(0,0,0,0.65) 33%, rgba(0,0,0,0.65) 52%, rgba(0,0,0,0.42) 100%);
-background: -webkit-linear-gradient(top, rgba(0,0,0,0.64) 0%,rgba(0,0,0,0.64) 13%,rgba(0,0,0,0.65) 33%,rgba(0,0,0,0.65) 52%,rgba(0,0,0,0.42) 100%);
-background: linear-gradient(to bottom, rgba(0,0,0,0.64) 0%,rgba(0,0,0,0.64) 13%,rgba(0,0,0,0.65) 33%,rgba(0,0,0,0.65) 52%,rgba(0,0,0,0.42) 100%);
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a3000000', endColorstr='#6b000000',GradientType=0 );
+	background: -moz-linear-gradient(top, rgba(255, 4, 0, 0.64) 0%, rgba(255, 4, 0, 0.64) 13%, rgba(255, 4, 0, 0.65) 33%, rgba(255, 4, 0, 0.65) 52%, rgba(0,0,0,0.42) 100%);
+	background: -webkit-linear-gradient(top, rgba(255, 4, 0, 0.64) 0%, rgba(255, 4, 0, 0.64) 13%, rgba(255, 4, 0, 0.65) 33%, rgba(255, 4, 0, 0.65) 52%,rgba(0,0,0,0.42) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a3000000', endColorstr='#6b000000',GradientType=0 );
 	margin:auto;
 	min-width:200px;
 	width: 40%;
@@ -535,7 +547,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a3000000', e
     width: 90%; /* Full width */
     height: 100%; /* Full height */
     background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
 	overflow:auto;
 }
 
@@ -559,132 +571,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a3000000', e
     cursor: pointer;
 }
 
-
-
-#signup {
-    padding: 0px 25px 25px;
-    background: #dcdcfb;
-    box-shadow: 
-        0px 0px 0px 5px rgba( 255,255,255,0.4 ), 
-        0px 4px 20px rgba( 0,0,0,0.33 );
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-    border-radius: 5px;
-    display: table;
-    position: absolute;
-	width:40%;
-	margin: 20px;
-}
-
-#signup .header {
-    margin-bottom: 20px;
-}
-
-#signup .header h3 {
-    color: #333333;
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
-#signup .header p {
-    color: #8f8f8f;
-    font-size: 14px;
-    font-weight: 300;
-}
-
-#signup .sep {
-    height: 1px;
-    background: #e8e8e8;
-    width: 80%;
-    margin: auto;
-}
-
-#signup .inputs {
-    margin-top: 25px;
-}
-
-#signup .inputs label {
-    color: #8f8f8f;
-    font-size: 12px;
-    font-weight: 300;
-    letter-spacing: 1px;
-    margin-bottom: 7px;
-    display: block;
-}
-
-
-
-
-#signup .inputs .checkboxy {
-    display: block;
-    position: static;
-    height: 25px;
-    margin-top: 10px;
-    clear: both;
-}
-
-#signup .inputs input[type=checkbox] {
-    float: left;
-    margin-right: 10px;
-    margin-top: 3px;
-}
-
-#signup .inputs label.terms {
-    float: left;
-    font-size: 14px;
-    font-style: italic;
-}
-
-#signup .inputs .buttonS {
-    width: 100%;
-    margin-top: 20px;
-    padding: 15px 0;
-    color: #fff;
-    font-size: 14px;
-    font-weight: 500;
-    letter-spacing: 1px;
-    text-align: center;
-    text-decoration: none;
-        background: -moz-linear-gradient(
-        top,
-        #b9c5dd 0%,
-        #a4b0cb);
-    background: -webkit-gradient(
-        linear, left top, left bottom, 
-        from(#b9c5dd),
-        to(#a4b0cb));
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-    border-radius: 5px;
-    border: 1px solid #737b8d;
-    -moz-box-shadow:
-        0px 5px 5px rgba(000,000,000,0.1),
-        inset 0px 1px 0px rgba(255,255,255,0.5);
-    -webkit-box-shadow:
-        0px 5px 5px rgba(000,000,000,0.1),
-        inset 0px 1px 0px rgba(255,255,255,0.5);
-    box-shadow:
-        0px 5px 5px rgba(000,000,000,0.1),
-        inset 0px 1px 0px rgba(255,255,255,0.5);
-    text-shadow:
-        0px 1px 3px rgba(000,000,000,0.3),
-        0px 0px 0px rgba(255,255,255,0);
-    display: table;
-    position: static;
-    clear: both;
-}
-
-#signup .inputs .buttonS:hover {
-    background: -moz-linear-gradient(
-        top,
-        #a4b0cb 0%,
-        #b9c5dd);
-    background: -webkit-gradient(
-        linear, left top, left bottom, 
-        from(#a4b0cb),
-        to(#b9c5dd));
-}
 
 
 .inputs select, input[type=text], input[type=password] {
