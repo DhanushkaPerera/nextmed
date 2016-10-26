@@ -48,6 +48,12 @@
 				</select>
 				</div>
 				<div class="error" id="generror2" > error occured </div><br>
+
+                <div class="headingbox" id="hBoxBdate" > Birth Date  </div>
+                <div class="inputboxWrap">
+                    <input name=dob   type="text" onfocus="headingBoxActive('hBoxBdate');(this.type='date')" onfocusout="(this.type='text');validateDate(this, 'bderror2');validatedAll();" id="date"><br>
+                </div>
+                <div class="error" id="bderror2" > error occured </div><br>
 				
 				
 			</div>
@@ -66,9 +72,9 @@
 				<input type="text" maxlength=10; onfocus="headingBoxActive('hBoxPN')"   name=contactno onfocusout="validatePhoneNo(this, 'phoneerror');validatedAll();"/><br>
 				</div>
 				<div class="error" id="phoneerror" > error occured </div><br>
-				
 
-				
+
+
 				
 				
 				
@@ -82,13 +88,51 @@
 	            <input type="password"  onfocus="headingBoxActive('hBoxCP')" id="confirmPassIn" onfocusout="validatePass(this, 'confirmpass', 'passInput');validatedAll();" /><br>
 				</div>
 				<div class="error" id="confirmpass"  >  </div><br>
+
+
 			</div>
 
 			<div class="wrapshow">
 				 <button class="buttonshow" onhover="showMore(this);" >
 				 	Show more >>
 				 </button>
+
 			</div>
+                <div class="column">
+                    <div class="headingbox" id="hBoxCS" > Civil Status </div>
+                    <div class="inputboxWrap">
+                        <select name=civil  onfocus="headingBoxActive('hBoxCS')" onfocusout="validateList(this, 'civilerror');validatedAll();" onchange="validateList(this, 'civilerror')" >
+                            <option value="" disabled selected>Civil Status</option>
+                            <option value="Single">Single</option>
+                            <option value="Married">Married</option>
+                            <option value="Divorced">Divorced</option>
+                        </select>
+                    </div>
+                    <div class="error" id="civilerror" > error occured </div><br>
+                    <div class="headingbox" id="hBoxBG"> Blood Group </div>
+                    <div class="inputboxWrap">
+                        <select name=bloodgroup  onfocusout="validateList(this, 'bldgrperror')" onfocus="headingBoxActive('hBoxBG')" onchange="validateList(this, 'bldgrperror');validatedAll();" >
+                            <option value="" disabled selected  >Blood Group</option>
+                            <option value="Single">A+</option>
+                            <option value="Married">A-</option>
+                            <option value="Divorced">B+</option>
+                            <option value="Divorced">B-</option>
+                            <option value="Divorced">O+</option>
+                            <option value="Divorced">O-</option>
+                            <option value="Divorced">AB+</option>
+                            <option value="Divorced">AB-</option>
+                        </select>
+                    </div>
+                    <div class="error" id="bldgrperror" > error occured </div><br>
+                </div>
+                <div class="column">
+                    <div class="headingbox" id="hBoxAdrs"> Address </div>
+                    <div class="inputboxWrap">
+                        <input type="text"   onfocus="headingBoxActive('hBoxAdrs')" name=address onfocusout="validateAddr(this, 'adrerror2');validatedAll();" /><br>
+                    </div>
+                    <div class="poperror" id="test" ></div>
+                    <div class="error" id="adrerror2" > error occured </div><br>
+                </div>
 			<br>
 			
 
