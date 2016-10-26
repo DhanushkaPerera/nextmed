@@ -11,47 +11,39 @@
 <!--<br><h2> What are the privileges you get through the agreement?</h2>-->
 
 <div id=column align=center>
-<!--img src="image/bmi1.png"-->
-<h3>How much should I weigh <br>for my height? </h3>
-<div class=privilege align=justify><p><b>B</b>ody <b>M</b>ass <b>I</b>ndex (BMI) is an measurement used to determine weight status (eg. Underweight, Healthy weight Overweight). Use this 
-calculator to find out what your BMI can tell about your health.</p>
+	<div class=logo><img src="image/bmi1.png"></div>
+	<div class=topic><h3>How much should<br> I weigh for my height? </h3></div>
+	<div class=privilege><p><b>B</b>ody <b>M</b>ass <b>I</b>ndex (BMI) is an measurement used to 
+			determine weight status (eg. Underweight, Healthy weight Overweight). Use this 
+			calculator to find out what your BMI can tell about your health.</p></div>
 
-<table id="inputtable">
-				<tr>
-					<td>
-					<form align = center>
-						<label >Height : </label>
-							<input id="height" type=text name="h" placeholder="1.58" required > m
-							<br>
-						<label>Weight : </label>
-							<input id="weight" type=text name="w" placeholder="62.4" required > kg
-							<br>
-						<input class=btn type="button" value="CALCULATE"   onclick="calBMI();result();">
-						<input class=btnreset type="reset" value="RESET"  onclick="erase()">
-						<br><br>
-                        Your BMI = <label id = "bmi"></label><br>
-                        <label id = "result"></label>
-					</form>
-					</td>
-				</tr>
-			</table>
-			
-</div>
-<br>
-<a href="bmiinfo.html#top"><b>For More Info:</b> </a>
+				<form align = center>
+					<label >Height : </label>
+						<input id="height" type=text name="h" placeholder="1.58" required > m	<br>							
+					<label>Weight : </label>
+						<input id="weight" type=text name="w" placeholder="62.4" required > kg  <br>
+					<input class=btn type="button" value="CALCULATE"   onclick="calBMI();result();">					
+					<input class=btnreset type="reset" value="RESET"  onclick="erase()">  <br><br>
+						
+                    Your BMI = <label id = "bmi"></label><br>
+                    <label id = "result"></label>  <br><br>
+
+					<a href="bmiinfo.html#top" ><b>For More Info:</b> </a>	
+				</form>  <br><br>								
 </div>
 <a name=back></a>
+
+
 <!-- source: http://bmicalculator.cc/bmi-chart -->
 
 <div id=column align=center>
-<!--img src="image/donate1.ico"-->
-<h3>What does depend<br>on your blood group?</h3>
-<div class=privilege align=justify><p>If you are willing to donate blood, you should know to whom you can donate. 
-Also, in an emergency it will be very useful if you know from whom you can receive blood.</p>
+	<div class=logo><img src="image/donate1.ico"></div>
+	<div class=topic><h3>What does depend<br>on your blood group?</h3></div>
+	<div class=privilege align=justify><p>If you are willing to donate blood, you should know to whom you can donate. 
+Also, in an emergency it will be very useful if you know from whom you can receive blood.</p></div>
 
-<form align = center>
-						<label>Blood Group : </label>
-					
+					<form align = center>
+						<label>Blood Group : </label>					
 						<select id="group" name=bg>
 							<option >Your Blood Group</option>
 							<option value="o-">O-</option>
@@ -62,39 +54,31 @@ Also, in an emergency it will be very useful if you know from whom you can recei
 							<option value="b+">B+</option>
 							<option value="ab-">AB-</option>
 							<option value="ab+">AB+</option>
-						</select>
-						<br><br>
+						</select>  <br><br>
 						<input type="button"  class=btn value="To whom can I donate ?"   onclick="donate()">
-						<input class=btnreset type="reset" value="RESET"  onclick="erase()">						
-						<br><br>
-                            <label id = "donate"></label>
-                            <br><br>
-						<input type="button"  class=btn value="From whom can I receive ?" onclick="receive()">
-                        <input class=btnreset type="reset" value="RESET"  onclick="erase()">
-						<br><br>
-                             <label id = "receive"></label>
+						<input class=btnreset type="reset" value="RESET"  onclick="erase()">  	<br><br>
                             
-						</form>	
+						You can donate to <br><label id = "donate"></label>  <br><br>
+                            
+						<input type="button"  class=btn value="From whom can I receive ?" onclick="receive()">
+                        <input class=btnreset type="reset" value="RESET"  onclick="erase()">  <br><br>
 						
-</div>
-
-<a href="blooddonation.html#top"><b>For More Info:</b> </a>
+                        You can receive from <br><label id = "receive"></label> <br><br>
+						<a href="blooddonation.html"><b>For More Info:</b> </a>
+					</form>	                        
 </div>
 <!-- source: http://www.thebloodcenter.org/donor/BloodFacts.aspx-->
-<div id=column align=center>
-<!--img src="image/pulse1.png"-->
-<h3>What about <br> your heart rate?</h3>
-<div class=privilege align=justify><p>Pulse rate is the number of times a person's heart beats per minute.It monitors your fitness level and it might even help you spot developing health problems. </p>
 
-<form align = center>
-                <table id="inputtable">
-				<tr>
-					<td align="center">
-                        
-						
-						<tr><label>Pulse rate : </label>
-                        <input id="rate" type=text  placeholder="76"> /min </tr>
-						<br><label>Age : </label>
+<div id=column align=center>
+	<div class=logo><img src="image/pulse1.png"></div>
+	<div class=topic><h3>What about <br> your heart rate?</h3></div>
+	<div class=privilege align=justify><p>Pulse rate is the number of times a person's heart beats 
+	per minute.It monitors your fitness level and it might even help you spot developing health problems.</p></div>
+
+					<form align = center>                
+						<label>Pulse rate : </label>
+                        <input id="rate" type=text  placeholder="76"> /min  <br> 
+						<label>Age : </label>
 						<select id="age" name=age>
 								<option>Your Age Range</option>
 								<option value="age1">0-12 months</option>								
@@ -103,29 +87,29 @@ Also, in an emergency it will be very useful if you know from whom you can recei
 								<option value="age4">11-15 years</option>
 								<option value="age5">16-20 years</option>
 								<option value="age6">21+ years</option>
-						</select>
-						</tr>
-						<br><br>
-						<input type="button" class=btncheck value="CHECK"   onclick="pulse();">							
+						</select>  <br><br>				
+						<input type="button" class=btncheck value="CHECK"   onclick="pulse();">   <br><br>							
+
+						Your pulse rate is <label id = "check"></label>  <br><br>	
+				        <a href="blooddonation.html#top"><b>For More Info:</b> </a>
+</form>
+</divYour BMI = 
+>
 						
-							<br><br>
                             
-                             <label id = "check"></label>
+                             
                             
 											
-					</td>	
-				</tr>
-			</table>
+					
+				
+			
 			
         
         
         
         
-        </form>
-		
-</div>
-<a href="blooddonation.html#top"><b>For More Info:</b> </a>
-</div>
+        
+
 
 
 <script type="text/javascript">
@@ -217,7 +201,7 @@ Also, in an emergency it will be very useful if you know from whom you can recei
         switch(age){
             case "age1":
                 if((rate>=105) && (rate<=165)){
-                    document.getElementById("check").innerHTML="<font color=red size=6px><b>Normal<b></font>";
+                    document.getElementById("check").innerHTML="<font color=green size=6px><b>Normal<b></font>";
                 }
                 
                 else{
@@ -228,7 +212,7 @@ Also, in an emergency it will be very useful if you know from whom you can recei
                         
             case "age2":
                     if((rate>=85) && (rate<=150)){
-                    document.getElementById("check").innerHTML="<font color=red size=6px><b>Normal<b></font>";
+                    document.getElementById("check").innerHTML="<font color=green size=6px><b>Normal<b></font>";
                     }
                
                 else{
@@ -240,7 +224,7 @@ Also, in an emergency it will be very useful if you know from whom you can recei
                 
             case "age3":
                         if((rate>=75) && (rate<=135)){
-                    document.getElementById("check").innerHTML="<font color=red size=6px><b>Normal<b></font>";
+                    document.getElementById("check").innerHTML="<font color=green size=6px><b>Normal<b></font>";
                         }
                 
                 else{
@@ -252,7 +236,7 @@ Also, in an emergency it will be very useful if you know from whom you can recei
 						
 			case "age4":
                         if((rate>=70) && (rate<=120)){
-                    document.getElementById("check").innerHTML="<font color=red size=6px><b>Normal<b></font>";
+                    document.getElementById("check").innerHTML="<font color=green size=6px><b>Normal<b></font>";
                         }
                 
                 else{
@@ -263,7 +247,7 @@ Also, in an emergency it will be very useful if you know from whom you can recei
 				
 			case "age5":
                         if((rate>=65) && (rate<=110)){
-                    document.getElementById("check").innerHTML="<font color=red size=6px><b>Normal<b></font>";
+                    document.getElementById("check").innerHTML="<font color=green size=6px><b>Normal<b></font>";
                         }
                 
                 else{
@@ -274,7 +258,7 @@ Also, in an emergency it will be very useful if you know from whom you can recei
 				
 			case "age6":
                         if((rate>=60) && (rate<=100)){
-                    document.getElementById("check").innerHTML="<font color=red size=6px><b>Normal<b></font>";
+                    document.getElementById("check").innerHTML="<font color=green size=6px><b>Normal<b></font>";
                         }
                 
                 else{
@@ -328,5 +312,6 @@ Also, in an emergency it will be very useful if you know from whom you can recei
                     
         
     </script>
+	
 </body>
 </html>

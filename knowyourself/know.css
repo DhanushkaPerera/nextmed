@@ -3,12 +3,23 @@
 	font-family:Baskerville Old Face;
 	border-radius:20px;
 	color: #ffffff;
-	min-width:200px;
+	/*min-width:200px;*/
 }
 
 img{
-	width:150px;
-	height:150px;
+	width:50px;
+	height:50px;
+}
+
+.logo{
+	float:left;	
+	width:20%;
+	padding:2%;
+}
+
+.topic{
+	float:left;
+	
 }
 
 h3{
@@ -23,16 +34,15 @@ p{
 
 #column{
 	float:left;
-	min-width:200px;
+	min-width:370px;
 	width:33%;
 }
 
 .privilege{
-	
-	
-	
-	width:90%;
-	min-width:193px;
+	min-height:100px;
+	width:80%;	
+	clear:both;
+	text-align:justify;
 }
 
 input[type=text]{
@@ -57,10 +67,11 @@ select {
 }
 .btn {
     width: 60%;
+	
     background-color: #458885;
     color: white;
     padding: 14px 20px;
-    margin: 8px 0;
+    margin: 8px ;
     border: none;
     border-radius: 7	px;
     cursor: pointer;
@@ -92,9 +103,12 @@ select {
     background-color: #45a0ff;
 }
 
-form ,table {
+form{
     border-radius: 5px;
     background-color: #f2f2ff;
     padding: 7px;
+	width: 80%;
+	min-height:60px;
+	height:400px
 }
 

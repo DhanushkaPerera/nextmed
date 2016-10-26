@@ -18,4 +18,13 @@ h3{
 	font-size:25px;
 	color: #66c2ff;
 }
-
+.btnreset {
+    width: 26%;
+    background-color: #458885;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 7	px;
+    cursor: pointer;
+}
