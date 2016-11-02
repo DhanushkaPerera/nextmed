@@ -17,7 +17,7 @@
 				//Retrieve Data
 				$sql = "SELECT * FROM news ORDER BY  date DESC";
 				//$sql = "SELECT DISTINCT username FROM user";
-				$res = mysqli_query($db , $sql);
+				$res = mysqli_query($connection , $sql);
 					
 				if($res){
 					while($row = mysqli_fetch_array($res)){
@@ -25,11 +25,11 @@
 					}
 				}
 				else{
-					echo "Error : " . mysqli_error($db); 
+					echo "Error : " . mysqli_error($connection); 
 				}
 				
 				//Close connectionection
-				mysqli_close($db);
+				mysqli_close($connection);
 			?>
 		</div>
 	</div>
@@ -48,7 +48,8 @@
 			<p> Do you love to deal </br> with pharmaceutical drugs? </p>
 			<p> Have a dream to become </br> a pharmacist? </p>
 			<p> Vacancy at </br> Anura Pharmacy (Pvt) Ltd </p>
-			<input class = "button" type = "submit" name = "submit" value = "Register Now">
+			<!--input class = "button" type = "submit" name = "submit" value = "Register Now"-->
+			<button class="button"><a href="vacancy.html">Apply Now</a></button>
 		</div>
 		
 	</div>
