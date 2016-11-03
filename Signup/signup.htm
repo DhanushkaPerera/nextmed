@@ -14,138 +14,141 @@
             <h3>Sign Up</h3> </div>
         <div class="sep"></div>
 		
-        <div class="inputs">
-        	<!-- user NIC input -->
-        	<div class="column">
-				<div class="headingbox" id="hBoxNIC" > National ID  </div>
-				<div class="inputboxWrap">
-					<input type="text" placeholder="920290505v" maxlength="13" name=nic onfocus="headingBoxActive('hBoxNIC')" onkeyup="validateNIC(this)"   onfocusout="upperCASE(this);hide('NICerror');validateoutNIC(this);validatedAll();" />
-				</div>
-				<div class="poperror" id="NICerror" ></div>
-				<div class="error" id="nicerror2" > error occured </div><br>
-
-				<!-- user First Name input -->
-				<div class="headingbox" id="hBoxFN" > First Name </div>
-				<div class="inputboxWrap" >
-	            	<input type="text"   name=firstname onfocus="headingBoxActive('hBoxFN')" onkeydown="validateString(this, 'nameerror')" onfocusout="hide('nameerror');validateoutString(this, 'nameerror2');validatedAll();" /><br>
-				</div>
-				<div class="poperror" id="nameerror" ></div>
-				<div class="error" id="nameerror2" > error occured </div><br>
-				
-				<div class="headingbox" id="hBoxLN"> Last Name </div>
-				<div class="inputboxWrap">
-				<input type="text"    name=lastname onfocus="headingBoxActive('hBoxLN')" onkeydown="validateString(this, 'lnameerror')" onfocusout="hide('lnameerror');validateoutString(this, 'lnameerror2');validatedAll();" /><br>
-				</div>
-				<div class="poperror" id="lnameerror" ></div>
-				<div class="error" id="lnameerror2" > error occured </div><br>
-				
-				<div class="headingbox" id="hBoxGen" > Gender </div>
-				<div class="inputboxWrap">
-				<select name=gender style="" onfocus="headingBoxActive('hBoxGen')" onfocusout="validateList(this, 'generror2');validatedAll();" onchange="validateList(this, 'generror2')"  >
-				<option value="" disabled selected>Gender</option>
-				<option value="Male">Male</option>
-				<option value="Female">Female</option>
-				</select>
-				</div>
-				<div class="error" id="generror2" > error occured </div><br>
-
-                <div class="headingbox" id="hBoxBdate" > Birth Date  </div>
-                <div class="inputboxWrap">
-                    <input name=dob   type="text" onfocus="headingBoxActive('hBoxBdate');(this.type='date')" onfocusout="(this.type='text');validateDate(this, 'bderror2');validatedAll();" id="date"><br>
-                </div>
-                <div class="error" id="bderror2" > error occured </div><br>
-				
-				
-			</div>
-
-			<div class="column" style="clear: right;">
-				<div class="headingbox" id="hBoxEM"> E-mail </div>
-				<div class="inputboxWrap">
-				<input type="text"    name=emailaddress onfocus="headingBoxActive('hBoxEM')" onfocusout="validateEmail(this, 'emailerror');hide('emailerror2');validatedAll();" onfocus="show('emailerror2');" /><br>
-				</div>
-				<div class="error" id="emailerror" > error occured </div><br>
-				<div class="poperror" id="emailerror2"> email@example.com </div>
-				
-				
-				<div class="headingbox" id="hBoxPN"> Phone Number </div>
-				<div class="inputboxWrap">
-				<input type="text" maxlength=10; onfocus="headingBoxActive('hBoxPN')"   name=contactno onfocusout="validatePhoneNo(this, 'phoneerror');validatedAll();"/><br>
-				</div>
-				<div class="error" id="phoneerror" > error occured </div><br>
-
-
-
-				
-				
-				
-				<div class="headingbox" id="hBoxPS"> Password </div>
-				<div class="inputboxWrap">
-	            <input type="password" onfocus="headingBoxActive('hBoxPS')" onfocusout="validatePassC(this, 'confirmpass', 'confirmPassIn');validatedAll();" name=password id="passInput" /><br>
-				</div>
-				
-				<div class="headingbox" id="hBoxCP" > Confirm Password </div>
-				<div class="inputboxWrap">
-	            <input type="password"  onfocus="headingBoxActive('hBoxCP')" id="confirmPassIn" onfocusout="validatePass(this, 'confirmpass', 'passInput');validatedAll();" /><br>
-				</div>
-				<div class="error" id="confirmpass"  >  </div><br>
-
-
-			</div>
-
-			<div class="wrapshow">
-				 <button class="buttonshow" onhover="showMore(this);" >
-				 	Show more >>
-				 </button>
-
-			</div>
+            <div class="inputs">
+                <!-- user NIC input -->
                 <div class="column">
-                    <div class="headingbox" id="hBoxCS" > Civil Status </div>
+                    <div class="headingbox" id="hBoxNIC" > National ID  </div>
                     <div class="inputboxWrap">
-                        <select name=civil  onfocus="headingBoxActive('hBoxCS')" onfocusout="validateList(this, 'civilerror');validatedAll();" onchange="validateList(this, 'civilerror')" >
-                            <option value="" disabled selected>Civil Status</option>
-                            <option value="Single">Single</option>
-                            <option value="Married">Married</option>
-                            <option value="Divorced">Divorced</option>
-                        </select>
+                        <input type="text" placeholder="920290505v" maxlength="13" name=nic onfocus="headingBoxActive('hBoxNIC')" onkeyup="validateNIC(this)"   onfocusout="upperCASE(this);hide('NICerror');validateoutNIC(this);validatedAll();" />
                     </div>
-                    <div class="error" id="civilerror" > error occured </div><br>
-                    <div class="headingbox" id="hBoxBG"> Blood Group </div>
-                    <div class="inputboxWrap">
-                        <select name=bloodgroup  onfocusout="validateList(this, 'bldgrperror')" onfocus="headingBoxActive('hBoxBG')" onchange="validateList(this, 'bldgrperror');validatedAll();" >
-                            <option value="" disabled selected  >Blood Group</option>
-                            <option value="Single">A+</option>
-                            <option value="Married">A-</option>
-                            <option value="Divorced">B+</option>
-                            <option value="Divorced">B-</option>
-                            <option value="Divorced">O+</option>
-                            <option value="Divorced">O-</option>
-                            <option value="Divorced">AB+</option>
-                            <option value="Divorced">AB-</option>
-                        </select>
-                    </div>
-                    <div class="error" id="bldgrperror" > error occured </div><br>
-                </div>
-                <div class="column">
-                    <div class="headingbox" id="hBoxAdrs"> Address </div>
-                    <div class="inputboxWrap">
-                        <input type="text"   onfocus="headingBoxActive('hBoxAdrs')" name=address onfocusout="validateAddr(this, 'adrerror2');validatedAll();" /><br>
-                    </div>
-                    <div class="poperror" id="test" ></div>
-                    <div class="error" id="adrerror2" > error occured </div><br>
-                </div>
-			<br>
-			
+                    <div class="poperror" id="NICerror" ></div>
+                    <div class="error" id="nicerror2" > error occured </div><br>
 
-			<div style="width:100%;text-align:center; " >
-            <div class="checkboxy" >
-                <input name="checked" id="checkAgree" value="1" type="checkbox" onclick="validatedAll()"/><label class="terms"  >I agree to the terms and conditions of the neXtMEd. </label>
-            </div>
-			<a href="Agreement/agreement.html#top">More information on Agreement</a><br>
-            <button class="buttonS" onclick="parent.parent.closeIFrame();" > Cancel </button>
+                    <!-- user First Name input -->
+                    <div class="headingbox" id="hBoxFN" > First Name </div>
+                    <div class="inputboxWrap" >
+                        <input type="text"   name=firstname onfocus="headingBoxActive('hBoxFN')" onkeydown="validateString(this, 'nameerror')" onfocusout="hide('nameerror');validateoutString(this, 'nameerror2');validatedAll();" /><br>
+                    </div>
+                    <div class="poperror" id="nameerror" ></div>
+                    <div class="error" id="nameerror2" > error occured </div><br>
 
-            <input class="buttonDis"  type="submit" name=submit value=Submit id="submitButton" disabled onclick="validatedAll();parent.parent.closeIFrame();" >
-			</div>
-        </div>
+                    <div class="headingbox" id="hBoxLN"> Last Name </div>
+                    <div class="inputboxWrap">
+                    <input type="text"    name=lastname onfocus="headingBoxActive('hBoxLN')" onkeydown="validateString(this, 'lnameerror')" onfocusout="hide('lnameerror');validateoutString(this, 'lnameerror2');validatedAll();" /><br>
+                    </div>
+                    <div class="poperror" id="lnameerror" ></div>
+                    <div class="error" id="lnameerror2" > error occured </div><br>
+
+                    <div class="headingbox" id="hBoxGen" > Gender </div>
+                    <div class="inputboxWrap">
+                    <select name=gender style="" onfocus="headingBoxActive('hBoxGen')" onfocusout="validateList(this, 'generror2');validatedAll();" onchange="validateList(this, 'generror2')"  >
+                    <option value="" disabled selected>Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    </select>
+                    </div>
+                    <div class="error" id="generror2" > error occured </div><br>
+
+                    <div class="headingbox" id="hBoxBdate" > Birth Date  </div>
+                    <div class="inputboxWrap">
+                        <input name=dob   type="text" onfocus="headingBoxActive('hBoxBdate');(this.type='date')" onfocusout="(this.type='text');validateDate(this, 'bderror2');validatedAll();" id="date"><br>
+                    </div>
+                    <div class="error" id="bderror2" > error occured </div><br>
+
+
+                </div>
+
+                <div class="column" style="clear: right;">
+                    <div class="headingbox" id="hBoxEM"> E-mail </div>
+                    <div class="inputboxWrap">
+                    <input type="text"    name=emailaddress onfocus="headingBoxActive('hBoxEM')" onfocusout="validateEmail(this, 'emailerror');hide('emailerror2');validatedAll();" onfocus="show('emailerror2');" /><br>
+                    </div>
+                    <div class="error" id="emailerror" > error occured </div><br>
+                    <div class="poperror" id="emailerror2"> email@example.com </div>
+
+
+                    <div class="headingbox" id="hBoxPN"> Phone Number </div>
+                    <div class="inputboxWrap">
+                    <input type="text" maxlength=10; onfocus="headingBoxActive('hBoxPN')"   name=contactno onfocusout="validatePhoneNo(this, 'phoneerror');validatedAll();"/><br>
+                    </div>
+                    <div class="error" id="phoneerror" > error occured </div><br>
+
+
+
+
+
+
+                    <div class="headingbox" id="hBoxPS"> Password </div>
+                    <div class="inputboxWrap">
+                    <input type="password" onfocus="headingBoxActive('hBoxPS')" onfocusout="validatePassC(this, 'confirmpass', 'confirmPassIn');validatedAll();" name=password id="passInput" /><br>
+                    </div>
+
+                    <div class="headingbox" id="hBoxCP" > Confirm Password </div>
+                    <div class="inputboxWrap">
+                    <input type="password"  onfocus="headingBoxActive('hBoxCP')" id="confirmPassIn" onfocusout="validatePass(this, 'confirmpass', 'passInput');validatedAll();" /><br>
+                    </div>
+                    <div class="error" id="confirmpass"  >  </div><br>
+
+
+                </div>
+
+                <div class="wrapshow">
+                     <button class="buttonshow" onhover="showMore(this);" onclick="hide('extra')" >
+                        Show more >>
+                     </button>
+
+                </div>
+
+                <div id="extra">
+                    <div class="column">
+                        <div class="headingbox" id="hBoxCS" > Civil Status </div>
+                        <div class="inputboxWrap">
+                            <select name=civil  onfocus="headingBoxActive('hBoxCS')" onfocusout="validateList(this, 'civilerror');validatedAll();" onchange="validateList(this, 'civilerror')" >
+                                <option value="" disabled selected>Civil Status</option>
+                                <option value="Single">Single</option>
+                                <option value="Married">Married</option>
+                                <option value="Divorced">Divorced</option>
+                            </select>
+                        </div>
+                        <div class="error" id="civilerror" > error occured </div><br>
+                        <div class="headingbox" id="hBoxBG"> Blood Group </div>
+                        <div class="inputboxWrap">
+                            <select name=bloodgroup  onfocusout="validateList(this, 'bldgrperror')" onfocus="headingBoxActive('hBoxBG')" onchange="validateList(this, 'bldgrperror');validatedAll();" >
+                                <option value="" disabled selected  >Blood Group</option>
+                                <option value="Single">A+</option>
+                                <option value="Married">A-</option>
+                                <option value="Divorced">B+</option>
+                                <option value="Divorced">B-</option>
+                                <option value="Divorced">O+</option>
+                                <option value="Divorced">O-</option>
+                                <option value="Divorced">AB+</option>
+                                <option value="Divorced">AB-</option>
+                            </select>
+                        </div>
+                        <div class="error" id="bldgrperror" > error occured </div><br>
+                    </div>
+                    <div class="column">
+                        <div class="headingbox" id="hBoxAdrs"> Address </div>
+                        <div class="inputboxWrap">
+                            <input type="text"   onfocus="headingBoxActive('hBoxAdrs')" name=address onfocusout="validateAddr(this, 'adrerror2');validatedAll();" /><br>
+                        </div>
+                        <div class="poperror" id="test" ></div>
+                        <div class="error" id="adrerror2" > error occured </div><br>
+                    </div>
+                <br>
+                </div>
+
+                <div style="width:100%;text-align:center; " >
+                <div class="checkboxy" >
+                    <input name="checked" id="checkAgree" value="1" type="checkbox" onclick="validatedAll()"/><label class="terms"  >I agree to the terms and conditions of the neXtMEd. </label>
+                </div>
+                <a href="Agreement/agreement.html#top">More information on Agreement</a><br>
+                <button class="buttonS" onclick="parent.parent.closeIFrame();" > Cancel </button>
+
+                <input class="buttonDis"  type="submit" name=submit value=Submit id="submitButton" disabled onclick="validatedAll();parent.parent.closeIFrame();" >
+                </div>
+
+		</div>
     </div>
 </body>
    <script>
@@ -459,7 +462,10 @@
 			}
 		}
 	}
-	
+	function hideElement(elementID) {
+        element = document.getElementById(elementID);
+        element.style.display="none";
+    }
 	function validateEmail(element, errorCODE){
 		var str = element.value;
 		var dotCount = 0;
