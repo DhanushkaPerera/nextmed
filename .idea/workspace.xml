@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b6c9ebd8-8a4d-45fc-9bef-de8678e3ee5a" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/signup.css" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Signup/signup.htm" afterPath="$PROJECT_DIR$/Signup/signup.htm" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Signup/style.css" afterPath="$PROJECT_DIR$/Signup/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/checkNIC.php" afterPath="$PROJECT_DIR$/php/checkNIC.php" />
-    </list>
+    <list default="true" id="b6c9ebd8-8a4d-45fc-9bef-de8678e3ee5a" name="Default" comment="" />
     <ignored path="testing.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -226,12 +220,12 @@
       <workItem from="1477304068540" duration="9588000" />
       <workItem from="1478006364878" duration="1515000" />
       <workItem from="1478520582706" duration="4552000" />
-      <workItem from="1478526094355" duration="17148000" />
+      <workItem from="1478526094355" duration="17745000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32803000" />
+    <option name="totallyTimeSpent" value="33400000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
