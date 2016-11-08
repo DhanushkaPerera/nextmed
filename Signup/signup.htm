@@ -80,12 +80,12 @@
 
                     <div class="headingbox" id="hBoxPS"> Password </div>
                     <div class="inputboxWrap">
-                    <input type="password" onfocus="headingBoxActive('hBoxPS')" onfocusout="validatePassC(this, 'confirmpass', 'confirmPassIn');validatedAll();" name=password id="passInput" /><br>
+                    <input type="password" onfocus="headingBoxActive('hBoxPS')" onfocusout="validatePassC(this, 'confirmpass', 'confirmPassIn');" name=password id="passInput" /><br>
                     </div>
 
                     <div class="headingbox" id="hBoxCP" > Confirm Password </div>
                     <div class="inputboxWrap">
-                    <input type="password"  onfocus="headingBoxActive('hBoxCP')" id="confirmPassIn" onfocusout="validatePass(this, 'confirmpass', 'passInput');validatedAll();" /><br>
+                    <input type="password"  onfocus="headingBoxActive('hBoxCP')" id="confirmPassIn" onfocusout="validatePass(this, 'confirmpass', 'passInput');" /><br>
                     </div>
                     <div class="error" id="confirmpass"  >  </div><br>
 
@@ -93,9 +93,7 @@
                 </div>
 
                 <div class="wrapshow">
-                     <button class="buttonshow" onhover="showMore(this);" onclick="hide('extra')" >
-                        Show more >>
-                     </button>
+                     <div class="buttonSHOW"  onclick="toggleAnimate(this,'extra');" >Add more details</div>
 
                 </div>
 
@@ -165,13 +163,13 @@
    var emailValid = false;
    var passValid = false;
    var passfirst = true;
-   
+
    function headingBoxActive(box){
 	var element = document.getElementById(box);
 	element.style.background =  "#0099cc";
 	element.style.color = "white";
    }
-   
+
    function headingBoxAlert(box, thisValid){
 	if(!thisValid){
 		var element = document.getElementById(box);
@@ -184,11 +182,11 @@
 		element.style.color = "black";
 	}
    }
-   
+
    function headingBoxInactive(box){
 
    }
-   
+
    function hide(id){
 		var element = document.getElementById(id);
 		element.style.opacity = "0";
@@ -203,7 +201,7 @@
 		var notify = document.getElementById("nicerror2");
 		var charsToSearch = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "V", "v"];
 		var charsToSearch1 = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
-		
+
 		if(strl==0){
 		notify.innerHTML = "Not a valid NIC";
 			nicValid = false;
@@ -274,7 +272,7 @@
 			}
 		}
    }
-   
+
    	function validateString(element, errorPOP){
 		var str = element.value;
 		var strl = str.length;
@@ -293,7 +291,7 @@
 			}
 		}
 	}
-	
+
 	function validateoutString(element, errorCODE){
 		var str = element.value;
 		var validateThis = false;
@@ -320,7 +318,7 @@
 				notify.style.opacity="0";
 				element.style.border = "none";
 				validateThis = true;
-				
+
 			}
 		}
 		if(name=="firstname") {
@@ -365,21 +363,21 @@
 				if(i==str.length-1) notify.style.opacity="0";
 			}
 		}
-		
-   }
-   
 
-	
+   }
+
+
+
    function upperCASE(element){
 		element.value = element.value.toUpperCase();
    }
-   
+
 	function validateDate(element, errorCODE){
 		var strN = element.value;
 		var str = element.value.split("-");
 		var notify = document.getElementById(errorCODE);
 		var age = calculate_age(str[1],str[2],str[0]);
-		
+
 		if(strN.length==0) {
 			notify.innerHTML = "Birthday must be specified";
 			element.style.border = "2px solid #ff6768";
@@ -387,7 +385,7 @@
 			bdayValid = false;
 			headingBoxAlert('hBoxBdate', bdayValid);
 		}
-		
+
 		else if(age<18){
 			notify.innerHTML = "sorry you must be at least 18 years old.";
 			element.style.border = "2px solid #ff6768";
@@ -403,7 +401,7 @@
 		}
 
 	}
-    
+
 	function calculate_age(birth_month,birth_day,birth_year)
 	{
 	today_date = new Date();
@@ -422,7 +420,7 @@
 	}
 	return age;
 	}
-	
+
 	function validatePhoneNo(element, errorCODE){
 		var str = element.value;
 		var charsToSearch = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
@@ -442,7 +440,7 @@
 			headingBoxAlert('hBoxPN', phNoValid);
 		}
 		else{
-		
+
 		for(i=0;i<str.length;i++){
 				theChar = str.charAt(i);
 				if (charsToSearch.indexOf(theChar) == -1) {
@@ -518,9 +516,9 @@
 			headingBoxAlert('hBoxPS', !passValid);
 		}
 	}
-	
+
 	function validatePass(element, errorCODE, elementPass){
-	
+
 		var str = element.value;
 		var dotCount = 0;
 		var atCount = 0;
@@ -565,14 +563,14 @@
 			headingBoxAlert('hBoxCP', passValid);
 		}
 	}
-	
+
 	function validatedAll(){
-		//alert("nic "+nicValid+",fname "+fnameValid+",lname "+lnameValid+",genderValid "+ genderValid+",bdayValid "+bdayValid+",addressValid " +addressValid+civilStatValid + occpValid + phNoValid + ",blood:"+ bdGrpValid + emailValid + passValid);
+		//alert("nic "+nicValid+",fname "+fnameValid+",lname "+lnameValid+",genderValid "+ genderValid+",bdayValid "+ "bday" + bdayValid+ +  "phpNo" + phNoValid  + "email" + emailValid + passValid);
 		var element = document.getElementById("submitButton");
 		var elementCheck = document.getElementById("checkAgree");
 		var agree = elementCheck.checked;
 		
-		if(nicValid && fnameValid && lnameValid && genderValid && bdayValid && addressValid && civilStatValid && occpValid && phNoValid && bdGrpValid && emailValid && passValid&& agree){
+		if(nicValid && fnameValid && lnameValid && genderValid && bdayValid&& phNoValid && emailValid && passValid && agree){
 			element.className = "inputs buttonS";
 			element.disabled = false;
 		}
@@ -649,6 +647,7 @@
 			notify.innerHTML = xmlhttp.responseText;
 			var str = xmlhttp.responseText;
 			if(str.length>0){
+
 				notify.style.opacity="1";
 				notify.innerHTML = xmlhttp.responseText;
 				element.style.border = "2px solid #ff6768";
@@ -663,14 +662,22 @@
 			}
 		}
 	};
-	xmlhttp.open("GET", "All/checkNIC.php?nicN=" + element.value, true);
+	xmlhttp.open("GET", "../php/checkNIC.php?nicN=" + element.value, true);
 	xmlhttp.send();
     
 	}
-	
-	function showMore(element){
-		alert("test");
-		element.style.width="100%"
-	}
+
+	function toggleAnimate(button, elementID) {
+        element = document.getElementById(elementID);
+        if (button.innerHTML=="Add more details"){
+            button.innerHTML="Hide";
+            element.style.maxHeight="300px";
+        }
+        else{
+            button.innerHTML="Add more details";
+            element.style.maxHeight="0px";
+        }
+
+    }
 
 	</script>
