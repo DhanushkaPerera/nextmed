@@ -23,7 +23,26 @@
 		<div class = "hospital">
 			<form id = "" action = "" method = "post">
 				<label> Enter the location </label><br>
-				<input name = "location" type = "text" size = "30" />
+				<!--input name = "location" type = "text" size = "30" /-->
+				<select name="location" type="text">
+					<option value="Gampaha"> Gampaha </option>
+					<option value="Ragame"> Ragame </option>
+					<option value="Wattupitiawala"> Wattupitiawala </option>
+					<option value="Negambo"> Negambo </option>
+					<option value="Minuwangoda">  Minuwangoda </option>
+					<option value="Dompe"> Dompe </option>
+					<option value="Divulapitiya"> Divulapitiya </option>
+					<option value="Kiribathgoda"> Kiribathgoda </option>
+					<option value="Pamunuwa"> Pamunuwa </option>
+					<option value="Udupila"> Udupila </option>
+					<option value="Biyagama"> Biyagama </option>
+					<option value="Seeduwa"> Seeduwa </option>
+					<option value="Kapala Kanda"> Kapala Kanda </option>
+					<option value="Radawana"> Radawana </option>
+					<option value="Akkaragama"> Akkaragama </option>
+					<option value="Bokalagama"> Bokalagama </option>
+					<option value="Hiripitiya"> Hiripitiya </option>
+				</select>
 				<input class = "buttonSub1" name = "submitbutton1" type = "submit" value = "Search" onclick="searchHospital('result')"/>
 			</form>	
 		</div>
@@ -31,16 +50,30 @@
 		<div class = "doctor">
 			<form id = "" action = "" method = "post">
 				<label> Enter the category </label><br>
-				<input name = "special" type = "text" size = "30" />
+				<!--input name = "special" type = "text" size = "30" /-->
+				<select name="special" type="text">
+					<option value="Paediatric Surgeon"> Paediatric Surgeon </option>
+					<option value="Cancer Specialist"> Cancer Specialist </option>
+					<option value="Denito Urinary Surgeon"> Denito Urinary Surgeon </option>
+					<option value="Neuro Surgeon"> Neuro Surgeon </option>
+					<option value="Gynaecologist">  Gynaecologist </option>
+					<option value="Paediatrician"> Paediatrician </option>
+					<option value="Gynaecologist"> Gynaecologist</option>
+					<option value="Psychiatrist"> Psychiatrist </option>
+					<option value="Surgeon"> Surgeon </option>
+					<option value="Neuro Physician"> Neuro Physician </option>
+					<option value="Cardiologist"> Cardiologist </option>
+					<option value="Physician"> Physician </option>
+					<option value="Eye Surgeon"> Eye Surgeon </option>
+					<option value="Oncologist"> Oncologist </option>
+					<option value="Dermatologist"> Dermatologist </option>
+				</select>
 				<input class = "buttonSub2" name = "submitbutton2" type = "submit" value = "Search" onclick="searchDoctor('result')"/>
 			</form>	
 		</div>
 	</div>
 	
 	<div class = "result">
-	
-	
-			
 			
 			<p>Find out what are the details of hospitals in Gampaha District <br> 
 			and the doctors who are specialists for each category, <br>
@@ -55,7 +88,7 @@
 			//Retrieve Data
 			$sql = "SELECT * FROM hospital WHERE location = '$_POST[location]'";
 			//$sql = "SELECT DISTINCT username FROM user";
-			$res = mysqli_query($db , $sql);
+			$res = mysqli_query($connection , $sql);
 				
 			if($res){
 				echo "<table border = 1 >
@@ -70,7 +103,7 @@
 				echo "</table>";
 			}
 			else{
-				echo "Error : " . mysqli_error($db); 
+				echo "Error : " . mysqli_error($connection); 
 			}
 		
 		}
@@ -80,7 +113,7 @@
 				//Retrieve Data
 				$sql = "SELECT * FROM doctor WHERE category = '$_POST[special]'";
 				//$sql = "SELECT DISTINCT username FROM user";
-				$res = mysqli_query($db , $sql);
+				$res = mysqli_query($connection , $sql);
 					
 				if($res){
 					echo "<table border = 1>
@@ -95,13 +128,13 @@
 					echo "</table>";
 				}
 				else{
-					echo "Error : " . mysqli_error($db); 
+					echo "Error : " . mysqli_error($connection); 
 				}
 			}
 		}
 		
 		//Close connectionection
-		mysqli_close($db);
+		mysqli_close($connection);
 		
 ?>
 </div>

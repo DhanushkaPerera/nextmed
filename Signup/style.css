@@ -9,8 +9,8 @@ body{
   margin-bottom: :5px;
   padding: 25px;
   background: #dcdcfb;
-  box-shadow: 
-    0px 0px 0px 5px rgba( 255,255,255,0.4 ), 
+  box-shadow:
+    0px 0px 0px 5px rgba( 255,255,255,0.4 ),
     0px 4px 20px rgba( 0,0,0,0.33 );
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -111,7 +111,7 @@ body{
         #b9c5dd 0%,
         #a4b0cb);
     background: -webkit-gradient(
-        linear, left top, left bottom, 
+        linear, left top, left bottom,
         from(#b9c5dd),
         to(#a4b0cb));
     -moz-border-radius: 5px;
@@ -138,15 +138,70 @@ body{
         #a4b0cb 0%,
         #b9c5dd);
     background: -webkit-gradient(
-        linear, left top, left bottom, 
+        linear, left top, left bottom,
         from(#a4b0cb),
         to(#b9c5dd));
 }
 
+.buttonSHOW{
+    width: 100%;
+    outline:none;
+    color: #fff;
+    padding:5px;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-align: center;
+    text-decoration: none;
+    background: -moz-linear-gradient(
+            top,
+            #b9c5dd 0%,
+            #a4b0cb);
+    background: -webkit-gradient(
+            linear, left top, left bottom,
+            from(#b9c5dd),
+            to(#a4b0cb));
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    border: 1px solid #737b8d;
+    -moz-box-shadow:
+            0px 5px 5px rgba(000,000,000,0.1),
+            inset 0px 1px 0px rgba(255,255,255,0.5);
+    -webkit-box-shadow:
+            0px 5px 5px rgba(000,000,000,0.1),
+            inset 0px 1px 0px rgba(255,255,255,0.5);
+    box-shadow:
+            0px 5px 5px rgba(000,000,000,0.1),
+            inset 0px 1px 0px rgba(255,255,255,0.5);
+    text-shadow:
+            0px 1px 3px rgba(000,000,000,0.3),
+            0px 0px 0px rgba(255,255,255,0);
+}
+
+.buttonSHOW:hover{
+    background: -moz-linear-gradient(
+            top,
+            #a4b0cb 0%,
+            #b9c5dd);
+    background: -webkit-gradient(
+            linear, left top, left bottom,
+            from(#a4b0cb),
+            to(#b9c5dd));
+}
+#extra {
+    max-height: 0px;
+    width:100%;
+    -webkit-transition: max-height 0.8s;
+    -moz-transition: max-height 0.8s;
+    transition: max-height 0.8s;
+    overflow:hidden;
+}
+
 #signup .inputs .buttonDis {
-	outline:none;
     width: 20%;
-    margin:20px;
+    outline:none;
+    margin-top: 20px;
     padding: 15px 0;
     color: #fff;
     font-size: 14px;
@@ -154,30 +209,30 @@ body{
     letter-spacing: 1px;
     text-align: center;
     text-decoration: none;
-        background: -moz-linear-gradient(
-        top,
-        #e0e0e0 0%,
-        #bfbfbf);
+    background: -moz-linear-gradient(
+            top,
+            rgba(0, 0, 0, 0.24) 0%,
+            rgba(0, 0, 0, 0.34));
     background: -webkit-gradient(
-        linear, left top, left bottom, 
-        from(#e0e0e0),
-        to(#bfbfbf));
+            linear, left top, left bottom,
+            from(rgba(0, 0, 0, 0.22)),
+            to(rgba(0, 0, 0, 0.35)));
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
     border-radius: 5px;
     border: 1px solid #737b8d;
     -moz-box-shadow:
-        0px 5px 5px rgba(000,000,000,0.1),
-        inset 0px 1px 0px rgba(255,255,255,0.5);
+            0px 5px 5px rgba(000,000,000,0.1),
+            inset 0px 1px 0px rgba(255,255,255,0.5);
     -webkit-box-shadow:
-        0px 5px 5px rgba(000,000,000,0.1),
-        inset 0px 1px 0px rgba(255,255,255,0.5);
+            0px 5px 5px rgba(000,000,000,0.1),
+            inset 0px 1px 0px rgba(255,255,255,0.5);
     box-shadow:
-        0px 5px 5px rgba(000,000,000,0.1),
-        inset 0px 1px 0px rgba(255,255,255,0.5);
+            0px 5px 5px rgba(000,000,000,0.1),
+            inset 0px 1px 0px rgba(255,255,255,0.5);
     text-shadow:
-        0px 1px 3px rgba(000,000,000,0.3),
-        0px 0px 0px rgba(255,255,255,0);
+            0px 1px 3px rgba(000,000,000,0.3),
+            0px 0px 0px rgba(255,255,255,0);
 }
 
 
@@ -190,21 +245,21 @@ body{
     border-radius: 3px;
     border: none;
     padding: 13px 10px;
-    width: 90%; 
+    width: 90%;
 	!margin: auto;
     margin-bottom: 17px;
     box-shadow: inset 0px 2px 3px rgba( 0,0,0,0.1 );
 	-ms-box-sizing:content-box;
     -moz-box-sizing:content-box;
     box-sizing:content-box;
-    -webkit-box-sizing:content-box; 
+    -webkit-box-sizing:content-box;
 	transition: all .5s ease-in-out;
 }
 
 .inputs select:focus, input[type=date], input[type=text]:focus, input[type=password]:focus {
     background: #fff;
     box-shadow: 0px 0px 0px 3px #0099cc, inset 0px 2px 3px rgba( 0,0,0,0.2 ), 0px 5px 5px rgba( 0,0,0,0.15 );
-    outline: none;   
+    outline: none;
 }
 
 .inputs ul li{
@@ -368,40 +423,6 @@ body{
   float:left;
 }
 
-.buttonshow{
-  margin:10px;
-  float:left;
-  outline:none;
-  color: #fff;
-  font-size: 16px;
-  font-weight: 500;
-  letter-spacing: 1px;
-  text-align: center;
-  text-decoration: none;
-  background: -moz-linear-gradient(
-  top,
-  #b9c5dd 0%,
-  #a4b0cb);
-  background: -webkit-gradient(
-  linear, left top, left bottom, 
-  from(#b9c5dd),
-  to(#a4b0cb));
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  border-radius: 5px;
-  border: 1px solid #737b8d;
-  -moz-box-shadow:
-  0px 5px 5px rgba(000,000,000,0.1),
-  inset 0px 1px 0px rgba(255,255,255,0.5);
-  -webkit-box-shadow:
-  0px 5px 5px rgba(000,000,000,0.1),
-  inset 0px 1px 0px rgba(255,255,255,0.5);
-  box-shadow:
-  0px 5px 5px rgba(000,000,000,0.1),
-  inset 0px 1px 0px rgba(255,255,255,0.5);
-  text-shadow:
-  0px 1px 3px rgba(000,000,000,0.3),
-  0px 0px 0px rgba(255,255,255,0);
-  transition: all 0.4s;
-  width: 20%;
-}
+
+
+

@@ -71,6 +71,12 @@ echo "<font size=4>";
 echo "<B>";
 echo "Copy3";
 echo"</td>";
+echo"</td>";
+echo"<td align=center width='50%'>";
+echo "<font size=4>";
+echo "<B>";
+echo "Status";
+echo"</td>";
 
 
 

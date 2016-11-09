@@ -12,9 +12,8 @@ $nic = $_REQUEST["nicN"];
 //$password = quote_smart($password, $db);
 
 
-$sql="SELECT * FROM signup where nic='$nic'";
+$sql="SELECT * FROM customer where nic='$nic'";
 $result = mysqli_query($db,$sql);
-
 
 
 if(mysqli_num_rows($result)==1){ //Each entry is unique so the number of rows returned from the db table should be 1
