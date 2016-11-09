@@ -1,7 +1,7 @@
 <html>
 <head>
 <title>Know about Yourself</title>
-    <link rel="stylesheet" type="text/css" href="know.css">
+    <link rel="stylesheet" type="text/css" href="knowYourself.css">
 </head>
 
 <body>
@@ -64,7 +64,7 @@ Also, in an emergency it will be very useful if you know from whom you can recei
                         <input class=btnreset type="reset" value="RESET"  onclick="erase()">  <br><br>
 						
                         You can receive from <br><label id = "receive"></label> <br><br>
-						<a href="blooddonation.html"><b>For More Info:</b> </a>
+						<a href="blooddonation.html#top"><b>For More Info:</b> </a>
 					</form>	                        
 </div>
 <!-- source: http://www.thebloodcenter.org/donor/BloodFacts.aspx-->
@@ -91,27 +91,10 @@ Also, in an emergency it will be very useful if you know from whom you can recei
 						<input type="button" class=btncheck value="CHECK"   onclick="pulse();">   <br><br>							
 
 						Your pulse rate is <label id = "check"></label>  <br><br>	
-				        <a href="blooddonation.html#top"><b>For More Info:</b> </a>
+				        <a href="heartrate.html#top"><b>For More Info:</b> </a>
 </form>
-</divYour BMI = 
->
-						
-                            
+                           
                              
-                            
-											
-					
-				
-			
-			
-        
-        
-        
-        
-        
-
-
-
 <script type="text/javascript">
     function donate(){
     var a = document.getElementById("group");
