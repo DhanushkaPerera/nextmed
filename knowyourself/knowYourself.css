@@ -66,14 +66,13 @@ select {
 	
 }
 .btn {
-    width: 60%;
-	
+    width: 60%;	
     background-color: #458885;
     color: white;
     padding: 14px 20px;
     margin: 8px ;
     border: none;
-    border-radius: 7	px;
+    border-radius:8px;
     cursor: pointer;
 }
 
@@ -84,7 +83,7 @@ select {
     padding: 14px 20px;
     margin: 8px 0;
     border: none;
-    border-radius: 7	px;
+    border-radius: 7px;
     cursor: pointer;
 }
 
@@ -95,7 +94,7 @@ select {
     padding: 14px 20px;
     margin: 8px 0;
     border: none;
-    border-radius: 7	px;
+    border-radius:10px;
     cursor: pointer;
 }
 

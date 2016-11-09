@@ -55,12 +55,12 @@ Also, in an emergency it will be very useful if you know from whom you can recei
 							<option value="ab-">AB-</option>
 							<option value="ab+">AB+</option>
 						</select>  <br><br>
-						<input type="button"  class=btn value="To whom can I donate ?"   onclick="donate()">
+						<input type="button"  class=btn value="TO WHOM ?"   onclick="donate()">
 						<input class=btnreset type="reset" value="RESET"  onclick="erase()">  	<br><br>
                             
 						You can donate to <br><label id = "donate"></label>  <br><br>
                             
-						<input type="button"  class=btn value="From whom can I receive ?" onclick="receive()">
+						<input type="button"  class=btn value="FROM WHOM ?" onclick="receive()">
                         <input class=btnreset type="reset" value="RESET"  onclick="erase()">  <br><br>
 						
                         You can receive from <br><label id = "receive"></label> <br><br>
