@@ -36,7 +36,7 @@ if(isset($_POST["search"])){
 				
 		$sql = "select * from customer where NIC='$nic'";
 
-			$res = mysqli_query($con,$sql);
+			$res = mysqli_query($db,$sql);
 			
 			while($row = mysqli_fetch_array($res)){
 				
@@ -112,7 +112,7 @@ if(isset($_POST["submit"])){
 		
 		$sql = "select * from drug where DrugBrandName='$brandname'";
 
-			$res = mysqli_query($con,$sql);
+			$res = mysqli_query($db,$sql);
 			
 			while($row = mysqli_fetch_array($res)){
 				
