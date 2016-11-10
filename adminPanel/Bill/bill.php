@@ -101,11 +101,15 @@ if(isset($_POST["search"])){
 						
 	</div>
 	
+	<br>
+	<br>
+	<br>
+	
 <?php
 
 
 if(isset($_POST["submit"])){
-	include('../../../db/db.php');
+	include('../../db/db.php');
 	
         $brandname = $_POST["brandname"];
 		$quantity = $_POST["quantity"];
