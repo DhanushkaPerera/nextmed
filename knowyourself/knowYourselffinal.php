@@ -1,164 +1,176 @@
 <html>
 <head>
-<title>Know yourself</title>
+<title>Know about Yourself</title>
+    <link rel="stylesheet" type="text/css" href="knowYourself.css">
 </head>
-<link rel="stylesheet" type="text/css" href="knowYourself.css">
-<link rel="stylesheet" type="text/css" href="signup.css">
 
 <body>
+<div id=header><h1  align = center> Get a Checkup by Yourself ! </h1></div>
+<!--<p align=center><b><font size=4 >Grab the opportunity to determine your current health status by yourself.</b></font></p> -->
 
-	<h1 align=center> Get a Checkup!</h1>
-	
-		<div id=column1 align=center>
-			<div><img class=logo src="image/bmiiii.png"></div>
-			
-			<table id="inputtable">
-				<tr>
-					<td>
-					<form>
-						<label >Height : </label>
-							<input id="height" type=text name="h" placeholder="x.xx"> m
-							<br><br>
-						<label>Weight : </label>
-							<input id="weight" type=text name="w" placeholder="xxx.xx"> kg
-							<br><br>
-						<input type="button" value="CALCULATE"   onclick="calBMI();result();">
-						<input type="reset" value="RESET"  onclick="erase()">
-						<br><br>
-                        <label id = "bmi"></label><br>
-                        <label id = "result"></label>
-					</form>
-					</td>
-				</tr>
-			</table>
-			
-			
-		<!--<img src="image/bmii.png">-->
-		</div>
-		<br>
-		<br>
-		
-		<div id=column2 align=center>
+<!--<br><h2> What are the privileges you get through the agreement?</h2>-->
 
-		
-			<img class=logo src="image/donate.png">
-			
-			<table id="inputtable">
-				<tr>
-					<td>
-						<form>
-						<label>Blood Group : </label>
-					
-						<select id="group" name=bg>
-							<option value="o">O</option>
-							<option value="a">A</option>
-							<option value="b">B</option>
-							<option value="ab">AB</option>
-						</select>
-						<br><br>
-						<input type="button" value="To whom can I donate ?"   onclick="donate()">							
-						<br><br>
-                            <label id = "donate"></label>
-                            <br><br>
-						<input type="button" value="From whom can I receive ?" onclick="receive()">
-                            <br><br>
-                             <label id = "receive"></label>
-                            
-						</form>						
-					</td>	
-				</tr>
-			</table>
-			<!--<img src="image/bloodgroup.png">-->	
-		</div>
-		<br>
-		<br><br>
-		
+<div id=column align=center>
+	<div class=logo><img src="image/bmi1.png"></div>
+	<div class=topic><h3>How much should<br> I weigh for my height? </h3></div>
+	<div class=privilege><p><b>B</b>ody <b>M</b>ass <b>I</b>ndex (BMI) is an measurement used to 
+			determine weight status (eg. Underweight, Healthy weight Overweight). Use this 
+			calculator to find out what your BMI can tell about your health.</p></div>
 
-		<div id=column3 align=center>
-		
-			<img class=logo src="image/pulse.png">
-       <form>
-                <table id="inputtable">
-				<tr>
-					<td align="center">
-                        
+				<form align = center>
+					<label >Height : </label>
+						<input id="height" type=text name="h" placeholder="1.58" required > m	<br>							
+					<label>Weight : </label>
+						<input id="weight" type=text name="w" placeholder="62.4" required > kg  <br>
+					<input class=btn type="button" value="CALCULATE"   onclick="calBMI();result();">					
+					<input class=btnreset type="reset" value="RESET"  onclick="erase()">  <br><br>
 						
+                    Your BMI = <label id = "bmi"></label><br>
+                    <label id = "result"></label>  <br><br>
+
+					<a href="bmiinfo.html#top" ><b>For More Info:</b> </a>	
+				</form>  <br><br>								
+</div>
+<a name=back></a>
+
+
+<!-- source: http://bmicalculator.cc/bmi-chart -->
+
+<div id=column align=center>
+	<div class=logo><img src="image/donate1.ico"></div>
+	<div class=topic><h3>What does depend<br>on your blood group?</h3></div>
+	<div class=privilege align=justify><p>If you are willing to donate blood, you should know to whom you can donate. 
+Also, in an emergency it will be very useful if you know from whom you can receive blood.</p></div>
+
+					<form align = center>
+						<label>Blood Group : </label>					
+						<select id="group" name=bg>
+							<option >Your Blood Group</option>
+							<option value="o-">O-</option>
+							<option value="o+">O+</option>
+							<option value="a-">A-</option>
+							<option value="a+">A+</option>
+							<option value="b-">B-</option>
+							<option value="b+">B+</option>
+							<option value="ab-">AB-</option>
+							<option value="ab+">AB+</option>
+						</select>  <br><br>
+						<input type="button"  class=btn value="TO WHOM ?"   onclick="donate()">
+						<input class=btnreset type="reset" value="RESET"  onclick="erase()">  	<br><br>
+                            
+						You can donate to <br><label id = "donate"></label>  <br><br>
+                            
+						<input type="button"  class=btn value="FROM WHOM ?" onclick="receive()">
+                        <input class=btnreset type="reset" value="RESET"  onclick="erase()">  <br><br>
+						
+                        You can receive from <br><label id = "receive"></label> <br><br>
+						<a href="blooddonation.html#top"><b>For More Info:</b> </a>
+					</form>	                        
+</div>
+<!-- source: http://www.thebloodcenter.org/donor/BloodFacts.aspx-->
+
+<div id=column align=center>
+	<div class=logo><img src="image/pulse1.png"></div>
+	<div class=topic><h3>What about <br> your heart rate?</h3></div>
+	<div class=privilege align=justify><p>Pulse rate is the number of times a person's heart beats 
+	per minute.It monitors your fitness level and it might even help you spot developing health problems.</p></div>
+
+					<form align = center>                
 						<label>Pulse rate : </label>
-                        <input id="rate" type=text  placeholder="xxx"> per minute <br><br>
-					
+                        <input id="rate" type=text  placeholder="76"> /min  <br> 
+						<label>Age : </label>
 						<select id="age" name=age>
+								<option>Your Age Range</option>
 								<option value="age1">0-12 months</option>								
-								<option value="age2">1-18 years</option>
-								<option value="age3">18+ years</option>
-							</select>
-						<br><br>
-						<input type="button" value="CHECK"   onclick="pulse()">							
-						<br><br>
-                            
-                             <label id = "check"></label>
-                            
-											
-					</td>	
-				</tr>
-			</table>
-			
-        
-        
-        
-        
-        </form>
-			
-			
-			<!--<img src="image/wrist.png">
-			<br>
-			<img src="image/throat.png">
-			</div>-->
+								<option value="age2">1-5 years</option>
+								<option value="age3">6-10 years</option>
+								<option value="age4">11-15 years</option>
+								<option value="age5">16-20 years</option>
+								<option value="age6">21+ years</option>
+						</select>  <br><br>				
+						<input type="button" class=btncheck value="CHECK"   onclick="pulse();">   <br><br>							
 
-
+						Your pulse rate is <label id = "check"></label>  <br><br>	
+				        <a href="heartrate.html#top"><b>For More Info:</b> </a>
+</form>
+                           
+                             
 <script type="text/javascript">
     function donate(){
     var a = document.getElementById("group");
     var group = a.options[a.selectedIndex].value;
     
     switch(group){
-        case "o":
-           document.getElementById("donate").innerHTML="A or B or AB or O";
+        case "o-":
+           document.getElementById("donate").innerHTML="<font color=red>You can donate to anybody</font>  ";
+            break;
+          
+		case "o+":
+           document.getElementById("donate").innerHTML="<font color=green>O+<br>  A+<br>  B+<br>  AB+</font> ";
             break;
             
-        case "a":
-             document.getElementById("donate").innerHTML="A or AB";
+        case "a-":
+             document.getElementById("donate").innerHTML="<font color=green>A- <br> A+<br> AB- <br> AB+</font>";
+             
+             break;
+			 
+		case "a+":
+             document.getElementById("donate").innerHTML="<font color=green>A+<br> AB+</font>";
              
              break;
             
-        case "b":
-            document.getElementById("donate").innerHTML="B or AB";
+        case "b+":
+            document.getElementById("donate").innerHTML="<font color=green>B+<br> AB+</font>";
+            break;
+			
+		case "b-":
+            document.getElementById("donate").innerHTML="<font color=green>B-<br> B+<br> AB-<br> AB+</font>";
             break;
             
-        case "ab":
-            document.getElementById("donate").innerHTML=" AB";
+        case "ab-":
+            document.getElementById("donate").innerHTML=" <font color=green>AB-<br> AB+</font>";
             break;
-    }
+    
+		case "ab+":
+            document.getElementById("donate").innerHTML=" <font color=red>You can donate only to AB+</font>";
+            break;
+	}
     }
      function receive(){
     var b = document.getElementById("group");
     var group = b.options[b.selectedIndex].value;
     
     switch(group){
-        case "o":
-           document.getElementById("receive").innerHTML="From O";
+        case "o+":
+           document.getElementById("receive").innerHTML="<font color=green>O-<br> O+<br><br></font>";
+            break;
+			
+		case "o-":
+           document.getElementById("receive").innerHTML="<font color=red>You can receive only from O-<br><br></font>";
             break;
             
-        case "a":
-             document.getElementById("receive").innerHTML="From A";
-             
-             break;
+        case "a+":
+             document.getElementById("receive").innerHTML="<font color=green>A- <br> A+<br> O- <br> O+<br><br></font>";
+            break;
+			 
+		case "a-":
+             document.getElementById("receive").innerHTML="<font color=green>A- <br> O- <br><br></font>";
+             break;             
             
-        case "b":
-            document.getElementById("receive").innerHTML="From B";
+        case "b+":
+            document.getElementById("receive").innerHTML="<font color=green>B- <br>B+<br> O- <br> O+<br><br></font>";
+            break;
+			
+		 case "b-":
+            document.getElementById("receive").innerHTML="<font color=green>B- <br> O- <br> <br></font>";
             break;
             
-        case "ab":
-            document.getElementById("receive").innerHTML=" From A,B,AB or O";
+        case "ab+":
+            document.getElementById("receive").innerHTML=" <font color=red>You can receive from anybody<br><br></font>";
+            break;
+			
+		 case "ab-":
+            document.getElementById("receive").innerHTML=" <font color=green>A- <br>B-<br> O- <br> AB-<br><br></font>";
             break;
     }
     }
@@ -171,67 +183,103 @@
         
         switch(age){
             case "age1":
-                if((rate>=115) && (rate<=130)){
-                    document.getElementById("check").innerHTML="Normal";
+                if((rate>=105) && (rate<=165)){
+                    document.getElementById("check").innerHTML="<font color=green size=6px><b>Normal<b></font>";
                 }
-                else if(( rate<115)){
-                    document.getElementById("check").innerHTML="Too low";
-                }
+                
                 else{
-                    document.getElementById("check").innerHTML="Too High";
+                    document.getElementById("check").innerHTML="<font color=red size=6px><b>Abnormal<b></font>";
                 }
                     
                 break;    
                         
             case "age2":
-                    if((rate>=80) && (rate<=115)){
-                    document.getElementById("check").innerHTML="Normal";
+                    if((rate>=85) && (rate<=150)){
+                    document.getElementById("check").innerHTML="<font color=green size=6px><b>Normal<b></font>";
                     }
-                else if(( rate<80)){
-                    document.getElementById("check").innerHTML="Too low";
-                }
+               
                 else{
-                    document.getElementById("check").innerHTML="Too High";
+                    document.getElementById("check").innerHTML="<font color=red size=6px><b>Abnormal<b></font>";
                 }
                     
                 break;   
                     
                 
             case "age3":
-                        if((rate>=60) && (rate<=80)){
-                    document.getElementById("check").innerHTML="Normal";
+                        if((rate>=75) && (rate<=135)){
+                    document.getElementById("check").innerHTML="<font color=green size=6px><b>Normal<b></font>";
                         }
-                else if(( rate<60)){
-                    document.getElementById("check").innerHTML="Too low";
-                }
+                
                 else{
-                    document.getElementById("check").innerHTML="Too High";
+                    document.getElementById("check").innerHTML="<font color=red size=6px><b>Abnormal<b></font>";
                 }
                     
-                break;  
+                break;
+						
+						
+			case "age4":
+                        if((rate>=70) && (rate<=120)){
+                    document.getElementById("check").innerHTML="<font color=green size=6px><b>Normal<b></font>";
+                        }
+                
+                else{
+                    document.getElementById("check").innerHTML="<font color=red size=6px><b>Abnormal<b></font>";
+                }
+                    
+                break; 
+				
+			case "age5":
+                        if((rate>=65) && (rate<=110)){
+                    document.getElementById("check").innerHTML="<font color=green size=6px><b>Normal<b></font>";
+                        }
+                
+                else{
+                    document.getElementById("check").innerHTML="<font color=red size=6px><b>Abnormal<b></font>";
+                }
+                    
+                break; 
+				
+			case "age6":
+                        if((rate>=60) && (rate<=100)){
+                    document.getElementById("check").innerHTML="<font color=green size=6px><b>Normal<b></font>";
+                        }
+                
+                else{
+                    document.getElementById("check").innerHTML="<font color=red size=6px><b>Abnormal<b></font>";
+                }
+                    
+                break; 
                         }
                     }
+					
+					
     function calBMI(){
         var ht = document.getElementById("height").value;
         var wt = document.getElementById("weight").value;
         var bm = wt/(ht*ht);
-        document.getElementById("bmi").innerHTML=bm.toString();
+        document.getElementById("bmi").innerHTML=bm.toFixed();
     }
-        function result(){
-            var ht = document.getElementById("height").value;
+    function result(){
+        var ht = document.getElementById("height").value;
         var wt = document.getElementById("weight").value;
         var bm = wt/(ht*ht);
-        if(bm<18.5){
-            document.getElementById("result").innerHTML="Under weight";
+        if(bm<=18){
+            document.getElementById("result").innerHTML="<font color=red size=6px><b>You are Underweight<b></font>";
         }
-        else if((bm>18.5)&&(bm<25)){
-            document.getElementById("result").innerHTML="Healthy weight";
-        }
-        else if((bm>25)&&(bm<30)){
-            document.getElementById("result").innerHTML="Overweight";
-        }
+   else if((bm>18)&&(bm<25)||(bm==25)){
+    document.getElementById("result").innerHTML="<font color=green size=6px><b>You are a Healthy Weight <b></font>";
+   }
+   
+   else if((bm>25)&&(bm<29)||(bm==29)){
+    document.getElementById("result").innerHTML="<font color=red size=6px><b>You are Overweight<b></font>";
+   }
+   
+   else if((bm>29)&&(bm<39)||(bm==39)){
+    document.getElementById("result").innerHTML="<font color=red size=6px><b>You are Obese<b></font>";
+   }
+   
         else{
-            document.getElementById("result").innerHTML="Heavily overweight";
+            document.getElementById("result").innerHTML="<font color=red size=6px><b>You are Extremely Overweight<b></font>";
         }
         }
             
@@ -247,10 +295,6 @@
                     
         
     </script>
+	
 </body>
 </html>
-
-
-
-	
-

@@ -134,7 +134,7 @@
 		<div class="sidemenuitem activemenu" onclick="hideContents();showSlides();activeMenu(this);" onmouseover="menuText(this);" onmouseout="menuImage(this);"> <img class="center" src="media\home.png" alt="Home" style="max-width:60px;height:90%;"> </div>
 		<div class="sidemenuitem" onclick="showContents();showContent('knowyourself');hideSlides();activeMenu(this);" onmouseover="menuText(this);" onmouseout="menuImage(this);"> <img class="center" src="media\knowyourself.png" alt="About you" style="max-width:60px;height:90%;"> </a> </div>
 		<div class="sidemenuitem" onclick="showContents();showContent('aroundus');hideSlides();activeMenu(this);" onmouseover="menuText(this);" onmouseout="menuImage(this);"> <img class="center" src="media\aroundus.png" alt="Around us" style="max-width:60px;height:90%;"> </a></div>
-		<div class="sidemenuitem" onclick="showContents();showContent('alternative');hideSlides();activeMenu(this);" onmouseover="menuText(this);" onmouseout="menuImage(this);"> <img class="center" src="media\alternative.png" alt="Search Drugs" style="max-width:60px;height:90%;"> </div>		
+			
 		<div class="sidemenuitem" onclick="showContents();showContent('news');hideSlides();activeMenu(this);" onmouseover="menuText(this);" onmouseout="menuImage(this);"> <img class="center" src="media\news.png" alt="News" style="max-width:60px;height:90%;">  </div>
 		<div class="sidemenuitem" onclick="showContents();showContent('healthtips');hideSlides();activeMenu(this);" onmouseover="menuText(this);" onmouseout="menuImage(this);" > <img class="center" src="media\healthtips.png" alt="Healthtips" style="max-width:60px;height:90%;">  </div>
 		<div class="sidemenuitem" onclick="showContents();showContent('leaveorder');hideSlides();activeMenu(this);" onmouseover="menuText(this);" onmouseout="menuImage(this);" > <img class="center" src="media\leaveyourorder.png" alt="Order Online" style="max-width:60px;height:90%;"> </div>
@@ -150,17 +150,13 @@
 			
 
 			</div>
-			
-			<div class="contentitem" id="aroundus" style="height:100%">
+            <div class="contentitem" id="aroundus" style="height:100%">
 			<div class="heading1"> Around Us </div>
 			<iframe src="AroundUs/aroundusnew.php" id="iFrame1" frameborder="0" style="width:100%;height:2700px;position:relative;border:5px solid #d1eefd" allowfullscreen></iframe>
 			</div>
 			
-			<div class="contentitem" id="alternative"> 
-			<div class="heading1"> Search Drugs <br></div>
-			<iframe src="Search\drugs.htm" id="iFrame1" frameborder="0" style="width:100%;height:2700px;position:relative;border:5px solid #d1eefd" allowfullscreen></iframe>
-			</div>	
-
+			
+			
 			
 			<div class="contentitem" id="news"> <div class="heading1">News </div>
 

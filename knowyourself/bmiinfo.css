@@ -12,10 +12,49 @@
 	width:44%;
 }
 
+#col3 {
+	
+	float:left;
+	min-width:200px;
+	/*width:33.3%;*/
+	height:300px;
+	/*margin-right:25px;*/
+}
+
+#col4{
+	float:left;
+	min-width:200px;
+	width:100%;
+}
+
 
 h3{
 	font-family:Curlz MT;
 	font-size:25px;
 	color: #66c2ff;
 }
+.btnreset {
+    width: 26%;
+    background-color: #458885;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius:10px;
+    cursor: pointer;
+}
 
+.btnback{
+    width: 80px;
+    background-color: #458885;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+p{
+	text-align:justify
+}

@@ -1,46 +1,113 @@
-#inputtable{
-	border-style: groove;
-	border-color: red;
-	height:400px;
-	width:150px;
+#header{
+	background-color:#66c2ff;
+	font-family:Baskerville Old Face;
+	border-radius:20px;
+	color: #ffffff;
+	/*min-width:200px;*/
 }
-
-.decimalinput{
-	height:20px;
-	width:50px;
-}
-#column1{
-	float:left;
-	min-width:200px;
-	width:33%;
-	margin-top:10px;
-	
-}
-#column2{
-	float:left;
-	min-width:200px;
-	width:33%;
-	margin-top:-20px;
-	
-		
-}
-
-#column3{
-	float:left;
-	min-width:200px;
-	width:33%;
-	margin-top:-75px;
-	}
-
-
 
 img{
-	width:100%;
+	width:50px;
+	height:50px;
 }
 
 .logo{
-	width:150px;
-	height:150px;
+	float:left;	
+	width:20%;
+	padding:2%;
+}
+
+.topic{
+	float:left;
 	
+}
+
+h3{
+	font-family:Curlz MT;
+	font-size:25px;
+	color: #66c2ff;
+}
+
+p{
+	color: #000000;
+}
+
+#column{
+	float:left;
+	min-width:370px;
+	width:33%;
+}
+
+.privilege{
+	min-height:100px;
+	width:80%;	
+	clear:both;
+	text-align:justify;
+}
+
+input[type=text]{
+    width: 27%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #000;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+select {
+    width: 52%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #000;
+    border-radius: 4px;
+    box-sizing: border-box;
+	
+}
+.btn {
+    width: 60%;	
+    background-color: #458885;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px ;
+    border: none;
+    border-radius:8px;
+    cursor: pointer;
+}
+
+.btnreset {
+    width: 26%;
+    background-color: #458885;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.btncheck {
+    width: 50%;
+    background-color: #458885;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius:10px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #45a0ff;
+}
+
+form{
+    border-radius: 5px;
+    background-color: #f2f2ff;
+    padding: 7px;
+	width: 80%;
+	min-height:60px;
+	height:550px;
 }
 
