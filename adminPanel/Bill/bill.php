@@ -11,7 +11,7 @@
 	<div class = "bill">
 	<form id="customer" name="customer"   method="post" onsubmit="return password()" style="min-width:200px;">
 			<div style="width:100%;text-align:center;">
-            <h3>Customer Details</h3> 
+            <h3>Customer Deatils</h3> 
 			</div>
 			
 		<div class="sep"></div>
@@ -27,20 +27,14 @@
 			
 			<?php
 
-$mysql_host ="localhost";
-$mysql_username ="root";
-$mysql_password ="";
-$mysql_db ="project1";
-$con= mysqli_connect($mysql_host,$mysql_username,$mysql_password) or die("ERROR");
-
-mysqli_select_db($con,$mysql_db) or die("ERROR");
 
 if(isset($_POST["search"])){
+	include('../../db/db.php');
 	
 	
         $nic = $_POST["nic"];
 				
-		$sql = "select * from signup where NIC='$nic'";
+		$sql = "select * from customer where NIC='$nic'";
 
 			$res = mysqli_query($con,$sql);
 			
@@ -70,7 +64,7 @@ if(isset($_POST["search"])){
 		<form id="customer" name="drug"  method="post"  style="height:400px;min-width:200px;">
 		
 		<div style="width:100%;text-align:center;">
-            <h3>Purchase Details</h3> 
+            <h3>Purchase Deatils</h3> 
 		</div>
 		<div class="sep"></div>
 			
@@ -107,16 +101,11 @@ if(isset($_POST["search"])){
 						
 	</div>
 	
-	</form>
-	</div>
-
-
-
 <?php
 
 
 if(isset($_POST["submit"])){
-	include('dbase.php');
+	include('../../../db/db.php');
 	
         $brandname = $_POST["brandname"];
 		$quantity = $_POST["quantity"];
@@ -156,6 +145,13 @@ if(isset($_POST["submit"])){
 }
 }
 ?>
+	
+	</form>
+	</div>
+
+
+
+
 
     
 
