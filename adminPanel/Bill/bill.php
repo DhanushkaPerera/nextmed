@@ -11,7 +11,7 @@
 	<div class = "bill">
 	<form id="customer" name="customer"   method="post" onsubmit="return password()" style="min-width:200px;">
 			<div style="width:100%;text-align:center;">
-            <h3>Customer Deatils</h3> 
+            <h3>Customer Details</h3> 
 			</div>
 			
 		<div class="sep"></div>
@@ -64,7 +64,7 @@ if(isset($_POST["search"])){
 		<form id="customer" name="drug"  method="post"  style="height:400px;min-width:200px;">
 		
 		<div style="width:100%;text-align:center;">
-            <h3>Purchase Deatils</h3> 
+            <h3>Purchase Details</h3> 
 		</div>
 		<div class="sep"></div>
 			
