@@ -7,13 +7,13 @@
 
 </head>
 <body>
-    <div id="signup" name="Signup" action="All/signup_action.php" method="post" onsubmit="return password()">
+    <form id="signup" name="Signup" action="../php/signup_action.php" method="post" onsubmit="return password()">
 	<div class="close" onclick="parent.closeIFrame();"> X </div>
 			<br>
 			<div style="width:100%;text-align:center; ">
             <h3>Sign Up</h3> </div>
         <div class="sep"></div>
-		
+
             <div class="inputs">
                 <!-- user NIC input -->
                 <div class="column">
@@ -147,7 +147,7 @@
                 </div>
 
 		</div>
-    </div>
+    </form>
 </body>
    <script>
    var nicValid = false;
@@ -565,11 +565,12 @@
 	}
 
 	function validatedAll(){
-		//alert("nic "+nicValid+",fname "+fnameValid+",lname "+lnameValid+",genderValid "+ genderValid+",bdayValid "+ "bday" + bdayValid+ +  "phpNo" + phNoValid  + "email" + emailValid + passValid);
+
 		var element = document.getElementById("submitButton");
 		var elementCheck = document.getElementById("checkAgree");
 		var agree = elementCheck.checked;
-		
+        //alert("nic "+nicValid+",fname "+fnameValid+",lname "+lnameValid+",genderValid "+ genderValid+",bdayValid "+ "bday" + bdayValid+ +  "phpNo" + phNoValid  + "email" + emailValid + passValid+agree);
+
 		if(nicValid && fnameValid && lnameValid && genderValid && bdayValid&& phNoValid && emailValid && passValid && agree){
 			element.className = "inputs buttonS";
 			element.disabled = false;
@@ -579,7 +580,7 @@
 			element.disabled = true;
 		}
 	}
-	
+
 	function validateList(element, errorCODE){
 		var validList = false;
 		var name = element.getAttribute("name");
@@ -601,18 +602,18 @@
 			civilStatValid = validList;
 			headingBoxAlert('hBoxCS', civilStatValid);
 		}
-		
+
 		else if(name=="bloodgroup") {
 			bdGrpValid = validList;
 			headingBoxAlert('hBoxBG', bdGrpValid);
-		
+
 		}
 		else if(name=="gender") {
 		genderValid = validList;
 		headingBoxAlert('hBoxGen', genderValid);
 		}
 	}
-	
+
 	function validateAddr(element, errorCODE){
 		var str = element.value;
 		var strl = str.length;
@@ -632,12 +633,12 @@
 		}
 
 	}
-	
+
 	function notice(errorCODE){
 		var notify = document.getElementById(errorCODE);
 		notify.innerHTML = "this is a required field."
 	}
-	
+
 	function verifyNIC(element, notify)
     {
 
@@ -652,7 +653,7 @@
 				notify.innerHTML = xmlhttp.responseText;
 				element.style.border = "2px solid #ff6768";
 				headingBoxAlert('hBoxNIC', nicValid);
-				
+
 			}
 			else{
 				notify.style.opacity="0";
@@ -664,7 +665,7 @@
 	};
 	xmlhttp.open("GET", "../php/checkNIC.php?nicN=" + element.value, true);
 	xmlhttp.send();
-    
+
 	}
 
 	function toggleAnimate(button, elementID) {

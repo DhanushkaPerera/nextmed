@@ -1,0 +1,468 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="nextMedDb">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="2.6">
+    <schema id="1" name="acsm_2a0677acd5113ea">
+      <visible>1</visible>
+    </schema>
+    <schema id="2" name="information_schema"/>
+    <table id="3" parent="1" name="complete"/>
+    <table id="4" parent="1" name="customer"/>
+    <table id="5" parent="1" name="doctor"/>
+    <table id="6" parent="1" name="drug"/>
+    <table id="7" parent="1" name="hospital"/>
+    <table id="8" parent="1" name="news"/>
+    <table id="9" parent="1" name="order"/>
+    <table id="10" parent="1" name="pharmacist"/>
+    <table id="11" parent="1" name="questions"/>
+    <table id="12" parent="1" name="supplier"/>
+    <column id="13" parent="3" name="OrderNo.">
+      <mandatory>1</mandatory>
+      <data-type>int(100)|0</data-type>
+    </column>
+    <column id="14" parent="3" name="NIC">
+      <mandatory>1</mandatory>
+      <data-type>varchar(12)|0</data-type>
+    </column>
+    <column id="15" parent="3" name="DP">
+      <mandatory>1</mandatory>
+      <data-type>varchar(15)|0</data-type>
+    </column>
+    <column id="16" parent="3" name="Address">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="17" parent="3" name="DPTime">
+      <mandatory>1</mandatory>
+      <data-type>time|0</data-type>
+    </column>
+    <column id="18" parent="3" name="Telephone">
+      <mandatory>1</mandatory>
+      <data-type>int(10)|0</data-type>
+    </column>
+    <column id="19" parent="3" name="Email">
+      <mandatory>1</mandatory>
+      <data-type>varchar(60)|0</data-type>
+    </column>
+    <column id="20" parent="3" name="Image1">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="21" parent="3" name="ImageName1">
+      <mandatory>1</mandatory>
+      <data-type>varchar(64)|0</data-type>
+    </column>
+    <column id="22" parent="3" name="Image2">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="23" parent="3" name="ImageName2">
+      <mandatory>1</mandatory>
+      <data-type>varchar(64)|0</data-type>
+    </column>
+    <column id="24" parent="3" name="Image3">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="25" parent="3" name="ImageName3">
+      <mandatory>1</mandatory>
+      <data-type>varchar(64)|0</data-type>
+    </column>
+    <column id="26" parent="4" name="NIC">
+      <mandatory>1</mandatory>
+      <data-type>varchar(12)|0</data-type>
+    </column>
+    <column id="27" parent="4" name="FName">
+      <mandatory>1</mandatory>
+      <data-type>varchar(50)|0</data-type>
+    </column>
+    <column id="28" parent="4" name="LName">
+      <mandatory>1</mandatory>
+      <data-type>varchar(50)|0</data-type>
+    </column>
+    <column id="29" parent="4" name="Gender">
+      <mandatory>1</mandatory>
+      <data-type>varchar(10)|0</data-type>
+    </column>
+    <column id="30" parent="4" name="DOB">
+      <mandatory>1</mandatory>
+      <data-type>date|0</data-type>
+    </column>
+    <column id="31" parent="4" name="Address">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="32" parent="4" name="Status">
+      <mandatory>1</mandatory>
+      <data-type>varchar(10)|0</data-type>
+    </column>
+    <column id="33" parent="4" name="Contact">
+      <mandatory>1</mandatory>
+      <data-type>int(10)|0</data-type>
+    </column>
+    <column id="34" parent="4" name="Email">
+      <mandatory>1</mandatory>
+      <data-type>varchar(50)|0</data-type>
+    </column>
+    <column id="35" parent="4" name="Password">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="36" parent="4" name="BloodGroup">
+      <data-type>varchar(50)|0</data-type>
+    </column>
+    <index id="37" parent="4" name="Contact">
+      <columns>Contact
+Email
+Password</columns>
+      <desc-columns></desc-columns>
+      <unique>1</unique>
+    </index>
+    <index id="38" parent="4" name="NIC">
+      <columns>NIC
+Contact
+Email
+Password</columns>
+      <desc-columns></desc-columns>
+      <unique>1</unique>
+    </index>
+    <key id="39" parent="4" name="PRIMARY">
+      <columns>NIC</columns>
+      <primary>1</primary>
+    </key>
+    <key id="40" parent="4" name="NIC">
+      <columns>NIC
+Contact
+Email
+Password</columns>
+      <underlying-index>NIC</underlying-index>
+    </key>
+    <key id="41" parent="4" name="Contact">
+      <columns>Contact
+Email
+Password</columns>
+      <underlying-index>Contact</underlying-index>
+    </key>
+    <column id="42" parent="5" name="id">
+      <mandatory>1</mandatory>
+      <data-type>int(10)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="43" parent="5" name="name">
+      <mandatory>1</mandatory>
+      <data-type>varchar(50)|0</data-type>
+    </column>
+    <column id="44" parent="5" name="category">
+      <mandatory>1</mandatory>
+      <data-type>varchar(50)|0</data-type>
+    </column>
+    <column id="45" parent="5" name="hospital">
+      <data-type>varchar(50)|0</data-type>
+    </column>
+    <key id="46" parent="5" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="47" parent="6" name="DrugNo">
+      <mandatory>1</mandatory>
+      <data-type>int(4)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="48" parent="6" name="GeneticName">
+      <mandatory>1</mandatory>
+      <data-type>varchar(50)|0</data-type>
+    </column>
+    <column id="49" parent="6" name="DrugBrandName">
+      <mandatory>1</mandatory>
+      <data-type>varchar(20)|0</data-type>
+    </column>
+    <column id="50" parent="6" name="DrugAlternatives">
+      <data-type>varchar(150)|0</data-type>
+    </column>
+    <column id="51" parent="6" name="Compositions">
+      <mandatory>1</mandatory>
+      <data-type>varchar(100)|0</data-type>
+    </column>
+    <column id="52" parent="6" name="DosageForm">
+      <mandatory>1</mandatory>
+      <data-type>varchar(20)|0</data-type>
+    </column>
+    <column id="53" parent="6" name="DosePerPerson">
+      <mandatory>1</mandatory>
+      <data-type>varchar(50)|0</data-type>
+    </column>
+    <column id="54" parent="6" name="Strength">
+      <mandatory>1</mandatory>
+      <data-type>varchar(5)|0</data-type>
+    </column>
+    <column id="55" parent="6" name="healthTips">
+      <data-type>varchar(500)|0</data-type>
+    </column>
+    <column id="56" parent="6" name="storage">
+      <data-type>varchar(500)|0</data-type>
+    </column>
+    <column id="57" parent="6" name="allergicConditions">
+      <data-type>varchar(500)|0</data-type>
+    </column>
+    <column id="58" parent="6" name="Supplier">
+      <mandatory>1</mandatory>
+      <data-type>varchar(50)|0</data-type>
+    </column>
+    <column id="59" parent="6" name="Quantity">
+      <mandatory>1</mandatory>
+      <data-type>int(5)|0</data-type>
+    </column>
+    <column id="60" parent="6" name="ManufacturedDate">
+      <mandatory>1</mandatory>
+      <data-type>date|0</data-type>
+    </column>
+    <column id="61" parent="6" name="ExpDate">
+      <mandatory>1</mandatory>
+      <data-type>date|0</data-type>
+    </column>
+    <column id="62" parent="6" name="OrderedPrice">
+      <mandatory>1</mandatory>
+      <data-type>double(5,2)|0</data-type>
+    </column>
+    <column id="63" parent="6" name="Profit">
+      <mandatory>1</mandatory>
+      <data-type>double(5,2)|0</data-type>
+    </column>
+    <column id="64" parent="6" name="RetailPrice">
+      <mandatory>1</mandatory>
+      <data-type>double(5,2)|0</data-type>
+    </column>
+    <column id="65" parent="6" name="ReturnPolicy">
+      <mandatory>1</mandatory>
+      <data-type>varchar(11)|0</data-type>
+    </column>
+    <column id="66" parent="6" name="Discount">
+      <mandatory>1</mandatory>
+      <data-type>varchar(4)|0</data-type>
+    </column>
+    <column id="67" parent="6" name="DiscountedPrice">
+      <mandatory>1</mandatory>
+      <data-type>varchar(4)|0</data-type>
+    </column>
+    <key id="68" parent="6" name="PRIMARY">
+      <columns>DrugNo</columns>
+      <primary>1</primary>
+    </key>
+    <column id="69" parent="7" name="id">
+      <mandatory>1</mandatory>
+      <data-type>int(10)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="70" parent="7" name="hospitalname">
+      <mandatory>1</mandatory>
+      <data-type>varchar(50)|0</data-type>
+    </column>
+    <column id="71" parent="7" name="location">
+      <mandatory>1</mandatory>
+      <data-type>varchar(50)|0</data-type>
+    </column>
+    <column id="72" parent="7" name="telephonenum">
+      <mandatory>1</mandatory>
+      <data-type>int(10)|0</data-type>
+    </column>
+    <key id="73" parent="7" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="74" parent="8" name="id">
+      <mandatory>1</mandatory>
+      <data-type>int(10)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="75" parent="8" name="postnews">
+      <mandatory>1</mandatory>
+      <data-type>varchar(500)|0</data-type>
+    </column>
+    <column id="76" parent="8" name="date">
+      <mandatory>1</mandatory>
+      <data-type>date|0</data-type>
+    </column>
+    <key id="77" parent="8" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="78" parent="9" name="OrderNo.">
+      <mandatory>1</mandatory>
+      <data-type>int(50)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="79" parent="9" name="NIC">
+      <mandatory>1</mandatory>
+      <data-type>varchar(12)|0</data-type>
+    </column>
+    <column id="80" parent="9" name="DP">
+      <mandatory>1</mandatory>
+      <data-type>varchar(15)|0</data-type>
+    </column>
+    <column id="81" parent="9" name="Address">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="82" parent="9" name="DPTime">
+      <mandatory>1</mandatory>
+      <data-type>time|0</data-type>
+    </column>
+    <column id="83" parent="9" name="Telephone">
+      <mandatory>1</mandatory>
+      <data-type>int(10) unsigned zerofill|0</data-type>
+    </column>
+    <column id="84" parent="9" name="Email">
+      <mandatory>1</mandatory>
+      <data-type>varchar(60)|0</data-type>
+    </column>
+    <column id="85" parent="9" name="Image1">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="86" parent="9" name="ImageName1">
+      <mandatory>1</mandatory>
+      <data-type>varchar(64)|0</data-type>
+    </column>
+    <column id="87" parent="9" name="Image1Type">
+      <mandatory>1</mandatory>
+      <data-type>varchar(100)|0</data-type>
+    </column>
+    <column id="88" parent="9" name="Image2">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="89" parent="9" name="ImageName2">
+      <mandatory>1</mandatory>
+      <data-type>varchar(64)|0</data-type>
+    </column>
+    <column id="90" parent="9" name="Image2Type">
+      <mandatory>1</mandatory>
+      <data-type>varchar(100)|0</data-type>
+    </column>
+    <column id="91" parent="9" name="Image3">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="92" parent="9" name="ImageName3">
+      <mandatory>1</mandatory>
+      <data-type>varchar(64)|0</data-type>
+    </column>
+    <column id="93" parent="9" name="Image3Type">
+      <mandatory>1</mandatory>
+      <data-type>varchar(100)|0</data-type>
+    </column>
+    <index id="94" parent="9" name="OrderNo.">
+      <columns>OrderNo.</columns>
+      <desc-columns></desc-columns>
+      <unique>1</unique>
+    </index>
+    <key id="95" parent="9" name="PRIMARY">
+      <columns>OrderNo.</columns>
+      <primary>1</primary>
+    </key>
+    <key id="96" parent="9" name="OrderNo.">
+      <columns>OrderNo.</columns>
+      <underlying-index>OrderNo\u002E</underlying-index>
+    </key>
+    <column id="97" parent="10" name="DateHired">
+      <mandatory>1</mandatory>
+      <data-type>date|0</data-type>
+    </column>
+    <column id="98" parent="10" name="NIC">
+      <mandatory>1</mandatory>
+      <data-type>int(13)|0</data-type>
+    </column>
+    <column id="99" parent="10" name="FirstName">
+      <mandatory>1</mandatory>
+      <data-type>varchar(50)|0</data-type>
+    </column>
+    <column id="100" parent="10" name="LastName">
+      <mandatory>1</mandatory>
+      <data-type>varchar(50)|0</data-type>
+    </column>
+    <column id="101" parent="10" name="Gender">
+      <mandatory>1</mandatory>
+      <data-type>enum(&apos;Male&apos;, &apos;Female&apos;)|0</data-type>
+    </column>
+    <column id="102" parent="10" name="DOB">
+      <mandatory>1</mandatory>
+      <data-type>date|0</data-type>
+    </column>
+    <column id="103" parent="10" name="PermanentAddress">
+      <mandatory>1</mandatory>
+      <data-type>varchar(150)|0</data-type>
+    </column>
+    <column id="104" parent="10" name="CivilStatus">
+      <mandatory>1</mandatory>
+      <data-type>enum(&apos;Single&apos;, &apos;Married&apos;, &apos;Widowed&apos;, &apos;Divorced&apos;)|0</data-type>
+    </column>
+    <column id="105" parent="10" name="ContactNo">
+      <mandatory>1</mandatory>
+      <data-type>int(10)|0</data-type>
+    </column>
+    <column id="106" parent="10" name="EmailAddress">
+      <mandatory>1</mandatory>
+      <data-type>varchar(50)|0</data-type>
+    </column>
+    <column id="107" parent="10" name="Password">
+      <mandatory>1</mandatory>
+      <data-type>varchar(50)|0</data-type>
+    </column>
+    <column id="108" parent="10" name="Admin/Trainee">
+      <mandatory>1</mandatory>
+      <data-type>int(1)|0</data-type>
+      <default-expression>&apos;0&apos;</default-expression>
+    </column>
+    <key id="109" parent="10" name="PRIMARY">
+      <columns>NIC</columns>
+      <primary>1</primary>
+    </key>
+    <column id="110" parent="11" name="qId">
+      <mandatory>1</mandatory>
+      <data-type>int(2)|0</data-type>
+    </column>
+    <column id="111" parent="11" name="question">
+      <mandatory>1</mandatory>
+      <data-type>varchar(500)|0</data-type>
+    </column>
+    <column id="112" parent="11" name="correctAns">
+      <mandatory>1</mandatory>
+      <data-type>varchar(200)|0</data-type>
+    </column>
+    <column id="113" parent="11" name="wrongAns1">
+      <mandatory>1</mandatory>
+      <data-type>varchar(200)|0</data-type>
+    </column>
+    <column id="114" parent="11" name="wrongAns2">
+      <mandatory>1</mandatory>
+      <data-type>varchar(200)|0</data-type>
+    </column>
+    <column id="115" parent="11" name="wrongAns3">
+      <mandatory>1</mandatory>
+      <data-type>varchar(200)|0</data-type>
+    </column>
+    <column id="116" parent="12" name="supplier_No">
+      <mandatory>1</mandatory>
+      <data-type>int(10) unsigned|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="117" parent="12" name="Company_Name">
+      <mandatory>1</mandatory>
+      <data-type>varchar(50)|0</data-type>
+    </column>
+    <column id="118" parent="12" name="Permenant_Address">
+      <mandatory>1</mandatory>
+      <data-type>varchar(100)|0</data-type>
+    </column>
+    <column id="119" parent="12" name="Contact_No">
+      <mandatory>1</mandatory>
+      <data-type>int(10)|0</data-type>
+    </column>
+    <column id="120" parent="12" name="Email_Address">
+      <mandatory>1</mandatory>
+      <data-type>varchar(50)|0</data-type>
+    </column>
+    <key id="121" parent="12" name="PRIMARY">
+      <columns>supplier_No</columns>
+      <primary>1</primary>
+    </key>
+  </database-model>
+</dataSource>
