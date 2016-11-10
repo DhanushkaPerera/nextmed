@@ -205,14 +205,14 @@ require("../db/db.php");
 	
 	
 	//4.User Returned Database
-	if(!mysql_query($sql , $connection)){
+	if(!mysql_query($sql , $db)){
 		die("Error Query" .mysql_error());	
 	}else{
 	echo "<div class='ech' ><h6> Successfully Added </h6></div> ";
 	}
 	
 	// 5.Close Connection
-	mysql_close($connection);
+	mysql_close($db);
 	}
 	
 ?>
