@@ -27,22 +27,16 @@
 			
 			<?php
 
-$mysql_host ="localhost";
-$mysql_username ="root";
-$mysql_password ="";
-$mysql_db ="project1";
-$con= mysqli_connect($mysql_host,$mysql_username,$mysql_password) or die("ERROR");
-
-mysqli_select_db($con,$mysql_db) or die("ERROR");
 
 if(isset($_POST["search"])){
+	include('../../db/db.php');
 	
 	
         $nic = $_POST["nic"];
 				
-		$sql = "select * from signup where NIC='$nic'";
+		$sql = "select * from customer where NIC='$nic'";
 
-			$res = mysqli_query($con,$sql);
+			$res = mysqli_query($db,$sql);
 			
 			while($row = mysqli_fetch_array($res)){
 				
@@ -107,23 +101,22 @@ if(isset($_POST["search"])){
 						
 	</div>
 	
-	</form>
-	</div>
-
-
-
+	<br>
+	<br>
+	<br>
+	
 <?php
 
 
 if(isset($_POST["submit"])){
-	include('dbase.php');
+	include('../../db/db.php');
 	
         $brandname = $_POST["brandname"];
 		$quantity = $_POST["quantity"];
 		
 		$sql = "select * from drug where DrugBrandName='$brandname'";
 
-			$res = mysqli_query($con,$sql);
+			$res = mysqli_query($db,$sql);
 			
 			while($row = mysqli_fetch_array($res)){
 				
@@ -156,6 +149,13 @@ if(isset($_POST["submit"])){
 }
 }
 ?>
+	
+	</form>
+	</div>
+
+
+
+
 
     
 
