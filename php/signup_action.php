@@ -38,14 +38,10 @@ $sql="INSERT INTO customer (NIC,FName,LName,Gender,DOB,Address,Status,Contact,Em
 
 
 
-$result=mysqli_query($db,$sql);
-echo $result;
-
-if(!$result){
-    echo "Unsuccessful registration";
-}
-else{
-    
+if ($db->query($sql) === TRUE) {
+    echo "New record created successfully";
+} else {
+    echo "Error: " . $sql . "<br>" . $db->error;
 }
 
 
