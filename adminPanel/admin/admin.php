@@ -49,7 +49,7 @@
 				<ul class="submenu">
 					<li><a href="adddrug.php" >ADD</a></li>
 					<li><a href="viewDrugs.php" onclick="viewDrugs('result')">VIEW</a></li>
-					<li><a href="ExpDrug.php">VIEW CLOSE EXPIER DRUGS</a></li>
+					<li><a href="ExpDrug.php">DRUGS ABOUT TO EXPIRE</a></li>
 					<li><a href="updatedrug.php">UPDATE</a></li>
 					<li><a href="removedrug.php">REMOVE</a></li>
 				</ul></li>
