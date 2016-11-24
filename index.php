@@ -117,7 +117,7 @@
 <div id="myModal" class="modal">
 	<div class="modal-content">
 
-	<iframe id="modalFrame" src="Signup/signup.htm" style="width:100%; height:1500px;border:0;margin:auto;"></iframe>
+	<iframe id="modalFrame" src="Signup/signup.htm" onload="resizeIframe(this)"></iframe>
 	</div>
 </div>
 
@@ -133,21 +133,24 @@
 		<div class="sidemenuitem" onclick="showContents();showContent('leaveorder');hideSlides();activeMenu(this);" onmouseover="menuText(this);" onmouseout="menuImage(this);" > <img class="center" src="media\leaveyourorder.png" alt="Order Online" style="max-width:60px;height:90%;"> </div>
 		<img class="boxshadow" src="media\logo.png" style="max-width:90px;height:100px;" >
 	</div>
-	
+
 
 		
 
-		<div class="contents" id="contentsID" > 
+		<div class="contents" id="contentsID" >
+
+			<div class="contentitem" id="home" style="height:100%">
+				<iframe src="AroundUs/aroundusnew.php" id="iFrame1" frameborder="0"></iframe>
+			</div>
 
 			<div class="contentitem showitem" id="knowyourself"><div class="heading1"> Know About Yourself </div>
-			<iframe src="knowyourself/knowYourselffinal.php" id="iFrame1" frameborder="0" style="width:100%;height:2700px;position:relative;border:5px solid #d1eefd" allowfullscreen></iframe>
-			
+			<iframe src="knowyourself/knowYourselffinal.php" id="iFrameknow" frameborder="0" frameborder="0" scrolling="no" onload="resizeIframe(this)"></iframe>
 
 			</div>
 			
 			<div class="contentitem" id="aroundus" style="height:100%">
 			<div class="heading1"> Around Us </div>
-			<iframe src="AroundUs/aroundusnew.php" id="iFrame1" frameborder="0" style="width:100%;height:2700px;position:relative;border:5px solid #d1eefd" allowfullscreen></iframe>
+			<iframe src="AroundUs/aroundusnew.php" id="iFrame1" frameborder="0" onload="resizeIframe(this)" allowfullscreen></iframe>
 			</div>
 
 			
@@ -161,13 +164,13 @@
 				<br>
 			</div></div>
 			
-			<iframe src="News/Newsnew.php" id="iFrame1" frameborder="0" style="width:100%;height:1800px;position:relative;border:5px solid #d1eefd" allowfullscreen></iframe>
+			<iframe src="News/Newsnew.php" id="iFrame1" onload="resizeIframe(this)" onload="resizeIframe(this)" frameborder="0" style="width:100%;position:relative;border:5px solid #d1eefd" allowfullscreen></iframe>
 
 			</div>
 			
 			<div class="contentitem" id="healthtips"> 
 			<div class="heading1">Healthtips </div>
-			<iframe src="healthtips/healthtips.html" id="iFrame1" frameborder="0" style="width:100%;height:1800px;position:relative;border:5px solid #d1eefd" allowfullscreen></iframe>
+			<iframe src="healthtips/healthtips.html" id="iFrame1" frameborder="0"  onload="resizeIframe(this)" allowfullscreen></iframe>
 			</div>
 			
 			
@@ -182,7 +185,7 @@
 				<br>
 			</div></div>
 			
-			<iframe src="adminPanel/ordering/orders.php" id="iFrame1" frameborder="0" style="width:100%;height:1800px;position:relative;border:5px solid #d1eefd" allowfullscreen></iframe>
+			<iframe src="adminPanel/ordering/orders.php" id="iFrame1" frameborder="0" onload="resizeIframe(this)" allowfullscreen></iframe>
 			
 				
 			</div>
@@ -298,17 +301,7 @@
 		var element = document.getElementById('contentsID');
 		element.style.display="inline";
 	}
-	
-	function resizeIFrameToFitContent(iFrame) {
-		iFrame.width  = iFrame.contentWindow.document.body.scrollWidth;
-		iFrame.height = iFrame.contentWindow.document.body.scrollHeight;
-	}
 
-	window.addEventListener('DOMContentReady', function(e) {
-		alert("TEST");
-		var iFrame = document.getElementById( 'iFrame1' );
-		resizeIFrameToFitContent(iFrame);
-	} );
 
 	function hideSlides() {
 		//var slides = document.getElementById("cf");
@@ -476,6 +469,12 @@
 	}
 
 	</script>
+<script>
+	function resizeIframe(obj) {
 
+		obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
+		alert( obj.contentWindow.document.body.scrollHeight);
+	}
+</script>
 
 </html>

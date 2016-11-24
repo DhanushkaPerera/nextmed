@@ -146,13 +146,13 @@
 		<div class="contents" id="contentsID" > 
 
 			<div class="contentitem showitem" id="knowyourself"><div class="heading1"> Know About Yourself </div>
-			<iframe src="knowyourself/knowYourselffinal.php" id="iFrame1" frameborder="0" style="width:100%;height:2700px;position:relative;border:5px solid #d1eefd" allowfullscreen></iframe>
+			<iframe src="knowyourself/knowYourselffinal.php" id="iFrame1" onload="resizeIframe(this)" frameborder="0"></iframe>
 			
 
 			</div>
             <div class="contentitem" id="aroundus" style="height:100%">
 			<div class="heading1"> Around Us </div>
-			<iframe src="AroundUs/aroundusnew.php" id="iFrame1" frameborder="0" style="width:100%;height:2700px;position:relative;border:5px solid #d1eefd" allowfullscreen></iframe>
+			<iframe src="AroundUs/aroundusnew.php" id="iFrame1" frameborder="0" style=" onload="resizeIframe(this)" allowfullscreen></iframe>
 			</div>
 			
 			
@@ -160,12 +160,12 @@
 			
 			<div class="contentitem" id="news"> <div class="heading1">News </div>
 
-			<iframe src="News/Newsnew.php" id="iFrame1" frameborder="0" style="width:100%;height:1800px;position:relative;border:5px solid #d1eefd" allowfullscreen></iframe>
+			<iframe src="News/Newsnew.php" id="iFrame1" frameborder="0" onload="resizeIframe(this)" allowfullscreen></iframe>
 			</div>
 			
 			<div class="contentitem" id="healthtips"> 
 			<div class="heading1">Healthtips </div>
-			<iframe src="healthtips/healthtips.html" id="iFrame1" frameborder="0" style="width:100%;height:1800px;position:relative;border:5px solid #d1eefd" allowfullscreen></iframe>
+			<iframe src="healthtips/healthtips.html" id="iFrame1" onload="resizeIframe(this)" frameborder="0" style="width:100%;height:1800px;position:relative;border:5px solid #d1eefd" allowfullscreen></iframe>
 			</div>
 			
 			
@@ -173,7 +173,7 @@
 			
 
 			
-			<iframe src="adminPanel/ordering/orders.php" id="iFrame1" frameborder="0" style="width:100%;height:1800px;position:relative;border:5px solid #d1eefd" allowfullscreen></iframe>
+			<iframe src="adminPanel/ordering/orders.php" id="iFrame1" onload="resizeIframe(this)" frameborder="0" style="width:100%;height:1800px;position:relative;border:5px solid #d1eefd" allowfullscreen></iframe>
 			
 				
 			</div>
@@ -334,6 +334,12 @@
 		image[0].style.visibility="visible";
 	}
 	</script>
+<script>
+	function resizeIframe(obj) {
 
+		obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
+		alert( obj.contentWindow.document.body.scrollHeight);
+	}
+</script>
 </body>
 </html>

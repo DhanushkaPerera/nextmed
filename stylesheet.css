@@ -286,7 +286,7 @@ contactus{
 }
 
 .imagepos {
-	!position:absolute;
+	#position:absolute;
 	height:200px;
 	position:relative;
 	float:right;
@@ -752,4 +752,8 @@ hr{
 	box-shadow: 0 0 10px black;
 }
 
+
+iframe{
+	width:100%;position:relative;border:none;
+}
 
