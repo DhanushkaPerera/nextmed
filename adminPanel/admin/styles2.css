@@ -1,5 +1,5 @@
 
-.tabs {
+/*.tabs {
   width: 650px;
   float: left;
   list-style: none;
@@ -79,4 +79,143 @@
 p{
 	text-align:center;
 	color:white;
+}
+*/
+
+
+.menu, .menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu li{
+	height:80px;
+}
+.submenu li{
+	height:50px;
+}
+.menu li {
+    
+    min-width: 350px;
+	background:#002E63;
+	border-bottom: 1px solid #0004d;
+    border-top: 1px solid #3333ff;
+	border-radius:10px;
+	margin-right:2px;
+}
+.menu > li {
+    display: block;
+    float: left;
+    position: relative;
+}
+
+.menu a {
+    border-left: 3px solid rgba(0, 0, 0, 0);
+    color: #f5f5f0;
+	
+    display: block;
+    font-family: 'Lucida Console';
+    font-size: 18px;
+    line-height: 48px;
+    padding: 0 25px;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+.menu li:hover {
+    
+	
+
+   border-bottom: 2px solid #8080ff;
+    border-top: 2px solid #8080ff;
+	border-radius:10px;
+							transition:scale(1.4);
+}
+.menu li:hover > a {
+    border-radius: 5px 0 0 0;
+   color: #1f7ce8;
+   
+    
+}
+
+
+.submenu {
+    left: 0;
+    max-height: 0;
+    position: absolute;
+    top: 100%;
+    z-index: 0;
+
+    -webkit-perspective: 400px;
+    -moz-perspective: 400px;
+    -ms-perspective: 400px;
+    -o-perspective: 400px;
+    perspective: 400px;
+}
+.submenu li {
+    opacity: 0;
+
+  background-color:#1f7ce8;
+	
+	transform: translate(0em,2em);
+
+    -webkit-transition: opacity .4s, -webkit-transform 1s;
+    -moz-transition: opacity .4s, -moz-transform 1s;
+    -ms-transition: opacity .4s, -ms-transform 1s;
+    -o-transition: opacity .4s, -o-transform 1s;
+    transition: opacity .4s, transform 1s;
+}
+.menu .submenu li:hover a {
+    border-left: 3px solid #8080ff;
+    border-radius: 10px;
+	
+	color: #002E63;
+	
+}
+
+.menu > li:hover .submenu li, .menu > li:focus .submenu li {
+    opacity: 1;
+
+    -webkit-transform: none;
+    -moz-transform: none;
+    -ms-transform: none;
+    -o-transform: none;
+    transform: none;
+}
+
+
+.menu li:hover .submenu li:nth-child(1) {
+    -webkit-transition-delay: 0s;
+    -moz-transition-delay: 0s;
+    -ms-transition-delay: 0s;
+    -o-transition-delay: 0s;
+    transition-delay: 0s;
+}
+.menu li:hover .submenu li:nth-child(2) {
+    -webkit-transition-delay: 50ms;
+    -moz-transition-delay: 50ms;
+    -ms-transition-delay: 50ms;
+    -o-transition-delay: 50ms;
+    transition-delay: 50ms;
+}
+.menu li:hover .submenu li:nth-child(3) {
+    -webkit-transition-delay: 100ms;
+    -moz-transition-delay: 100ms;
+    -ms-transition-delay: 100ms;
+    -o-transition-delay: 100ms;
+    transition-delay: 100ms;
+}
+.menu li:hover .submenu li:nth-child(4) {
+    -webkit-transition-delay: 150ms;
+    -moz-transition-delay: 150ms;
+    -ms-transition-delay: 150ms;
+    -o-transition-delay: 150ms;
+    transition-delay: 150ms;
+}
+.menu li:hover .submenu li:nth-child(5) {
+    -webkit-transition-delay: 200ms;
+    -moz-transition-delay: 200ms;
+    -ms-transition-delay: 200ms;
+    -o-transition-delay: 200ms;
+    transition-delay: 200ms;
 }
