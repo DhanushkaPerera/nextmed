@@ -34,8 +34,6 @@
 		var modal = document.querySelectorAll(".modal");
 		modal[0].style.display = "none";
 	}
-	</script>
-	<script>
 	
 	function toggleElement(element){
 	  if(document.getElementById(element).style.visibility=="hidden"){
@@ -48,37 +46,31 @@
 	  
 	  }
 	}
-	
-	function hideElement(element){
-	  document.getElementById(element).style.opacity="0";
-	  setTimeout(function(){document.getElementById(element).style.visibility="hidden";}, 500);
-	}
-	
+
 
 
 	window.onclick = function(event) {
-	var items = document.querySelectorAll(".login");
-	var element = document.getElementById("loginB");
-	var lng = items.length;
-	var clicked = 0;
-	for(i=0;i<lng;i++){
-		if(event.target==items[i]){
-			clicked=1;
-			break;
-		}
+		var items = document.querySelectorAll(".login");
+		var element = document.getElementById("loginB");
+		var lng = items.length;
+			var clicked = 0;
+			for(i=0;i<lng;i++){
+				if(event.target==items[i]){
+					clicked=1;
+					break;
+				}
+			}
+			if (clicked==0) {
+				element.style.opacity="0";
+				setTimeout(function(){element.style.visibility="hidden";}, 500);
+			}
+
+			var modal = document.getElementById("myModal");
+			if(event.target==modal){
+
+			}
 	}
-	if (clicked==0) {
-		element.style.opacity="0";
-		setTimeout(function(){element.style.visibility="hidden";}, 500);
-	}
-	
-	var modal = document.getElementById("myModal");
-		if(event.target==modal){
-			
-		}
-	}
-	</script>
-	<script>
+
 	$(document).ready(function(){
 		$("#loginIcon").click(function(event){
 			toggleElement('loginB');
@@ -124,6 +116,7 @@
 </div>
 
 	<div class="nav">
+		<img class="boxshadow" src="media\logo.png" style="max-width:120px;height:60px;" >
 		<div class="sidemenuitem activemenu" onclick="hideContents();showSlides();activeMenu(this);" onmouseover="menuText(this);" onmouseout="menuImage(this);"> <img class="center" src="media\home.png" alt="Home" style="max-width:60px;height:90%;"> </div>
 		<div class="sidemenuitem" onclick="showContents();showContent('knowyourself');hideSlides();activeMenu(this);" onmouseover="menuText(this);" onmouseout="menuImage(this);"> <img class="center" src="media\knowyourself.png" alt="About you" style="max-width:60px;height:90%;"> </a> </div>
 		<div class="sidemenuitem" onclick="showContents();showContent('aroundus');hideSlides();activeMenu(this);" onmouseover="menuText(this);" onmouseout="menuImage(this);"> <img class="center" src="media\aroundus.png" alt="Around us" style="max-width:60px;height:90%;"> </a></div>
@@ -131,7 +124,7 @@
 		<div class="sidemenuitem" onclick="showContents();showContent('news');hideSlides();activeMenu(this);" onmouseover="menuText(this);" onmouseout="menuImage(this);"> <img class="center" src="media\news.png" alt="News" style="max-width:60px;height:90%;">  </div>
 		<div class="sidemenuitem" onclick="showContents();showContent('healthtips');hideSlides();activeMenu(this);" onmouseover="menuText(this);" onmouseout="menuImage(this);" > <img class="center" src="media\healthtips.png" alt="Healthtips" style="max-width:60px;height:90%;">  </div>
 		<div class="sidemenuitem" onclick="showContents();showContent('leaveorder');hideSlides();activeMenu(this);" onmouseover="menuText(this);" onmouseout="menuImage(this);" > <img class="center" src="media\leaveyourorder.png" alt="Order Online" style="max-width:60px;height:90%;"> </div>
-		<img class="boxshadow" src="media\logo.png" style="max-width:90px;height:100px;" >
+
 	</div>
 
 
@@ -473,7 +466,7 @@
 	function resizeIframe(obj) {
 
 		obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
-		alert( obj.contentWindow.document.body.scrollHeight);
+		//alert( obj.contentWindow.document.body.scrollHeight);
 	}
 </script>
 
