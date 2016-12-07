@@ -369,7 +369,7 @@
 		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 			var str = xmlhttp.responseText;
 			if(str.localeCompare("Success")==0){
-				window.location = "adminPanel/index.htm";
+				window.location = "adminPanel/index.php";
 			}
 			else{
 

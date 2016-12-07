@@ -326,15 +326,19 @@ contactus{
 
 
 .boxshadow {
-    !position: relative;
-    -moz-box-shadow: 1px 2px 4px rgba(0, 0, 0,0.5);
-    -webkit-box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
-    box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
-    padding: 10px;
-    background: white;
-	border: 3px solid white;
-    border-style: inset;
-	margin: 20px;
+	position: relative;
+	margin:auto;
+	margin-top: 20px;
+	padding:5px;
+	transition: all .4s ease-in-out;
+	height:100%;
+}
+
+.boxshadow:hover{
+	-moz-box-shadow: 1px 2px 4px rgba(0, 0, 0,0.5);
+	-webkit-box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
+	box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
+	background:white;
 }
 
 .imagepos {

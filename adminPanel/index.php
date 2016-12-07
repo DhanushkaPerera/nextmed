@@ -98,32 +98,33 @@
 </div>
 
 	<div class="nav">
-		<div class="sidemenuitem" onclick="showContent('introduce')"> <img class="center"  src="media\search.png" alt="introduction Icon" style="height:90%;"> </div>
-		<div class="sidemenuitem" onclick="showContent('knowyourself')"> <img class="center" src="media\billing-icon.png" alt="Know your self" style="height:90%;"> </a> </div>
-		<div class="sidemenuitem" onclick="showContent('aroundus')"> <img class="center" src="media\leaveyourorder.png" alt="around us" style="height:90%;"> </a></div>
+		<img class="boxshadow" src="..\media\logo.png" style="max-width:120px;height:60px;" >
+		<div class="sidemenuitem" onclick="showContent('introduce')"> <img class="center"  src="media\search.png" alt="Search" style="height:90%;"> </div>
+		<div class="sidemenuitem" onclick="showContent('knowyourself')"> <img class="center" src="media\billing-icon.png" alt="Billing" style="height:90%;"> </a> </div>
+		<div class="sidemenuitem" onclick="showContent('aroundus')"> <img class="center" src="media\leaveyourorder.png" alt="Online Orders" style="height:90%;"> </a></div>
 		<!-- <div class="sidemenuitem" onclick="showContent('alternative')"> <img class="center" src="media\user-manage.png" alt="news" style="height:90%;"> </div> -->
-		<div class="sidemenuitem" onclick="showContent('leaveorder')"> <img class="center" src="media\stock-manage.png" alt="leave your order" style="height:90%;"> </div>
+		<div class="sidemenuitem" onclick="showContent('leaveorder')"> <img class="center" src="media\stock-manage.png" alt="Stock Management" style="height:90%;"> </div>
 	</div>
 	
 
 	<div class="contents">
 			<div class="contentitem showitem" id="introduce">
 				<div class="heading1" style="display: inline-block;">Search</div><br>
-				<iframe src="drugs.htm" style="width:100%;height:700px;" frameborder="0" > </iframe>	
+				<iframe src="drugs.htm" style="width:100%" frameborder="0" onload="resizeIframe(this)" > </iframe>
 				
 			</div>
 			
 			<div class="contentitem" id="knowyourself"><div class="heading1"> Billing </div>
-			<iframe src="Bill/bill.php" style="width:100%;height:700px;" frameborder="0" > </iframe>
+			<iframe src="Bill/bill.php" style="width:100%" frameborder="0" onload="resizeIframe(this)" > </iframe>
 			</div>
 			<div class="contentitem" id="aroundus" style="height:100%">
 			<div class="heading1"><div class="heading1"> Online orders </div>
-						<iframe src="ordering/vieworders.php" style="width:100%;height:700px;" frameborder="0" > </iframe>
+						<iframe src="ordering/vieworders.php" style="width:100%" frameborder="0" onload="resizeIframe(this)" > </iframe>
 			</div>
 			</div>
 			<div class="contentitem" id="alternative"> <div class="heading1">User Management  </div></div>
 			<div class="contentitem" id="leaveorder"> <div class="heading1">Stock Management</div>
-			<iframe src="admin/admin.php" style="width:120%;height:2000px;" frameborder="0" > </iframe>
+			<iframe src="admin/admin.php" style="width:120%" frameborder="0" onload="resizeIframe(this)" > </iframe>
 			</div>
 			<div class="contentitem" id="news"> <div class="heading1">Public notice </div></div>
 
@@ -155,8 +156,38 @@
 
 		</div>
 	</div>
-	
+
+<script>
+	function activeMenu(menu){
+		var menus = document.getElementsByClassName("activemenu");
+		menus[0].classList.remove("activemenu");
+		menu.classList.add("activemenu");
+	}
+
+	function menuText(menu){
+		var image = menu.querySelectorAll(".center");
+		image[0].style.visibility="hidden";
+		menu.innerHTML = "";
+		menu.innerHTML = image[0].alt;
+		menu.appendChild(image[0]);
+
+	}
+
+	function menuImage(menu){
+		var image = menu.querySelectorAll(".center");
+		menu.innerHTML = "";
+		menu.appendChild(image[0]);
+		image[0].style.visibility="visible";
+	}
+
+	function resizeIframe(obj) {
+
+		obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
+		//alert( obj.contentWindow.document.body.scrollHeight);
+	}
+</script>
 
 
 </body>
+
 </html>
