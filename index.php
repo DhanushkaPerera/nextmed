@@ -128,9 +128,15 @@
 	</div>
 
 
-		
+<div id="cf" class="slideshow">
+	<img src="media\transimg1.jpg" style="width:100%;" >
+	<img src="media\transimg2.jpg" style="width:100%;">
+	<img src="media\transimg3.jpg" style="width:100%;">
+	<img src="media\transimg4.jpg" style="width:100%;">
+</div>
 
 		<div class="contents" id="contentsID" >
+
 
 			<div class="contentitem" id="home" style="height:100%">
 				<iframe src="AroundUs/aroundusnew.php" id="iFrame1" frameborder="0"></iframe>
@@ -297,7 +303,7 @@
 
 
 	function hideSlides() {
-		//var slides = document.getElementById("cf");
+		var slides = document.getElementById("cf");
 		var header = document.getElementById("cf1");
 		//slides.style.opacity = "0";
 		header.style.opacity = "0";
@@ -307,7 +313,7 @@
 	}
 	
 	function showSlides() {
-		//var slides = document.getElementById("cf");
+		var slides = document.getElementById("cf");
 		var header = document.getElementById("cf1");
 		//slides.style.opacity = "1";
 		header.style.opacity = "1";
@@ -356,6 +362,7 @@
 	
 	function authenticateEmp(nic, password, note)
     {
+    	alert("EMP");
 	note.style.opacity="0";
 	var xmlhttp = new XMLHttpRequest();
 	xmlhttp.onreadystatechange = function() {
@@ -367,7 +374,7 @@
 			else{
 
 				note.style.opacity="1";
-				note.innerHTML = "invalid username or password";
+				note.innerHTML = xmlhttp.responseText;
 				
 			}
 		}
