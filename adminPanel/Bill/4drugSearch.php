@@ -11,7 +11,7 @@
 	<div class="close" onclick="parent.closeIFrame();"> X </div>
 			<br>
 			<div style="width:100%;text-align:center; ">
-            <h3>Purchase Details</h3> </div>
+            <h3>Drug Search</h3> </div>
         <div class="sep"></div>
 		
             <div class="inputs">
@@ -100,7 +100,7 @@
                 
                 <button class="buttonS" onclick="parent.parent.closeIFrame();" > Cancel </button>
 
-                <input class="buttonDis"  type="submit" name=submit value=Submit id="submitButton" disabled onclick="validatedAll();parent.parent.closeIFrame();" >
+                <input class="buttonDis"  type="submit" name=submit value=Search id="submitButton" disabled onclick="validatedAll();parent.parent.closeIFrame();" >
                 </div>
 
 		</div>
