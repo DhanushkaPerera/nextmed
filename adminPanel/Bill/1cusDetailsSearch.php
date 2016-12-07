@@ -50,7 +50,7 @@
                 
                 <button class="buttonS" onclick="parent.parent.closeIFrame();" > Cancel </button>
 
-                <input class="buttonDis"  type="submit" name=submit value=Submit id="submitButton" disabled onclick="validatedAll();parent.parent.closeIFrame();" >
+                <input class="buttonDis"  type="submit" name=submit value=Search id="submitButton" disabled onclick="validatedAll();parent.parent.closeIFrame();" >
                 </div>
 
 		</div>
