@@ -27,10 +27,13 @@
 			<th>Health Tips</th>
 			<th>Allergic Effect</th>
 			<th>Usable Period</th>
-			<th>Quantity</th>
+			
 			<th>Discount</th>
 			<th>Dis.Price</th>
+			<th>Quantity</th>
 			<th>Price Comparison</th>
+			<th>Bill</th>
+			
 			
 			
 		</tr>
@@ -42,7 +45,11 @@
 			<td>Drink more water during day</td>
 			<td>Ok</td>
 			<td>30 days</td>
+			<td>4%</td>
+			<td>95.00</td>
+			
 			<td><input name="checked" id="checkAgree" value="" type="text" onclick="validatedAll()"/></td>
+			<td></td>
 			<td><input name="checked" id="checkAgree" value="Bill" type="Submit" onclick="validatedAll()"/></td>
 		
 		</tr>
@@ -54,7 +61,11 @@
 			<td>Drink more water during day</td>
 			<td>Ok</td>
 			<td>15 days</td>
+			<td>4%</td>
+			<td>95.00</td>
+			
 			<td><input name="checked" id="checkAgree" value="" type="text" onclick="validatedAll()"/></td>
+			<td></td>
 			<td><input name="checked" id="checkAgree" value="Bill" type="Submit" onclick="validatedAll()"/></td>
 		
 		</tr>
@@ -66,9 +77,12 @@
 			<td>Drink more water during day</td>
 			<td>Ok</td>
 			<td>60 days</td>
+			<td>4%</td>
+			<td>95.00</td>
+			
 			<td><input name="checked" id="checkAgree" value="" type="text" onclick="validatedAll()"/></td>
+			<td></td>
 			<td><input name="checked" id="checkAgree" value="Bill" type="Submit" onclick="validatedAll()"/></td>
-		
 		</tr>
 		
 		<tr>
@@ -78,9 +92,12 @@
 			<td>Drink more water during day</td>
 			<td>Not ok</td>
 			<td>15 days</td>
+			<td>4%</td>
+			<td>95.00</td>
+			
 			<td><input name="checked" id="checkAgree" value="" type="text" onclick="validatedAll()"/></td>
+			<td></td>
 			<td><input name="checked" id="checkAgree" value="Bill" type="Submit" onclick="validatedAll()"/></td>
-		
 		</tr>
 		
 		<tr>
@@ -90,9 +107,12 @@
 			<td>Drink more water during day</td>
 			<td>don't know<br>customer al. con.<br>(not regi cus)</td>
 			<td>15 days</td>
+			<td>4%</td>
+			<td>95.00</td>
+			
 			<td><input name="checked" id="checkAgree" value="" type="text" onclick="validatedAll()"/></td>
+			<td></td>
 			<td><input name="checked" id="checkAgree" value="Bill" type="Submit" onclick="validatedAll()"/></td>
-		
 		</tr>
 		
 		<tr>
@@ -102,9 +122,12 @@
 			<td>Drink more water during day</td>
 			<td>Drug allergic <br>effect(general)</td>
 			<td>15 days</td>
+			<td>4%</td>
+			<td>95.00</td>
+			
 			<td><input name="checked" id="checkAgree" value="" type="text" onclick="validatedAll()"/></td>
+			<td></td>
 			<td><input name="checked" id="checkAgree" value="Bill" type="Submit" onclick="validatedAll()"/></td>
-		
 		</tr>
 		
 		

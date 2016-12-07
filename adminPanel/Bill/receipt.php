@@ -22,7 +22,7 @@ NIC:
 	
 		<tr>
 			<th>Bra/Gen/Alt Name</th>
-			<th>Strength</th>			
+					
 			<th>Dosage per Person</th>
 			<th>Health Tips</th>
 			<th>Exp. Date</th>
@@ -37,7 +37,7 @@ NIC:
 		
 		<tr>
 			<td>Paracetamol</td>
-			<td>500mg</td>
+			 
 			<td>1 tablet per 32 kg</td>
 			<td>Drink more water during day</td>
 			<td>10/02/2019</td>
@@ -50,7 +50,7 @@ NIC:
 		
 		<tr>
 			<td>Paracetamol</td>
-			<td>500mg</td>
+			 
 			<td>1 tablet per 32 kg</td>
 			<td>Drink more water during day</td>
 			<td>10/02/2017</td>
@@ -64,7 +64,7 @@ NIC:
 		<tr>
 			<td>Paracetamol</td>
 			<td>1 tablet per 32 kg</td>
-			<td>500mg</td>
+			 
 			<td>Drink more water during day</td>
 			<td>10/02/2018</td>
 			<td>4%</td>
