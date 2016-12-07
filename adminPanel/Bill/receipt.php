@@ -75,6 +75,9 @@ NIC:
 		</tr>
 		
 	</table>
+	<br>
+				<td><input name="checked" id="checkAgree" value="Print the Bill" type="Submit" onclick="validatedAll()"/></td>
+	
 	</div>
 	
 </body>

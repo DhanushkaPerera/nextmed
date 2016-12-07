@@ -98,9 +98,10 @@
 
                 <div style="width:100%;text-align:center; " >
                 
-                <button class="buttonS" onclick="parent.parent.closeIFrame();" > Cancel </button>
 
                 <input class="buttonDis"  type="submit" name=submit value=Search id="submitButton" disabled onclick="validatedAll();parent.parent.closeIFrame();" >
+				                <button class="buttonS" onclick="parent.parent.closeIFrame();" > Cancel </button>
+
                 </div>
 
 		</div>

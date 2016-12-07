@@ -33,7 +33,7 @@
                      <!-- user First Name input -->
                     <div class="headingbox" id="hBoxFN" >  Name </div>
                     <div class="inputboxWrap" >
-                        <input type="text"   name=firstname onfocus="headingBoxActive('hBoxFN')" onkeydown="validateString(this, 'nameerror')" onfocusout="hide('nameerror');validateoutString(this, 'nameerror2');validatedAll();" /><br>
+                        <input type="text"   name=name onfocus="headingBoxActive('hBoxFN')" onkeydown="validateString(this, 'nameerror')" onfocusout="hide('nameerror');validateoutString(this, 'nameerror2');validatedAll();" /><br>
                     </div>
                     <div class="poperror" id="nameerror" ></div>
                     <div class="error" id="nameerror2" > error occured </div><br>
@@ -48,13 +48,43 @@
 
                 <div style="width:100%;text-align:center; " >
                 
-                <button class="buttonS" onclick="parent.parent.closeIFrame();" > Cancel </button>
 
-                <input class="buttonDis"  type="submit" name=submit value=Search id="submitButton" disabled onclick="validatedAll();parent.parent.closeIFrame();" >
+                <input class="buttonDis"  type="submit" name=search value=Search id="submitButton" disabled onclick="validatedAll();parent.parent.closeIFrame();" >
+				                <button class="buttonS" onclick="parent.parent.closeIFrame();" > Cancel </button>
+
                 </div>
 
 		</div>
     </div>
+
+	<!--?php
+
+require("../db/db.php");
+
+if(isset($_POST["search"])){
+	
+	
+        $nic = $_POST["nic"];
+		$name=$_POST("name")
+		
+				
+		$sql = "select * from customer where NIC='$nic' or ( FName='$name' or  LName='$name')";
+
+			$res = mysqli_query($con,$sql);
+			$count =mysqli_fetch_array($res);
+
+			
+			if(mysqli_num_rows($res)>0){
+            if($count[1]==0 ){
+				echo "<p>neXtMEd registered customer </p>";
+			}
+			else{
+                echo "Unregistered customer";
+            }
+}
+
+?-->
+
 </body>
    <script>
    var nicValid = false;
