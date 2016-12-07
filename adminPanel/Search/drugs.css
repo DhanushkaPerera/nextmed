@@ -74,7 +74,7 @@ input[type="search"]{
 button[type="submit"]{
  width:35px;
  height:30px;
- background-image:url(media/search-icon.png);
+ background-image:url(../media/search-icon.png);
  background-repeat: no-repeat;
  background-position: 10px 5px;
  background-color:transparent;

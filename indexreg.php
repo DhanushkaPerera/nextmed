@@ -214,7 +214,9 @@
 				<hr class="login">
 				<input class="button buttonlogin login" type="submit" name="submit" value="Log out">
 				<br>
-				<br>
+				<hr>
+					<input class="button buttonlogin login" value="My Account">
+                    <hr>
 				</div>
 			</form>
 			</div>

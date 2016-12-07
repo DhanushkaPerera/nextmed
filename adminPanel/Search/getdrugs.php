@@ -1,13 +1,7 @@
 
 
 <?php
-$dbhost="localhost";
-$dbuser="User";
-$dbpassword="abc123";
-$dbname="project1";
-
-//function to connect to the database
-$db = mysqli_connect($dbhost,$dbuser,$dbpassword,$dbname);
+require("../../db/db.php");
 
 $drugN = $_REQUEST["drugN"];
 
