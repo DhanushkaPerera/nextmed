@@ -47,7 +47,22 @@
 				<div class="column">
                     <div class="headingbox" id="hBoxNIC" > Dosage Form </div>
                     <div class="inputboxWrap">
-                        <input type="text" placeholder="" maxlength="13" name=nic onfocus="headingBoxActive('hBoxNIC')" onkeyup="validateNIC(this)"   onfocusout="upperCASE(this);hide('NICerror');validateoutNIC(this);validatedAll();" />
+                        <select>
+						<option value="Capsule">Dosage Form</option>
+							<option value="Capsule">Capsule</option>
+	<option value="Tablet">Tablet</option>
+	<option value="Pill">Pill</option>
+	<option value="Syrup">Syrup</option>
+	<option value="Cream">Cream</option>
+	<option value="Liquid">Liquid</option>
+	<option value="Gel">Gel</option>
+	<option value="Balm">Balm</option>
+	<option value="Lotion">Lotion</option>
+	<option value="Ointment">Ointment</option>
+	<option value="Ear drops">Ear drops</option>
+	<option value="Eye drops">Eye drops</option>
+</select>
+						
                     </div>
                     <div class="poperror" id="NICerror" ></div>
                     <div class="error" id="nicerror2" > error occured </div><br>
@@ -60,7 +75,16 @@
 				<div class="column">
                     <div class="headingbox" id="hBoxNIC" > Strength </div>
                     <div class="inputboxWrap">
-                        <input type="text" placeholder="" maxlength="13" name=nic onfocus="headingBoxActive('hBoxNIC')" onkeyup="validateNIC(this)"   onfocusout="upperCASE(this);hide('NICerror');validateoutNIC(this);validatedAll();" />
+                        <select name=Strength  onfocus="headingBoxActive('hBoxSTR')" onfocusout="headingBoxInactive('hBoxSTR')" >
+	<option value="" disabled selected  > Strength </option>
+	<option value="10mg">10mg</option>
+	<option value="10ml">10ml</option>
+	<option value="1spoon">1spoon</option>
+	<option value="1drop">1drop</option>
+	<option value="1capsule">1capsule</option>
+	<option value="1tablet">1tablet</option>
+	<option value="1pill">1pill</option>
+	</select>
                     </div>
                     <div class="poperror" id="NICerror" ></div>
                     <div class="error" id="nicerror2" > error occured </div><br>
