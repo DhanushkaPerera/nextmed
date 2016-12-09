@@ -16,6 +16,35 @@ $drugN = $_REQUEST["drugN"];
 
 $sql="SELECT * FROM drug where DrugBrandName='$drugN'";
 $result = mysqli_query($db,$sql);
+echo '
+	<tr>
+		<th> Genetic Name 
+		</th>
+		<th> Drug Brand Name 
+		</th>
+		<th> Drug Alternatives 
+		</th>
+		<th> Compositions 
+		</th>
+		<th> Dosage Form 
+		</th>
+		<th> Strength 
+		</th>
+		<th> Supplier 
+		</th>
+		<th> Quantity 
+		</th>
+		<th> Manufactured Date
+		</th>
+		<th> Expiration Date
+		</th>
+		<th> Ordered Price
+		</th>
+		<th> Retail Price
+		</th>
+		<th> Discount
+		</th>
+	</tr>';
 
  if(mysqli_num_rows($result)==0){
 	echo 'Drug is not found';
@@ -23,169 +52,24 @@ $result = mysqli_query($db,$sql);
 
 else{
 	while( $rows = mysqli_fetch_assoc($result)){
-	  $table[] = $rows;
+        echo '<tr>';
+        echo    '<th >'. $rows['GeneticName'].'</th>';
+        echo    '<th >'. $rows['DrugBrandName'].'</th>';
+        echo    '<th >'. $rows['DrugAlternatives'].'</th>';
+        echo    '<th >'. $rows['Compositions'].'</th>';
+        echo    '<th >'. $rows['DosageForm'].'</th>';
+        echo    '<th >'. $rows['DosePerPerson'].'</th>';
+        echo    '<th >'. $rows['Strength'].'</th>';
+        echo    '<th >'. $rows['Supplier'].'</th>';
+        echo    '<th >'. $rows['ManufacturedDate'].'</th>';
+	    echo    '<th >'. $rows['ExpDate'].'</th>';
+        echo    '<th >'. $rows['OrderedPrice'].'</th>';
+        echo    '<th >'. $rows['RetailPrice'].'</th>';
+        echo    '<th >'. $rows['Discount'].'</th>';
+        echo '</tr>';
 	}
-	
-	$size = sizeof($table);
-	
-	echo '
-	<div class="raw">
-		<div class="columnH"> Genetic Name 
-		</div>';
-	for ($x = 0; $x < $size; $x++) {
-		echo '<div class="column c'.$x.'" >
-	    '. $table[$x]['GeneticName'].'</div>';
-	}
-	echo '</div>';
-	
-	echo '
-	<div class="raw">
-		<div class="columnH"> Drug Brand Name 
-		</div>';
-	for ($x = 0; $x < $size; $x++) {
-		echo '<div class="column c'.$x.'" >
-	    '. $table[$x]['DrugBrandName'].'</div>';
-	}
-	echo '</div>';
-	
-	echo '
-	<div class="raw">
-		<div class="columnH"> Drug Alternatives 
-		</div>';
-	for ($x = 0; $x < $size; $x++) {
-		echo '<div class="column c'.$x.'" >';
-		$alt = $table[$x]['DrugAlternatives'];
-		$altarray = explode(",",$alt);
-		for ($y = 0; $y < sizeof($altarray); $y++){
-			echo '<div class="b1" onclick="searchInner(this)">'.$altarray[$y] ;
-			echo '</div>';
-		}
-		echo '</div>';
-		
-	}
-	echo '</div>';
-	
-	echo '
-	<div class="raw">
-		<div class="columnH"> Compositions 
-		</div>';
-	for ($x = 0; $x < $size; $x++) {
-		echo '<div class="column c'.$x.'" >
-	    '. $table[$x]['Compositions'].'</div>';
-	}
-	echo '</div>';
-	
-	
-	echo '
-	<div class="raw">
-		<div class="columnH"> Dosage Form 
-		</div>';
-	for ($x = 0; $x < $size; $x++) {
-		echo '<div class="column c'.$x.'" >
-	    '. $table[$x]['DosageForm'].'</div>';
-	}
-	echo '</div>';
-	
-	echo '
-	<div class="raw">
-		<div class="columnH"> Dose Per Person 
-		</div>';
-	for ($x = 0; $x < $size; $x++) {
-		echo '<div class="column c'.$x.'" >
-	    '. $table[$x]['DosePerPerson'].'</div>';
-	}
-	echo '</div>';
-	
-	echo '
-	<div class="raw">
-		<div class="columnH"> Strength 
-		</div>';
-	for ($x = 0; $x < $size; $x++) {
-		echo '<div class="column c'.$x.'" >
-	    '. $table[$x]['Strength'].'</div>';
-	}
-	echo '</div>';
-	
-	echo '
-	<div class="raw">
-		<div class="columnH"> Supplier 
-		</div>';
-	for ($x = 0; $x < $size; $x++) {
-		echo '<div class="column c'.$x.'" >
-	    '. $table[$x]['Supplier'].'</div>';
-	}
-	echo '</div>';
-	
-	echo '
-	<div class="raw">
-		<div class="columnH"> Quantity 
-		</div>';
-	for ($x = 0; $x < $size; $x++) {
-		echo '<div class="column c'.$x.'" >
-	    '. $table[$x]['Quantity'].'</div>';
-	}
-	echo '</div>';
-	
-	echo '
-	<div class="raw" >
-		<div class="columnH hiddenraws" style="display:none" > Manufactured Date
-		</div>';
-	for ($x = 0; $x < $size; $x++) {
-		echo '<div class="column c'.$x.' hiddenraws" style="display:none">
-	    '. $table[$x]['ManufacturedDate'].'</div>';
-	}
-	echo '</div>';
-	
-	echo '
-	<div class="raw">
-		<div class="columnH"> Expiration Date
-		</div>';
-	for ($x = 0; $x < $size; $x++) {
-		echo '<div class="column c'.$x.'" >
-	    '. $table[$x]['ExpDate'].'</div>';
-	}
-	echo '</div>';
-	
-	echo '
-	<div class="raw">
-		<div class="columnH"> Ordered Price
-		</div>';
-	for ($x = 0; $x < $size; $x++) {
-		echo '<div class="column c'.$x.'" >
-	    '. $table[$x]['OrderedPrice'].'</div>';
-	}
-	echo '</div>';
-	
-	echo '
-	<div class="raw">
-		<div class="columnH"> Retail Price
-		</div>';
-	for ($x = 0; $x < $size; $x++) {
-		echo '<div class="column c'.$x.'" >
-	    '. $table[$x]['RetailPrice'].'</div>';
-	}
-	echo '</div>';
 
-	echo '
-	<div class="raw">
-		<div class="columnH"> Discount
-		</div>';
-	for ($x = 0; $x < $size; $x++) {
-		echo '<div class="column c'.$x.'" >
-	    '. $table[$x]['Discount'].'</div>';
-	}
-	echo '</div>';
-	
-	$width = 200*($size+1) + 14*$size;
-	
-	echo '
-	
-	<div class="raw">
-		<div class="columnEx" style="width:'.$width.'px;" onclick="showRaws();">
-		</div>';
 
-	echo '</div>';
-	
 
 }
 	

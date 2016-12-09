@@ -87,35 +87,18 @@ input[type="search"]:focus{
  outline:0;
 }
 
-.drug-table{
+#tableDrug{
+
 	border-style: solid;
     border-width: 2px;
-	padding: 5px;
-	display:table;
 	border-color: white;
+    width:97%;
+    min-width: 800px;
 }
 
-.rowH {
-	color: white;
-	border-style: solid;
-    border-width: 2px;
-	display:table-row;
-	background-color: #28527b;
-	padding: 5px;
-	width: 200px;
-}
 
-.columnH {
-	color:white;
-	border-style: solid;
-    border-width: 2px;
-	display:table-column;
-	background-color: #28527b;
-	padding: 5px;
-	width: 200px;
-	border-color: white;
-	transition: all .5s ease-in-out;
-}
+
+
 
 .row{
 	border-style: solid;
@@ -126,14 +109,15 @@ input[type="search"]:focus{
 	border-color: white;
 }
 
-.column {
+th,td {
 	border-style: solid;
     border-width: 2px;
 	display:table-column;
 	background-color: #c4e2ff;
 	padding: 5px;
-	width: 200px;
-	border-color: white;
+    width: 7.3%;
+
+    border-color: white;
 	transition: all .5s ease-in-out;
 }
 

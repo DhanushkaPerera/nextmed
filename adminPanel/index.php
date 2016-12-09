@@ -78,7 +78,9 @@
 	});
 	</script>
 	<script>
-	function toggleElement(element){
+	function toggleElement(elementID){
+			var element = document.getElementById(elementID);
+			console.log(element.innerHTML);
 			if(element.style.visibility=="hidden"){
 				element.style.visibility="visible";
 				element.style.opacity="1";
@@ -102,13 +104,14 @@
 		<div class="sidemenuitem" onclick="showContent('Billing');activeMenu(this);" onmouseover="menuText(this);" onmouseout="menuImage(this);"> <img class="center" src="media\billing-icon.png" alt="Billing" style="height:90%;"> </a> </div>
 		<div class="sidemenuitem" onclick="showContent('Orders');activeMenu(this);" onmouseover="menuText(this);" onmouseout="menuImage(this);"> <img class="center" src="media\leaveyourorder.png" alt="Online Orders" style="height:90%;"> </a></div>
 		<div class="sidemenuitem" onclick="showContent('Stock');activeMenu(this);" onmouseover="menuText(this);" onmouseout="menuImage(this);"> <img class="center" src="media\stock-manage.png" alt="Stock Management" style="height:90%;"> </div>
+		<div class="sidemenuitem" onclick="showContent('Backup');activeMenu(this);" onmouseover="menuText(this);" onmouseout="menuImage(this);"> <img class="center" src="media\backup.png" alt="Backup" style="height:90%;"> </div>
 	</div>
 	
 
 	<div class="contents">
 			<div class="contentitem showitem" id="Search">
-				<div class="heading1" style="display: inline-block;">Search</div><br>
-				<iframe src="Search/drugs.htm" style="width:100%" frameborder="0" onload="resizeIframe(this)" > </iframe>
+				<div class="heading1" style="display: inline-block;">Search Drugs</div><br>
+				<iframe id="iFrameSearch" src="Search/drugs.htm" style="width:100%" frameborder="0" onload="resizeIframe(this)" > </iframe>
 				
 			</div>
 			
@@ -124,6 +127,9 @@
 			<div class="contentitem" id="Stock"> <div class="heading1">Stock Management</div>
 			<iframe src="admin/admin.php" style="width:120%" frameborder="0" onload="resizeIframe(this)" > </iframe>
 			</div>
+		<div class="contentitem" id="Backup"> <div class="heading1">Backup System</div>
+			<iframe  src="BackupSystem/backup.php" style="width:120%" frameborder="0" onload="resizeIframe(this)" > </iframe>
+		</div>
 			<div class="contentitem" id="news"> <div class="heading1">Public notice </div></div>
 
 	</div>
@@ -181,6 +187,21 @@
 	function resizeIframe(obj) {
 
 		obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
+		//alert( obj.contentWindow.document.body.scrollHeight);
+	}
+
+
+</script>
+<script>
+	function resizeIframeID(elemelentID) {
+
+		var obj = document.getElementById(elemelentID);
+		var table = obj.contentWindow.document.getElementById('tableDrug');
+		$(table).height();
+		console.log(table.id);
+		var obj = document.getElementById(elemelentID);
+		console.log(obj.id);
+		$(obj).height(170+ $(table).height());
 		//alert( obj.contentWindow.document.body.scrollHeight);
 	}
 </script>

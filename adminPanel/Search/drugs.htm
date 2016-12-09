@@ -3,19 +3,19 @@
 <head>
 	<meta charset="utf-8">
    <link rel="stylesheet" type="text/css" href="drugs.css">
-
+    <script src="../../jquery/jquery.min.js"></script>
 </head>
 <body>
 <br>
 
 <div class="searchbox">
 <input id="searchin" type=search placeholder="Search drugs">
-<button type=submit class="buttonlogin" onclick="search('searchin', 'table')" >&nbsp;</button>
+<button type=submit class="buttonlogin" onclick="search('searchin', 'tableDrug');" >&nbsp;</button>
 </div>
 
-<div class="drug-table" id="table">
+<table  id="tableDrug">
 
-</div>
+</table>
 
 
 
@@ -24,41 +24,32 @@
 <script>
 	function search(el, note)
     {
+
 		var element = document.getElementById(el);
 		var notify = document.getElementById(note);
 		var xmlhttp = new XMLHttpRequest();
+
 		xmlhttp.onreadystatechange = function() {
 			
 			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 				notify.innerHTML = xmlhttp.responseText;
+                $("#tableDrug").trigger('heightChange');
 			}
 		};
 		
 		xmlhttp.open("GET", "getdrugs.php?drugN=" + element.value, true);
 		xmlhttp.send();
 	}
-	
-		function searchInner(element)
-    {
-	var inputBox = document.getElementById('searchin');
-	var notify = document.getElementById('table');
-	inputBox.value = element.innerHTML;
-	var xmlhttp = new XMLHttpRequest();
-	xmlhttp.onreadystatechange = function() {
-		
-		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-			notify.innerHTML = xmlhttp.responseText;
-		}
-	};
-	
-	xmlhttp.open("GET", "getdrugs.php?drugN=" + element.innerHTML, true);
-	xmlhttp.send();
-	}
-		function showRaws()
+
+
+    function showRaws()
     {
 		var x = document.getElementsByClassName("hiddenraws");
 		for(i=0;i<x.length;i++){
 			x[i].style.display = "table-column";
 		}
 	}
+    $('#tableDrug').bind('heightChange', function(){
+        parent.resizeIframeID('iFrameSearch');
+    });
 </script>
