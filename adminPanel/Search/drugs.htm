@@ -27,6 +27,8 @@
 
 		var element = document.getElementById(el);
 		var notify = document.getElementById(note);
+        notify.innerHTML = '<div class="loader" style="margin: auto"></div>';
+        $("#tableDrug").trigger('heightChange');
 		var xmlhttp = new XMLHttpRequest();
 
 		xmlhttp.onreadystatechange = function() {

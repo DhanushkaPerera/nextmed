@@ -96,6 +96,7 @@
 
                 <div id="extra">
                     <div class="column">
+
                         <div class="headingbox" id="hBoxCS" > Civil Status </div>
                         <div class="inputboxWrap">
                             <select name=civil  onfocus="headingBoxActive('hBoxCS')" onfocusout="validateList(this, 'civilerror');validatedAll();" onchange="validateList(this, 'civilerror')" >
@@ -106,6 +107,7 @@
                             </select>
                         </div>
                         <div class="error" id="civilerror" > error occured </div><br>
+
                         <div class="headingbox" id="hBoxBG"> Blood Group </div>
                         <div class="inputboxWrap">
                             <select name=bloodgroup  onfocusout="validateList(this, 'bldgrperror')" onfocus="headingBoxActive('hBoxBG')" onchange="validateList(this, 'bldgrperror');validatedAll();" >
@@ -129,6 +131,14 @@
                         </div>
                         <div class="poperror" id="test" ></div>
                         <div class="error" id="adrerror2" > error occured </div><br>
+
+                        <div class="headingbox" id="hBoxAllergy"> Allergy Conditions </div>
+                        <div class="inputboxWrap">
+                            <input type="text"   onfocus="headingBoxActive('hBoxAllergy')" name=allergy onfocusout="validateAddr(this, 'allergyerror2');validatedAll();" /><br>
+                        </div>
+                        <div class="poperror" id="allergypop" ></div>
+                        <div class="error" id="allergyerror2" > error occured </div><br>
+
                     </div>
                 <br>
                 </div>

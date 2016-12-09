@@ -89,37 +89,28 @@ input[type="search"]:focus{
 
 #tableDrug{
 
-	border-style: solid;
-    border-width: 2px;
-	border-color: white;
+	border-style: none;
     width:97%;
     min-width: 800px;
 }
 
 
-
-
-
-.row{
-	border-style: solid;
-    border-width: 2px;
-	display:table-row;
-	background-color: #c4e2ff;
-	padding: 5px;
-	border-color: white;
+table {
+    border-collapse: collapse;
+    width: 100%;
 }
 
-th,td {
-	border-style: solid;
-    border-width: 2px;
-	display:table-column;
-	background-color: #c4e2ff;
-	padding: 5px;
-    width: 7.3%;
-
-    border-color: white;
-	transition: all .5s ease-in-out;
+th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #313cdd;
 }
+
+tr:hover{background-color:#f5f5f5}
+
+
+
+
 
 
 
@@ -128,52 +119,28 @@ th,td {
     border-width: 2px;
 }
 
-.columnEx {
-	color:white;
-	border-style: solid;
-	height: 17px;
-    border-width: 2px;
-	display:table-column;
-	background-color: #28527b;
-	padding: 0px 5px 0px 5px;
-	border-color: white;
-	transition: all .5s ease-in-out;
-	margin:0;
+
+
+.loader {
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #3498db;
+    width: 120px;
+    height: 120px;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
 }
 
-.columnEx:before {
-	content: 'more';
+@-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
 }
 
-.columnEx:hover{
-	color: black;
-	margin-right: 90%;
-	background-color:none;
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
-.columnEx:hover:before{
-	content:'more>>';
-}
-
- .c0{
-	background-color: #95c9fb;
-}
-
- .c1{
-	background-color: #aad3fb;
-}
-
- .c2{
-	background-color: #cae4fd;
-}
-
-.c3{
-	background-color: #dfeefd;
-}
-
- .c4{
-	background-color: #f4f9fe;
-}
 
 .b1{
 	display:inline;

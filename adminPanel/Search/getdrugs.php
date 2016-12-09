@@ -16,7 +16,14 @@ $drugN = $_REQUEST["drugN"];
 
 $sql="SELECT * FROM drug where DrugBrandName='$drugN'";
 $result = mysqli_query($db,$sql);
-echo '
+
+
+ if(mysqli_num_rows($result)==0){
+	echo '<h1>Drug is not found</h1>';
+}
+
+else{
+    echo '
 	<tr>
 		<th> Genetic Name 
 		</th>
@@ -45,12 +52,6 @@ echo '
 		<th> Discount
 		</th>
 	</tr>';
-
- if(mysqli_num_rows($result)==0){
-	echo 'Drug is not found';
-}
-
-else{
 	while( $rows = mysqli_fetch_assoc($result)){
         echo '<tr>';
         echo    '<th >'. $rows['GeneticName'].'</th>';
