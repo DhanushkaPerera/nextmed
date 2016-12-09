@@ -57,7 +57,7 @@
 		</div>
     </div>
 
-	<!--?php
+	<?php
 
 require("../db/db.php");
 
@@ -65,10 +65,10 @@ if(isset($_POST["search"])){
 	
 	
         $nic = $_POST["nic"];
-		$name=$_POST("name")
+		$name=$_POST("name");
 		
 				
-		$sql = "select * from customer where NIC='$nic' or ( FName='$name' or  LName='$name')";
+		$sql = "select * from customer where NIC='$nic' or FName='$name' or  LName='$name'";
 
 			$res = mysqli_query($con,$sql);
 			$count =mysqli_fetch_array($res);
@@ -82,8 +82,8 @@ if(isset($_POST["search"])){
                 echo "Unregistered customer";
             }
 }
-
-?-->
+}
+?>
 
 </body>
    <script>

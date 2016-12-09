@@ -3,7 +3,7 @@
 <title></title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <meta name="viewport" content="width=device-width, initial-scale: 1.0, user-scaleable=no">
-	<meta property="og:image" content="http://www.mhwebdesigns.com/templates/panel/images/preview.jpg"/>
+
 	<style>
 				/* Style the list */
 		ul.tab {
@@ -62,46 +62,45 @@
 <body bgcolor="#D0D0D0 ">
 	<div class="header">
 		<div class="header1">
-			<img src="Images/owl1.png" class="imgleft">
-			<h1 id="name">Welcome You To QuizWizard</h1>
+			<img src="images/next" class="imgleft">
+			<h1 id="name">Trainee Pharmacists Manage Center</h1>
 		</div>
 		<div class="header2">
-			Add Questions
+			Add New Trainee
 		</div>
 	</div>
 	
     <div style="padding-top:15%">
-     	<center> <a href="adminpage.php">  View Admin Page  </a> </center>
+     	<center> <a href="trainee.php">  View Admin Page  </a> </center>
 	</div>
 	<div class="col-12" style="padding-top:5%" >
-	<form action="controllers/addQuestion.php" method="post">
+	<form action="controllers/addaTrainee.php" method="post">
 		<ul class="tab" >
-		  <li><a href="#" class="tablinks" onClick="openCity(event, 'London')">Add Question </a></li>
-		  <li><a href="#" class="tablinks" onClick="openCity(event, 'Paris')">Add Answers</a></li>
-		  <li><a href="#" class="tablinks" onClick="openCity(event, 'Tokyo')">Submit the Question</a></li>
+		  
+		  <li><a href="#" class="tablinks" onClick="openCity(event, 'Paris')">Add Trainee Details</a></li>
+		  <li><a href="#" class="tablinks" onClick="openCity(event, 'Tokyo')">Allow the rights as the Trainee </a></li>
 		</ul>
 
-		<div id="London" class="tabcontent">
-		  <h3 style="color:black;">Add Question</h3>
-		  <textarea name="question" cols="50" rows="8" required placeholder="Question" ></textarea>
-		</div>
-
 		<div id="Paris" class="tabcontent">
-		  <h3 style="color:black;">Correct Answer</h3>
-		  <input type="text" name="corrAns" required>
+		  <h3 style="color:black;">Name</h3>
+		  <input type="text" name="Name" placeholder="Full Name" required>
 		  <hr>
-		  <h3 style="color:black;">Incorrect</h3>
+		  <h3 style="color:black;">Personal information</h3>
 		  <table>
-			<tr><input type="text" name="incorrAns1" required></tr><br>
-			<tr><input type="text" name="incorrAns2" required></tr><br>
-			<tr><input type="text" name="incorrAns3" required></tr><br>
+			<tr><input type="text" name="NIC" placeholder="NIC" required></tr><br>
+			<tr><input type="text" name="ContactNo" placeholder="Contact No" required></tr><br>
+			<tr><input type="text" name="Email" placeholder="email" required></tr><br>
+			<tr><input type="text" name="UserName" placeholder="User Name" required></tr><br>
+			<tr><input type="text" name="PassWord" placeholder="Password" required></tr><br>
+			
 		  </table>
 		  
 		</div>
 
 		<div id="Tokyo" class="tabcontent">
-		  <h3 style="color:black;">Submit Question</h3>
-		  <p><input type="submit" name="addQues" value="Save to database"></p>
+		  <h3 style="color:black;"></h3>
+		  <p> By clicking on the Agree Button below, You allow the new trainee to do authorized changes in your system. </p>
+		  <p><input type="submit" name="addTrai" value="Agree"></p>
 		</div>
 	</form>
 	
