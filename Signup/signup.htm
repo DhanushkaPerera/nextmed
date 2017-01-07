@@ -3,7 +3,6 @@
 <head>
 	<meta charset="utf-8">
    <link rel="stylesheet" type="text/css" href="style.css">
-   
 
 </head>
 <body>
@@ -15,8 +14,9 @@
         <div class="sep"></div>
 
             <div class="inputs">
-                <!-- user NIC input -->
+
                 <div class="column">
+                    <!-- user NIC input -->
                     <div class="headingbox" id="hBoxNIC" > National ID  </div>
                     <div class="inputboxWrap">
                         <input type="text" placeholder="920290505v" maxlength="13" name=nic onfocus="headingBoxActive('hBoxNIC')" onkeyup="validateNIC(this)"   onfocusout="upperCASE(this);hide('NICerror');validateoutNIC(this);validatedAll();" />
@@ -32,6 +32,7 @@
                     <div class="poperror" id="nameerror" ></div>
                     <div class="error" id="nameerror2" > error occured </div><br>
 
+                    <!-- user Last Name input -->
                     <div class="headingbox" id="hBoxLN"> Last Name </div>
                     <div class="inputboxWrap">
                     <input type="text"    name=lastname onfocus="headingBoxActive('hBoxLN')" onkeydown="validateString(this, 'lnameerror')" onfocusout="hide('lnameerror');validateoutString(this, 'lnameerror2');validatedAll();" /><br>
@@ -39,6 +40,7 @@
                     <div class="poperror" id="lnameerror" ></div>
                     <div class="error" id="lnameerror2" > error occured </div><br>
 
+                    <!-- user Gender input -->
                     <div class="headingbox" id="hBoxGen" > Gender </div>
                     <div class="inputboxWrap">
                         <input type="radio" name="gender" value="male"> Male
@@ -46,6 +48,8 @@
                     </div>
                     <div class="error" id="generror2" > error occured </div><br>
 
+
+                    <!-- user Birth Day input -->
                     <div class="headingbox" id="hBoxBdate" > Birth Date  </div>
                     <div class="inputboxWrap">
                         <input name=dob   type="text" onfocus="headingBoxActive('hBoxBdate');(this.type='date')" onfocusout="(this.type='text');validateDate(this, 'bderror2');validatedAll();" id="date"><br>

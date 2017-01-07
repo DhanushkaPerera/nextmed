@@ -126,7 +126,7 @@
 			</div>
 			<div class="contentitem" id="User"> <div class="heading1">User Management  </div></div>
 			<div class="contentitem" id="Stock"> <div class="heading1">Stock Management</div>
-			<iframe src="admin/admin.php" style="width:120%" frameborder="0" onload="resizeIframe(this)" > </iframe>
+			<iframe src="Stock/admin.php" style="width:120%" frameborder="0" onload="resizeIframe(this)" > </iframe>
 			</div>
 		<div class="contentitem" id="Backup"> <div class="heading1">Backup System</div>
 			<iframe  src="BackupSystem/backup.php" style="width:120%" frameborder="0" onload="resizeIframe(this)" > </iframe>

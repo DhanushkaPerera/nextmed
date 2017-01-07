@@ -39,35 +39,78 @@
 <html>
 <head>
 	<title>admin</title>
-	<link href="styles2.css" rel="stylesheet" type="text/css" />
+
+	<link href="../css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="../../assets/bootstrap-table/src/bootstrap-table.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="../../jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="../js/bootstrap.js"></script>
+
 </head>
 
 <body>
-	<div class="wrapper">
-		<ul class="menu">
-			<li class="active"><a href="#">DRUG</a>
-				<ul class="submenu">
-					<li><a href="adddrug.php" >ADD</a></li>
-					<li><a href="viewDrugs.php" onclick="viewDrugs('result')">VIEW</a></li>
-					<li><a href="ExpDrug.php">DRUGS ABOUT TO EXPIRE</a></li>
-					<li><a href="updatedrug.php">UPDATE</a></li>
-					<li><a href="removedrug.php">REMOVE</a></li>
-				</ul></li>
-				
-			<li class="active"><a href="#">SUPPLIER</a>
-			<ul class="submenu">
-					<li><a href="Supplier.php">ADD</a></li>
-					<li><a href="viewSupplier.php">VIEW</a></li>
-					
-					<li><a href="updateSupplier.php">UPDATE</a></li>
-					<li><a href="removeSupplier.php">REMOVE</a></li>
-				</ul></li>
-		</ul>
+
+<div class="container" style="margin-left:10px;">
+	<ul class="nav nav-tabs">
+		<li class="active"><a data-toggle="tab" href="#Drugs">Drugs</a></li>
+		<li><a data-toggle="tab" href="#Suppliers">Suppliers</a></li>
+	</ul>
+	<div style="background-color: transparent" class="tab-content">
+		<div id="Drugs" class="tab-pane fade in active">
+			<h3>Drugs</h3>
+            <div class="fixed-table-toolbar">
+                <div class="bs-bars pull-left">
+                    <div id="toolbar">
+                        <button id="remove" class="btn btn-danger" disabled="">
+                            <i class="glyphicon glyphicon-remove"></i> Delete
+                        </button>
+                    </div>
+                </div>
+                <div class="pull-right search">
+                    <input class="form-control" type="text" placeholder="Search">
+                </div>
+
+            </div>
+            <br>
+            <div class="fixed-table-container">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>#Stock No</th>
+                            <th>Brand Name</th>
+                            <th>Dosage Form</th>
+                            <th>Supplier Name</th>
+                            <th>Purchase Date</th>
+                            <th>Remaining Quantity</th>
+                            <th>Ordered Quantity</th>
+                            <th>Return Policy</th>
+                            <th>Retail Price</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Anna</td>
+                            <td>Pitt</td>
+                            <td>35</td>
+                            <td>New York</td>
+                            <td>USA</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+		<div id="Suppliers" class="tab-pane fade">
+			<h3>Suppliers</h3>
+			<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+		</div>
 	</div>
+</div>
+
 	
-	<!--<div class="result">
-	
-	</div>-->
+	<!--<div class="result">		</div>-->
 </body>
 	
 </html>
