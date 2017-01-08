@@ -14,7 +14,7 @@
 	
 	<?php
 		//if(isset($_post["views"])){
-			require("../db/db.php") ;
+			require("../db/db.php");
 			$sql = "SELECT * FROM supplier";
 			
 			$result = mysqli_query($connection , $sql);
@@ -45,7 +45,7 @@
 		//}
 	?>
 </div>
-<INPUT Type="BUTTON" name="back" class="back" Value="X" Onclick="window.location.href='admin.php'">
+<INPUT Type="BUTTON" name="back" class="back" Value="X" Onclick="window.location.href='../admin.php'">
 </div>
 <body>
 

@@ -302,8 +302,6 @@ background: #fff;
     padding: 5px 0;
     position: absolute;
     z-index: 5;
-    !top: 100%;
-    !left: 100%;
     margin-left: 65px;
 	margin-top: -15px;
 	-moz-box-shadow: 0 0 10px black;
@@ -372,8 +370,7 @@ textarea,select{
 	border-top-left-radius:2em;
 	border-top-right-radius:0;
 	border-bottom-right-radius:2em;
-	border-bottom-left-radius:-2em;
-	border-bottom-left-radius:-2em;
+
 	background: white;
 	left: 4%;
 	font-weight: bold;

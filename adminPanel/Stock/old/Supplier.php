@@ -56,7 +56,7 @@
 <?php
 if(isset($_POST["submit"])){
 	//1.Create Database Connection
-	require("../db/db.php") ;
+	require("../db/db.php");
 	
 	//3.Perform Database Query
 	$sql = "INSERT INTO supplier(Company_Name , Permenant_Address , Contact_No , Email_Address) 
@@ -74,7 +74,7 @@ if(isset($_POST["submit"])){
 ?>
 </div>
 	
-<INPUT Type="BUTTON" name="back" class="back" Value="X" Onclick="window.location.href='admin.php'">
+<INPUT Type="BUTTON" name="back" class="back" Value="X" Onclick="window.location.href='../admin.php'">
 </div>
 
 </body>

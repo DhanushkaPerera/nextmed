@@ -1,39 +1,4 @@
 <!DOCTYPE html>
-<!--html >
-  <head>
-    <meta charset="UTF-8">
-    
-        <link rel="stylesheet" href="styles2.css">
-    </head>
-  <body>
-<ul class="tabs">
-    <li>
-        <input type="radio" name="tabs" id="tab1" checked />
-        <label for="tab1">drug</label>
-        <div id="tab-content1" class="tab-content">
-			<div class="iconD"  onclick="window.location='adddrug.php';"><p>ADD<br>A<br>NEW<br>DRUG</p></div>
-			<div class="iconD" onclick="window.location='viewDrugs.php';"><p>VIEW<br>DRUGS</p></div>
-			<div class="iconD" onclick="window.location='ExpDrug.php';"><p>DRUGS<br> ABOUT<br> TO<br> EXPIRE</p></div>
-			<div class="iconD" onclick="window.location='updatedrug.php';"><p>UPDATE<br>DRUGS</p></div>
-			<div class="iconD" onclick="window.location='removedrug.php';"><p>DELETE<br>DRUGS</p></div>
-			
-        </div>
-    </li>
-  
-    <li>
-        <input type="radio" name="tabs" id="tab2" />
-        <label for="tab2">supplier</label>
-        <div id="tab-content2" class="tab-content">
-			<div class="iconD" onclick="window.location='Supplier.php';"><p>ADD<br>A<br>NEW<br>SUPPLIER</p></div>
-			<div class="iconD" onclick="window.location='viewSupplier.php';"><p>VIEW<br>SUPPLIER</p></div>
-			<div class="iconD" onclick="window.location='updateSupplier.php';"><p>UPDATE<br>SUPPLIER</p></div>
-			<div class="iconD" onclick="window.location='removesupplier.php';"><p>DELETE<br>SUPPLIER</div>
-          
-        </div>
-    </li>
-</ul>
-</body>
-</html-->
 
 
 <html>
@@ -60,6 +25,12 @@
             <div class="fixed-table-toolbar">
                 <div class="bs-bars pull-left">
                     <div id="toolbar">
+                        <button id="remove" class="btn btn-success" >
+                            <i class="glyphicon glyphicon-plus"></i> Add
+                        </button>
+                        <button id="remove" class="btn btn-default" disabled="">
+                            <i class="glyphicon glyphicon-edit"></i> Edit
+                        </button>
                         <button id="remove" class="btn btn-danger" disabled="">
                             <i class="glyphicon glyphicon-remove"></i> Delete
                         </button>
@@ -76,6 +47,7 @@
                     <table class="table">
                         <thead>
                         <tr>
+                            <th>Select</th>
                             <th>#Stock No</th>
                             <th>Brand Name</th>
                             <th>Dosage Form</th>
@@ -87,9 +59,29 @@
                             <th>Retail Price</th>
                         </tr>
                         </thead>
+                        <tbody id="tablebody">
+
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+		<div id="Suppliers" class="tab-pane fade">
+			<h3>Suppliers</h3>
+            <div class="fixed-table-container">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead id="tableContent">
+
+                        </thead>
                         <tbody>
                         <tr>
-                            <td>1</td>
+                            <td><div class="checkbox">
+                                    <label><input type="checkbox" value=""></label>
+                                </div>
+                            </td>
                             <td>Anna</td>
                             <td>Pitt</td>
                             <td>35</td>
@@ -100,11 +92,6 @@
                     </table>
                 </div>
             </div>
-
-        </div>
-		<div id="Suppliers" class="tab-pane fade">
-			<h3>Suppliers</h3>
-			<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 		</div>
 	</div>
 </div>
@@ -112,5 +99,24 @@
 	
 	<!--<div class="result">		</div>-->
 </body>
-	
+<script>
+    $( document ).ready(function() {
+        var count=10;
+        var table = $("#tablebody");
+        jQuery.ajax({
+            type: "POST",
+            url: "loadDrugs.php",
+            dataType: 'json',
+            data: {count: count},
+            complete: function(r){
+                if (r.responseText.length > 10){
+                   table.html(r.responseText);
+                }
+                else{
+                    table.html("Failed");
+                }
+            }
+        });
+    });
+</script>
 </html>

@@ -27,7 +27,7 @@
         </form>
 
  <?php 
-require("../db/db.php") ;
+require("../db/db.php");
 
 			if (isset($_POST["search"])){
                 
@@ -54,7 +54,7 @@ echo "<table  align=left border=0>
 	
 <tr>
 <td>ID</td>
-<td><input type=text name=supplier_No size=55 maxlength=50 value=".$row['supplier_No']."></td>
+<td><input type=text name=supplier_No size=55 maxlength=50 value=" .$row['supplier_No']."></td>
 </tr> 
 
 <tr>
@@ -118,7 +118,7 @@ echo "<table  align=left border=0>
 
 
 </div>
-<INPUT Type="BUTTON" name="back" class="back" Value="X" Onclick="window.location.href='admin.php'">
+<INPUT Type="BUTTON" name="back" class="back" Value="X" Onclick="window.location.href='../admin.php'">
 </div>
 </body>
 		
