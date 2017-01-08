@@ -27,7 +27,7 @@
 		<br/><br/><br/><br/><br/>
 
  <?php 
- require("../db/db.php") ;
+ require("../db/db.php");
 
 
 			if (isset($_POST["search"])){
@@ -48,10 +48,10 @@
 				
 				echo "<table  align=left border=0>
 <form method='POST' action='' >
-<link rel = 'stylesheet' href = 'drug.css' />
+<link rel = 'stylesheet' href = '../drug.css' />
 <tr>
 <td>Drug No</td>
-<td><input type=text name=DrugNo size=25 maxlength=10 value=".$row['DrugNo']."></td>
+<td><input type=text name=DrugNo size=25 maxlength=10 value=" .$row['DrugNo']."></td>
 </tr> 
 
 <tr>
@@ -264,7 +264,7 @@ if (isset($_POST["update"])){
 		
  ?>	
 </div>
-<INPUT Type="BUTTON" name="back" class="back" Value="X" Onclick="window.location.href='admin.php'">
+<INPUT Type="BUTTON" name="back" class="back" Value="X" Onclick="window.location.href='../admin.php'">
 </div>
 </body>
 		

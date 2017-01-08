@@ -34,7 +34,7 @@
 	
 	<?php
     
- require("../db/db.php") ;
+ require("../db/db.php");
 
 
     if (isset($_POST["delete"])){
@@ -53,7 +53,7 @@
     }
 ?>
 </div>
-<INPUT Type="BUTTON" name="back" class="back" Value="X" Onclick="window.location.href='admin.php'">
+<INPUT Type="BUTTON" name="back" class="back" Value="X" Onclick="window.location.href='../admin.php'">
 </div>
 </body>
 		
