@@ -4,6 +4,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Billing</title>
     <link rel="stylesheet" type="text/css" href="billnew.css">
+	<script src="../../jquery/jquery.min.js"></script>
+
 
 </head>
 
@@ -85,7 +87,7 @@ if(isset($_POST["search"])){
 		
 		<div class="headingbox" id="hBoxON" > Order No </div>
 			<div style="width:100%;text-align:center;">
-            <input type="text" autofocus name=orderno onfocus="headingBoxActive('hBoxON')" onkeydown="validateString(this, 'nameerror')" onfocusout="hide('nameerror');validateoutString(this, 'nameerror2');validatedAll();" /><br>
+            <input readonly id=order type="text" value="" autofocus name=orderno onfocus="headingBoxActive('hBoxON')" onkeydown="validateString(this, 'nameerror')" onfocusout="hide('nameerror');validateoutString(this, 'nameerror2');validatedAll();" /><br>
 			</div>
 			
 			<div class="headingbox" id="hBoxOM"> Order Method </div>
@@ -117,7 +119,25 @@ if(isset($_POST["search"])){
 	</form>
 	</div>
 
+<script>
+$( document ).ready(function() {
+	alert('test');
+function autoNum(){
+		var last = "<?php $sql='select InvoiceNo from invoice where InvoiceNo = (select max(InvoiceNo) from invoice)';
+		$res = mysqli_query($db,$sql);
+		if(mysqli_num_rows($res)>0){
+				while($array = mysqli_fetch_array($res)){
+            
+		echo $array[0];}}?>";
+			alert(last)
+		var inputBox = document.getElementById('order');
+		inputBox.value=last;
 
+}
+autoNum();
+});
+	
+</script>
 
 <?php
 
