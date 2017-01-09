@@ -136,7 +136,7 @@
                         <div class="poperror" id="test" ></div>
                         <div class="error" id="adrerror2" > error occured </div><br>
 
-                        <div class="headingbox" id="hBoxAllergy"> Allergy Conditions </div>
+                        <div class="headingbox" id="hBoxAllergy"> Allergic Drugs </div>
                         <div class="inputboxWrap">
                             <input type="text"   onfocus="headingBoxActive('hBoxAllergy')" name=allergy onfocusout="validateAddr(this, 'allergyerror2');validatedAll();" /><br>
                         </div>
@@ -164,7 +164,7 @@
    var nicValid = false;
    var fnameValid = false;
    var lnameValid = false;
-   var genderValid = false;
+   var genderValid = true;
    var bdayValid = false;
    var addressValid = false;
    var civilStatValid = false;
@@ -619,12 +619,10 @@
 			headingBoxAlert('hBoxBG', bdGrpValid);
 
 		}
-		else if(name=="gender") {
-		genderValid = validList;
-		headingBoxAlert('hBoxGen', genderValid);
-		}
 	}
+    function validateGender(element,errorCODE){
 
+    }
 	function validateAddr(element, errorCODE){
 		var str = element.value;
 		var strl = str.length;
