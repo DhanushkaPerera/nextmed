@@ -2,178 +2,98 @@
 <html>
 <head>
 	<meta charset="utf-8">
-   <link rel="stylesheet" type="text/css" href="style.css">
-
+	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
+
 <body>
-    <form id="signup" name="Signup" action="../php/signup_action.php" method="post" onsubmit="return password()">
-	<div class="close" onclick="parent.closeIFrame();"> X </div>
-			<br>
-			<div style="width:100%;text-align:center; ">
-            <h3>Sign Up</h3> </div>
-        <div class="sep"></div>
-
-            <div class="inputs">
-
+    <div id="signup" name="Signup" action="" method="post">
+	<br>
+	<div style="width:100%;text-align:center; ">
+    <h3>Customer Details</h3> </div>
+    <div class="sep"></div>
+        <div class="inputs">
+                <!-- user NIC input -->
                 <div class="column">
-                    <!-- user NIC input -->
                     <div class="headingbox" id="hBoxNIC" > National ID  </div>
                     <div class="inputboxWrap">
-                        <input type="text"  maxlength="13" name=nic onfocus="headingBoxActive('hBoxNIC')" onkeyup="validateNIC(this)"   onfocusout="upperCASE(this);hide('NICerror');validateoutNIC(this);validatedAll();" />
+                        <!--input type="text" placeholder="920290505v" maxlength="13" name=nic onfocus="headingBoxActive('hBoxNIC')" onkeyup="validateNIC(this)"   onfocusout="upperCASE(this);hide('NICerror');validateoutNIC(this);validatedAll();" /-->
+						<input type="text" placeholder="920290505v" maxlength="13" name=nic>
                     </div>
                     <div class="poperror" id="NICerror" ></div>
                     <div class="error" id="nicerror2" > error occured </div><br>
 
-                    <!-- user First Name input -->
-                    <div class="headingbox" id="hBoxFN" > First Name </div>
-                    <div class="inputboxWrap" >
-                        <input type="text"   name=firstname onfocus="headingBoxActive('hBoxFN')" onkeydown="validateString(this, 'nameerror')" onfocusout="hide('nameerror');validateoutString(this, 'nameerror2');validatedAll();" /><br>
-                    </div>
-                    <div class="poperror" id="nameerror" ></div>
-                    <div class="error" id="nameerror2" > error occured </div><br>
-
-                    <!-- user Last Name input -->
-                    <div class="headingbox" id="hBoxLN"> Last Name </div>
-                    <div class="inputboxWrap">
-                    <input type="text"    name=lastname onfocus="headingBoxActive('hBoxLN')" onkeydown="validateString(this, 'lnameerror')" onfocusout="hide('lnameerror');validateoutString(this, 'lnameerror2');validatedAll();" /><br>
-                    </div>
-                    <div class="poperror" id="lnameerror" ></div>
-                    <div class="error" id="lnameerror2" > error occured </div><br>
-
-                    <!-- user Gender input -->
-                    <div class="headingbox" id="hBoxGen" > Gender </div>
-                    <div class="inputboxWrap">
-                        <input type="radio" name="gender" value="male"> Male
-                        <input type="radio" name="gender" value="female"> Female<br>
-                    </div>
-                    <div class="error" id="generror2" > error occured </div><br>
-
-
-                    <!-- user Birth Day input -->
-                    <div class="headingbox" id="hBoxBdate" > Birth Date  </div>
-                    <div class="inputboxWrap">
-                        <input name=dob   type="text" onfocus="headingBoxActive('hBoxBdate');(this.type='date')" onfocusout="(this.type='text');validateDate(this, 'bderror2');validatedAll();" id="date"><br>
-                    </div>
-                    <div class="error" id="bderror2" > error occured </div><br>
+                    
 
 
                 </div>
 
                 <div class="column" style="clear: right;">
-                    <div class="headingbox" id="hBoxEM"> E-mail </div>
-                    <div class="inputboxWrap">
-                    <input type="text"    name=emailaddress onfocus="headingBoxActive('hBoxEM')" onfocusout="validateEmail(this, 'emailerror');hide('emailerror2');validatedAll();" onfocus="show('emailerror2');" /><br>
+                     <!-- user First Name input -->
+                    <div class="headingbox" id="hBoxFN" >  Name </div>
+                    <div class="inputboxWrap" >
+                        <!--input type="text"   name=name onfocus="headingBoxActive('hBoxFN')" onkeydown="validateString(this, 'nameerror')" onfocusout="hide('nameerror');validateoutString(this, 'nameerror2');validatedAll();" /><br-->
+						 <input type="text"   name=name>
                     </div>
-                    <div class="error" id="emailerror" > error occured </div><br>
-                    <div class="poperror" id="emailerror2"> email@example.com </div>
+                    <div class="poperror" id="nameerror" ></div>
+                    <div class="error" id="nameerror2" > error occured </div><br>
 
 
-                    <div class="headingbox" id="hBoxPN"> Phone Number </div>
-                    <div class="inputboxWrap">
-                    <input type="text" maxlength=10; onfocus="headingBoxActive('hBoxPN')"   name=contactno onfocusout="validatePhoneNo(this, 'phoneerror');validatedAll();"/><br>
-                    </div>
-                    <div class="error" id="phoneerror" > error occured </div><br>
-
-
-
-
-
-
-                    <div class="headingbox" id="hBoxPS"> Password </div>
-                    <div class="inputboxWrap">
-                    <input type="password" onfocus="headingBoxActive('hBoxPS')" onfocusout="validatePassC(this, 'confirmpass', 'confirmPassIn');" name=password id="passInput" /><br>
-                    </div>
-
-                    <div class="headingbox" id="hBoxCP" > Confirm Password </div>
-                    <div class="inputboxWrap">
-                    <input type="password"  onfocus="headingBoxActive('hBoxCP')" id="confirmPassIn" onfocusout="validatePass(this, 'confirmpass', 'passInput');" /><br>
-                    </div>
-                    <div class="error" id="confirmpass"  >  </div><br>
+                    
 
 
                 </div>
 
-                <div class="wrapshow">
-                     <div class="buttonSHOW"  onclick="toggleAnimate(this,'extra');" >Add more details</div>
-
-                </div>
-
-                <div id="extra">
-                    <div class="column">
-
-                        <div class="headingbox" id="hBoxCS" > Civil Status </div>
-                        <div class="inputboxWrap">
-                            <select name=civil  onfocus="headingBoxActive('hBoxCS')" onfocusout="validateList(this, 'civilerror');validatedAll();" onchange="validateList(this, 'civilerror')" >
-                                <option value="" disabled selected>Civil Status</option>
-                                <option value="Single">Single</option>
-                                <option value="Married">Married</option>
-                                <option value="Divorced">Divorced</option>
-                            </select>
-                        </div>
-                        <div class="error" id="civilerror" > error occured </div><br>
-
-                        <div class="headingbox" id="hBoxBG"> Blood Group </div>
-                        <div class="inputboxWrap">
-                            <select name=bloodgroup  onfocusout="validateList(this, 'bldgrperror')" onfocus="headingBoxActive('hBoxBG')" onchange="validateList(this, 'bldgrperror');validatedAll();" >
-                                <option value="" disabled selected  >Blood Group</option>
-                                <option value="Single">A+</option>
-                                <option value="Married">A-</option>
-                                <option value="Divorced">B+</option>
-                                <option value="Divorced">B-</option>
-                                <option value="Divorced">O+</option>
-                                <option value="Divorced">O-</option>
-                                <option value="Divorced">AB+</option>
-                                <option value="Divorced">AB-</option>
-                            </select>
-                        </div>
-                        <div class="error" id="bldgrperror" > error occured </div><br>
-                    </div>
-                    <div class="column">
-                        <div class="headingbox" id="hBoxAdrs"> Address </div>
-                        <div class="inputboxWrap">
-                            <input type="text"   onfocus="headingBoxActive('hBoxAdrs')" name=address onfocusout="validateAddr(this, 'adrerror2');validatedAll();" /><br>
-                        </div>
-                        <div class="poperror" id="test" ></div>
-                        <div class="error" id="adrerror2" > error occured </div><br>
-
-                        <div class="headingbox" id="hBoxAllergy"> Allergy Conditions </div>
-                        <div class="inputboxWrap">
-                            <input type="text"   onfocus="headingBoxActive('hBoxAllergy')" name=allergy onfocusout="validateAddr(this, 'allergyerror2');validatedAll();" /><br>
-                        </div>
-                        <div class="poperror" id="allergypop" ></div>
-                        <div class="error" id="allergyerror2" > error occured </div><br>
-
-                    </div>
-                <br>
-                </div>
+                
 
                 <div style="width:100%;text-align:center; " >
-                <div class="checkboxy" >
-                    <input name="checked" id="checkAgree" value="1" type="checkbox" onclick="validatedAll()"/><label class="terms"  >I agree to the terms and conditions of the neXtMEd. </label>
-                </div>
-                <a href="Agreement/agreement.html#top">More information on Agreement</a><br>
-                <button class="buttonS" onclick="parent.parent.closeIFrame();" > Cancel </button>
+                
 
-                <input class="buttonDis"  type="submit" name=submit value=Submit id="submitButton" disabled onclick="validatedAll();parent.parent.closeIFrame();" >
+                <input class="buttonDis"  type="submit" name=search value=Search id="submitButton" >
+				<button class="buttonS" type=reset > Cancel </button>
+				
+
+
+
                 </div>
 
 		</div>
-    </form>
+    </div>
+
+	<?php
+
+require("../db/db.php");
+
+if(isset($_POST["search"])){
+	
+	
+        $nic = $_POST["nic"];
+		$name=$_POST("name");
+		
+				
+		$sql = "select * from customer where NIC='$nic' or FName='$name' or  LName='$name'";
+
+			$res = mysqli_query($db,$sql);
+			
+
+			
+			if(mysqli_num_rows($res)>0){
+				while($row = mysqli_fetch_array($res)){
+            
+			echo "<div style='margin-top:500px';>Registered customer</div>";
+			}}
+			else{
+                echo "Unregistered customer";
+            }
+}
+
+?>
+
 </body>
-   <script>
+   <!--script>
    var nicValid = false;
    var fnameValid = false;
    var lnameValid = false;
-   var genderValid = false;
-   var bdayValid = false;
-   var addressValid = false;
-   var civilStatValid = false;
-   var occpValid = false;
-   var phNoValid = false;
-   var bdGrpValid = false;
-   var emailValid = false;
-   var passValid = false;
-   var passfirst = true;
+   
 
    function headingBoxActive(box){
 	var element = document.getElementById(box);
@@ -181,7 +101,7 @@
 	element.style.color = "white";
    }
 
-   function headingBoxAlert(box, thisValid){
+   /*function headingBoxAlert(box, thisValid){
 	if(!thisValid){
 		var element = document.getElementById(box);
 		element.style.background =  "#ff6768";
@@ -196,16 +116,16 @@
 
    function headingBoxInactive(box){
 
-   }
+   }*/
 
    function hide(id){
 		var element = document.getElementById(id);
 		element.style.opacity = "0";
    }
-   function show(id){
+   /*function show(id){
 		var element = document.getElementById(id);
 		element.style.opacity = "1";
-   }
+   }*/
 	function validateoutNIC(element){
 		var str = element.value;
 		var strl = str.length;
@@ -383,7 +303,7 @@
 		element.value = element.value.toUpperCase();
    }
 
-	function validateDate(element, errorCODE){
+	/*function validateDate(element, errorCODE){
 		var strN = element.value;
 		var str = element.value.split("-");
 		var notify = document.getElementById(errorCODE);
@@ -573,15 +493,14 @@
 			headingBoxAlert('hBoxPS', passValid);
 			headingBoxAlert('hBoxCP', passValid);
 		}
-	}
+	}*/
 
 	function validatedAll(){
-        alert('here');
+		//alert("nic "+nicValid+",fname "+fnameValid+",lname "+lnameValid+",genderValid "+ genderValid+",bdayValid "+ "bday" + bdayValid+ +  "phpNo" + phNoValid  + "email" + emailValid + passValid);
 		var element = document.getElementById("submitButton");
 		var elementCheck = document.getElementById("checkAgree");
 		var agree = elementCheck.checked;
-        alert("nic "+nicValid+",fname "+fnameValid+",lname "+lnameValid+",genderValid "+ genderValid+",bdayValid "+ "bday" + bdayValid+ +  "phpNo" + phNoValid  + "email" + emailValid + passValid+agree);
-
+		
 		if(nicValid && fnameValid && lnameValid && genderValid && bdayValid&& phNoValid && emailValid && passValid && agree){
 			element.className = "inputs buttonS";
 			element.disabled = false;
@@ -591,8 +510,8 @@
 			element.disabled = true;
 		}
 	}
-
-	function validateList(element, errorCODE){
+	
+	/*function validateList(element, errorCODE){
 		var validList = false;
 		var name = element.getAttribute("name");
 		var str = element.value;
@@ -613,18 +532,18 @@
 			civilStatValid = validList;
 			headingBoxAlert('hBoxCS', civilStatValid);
 		}
-
+		
 		else if(name=="bloodgroup") {
 			bdGrpValid = validList;
 			headingBoxAlert('hBoxBG', bdGrpValid);
-
+		
 		}
 		else if(name=="gender") {
 		genderValid = validList;
 		headingBoxAlert('hBoxGen', genderValid);
 		}
 	}
-
+	
 	function validateAddr(element, errorCODE){
 		var str = element.value;
 		var strl = str.length;
@@ -644,12 +563,12 @@
 		}
 
 	}
-
+	
 	function notice(errorCODE){
 		var notify = document.getElementById(errorCODE);
 		notify.innerHTML = "this is a required field."
-	}
-
+	}*/
+	
 	function verifyNIC(element, notify)
     {
 
@@ -664,7 +583,7 @@
 				notify.innerHTML = xmlhttp.responseText;
 				element.style.border = "2px solid #ff6768";
 				headingBoxAlert('hBoxNIC', nicValid);
-
+				
 			}
 			else{
 				notify.style.opacity="0";
@@ -676,10 +595,10 @@
 	};
 	xmlhttp.open("GET", "../php/checkNIC.php?nicN=" + element.value, true);
 	xmlhttp.send();
-
+    
 	}
 
-	function toggleAnimate(button, elementID) {
+	/*function toggleAnimate(button, elementID) {
         element = document.getElementById(elementID);
         if (button.innerHTML=="Add more details"){
             button.innerHTML="Hide";
@@ -690,6 +609,6 @@
             element.style.maxHeight="0px";
         }
 
-    }
+    }*/
 
-	</script>
+	</script-->

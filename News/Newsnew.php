@@ -8,7 +8,7 @@
 <body>
 	
 	<div class = "notice">
-		<h2> News >> </h2>
+		<!--h2> News >> </h2-->
 		<div id = "MyDivName" class = "scroll"> 
 			<?php
 	
@@ -17,7 +17,7 @@
 				//Retrieve Data
 				$sql = "SELECT * FROM news ORDER BY  date DESC";
 				//$sql = "SELECT DISTINCT username FROM user";
-				$res = mysqli_query($connection , $sql);
+				$res = mysqli_query($db , $sql);
 					
 				if($res){
 					while($row = mysqli_fetch_array($res)){
@@ -25,11 +25,11 @@
 					}
 				}
 				else{
-					echo "Error : " . mysqli_error($connection); 
+					echo "Error : " . mysqli_error($db); 
 				}
 				
 				//Close connectionection
-				mysqli_close($connection);
+				mysqli_close($db);
 			?>
 		</div>
 	</div>
@@ -49,7 +49,7 @@
 			<p> Have a dream to become </br> a pharmacist? </p>
 			<p> Vacancy at </br> Anura Pharmacy (Pvt) Ltd </p>
 			<!--input class = "button" type = "submit" name = "submit" value = "Register Now"-->
-			<button class="button"><a href="vacancy.html">Apply Now</a></button>
+			<a href="vacancy.html"><button class="button">Apply Now</button></a>
 		</div>
 		
 	</div>

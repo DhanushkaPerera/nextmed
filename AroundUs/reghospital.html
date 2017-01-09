@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<link rel = "stylesheet" href="reginfo.css"/>
+	<link rel = "stylesheet" type="text/css" href = "addnews.css" />
+<head>
+
+<body>
+
+		<form id="register" name="regdoctors" action="reghospital.php" method="post"><br>
+		<button class="back" onclick="goBack()">X</button>
+			
+			<br>
+			<div style="width:100%;text-align:center; ">
+            <h3>Register Hospital</h3> </div>
+			
+			<div class="sep"></div>
+				
+			<div class="inputs">
+				
+				<!--HOSPITAL NAME-->
+				<div class="headingbox" id="hBoxNews" > Hospital Name </div>
+                <div class="inputboxWrap" >
+                     <input type="text"   name=hospitalname placeholder="Hospital Name" onfocus="headingBoxActive('hBoxNews')" onkeydown="validateString(this, 'postnewserror')" onfocusout="hide('postnewserror');validateoutString(this, 'postnewserror2');validatedAll();"/><br>
+                </div>
+                <div class="poperror" id="postnewserror" ></div>
+                <div class="error" id="postnewserror2" > error occured </div><br>
+				
+				
+				<!-- HOSPITAL LOCATION -->
+                <div class="headingbox" id="hBoxFN" > Location </div>
+                <div class="inputboxWrap" >
+                    <input type="text"   name=location placeholder="Location" onfocus="headingBoxActive('hBoxFN')" onkeydown="validateString(this, 'nameerror')" onfocusout="hide('nameerror');validateoutString(this, 'nameerror2');validatedAll();" /><br>
+                </div>
+                <div class="poperror" id="nameerror" ></div>
+                <div class="error" id="nameerror2" > error occured </div><br>
+				
+				<!-- HOSPITAL PHONE NUMBER-->
+				<div class="headingbox" id="hBoxPN"> Phone Number </div>
+                <div class="inputboxWrap">
+                <input type="text" maxlength=10; onfocus="headingBoxActive('hBoxPN')"   name=telephonenum placeholder="Telephone Number" onfocusout="validatePhoneNo(this, 'phoneerror');validatedAll();"/><br>
+				</div>
+                <div class="error" id="phoneerror" > error occured </div><br>
+				
+				<!--SUBMIT BUTTON-->
+				<div style="width:100%;text-align:center; " >
+				<input class="buttonDis"  type="submit" name=submit value=Submit id="submitButton"/>
+				</div>
+				
+				<!--CANCEL BUTTON-->
+				<div style="width:100%;text-align:center; " >
+				<input class="buttonDis"  type="submit" name=cancel value=Cancel id="cancelButton"/>
+				</div>
+			
+			</div>
+		
+		</form>
+		
+			</div>
+
+	</div>
+			
+<body>
+
+</html>
+
+<script>
+function goBack() {
+    window.history.back();
+}
+</script>

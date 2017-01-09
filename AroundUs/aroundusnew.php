@@ -26,7 +26,7 @@
 				<!--input name = "location" type = "text" size = "30" /-->
 				<select name="location" type="text">
 					<option value="Gampaha"> Gampaha </option>
-					<option value="Ragame"> Ragame </option>
+					<option value="Ragame"> Ragama </option>
 					<option value="Wattupitiawala"> Wattupitiawala </option>
 					<option value="Negambo"> Negambo </option>
 					<option value="Minuwangoda">  Minuwangoda </option>
@@ -88,7 +88,7 @@
 			//Retrieve Data
 			$sql = "SELECT * FROM hospital WHERE location = '$_POST[location]'";
 			//$sql = "SELECT DISTINCT username FROM user";
-			$res = mysqli_query($connection , $sql);
+			$res = mysqli_query($db , $sql);
 				
 			if($res){
 				echo "<table border = 1 >
@@ -103,7 +103,7 @@
 				echo "</table>";
 			}
 			else{
-				echo "Error : " . mysqli_error($connection); 
+				echo "Error : " . mysqli_error($db); 
 			}
 		
 		}
@@ -113,7 +113,7 @@
 				//Retrieve Data
 				$sql = "SELECT * FROM doctor WHERE category = '$_POST[special]'";
 				//$sql = "SELECT DISTINCT username FROM user";
-				$res = mysqli_query($connection , $sql);
+				$res = mysqli_query($db , $sql);
 					
 				if($res){
 					echo "<table border = 1>
@@ -128,13 +128,13 @@
 					echo "</table>";
 				}
 				else{
-					echo "Error : " . mysqli_error($connection); 
+					echo "Error : " . mysqli_error($db); 
 				}
 			}
 		}
 		
 		//Close connectionection
-		mysqli_close($connection);
+		mysqli_close($db);
 		
 ?>
 </div>

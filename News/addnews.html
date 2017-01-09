@@ -1,0 +1,54 @@
+<!DOCTYPE>
+<html>
+	<head> 
+		<meta charset="utf-8">
+		<title> Admin - public notice </title>
+		<link rel = "stylesheet" type="text/css" href = "addnews.css" />
+	</head>
+	
+	<body>
+	
+	<form id="newsreg" name="NewsReg" action="sendnews.php" method="post">
+	
+	<button class="back" onclick="goBack()">X</button>
+	
+			<br>
+			<div style="width:100%;text-align:center; ">
+            <h3>PUBLIC NOTICE</h3> </div>
+			
+			<div class="sep"></div>
+			
+		<div class="inputs">
+				
+				<!-- POST DATE-->
+				<div class="headingbox" id="hBoxDate" > Date </div>
+                 <div class="inputboxWrap">
+                     <input name=postdate   type="text" onfocus="headingBoxActive('hBoxDate');(this.type='date')" onfocusout="(this.type='text');validateDate(this, 'derror2');validatedAll();" id="date"><br>
+                 </div>
+                 <div class="error" id="derror2" > error occured </div><br>
+				
+				<!--POST NEWS-->
+				<div class="headingbox" id="hBoxNews" > News </div>
+                <div class="inputboxWrap" >
+                     <textarea type="text"   name=public_notice rows="10" cols="140" onfocus="headingBoxActive('hBoxNews')" onkeydown="validateString(this, 'postnewserror')" onfocusout="hide('postnewserror');validateoutString(this, 'postnewserror2');validatedAll();"></textarea><br>
+                </div>
+                <div class="poperror" id="postnewserror" ></div>
+                <div class="error" id="postnewserror2" > error occured </div><br>
+				
+				<!--SUBMIT BUTTON-->
+				<div style="width:100%;text-align:center; " >
+				<input class="buttonDis"  type="submit" name=btnSubmit value=Submit id="submitButton"/>
+				</div>
+				
+		</div>
+		
+	</form>
+			
+	</body>
+</html>
+
+<script>
+function goBack() {
+    window.history.back();
+}
+</script>
