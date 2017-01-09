@@ -7,7 +7,7 @@
 	</style>
 </head>
 <body>
-<h1> Admin page Trainee Quiz Questions </h1>
+<h1> Admin page </h1>
 <?php
 include ('controllers/database.php');
 
@@ -52,19 +52,4 @@ while ($record2=mysqli_fetch_assoc($mydata2)){//`qId`, `question`, `correctAns`,
 	echo"</tr>";
 }
 echo"</table>";
-
-if(isset($_GET["del2"])){
-	$id = $_GET["id"];
-	$sqlDel = "delete from `ques` where `qId` = '$id'";
-	if( mysqli_query($con,$sqlDel)){
-			echo"
-				<script>
-					alert('Delete Successful');
-					window.location.href = 'adminpage.php';
-				</script>
-			
-			";
-		}
-	
-	}
 

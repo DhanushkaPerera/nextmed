@@ -3,7 +3,7 @@
 <title></title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <meta name="viewport" content="width=device-width, initial-scale: 1.0, user-scaleable=no">
-
+	<meta property="og:image" content="http://www.mhwebdesigns.com/templates/panel/images/preview.jpg"/>
 	<style>
 				/* Style the list */
 		ul.tab {
@@ -62,8 +62,8 @@
 <body bgcolor="#D0D0D0 ">
 	<div class="header">
 		<div class="header1">
-			<img src="images/next" class="imgleft">
-			<h1 id="name">Welcome To Quiz Center</h1>
+			<img src="Images/owl1.png" class="imgleft">
+			<h1 id="name">Welcome You To QuizWizard</h1>
 		</div>
 		<div class="header2">
 			Add Questions
@@ -101,14 +101,14 @@
 
 		<div id="Tokyo" class="tabcontent">
 		  <h3 style="color:black;">Submit Question</h3>
-		  <p><input type="submit" name="addQues" value="Save the question"></p>
+		  <p><input type="submit" name="addQues" value="Save to database"></p>
 		</div>
 	</form>
 	
 	</div>
 	
 	
-	x
+	
 <script>
 function openCity(evt, cityName) {
     // Declare all variables

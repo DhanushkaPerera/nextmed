@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+   <link rel="stylesheet" type="text/css" href="stylesheet.css">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+   <script>
+	function showContent(element) {
+		var contentitems = document.querySelectorAll(".showitem");
+		contentitems[0].className = 'contentitem';
+		document.getElementById(element).className = 'contentitem showitem';
+	}
+	</script>
+	
+	<script>
+	function showLogin(){
+		var modal = document.querySelectorAll(".modal");
+		modal[0].style.display = "block";
+	}
+	function closewindow(){
+		var modal = document.querySelectorAll(".modal");
+		modal[0].style.display = "none";
+	}
+	</script>
+	<script>
+	
+	function toggleElement(element){
+	  if(document.getElementById(element).style.visibility=="hidden"){
+	  document.getElementById(element).style.visibility="visible";
+	  document.getElementById(element).style.opacity="1";
+	  }
+	  else{
+	  document.getElementById(element).style.opacity="0";
+	  setTimeout(function(){document.getElementById(element).style.visibility="hidden";}, 500);
+	  
+	  }
+	}
+	
+	function hideElement(element){
+	  document.getElementById(element).style.opacity="0";
+	  setTimeout(function(){document.getElementById(element).style.visibility="hidden";}, 500);
+	}
+	
+	function showSignUp(){
+		var modal = document.getElementById("myModal");
+		toggleElement('loginB');
+		modal.style.display = "block";
+	}
+
+	window.onclick = function(event) {
+	var items = document.querySelectorAll(".login");
+	var element = document.getElementById("loginB");
+	var lng = items.length;
+	var clicked = 0;
+	for(i=0;i<lng;i++){
+		if(event.target==items[i]){
+			clicked=1;
+			break;
+		}
+	}
+	if (clicked==0) {
+		element.style.opacity="0";
+		setTimeout(function(){element.style.visibility="hidden";}, 500);
+	}
+	
+	var modal = document.getElementById("myModal");
+		if(event.target==modal){
+			modal.style.display = "none";
+		}
+	}
+	</script>
+	<script>
+	$(document).ready(function(){
+		$("#loginIcon").click(function(event){
+			toggleElement('loginB');
+			event.stopPropagation();
+		});
+	});
+	</script>
+	<script>
+	function toggleElement(element){
+			if(element.style.visibility=="hidden"){
+				element.style.visibility="visible";
+				element.style.opacity="1";
+			}
+			else{
+				element.style.opacity="0";
+				setTimeout(function(){element.style.visibility="hidden";}, 500);
+			}
+		}
+	});
+	</script>
+</head>
+<body>
+	
+
+
+</div>
+
+	<div class="nav">
+		<div class="sidemenuitem" onmouseover="showContent('introduce')"> <img class="center"  src="media\search.png" alt="introduction Icon" style="height:90%;"> </div>
+		<div class="sidemenuitem" onmouseover="showContent('knowyourself')"> <img class="center" src="media\billing-icon.png" alt="Know your self" style="height:90%;"> </a> </div>
+		<div class="sidemenuitem" onmouseover="showContent('news')"><img class="center" src="media\q.png" alt="Know your self" style="height:90%;"></div>
+	</div>
+	
+
+	<div class="contents">
+			<div class="contentitem showitem" id="introduce">
+				<div class="heading1" style="display: inline-block;">Search</div><br>
+				<iframe src="drugs.htm" style="width:100%;height:700px;" frameborder="0" > </iframe>	
+				
+			</div>
+			
+			<div class="contentitem" id="knowyourself"><div class="heading1"> Billing </div>
+
+			</div>
+			<div class="contentitem" id="news"> <div class="heading1">Quiz </div></div>
+			<iframe src="Trainee_quiz/index.php" style="width:100%;height:700px;" frameborder="0" > </iframe>	
+
+	</div>
+
+	
+	<div class="header">
+		<div class="menubuttonimg"> 
+			<img src="media\notification.png"  alt="notifications" style="height:100%" onclick="toggleElement('notify')">
+			<div class="notifybox" id="notify">
+				<img src="media\under-construction.gif"  alt="notifications" style="height:100%">
+			</div>
+			</div>
+		<div class="menubuttonimg login"  >
+			<img src="media\login.png" style="height:100%;" id="loginIcon" >
+			<div class="loginbox login" id="loginB">
+			<form action="All/logout.php" method="post">
+			<br>
+				<div class="textnotify login">
+				<h1> You are logged in </h1>
+				<br>
+				<hr class="login">
+				<input class="button buttonlogin login" type="submit" name="submit" value="Log out">
+				<br>
+				<br>
+				</div>
+			</form>
+			</div>
+
+		</div>
+	</div>
+	
+
+
+</body>
+</html>

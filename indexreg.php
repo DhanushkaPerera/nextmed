@@ -152,7 +152,7 @@
 			</div>
             <div class="contentitem" id="aroundus" style="height:100%">
 			<div class="heading1"> Around Us </div>
-			<iframe src="AroundUs/aroundusnew.php" id="iFrame1" frameborder="0" style=" onload="resizeIframe(this)" allowfullscreen></iframe>
+			<iframe src="AroundUs/aroundusnew.php" id="iFrame1" frameborder="0" onload="onload="resizeIframe(this)" allowfullscreen></iframe>
 			</div>
 			
 			
@@ -223,7 +223,7 @@
 		</div>
 		</div>
 		</div>
-	</div>=
+	</div>
 
 
 	<div id="cf1" class="header1">
