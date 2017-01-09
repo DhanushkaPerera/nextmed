@@ -6,7 +6,7 @@ body{
 #signup {
   margin:auto;
   margin-top:5px;
-  margin-bottom: :5px;
+  margin-bottom:5px;
   padding: 25px;
   background: #dcdcfb;
   box-shadow:
@@ -246,7 +246,7 @@ body{
     border: none;
     padding: 13px 10px;
     width: 90%;
-	!margin: auto;
+	margin: auto;
     margin-bottom: 17px;
     box-shadow: inset 0px 2px 3px rgba( 0,0,0,0.1 );
 	-ms-box-sizing:content-box;

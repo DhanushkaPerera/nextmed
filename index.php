@@ -11,12 +11,14 @@
 <html>
 <title> NextMEd </title>
 <head>
+	<meta http-Equiv="Cache-Control" Content="no-cache" />
+	<meta http-Equiv="Pragma" Content="no-cache" />
+	<meta http-Equiv="Expires" Content="0" />
 	<meta charset="utf-8">
-   <link rel="stylesheet" type="text/css" href="stylesheet.css">
+   	<link rel="stylesheet" type="text/css" href="stylesheet.css">
+	<script src="jquery/jquery.min.js"></script>
 
-   <script src="jquery/jquery.min.js"></script>
-
-   <script>
+	<script>
 	function showContent(element) {
 		var contentitems = document.querySelectorAll(".showitem");
 		contentitems[0].className = 'contentitem';
@@ -34,8 +36,6 @@
 		var modal = document.querySelectorAll(".modal");
 		modal[0].style.display = "none";
 	}
-	</script>
-	<script>
 	
 	function toggleElement(element){
 	  if(document.getElementById(element).style.visibility=="hidden"){
@@ -48,37 +48,31 @@
 	  
 	  }
 	}
-	
-	function hideElement(element){
-	  document.getElementById(element).style.opacity="0";
-	  setTimeout(function(){document.getElementById(element).style.visibility="hidden";}, 500);
-	}
-	
+
 
 
 	window.onclick = function(event) {
-	var items = document.querySelectorAll(".login");
-	var element = document.getElementById("loginB");
-	var lng = items.length;
-	var clicked = 0;
-	for(i=0;i<lng;i++){
-		if(event.target==items[i]){
-			clicked=1;
-			break;
-		}
+		var items = document.querySelectorAll(".login");
+		var element = document.getElementById("loginB");
+		var lng = items.length;
+			var clicked = 0;
+			for(i=0;i<lng;i++){
+				if(event.target==items[i]){
+					clicked=1;
+					break;
+				}
+			}
+			if (clicked==0) {
+				element.style.opacity="0";
+				setTimeout(function(){element.style.visibility="hidden";}, 500);
+			}
+
+			var modal = document.getElementById("myModal");
+			if(event.target==modal){
+
+			}
 	}
-	if (clicked==0) {
-		element.style.opacity="0";
-		setTimeout(function(){element.style.visibility="hidden";}, 500);
-	}
-	
-	var modal = document.getElementById("myModal");
-		if(event.target==modal){
-			
-		}
-	}
-	</script>
-	<script>
+
 	$(document).ready(function(){
 		$("#loginIcon").click(function(event){
 			toggleElement('loginB');
@@ -98,19 +92,7 @@
 		});
 	});
 	</script>
-	<script>
-	function toggleElement(element){
-			if(element.style.visibility=="hidden"){
-				element.style.visibility="visible";
-				element.style.opacity="1";
-			}
-			else{
-				element.style.opacity="0";
-				setTimeout(function(){element.style.visibility="hidden";}, 500);
-			}
-		}
-	});
-	</script>
+
 </head>
 <body>
 	
@@ -124,6 +106,7 @@
 </div>
 
 	<div class="nav">
+		<img class="boxshadow" src="media\logo.png" style="max-width:120px;height:60px;" >
 		<div class="sidemenuitem activemenu" onclick="hideContents();showSlides();activeMenu(this);" onmouseover="menuText(this);" onmouseout="menuImage(this);"> <img class="center" src="media\home.png" alt="Home" style="max-width:60px;height:90%;"> </div>
 		<div class="sidemenuitem" onclick="showContents();showContent('knowyourself');hideSlides();activeMenu(this);" onmouseover="menuText(this);" onmouseout="menuImage(this);"> <img class="center" src="media\knowyourself.png" alt="About you" style="max-width:60px;height:90%;"> </a> </div>
 		<div class="sidemenuitem" onclick="showContents();showContent('aroundus');hideSlides();activeMenu(this);" onmouseover="menuText(this);" onmouseout="menuImage(this);"> <img class="center" src="media\aroundus.png" alt="Around us" style="max-width:60px;height:90%;"> </a></div>
@@ -131,13 +114,19 @@
 		<div class="sidemenuitem" onclick="showContents();showContent('news');hideSlides();activeMenu(this);" onmouseover="menuText(this);" onmouseout="menuImage(this);"> <img class="center" src="media\news.png" alt="News" style="max-width:60px;height:90%;">  </div>
 		<div class="sidemenuitem" onclick="showContents();showContent('healthtips');hideSlides();activeMenu(this);" onmouseover="menuText(this);" onmouseout="menuImage(this);" > <img class="center" src="media\healthtips.png" alt="Healthtips" style="max-width:60px;height:90%;">  </div>
 		<div class="sidemenuitem" onclick="showContents();showContent('leaveorder');hideSlides();activeMenu(this);" onmouseover="menuText(this);" onmouseout="menuImage(this);" > <img class="center" src="media\leaveyourorder.png" alt="Order Online" style="max-width:60px;height:90%;"> </div>
-		<img class="boxshadow" src="media\logo.png" style="max-width:90px;height:100px;" >
+
 	</div>
 
 
-		
+<div id="cf" class="slideshow">
+	<img src="media\transimg1.jpg" style="width:100%;" >
+	<img src="media\transimg2.jpg" style="width:100%;">
+	<img src="media\transimg3.jpg" style="width:100%;">
+	<img src="media\transimg4.jpg" style="width:100%;">
+</div>
 
 		<div class="contents" id="contentsID" >
+
 
 			<div class="contentitem" id="home" style="height:100%">
 				<iframe src="AroundUs/aroundusnew.php" id="iFrame1" frameborder="0"></iframe>
@@ -304,7 +293,7 @@
 
 
 	function hideSlides() {
-		//var slides = document.getElementById("cf");
+		var slides = document.getElementById("cf");
 		var header = document.getElementById("cf1");
 		//slides.style.opacity = "0";
 		header.style.opacity = "0";
@@ -314,7 +303,7 @@
 	}
 	
 	function showSlides() {
-		//var slides = document.getElementById("cf");
+		var slides = document.getElementById("cf");
 		var header = document.getElementById("cf1");
 		//slides.style.opacity = "1";
 		header.style.opacity = "1";
@@ -363,18 +352,19 @@
 	
 	function authenticateEmp(nic, password, note)
     {
+    	alert("EMP");
 	note.style.opacity="0";
 	var xmlhttp = new XMLHttpRequest();
 	xmlhttp.onreadystatechange = function() {
 		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 			var str = xmlhttp.responseText;
 			if(str.localeCompare("Success")==0){
-				window.location = "adminPanel/index.htm";
+				window.location = "adminPanel/index.php";
 			}
 			else{
 
 				note.style.opacity="1";
-				note.innerHTML = "invalid username or password";
+				note.innerHTML = xmlhttp.responseText;
 				
 			}
 		}
@@ -473,7 +463,7 @@
 	function resizeIframe(obj) {
 
 		obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
-		alert( obj.contentWindow.document.body.scrollHeight);
+		//alert( obj.contentWindow.document.body.scrollHeight);
 	}
 </script>
 

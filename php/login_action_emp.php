@@ -1,11 +1,11 @@
 <?php
 require("../db/db.php");
 
-$email=$_REQUEST["email"];
+$nic=$_REQUEST["nic"];
 $password=$_REQUEST["password"];
 
 //dealing with scripting attacks(unwanted html)
-$email = htmlspecialchars($email);
+$nic = htmlspecialchars($nic);
 $password = htmlspecialchars($password);
 
 
@@ -14,7 +14,7 @@ $password = htmlspecialchars($password);
 //$password = quote_smart($password, $db);
 
 
-$sql="SELECT * FROM customer where Email='$email' AND Password='$password'";
+$sql="SELECT * FROM pharmacist where NIC='$nic' AND Password='$password'";
 $result = mysqli_query($db,$sql);
 
 
