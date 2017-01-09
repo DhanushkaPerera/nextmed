@@ -131,7 +131,7 @@ if(isset($_POST["search"])){
                     <div class="headingbox" id="hBoxNIC" name=dosageform > Dosage Form </div>
                     <div class="inputboxWrap">
                         <select>
-						<option value="Capsule">Dosage Form</option>
+						<!--option value="Capsule">Dosage Form</option>
 							<option value="Capsule">Capsule</option>
 	<option value="Tablet">Tablet</option>
 	<option value="Pill">Pill</option>
@@ -143,7 +143,7 @@ if(isset($_POST["search"])){
 	<option value="Lotion">Lotion</option>
 	<option value="Ointment">Ointment</option>
 	<option value="Ear drops">Ear drops</option>
-	<option value="Eye drops">Eye drops</option>
+	<option value="Eye drops">Eye drops</option-->
 </select>
 						
                     </div>
@@ -236,47 +236,32 @@ autoNum();
 <?php
 
 
-
+	
 	
         $brandname = $_POST["brandname"];
 		$genericname = $_POST["genericname"];
+		$post=$brandname or $genericname;
+		if (isset($post)){
 		
 		//$sql = "select * from drug where DrugBrandName='$brandname'";
 						
-		$sql = "select * from drug where DrugBrandName='$brandname' or GenericName='$genericname' ";
+		$sql = "select DosageForm from drug where DrugBrandName='$brandname' or GeneticName='$genericname' ";
 
 			$res = mysqli_query($db,$sql);
 			
 			while($row = mysqli_fetch_array($res)){
 				
-				echo "<table  align=left border=1>
-<tr>
-<th>Drug No</th>
-<th>Brand Name</th>
-<th>Quantity</th>
-<th>Price</th>
-<th>Allergic Conditions</th>
-<th>Storage</th>
-<th>Healthtips</th>
-</tr>
-
-<tr>
-<td>".$row['DrugNo']."</td>
-<td>".$row['DrugBrandName']."</td>
-<td>".$quantity."</td>
-<td>".$row['RetailPrice']."</td>
-<td>".$row['allergicConditions']."</td>
-<td>".$row['storage']."</td>
-<td>".$row['healthTips']."</td>
+				
+				echo "<select>
+	
+					<option >".$row['DosageForm']."</option>
+	
+					</select>";
 
 
 
-</tr></table>";
-
-
-
-
-}
+			}
+		}
 ?>
 
     
