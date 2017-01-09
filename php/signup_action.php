@@ -12,6 +12,8 @@ $contact=$_POST["contactno"];
 $email=$_POST["emailaddress"];
 $password=$_POST["password"];
 
+$epassword =password_hash($password,PASSWORD_DEFAULT);
+
 if(isset($_POST["address"])){
     $address=$_POST["address"];
 }
@@ -34,7 +36,7 @@ else{
 
 
 
-$sql="INSERT INTO customer (NIC,FName,LName,Gender,DOB,Address,Status,Contact,Email,Password,BloodGroup) VALUES ('$nic','$fname','$lname', '$gender','$dob','$address','$status','$contact','$email', '$password','$bloodGroup')";
+$sql="INSERT INTO signup (NIC,FName,LName,Gender,DOB,Address,Status,Contact,Email,Password) VALUES ('$nic','$fname','$lname', '$gender','$dob','$address','$status','$contact','$email', '$epassword')";
 
 
 
