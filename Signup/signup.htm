@@ -576,12 +576,9 @@
 	}
 
 	function validatedAll(){
-        alert('here');
 		var element = document.getElementById("submitButton");
 		var elementCheck = document.getElementById("checkAgree");
 		var agree = elementCheck.checked;
-        alert("nic "+nicValid+",fname "+fnameValid+",lname "+lnameValid+",genderValid "+ genderValid+",bdayValid "+ "bday" + bdayValid+ +  "phpNo" + phNoValid  + "email" + emailValid + passValid+agree);
-
 		if(nicValid && fnameValid && lnameValid && genderValid && bdayValid&& phNoValid && emailValid && passValid && agree){
 			element.className = "inputs buttonS";
 			element.disabled = false;
@@ -620,9 +617,7 @@
 
 		}
 	}
-    function validateGender(element,errorCODE){
 
-    }
 	function validateAddr(element, errorCODE){
 		var str = element.value;
 		var strl = str.length;
