@@ -7,7 +7,7 @@
 </head>
 <body>
     <form id="signup" name="Signup" action="../php/signup_action.php" method="post" onsubmit="return password()">
-	<div class="close" onclick="parent.closeIFrame();"> X </div>
+	<div class="close" onclick="parent.closeIFrame();"> &#10006; </div>
 			<br>
 			<div style="width:100%;text-align:center; ">
             <h3>Sign Up</h3> </div>
@@ -152,7 +152,7 @@
                     <input name="checked" id="checkAgree" value="1" type="checkbox" onclick="validatedAll()"/><label class="terms"  >I agree to the terms and conditions of the neXtMEd. </label>
                 </div>
                 <a href="Agreement/agreement.html#top">More information on Agreement</a><br>
-                <button class="buttonS" onclick="parent.parent.closeIFrame();" > Cancel </button>
+                <button type="button" class="buttonS" onclick="parent.parent.closeIFrame();" > Cancel </button>
 
                 <input class="buttonDis"  type="submit" name=submit value=Submit id="submitButton" disabled onclick="validatedAll();parent.parent.closeIFrame();" >
                 </div>

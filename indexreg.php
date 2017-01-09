@@ -135,7 +135,7 @@
 			</div>
             <div class="contentitem" id="aroundus" style="height:100%">
 			<div class="heading1"> Around Us </div>
-			<iframe src="AroundUs/aroundusnew.php" id="iFrame1" frameborder="0" onload="onload="resizeIframe(this)" allowfullscreen></iframe>
+			<iframe src="AroundUs/aroundusnew.php" id="iFrame1" frameborder="0" onload="resizeIframe(this)" allowfullscreen></iframe>
 			</div>
 			
 			
@@ -270,9 +270,9 @@
 
 
 	function hideSlides() {
-		//var slides = document.getElementById("cf");
+		var slides = document.getElementById("cf");
 		var header = document.getElementById("cf1");
-		//slides.style.opacity = "0";
+		slides.style.opacity = "0";
 		header.style.opacity = "0";
 		setTimeout(function(){slides.style.position = "absolute";}, 700);
 		
@@ -280,11 +280,11 @@
 	}
 	
 	function showSlides() {
-		//var slides = document.getElementById("cf");
+		var slides = document.getElementById("cf");
 		var header = document.getElementById("cf1");
-		//slides.style.opacity = "1";
+		slides.style.opacity = "1";
 		header.style.opacity = "1";
-		//slides.style.position = "relative";
+		slides.style.position = "relative";
 	}
 	
 	function activeMenu(menu){
