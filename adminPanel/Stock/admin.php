@@ -191,7 +191,7 @@
 
     function editOp(){
         var length = checkedBoxes.length;
-        alert(length);
+        //alert(length);
         var step;
         var rowItem = {};
         for(step = 0;step<length;step++){

@@ -61,25 +61,26 @@
 	}
 
 	window.onclick = function(event) {
-	var items = document.querySelectorAll(".login");
-	var element = document.getElementById("loginB");
-	var lng = items.length;
-	var clicked = 0;
-	for(i=0;i<lng;i++){
-		if(event.target==items[i]){
-			clicked=1;
-			break;
+		/// hide login menu when clicked outside
+		var items = document.querySelectorAll(".login");
+		var element = document.getElementById("loginB");
+		var lng = items.length;
+		var clicked = 0;
+		for(i=0;i<lng;i++){
+			if(event.target==items[i]){
+				clicked=1;
+				break;
+			}
 		}
-	}
-	if (clicked==0) {
-		element.style.opacity="0";
-		setTimeout(function(){element.style.visibility="hidden";}, 500);
-	}
-	
-	var modal = document.getElementById("myModal");
-		if(event.target==modal){
-			modal.style.display = "none";
+		if (clicked==0) {
+			element.style.opacity="0";
+			setTimeout(function(){element.style.visibility="hidden";}, 500);
 		}
+
+		var modal = document.getElementById("myModal");
+			if(event.target==modal){
+				modal.style.display = "none";
+			}
 	}
 	</script>
 	<script>
@@ -104,19 +105,6 @@
 			toggleElement('loginB');
 			event.stopPropagation();
 		});
-	});
-	</script>
-	<script>
-	function toggleElement(element){
-			if(element.style.visibility=="hidden"){
-				element.style.visibility="visible";
-				element.style.opacity="1";
-			}
-			else{
-				element.style.opacity="0";
-				setTimeout(function(){element.style.visibility="hidden";}, 500);
-			}
-		}
 	});
 	</script>
 </head>
@@ -284,17 +272,7 @@
 		var element = document.getElementById('contentsID');
 		element.style.display="inline";
 	}
-	
-	function resizeIFrameToFitContent(iFrame) {
-		iFrame.width  = iFrame.contentWindow.document.body.scrollWidth;
-		iFrame.height = iFrame.contentWindow.document.body.scrollHeight;
-	}
 
-	window.addEventListener('DOMContentReady', function(e) {
-		alert("TEST");
-		var iFrame = document.getElementById( 'iFrame1' );
-		resizeIFrameToFitContent(iFrame);
-	} );
 
 	function hideSlides() {
 		//var slides = document.getElementById("cf");
@@ -338,7 +316,7 @@
 	</script>
 <script>
 	function resizeIframe(obj) {
-
+		alert('test');
 		obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
 		alert( obj.contentWindow.document.body.scrollHeight);
 	}
