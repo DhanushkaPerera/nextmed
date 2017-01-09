@@ -106,6 +106,7 @@
 		<div class="sidemenuitem" onclick="showContent('Stock');activeMenu(this);" onmouseover="menuText(this);" onmouseout="menuImage(this);"> <img class="center" src="media\stock-manage.png" alt="Stock Management" style="height:90%;"> </div>
 		<div class="sidemenuitem" onclick="showContent('Backup');activeMenu(this);" onmouseover="menuText(this);" onmouseout="menuImage(this);"> <img class="center" src="media\backup.png" alt="Backup" style="height:90%;"> </div>
 		<div class="sidemenuitem" onclick="showContent('Notice');activeMenu(this);" onmouseover="menuText(this);" onmouseout="menuImage(this);"> <img class="center" src="media\notice.png" alt="Notices" style="height:90%;"> </div>
+		<div class="sidemenuitem" onclick="showContent('UserManage');activeMenu(this);" onmouseover="menuText(this);" onmouseout="menuImage(this);"> <img class="center" src="media\user-manage.png" alt="User Management" style="height:90%;"> </div>
 	</div>
 	
 
@@ -134,6 +135,10 @@
 			<div class="contentitem" id="Notice"> <div class="heading1">Public notice </div>
 				<iframe  src="Notices/Notice.php" style="width:120%" frameborder="0" onload="resizeIframe(this)" > </iframe>
 			</div>
+		<div class="contentitem" id="UserManage"> <div class="heading1">User Manage </div>
+			<iframe  src="" style="width:120%" frameborder="0" onload="resizeIframe(this)" > </iframe>
+		</div>
+
 
 	</div>
 
