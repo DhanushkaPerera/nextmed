@@ -10,13 +10,14 @@
 		<div class="header2">
 			Question Paper
 		</div>
+		<div> <img src="images/yes.jpg" class="imgleft">
 	</div>
     <style>
 	background{margin:1px}
 	</style>
 	
 	
-	<div class="col-12" style="padding-top:15%"  "padding-left: 50%" margin: 1px>
+	<div class="col-12" style="padding-top:2%"  "padding-left: 60%" margin: 1px>
 	<form action="results.php" method="post">
 		<table>
 			<?php
@@ -79,7 +80,7 @@
 			
 		</table>
 		
-		<p><input type="submit" name="addQues" value="Save to database"></p>
+		<p><input type="submit" name="addQues" value="I am Done"></p> 
 		</div>
 	</form>
 	

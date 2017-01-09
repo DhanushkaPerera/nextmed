@@ -3,7 +3,7 @@
 <title></title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <meta name="viewport" content="width=device-width, initial-scale: 1.0, user-scaleable=no">
-
+	<meta property="og:image" content="http://www.mhwebdesigns.com/templates/panel/images/preview.jpg"/>
 	<style>
 				/* Style the list */
 		ul.tab {
@@ -58,58 +58,43 @@
 		}
 		
 	</style>
-</head> 
-<body bgcolor="#D0D0D0 ">
+</head>
+<body>
 	<div class="header">
 		<div class="header1">
-			<img src="images/next" class="imgleft">
-			<h1 id="name">Welcome To Quiz Center</h1>
-		</div>
-		<div class="header2">
-			Add Questions
+			<h1 id="name">User Management Center</h1>
 		</div>
 	</div>
-	
-    <div style="padding-top:15%">
-     	<center> <a href="adminpage.php">  View Admin Page  </a> </center>
-	</div>
-	<div class="col-12" style="padding-top:5%" >
-	<form action="controllers/addQuestion.php" method="post">
-		<ul class="tab" >
-		  <li><a href="#" class="tablinks" onClick="openCity(event, 'London')">Add Question </a></li>
-		  <li><a href="#" class="tablinks" onClick="openCity(event, 'Paris')">Add Answers</a></li>
-		  <li><a href="#" class="tablinks" onClick="openCity(event, 'Tokyo')">Submit the Question</a></li>
-		</ul>
-
-		<div id="London" class="tabcontent">
-		  <h3 style="color:black;">Add Question</h3>
-		  <textarea name="question" cols="50" rows="8" required placeholder="Question" ></textarea>
-		</div>
-
-		<div id="Paris" class="tabcontent">
-		  <h3 style="color:black;">Correct Answer</h3>
-		  <input type="text" name="corrAns" required>
-		  <hr>
-		  <h3 style="color:black;">Incorrect</h3>
-		  <table>
-			<tr><input type="text" name="incorrAns1" required></tr><br>
-			<tr><input type="text" name="incorrAns2" required></tr><br>
-			<tr><input type="text" name="incorrAns3" required></tr><br>
-		  </table>
+	<div class="content">
+	<div class="content_container">
+	<table>
+	<ul class="tab" >
 		  
-		</div>
+		 <li><a href="#" class="tablinks" onClick="openCity(event, 'London')">Handle Customers</a></li>
+		 <li><a href="#" class="tablinks" onClick="openCity(event, 'Paris')">Handle Suppliers</a></li>
+		 <li><a href="#" class="tablinks" onClick="openCity(event, 'Tokyo')">Handle Trainees</a></li>
+		</ul>
+	<div id="London" class="tabcontent">
+		  <br><h3 style="color:black;"><a href="Customer_registration">New Customer</h3><br>
+		  <h3 style="color:black;"><a href="adcust.php">View Customers</h3></a>
+	</div>
+	<div id="Paris" class="tabcontent">
+		  <br><h3 style="color:black;">New Supplier</h3><br>
+		  <h3 style="color:black;">View Suppliers</h3>
+	</div>
 
 		<div id="Tokyo" class="tabcontent">
-		  <h3 style="color:black;">Submit Question</h3>
-		  <p><input type="submit" name="addQues" value="Save the question"></p>
+		  <br><h3 style="color:black;"><a href="addtrainee.php">New Trainee</h3></a>
+		  <h3 style="color:black;"><a href="trainee.php">View Trainees</h3></a>
+		  <h3 style="color:black;"><a href="adminques.php">Add Questions - Trainee quiz</h3></a>
+		  <h3 style="color:black;"><a href="adminpage.php">View Questions - Trainee quiz</h3></a>
 		</div>
-	</form>
 	
+	</div>
 	</div>
 	
 	
-	
-<script>
+	<script>
 function openCity(evt, cityName) {
     // Declare all variables
     var i, tabcontent, tablinks;

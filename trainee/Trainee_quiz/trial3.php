@@ -108,7 +108,7 @@
 	</div>
 	
 	
-	
+	x
 <script>
 function openCity(evt, cityName) {
     // Declare all variables

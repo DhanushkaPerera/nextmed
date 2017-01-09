@@ -1,4 +1,7 @@
 <?php
+//$con = mysqli_connect("localhost","root","","Trainee_quiz");
+
+
 
 //Defining variables for the database
 
