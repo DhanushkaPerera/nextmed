@@ -109,12 +109,7 @@
 	</script>
 </head>
 <body>
-	
-<div id="myModal" class="modal">
-	<div class="modal-content">
-	<iframe src="signup.htm" style="width:800px; height:1500px;border:0;margin:auto;"></iframe>
-	</div>
-</div>
+
 
 </div>
 
@@ -316,9 +311,9 @@
 	</script>
 <script>
 	function resizeIframe(obj) {
-		alert('test');
+
 		obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
-		alert( obj.contentWindow.document.body.scrollHeight);
+		//alert( obj.contentWindow.document.body.scrollHeight);
 	}
 </script>
 </body>
