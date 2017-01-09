@@ -1,59 +1,51 @@
+
 * { margin:0; padding:0;font-family: Arial; }
-
-#customer {
-    padding: 0px 25px 25px;
-    background: #dcdcfb;
-    box-shadow: 
-        0px 0px 0px 5px rgba( 255,255,255,0.4 ), 
-        0px 4px 20px rgba( 0,0,0,0.33 );
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-    border-radius: 5px;
-    display: table;
-    position: absolute;
-	width:60%;
-	margin: 20px;
-	/*height:auto;*/
+body{
+  width:100%;
 }
 
-.bill{
-	width:100%;
-	height:350px;
-	float:left;
+#register {
+  margin:auto;
+  margin-top:5px;
+  margin-bottom: :5px;
+  padding: 25px;
+  background: #dcdcfb;
+  box-shadow:
+    0px 0px 0px 5px rgba( 255,255,255,0.4 ),
+    0px 4px 20px rgba( 0,0,0,0.33 );
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  width:80%;
 }
 
-.drugs{
-	width:100%;
-	height:325px;
-	float:left;
-	/*position:relative;*/
+.close{
+	text-align:center;
+	font-size: 16px;
+	position:absolute;
+	right:8%;
+	border-radius: 10px;
+	color: #FF1717;
+	background: white;
+	padding: 3px;
+	padding-left: 10px;
+	padding-right: 10px;
+	width:10px;
+	transition: all 1s ease-in-out;
+}
+.close:hover{
+	color:white;
+	background: #FF1717;
 }
 
-.btnSearch{
-	margin-left:30px;
-}
-#one{
-	margin-left:35px;
-	float:left;
-	width:20%;
-	height:100px;
-}
-
-#two{
-	margin-left:5px;
-	float:left;
-	width:20%;
-	height:100px;
-}
-
-#customer .header {
+#register .header {
     margin-bottom: 20px;
 	text-align: center;
 	width: 80%;
     margin: auto;
 }
 
-#customer .header h3 {
+#register .header h3 {
     color: #333333;
     font-size: 24px;
     font-weight: bold;
@@ -63,45 +55,49 @@
 	text-align:center;
 }
 
-#customer .header p {
+#register .header p {
     color: #8f8f8f;
     font-size: 14px;
     font-weight: 300;
 }
 
-#customer .sep {
+#register .sep {
     height: 1px;
     background: #e8e8e8;
     width: 80%;
     margin: auto;
 }
 
-#customer .inputs {
-    margin-top: 10px;
+#register .inputs {
+    margin-top: 25px;
 }
 
-#customer .inputs .checkboxy {
+
+
+
+
+#register .inputs .checkboxy {
     display: block;
     position: static;
-    height: 15px;
+    height: 25px;
     margin-top: 10px;
     clear: both;
 }
 
-#customer .inputs input[type=checkbox] {
+#register .inputs input[type=checkbox] {
     float: left;
     margin-right: 10px;
     margin-top: 3px;
 }
 
-#customer .inputs label.terms {
+#register .inputs label.terms {
     float: left;
     font-size: 14px;
     font-style: italic;
 }
 
-#customer .inputs .buttonS {
-    width: 100%;
+#register .inputs .buttonS {
+    width: 20%;
 	outline:none;
     margin-top: 20px;
     padding: 15px 0;
@@ -116,7 +112,7 @@
         #b9c5dd 0%,
         #a4b0cb);
     background: -webkit-gradient(
-        linear, left top, left bottom, 
+        linear, left top, left bottom,
         from(#b9c5dd),
         to(#a4b0cb));
     -moz-border-radius: 5px;
@@ -135,67 +131,77 @@
     text-shadow:
         0px 1px 3px rgba(000,000,000,0.3),
         0px 0px 0px rgba(255,255,255,0);
-    display: table;
-    position: static;
-    clear: both;
 }
 
-#customer .inputs .btnAdd:hover  , #customer .inputs .btnCancel:hover , #customer .inputs .btnSearch:hover {
-	cursor:pointer;
+#register .inputs .buttonS:hover {
     background: -moz-linear-gradient(
         top,
         #a4b0cb 0%,
         #b9c5dd);
     background: -webkit-gradient(
-        linear, left top, left bottom, 
+        linear, left top, left bottom,
         from(#a4b0cb),
         to(#b9c5dd));
 }
 
-#customer .inputs .btnAdd , #customer .inputs .btnCancel {
-	outline:none;
+.buttonSHOW{
     width: 100%;
-    margin-top: 20px;
-    padding: 15px 0;
+    outline:none;
     color: #fff;
+    padding:5px;
     font-size: 14px;
     font-weight: 500;
     letter-spacing: 1px;
     text-align: center;
     text-decoration: none;
-        background: -moz-linear-gradient(
-        top,
-        #e0e0e0 0%,
-        #bfbfbf);
+    background: -moz-linear-gradient(
+            top,
+            #b9c5dd 0%,
+            #a4b0cb);
     background: -webkit-gradient(
-        linear, left top, left bottom, 
-        from(#e0e0e0),
-        to(#bfbfbf));
+            linear, left top, left bottom,
+            from(#b9c5dd),
+            to(#a4b0cb));
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
     border-radius: 5px;
     border: 1px solid #737b8d;
     -moz-box-shadow:
-        0px 5px 5px rgba(000,000,000,0.1),
-        inset 0px 1px 0px rgba(255,255,255,0.5);
+            0px 5px 5px rgba(000,000,000,0.1),
+            inset 0px 1px 0px rgba(255,255,255,0.5);
     -webkit-box-shadow:
-        0px 5px 5px rgba(000,000,000,0.1),
-        inset 0px 1px 0px rgba(255,255,255,0.5);
+            0px 5px 5px rgba(000,000,000,0.1),
+            inset 0px 1px 0px rgba(255,255,255,0.5);
     box-shadow:
-        0px 5px 5px rgba(000,000,000,0.1),
-        inset 0px 1px 0px rgba(255,255,255,0.5);
+            0px 5px 5px rgba(000,000,000,0.1),
+            inset 0px 1px 0px rgba(255,255,255,0.5);
     text-shadow:
-        0px 1px 3px rgba(000,000,000,0.3),
-        0px 0px 0px rgba(255,255,255,0);
-    display: table;
-    position: static;
-    clear: both;
+            0px 1px 3px rgba(000,000,000,0.3),
+            0px 0px 0px rgba(255,255,255,0);
 }
 
-#customer .inputs .btnSearch {
-	margin-left:30px;
-	outline:none;
+.buttonSHOW:hover{
+    background: -moz-linear-gradient(
+            top,
+            #a4b0cb 0%,
+            #b9c5dd);
+    background: -webkit-gradient(
+            linear, left top, left bottom,
+            from(#a4b0cb),
+            to(#b9c5dd));
+}
+#extra {
+    max-height: 0px;
+    width:100%;
+    -webkit-transition: max-height 0.8s;
+    -moz-transition: max-height 0.8s;
+    transition: max-height 0.8s;
+    overflow:hidden;
+}
+
+#register .inputs .buttonDis {
     width: 20%;
+    outline:none;
     margin-top: 20px;
     padding: 15px 0;
     color: #fff;
@@ -204,33 +210,30 @@
     letter-spacing: 1px;
     text-align: center;
     text-decoration: none;
-        background: -moz-linear-gradient(
-        top,
-        #e0e0e0 0%,
-        #bfbfbf);
+    background: -moz-linear-gradient(
+            top,
+            rgba(0, 0, 0, 0.24) 0%,
+            rgba(0, 0, 0, 0.34));
     background: -webkit-gradient(
-        linear, left top, left bottom, 
-        from(#e0e0e0),
-        to(#bfbfbf));
+            linear, left top, left bottom,
+            from(rgba(0, 0, 0, 0.22)),
+            to(rgba(0, 0, 0, 0.35)));
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
     border-radius: 5px;
     border: 1px solid #737b8d;
     -moz-box-shadow:
-        0px 5px 5px rgba(000,000,000,0.1),
-        inset 0px 1px 0px rgba(255,255,255,0.5);
+            0px 5px 5px rgba(000,000,000,0.1),
+            inset 0px 1px 0px rgba(255,255,255,0.5);
     -webkit-box-shadow:
-        0px 5px 5px rgba(000,000,000,0.1),
-        inset 0px 1px 0px rgba(255,255,255,0.5);
+            0px 5px 5px rgba(000,000,000,0.1),
+            inset 0px 1px 0px rgba(255,255,255,0.5);
     box-shadow:
-        0px 5px 5px rgba(000,000,000,0.1),
-        inset 0px 1px 0px rgba(255,255,255,0.5);
+            0px 5px 5px rgba(000,000,000,0.1),
+            inset 0px 1px 0px rgba(255,255,255,0.5);
     text-shadow:
-        0px 1px 3px rgba(000,000,000,0.3),
-        0px 0px 0px rgba(255,255,255,0);
-    display: table;
-    position: static;
-    clear: both;
+            0px 1px 3px rgba(000,000,000,0.3),
+            0px 0px 0px rgba(255,255,255,0);
 }
 
 
@@ -243,21 +246,21 @@
     border-radius: 3px;
     border: none;
     padding: 13px 10px;
-    width: 90%; 
-	margin: auto;
+    width: 90%;
+	!margin: auto;
     margin-bottom: 17px;
     box-shadow: inset 0px 2px 3px rgba( 0,0,0,0.1 );
 	-ms-box-sizing:content-box;
     -moz-box-sizing:content-box;
     box-sizing:content-box;
-    -webkit-box-sizing:content-box; 
+    -webkit-box-sizing:content-box;
 	transition: all .5s ease-in-out;
 }
 
 .inputs select:focus, input[type=date], input[type=text]:focus, input[type=password]:focus {
     background: #fff;
-    box-shadow: 0px 0px 0px 3px #8efffc, inset 0px 2px 3px rgba( 0,0,0,0.2 ), 0px 5px 5px rgba( 0,0,0,0.15 );
-    outline: none;   
+    box-shadow: 0px 0px 0px 3px #0099cc, inset 0px 2px 3px rgba( 0,0,0,0.2 ), 0px 5px 5px rgba( 0,0,0,0.15 );
+    outline: none;
 }
 
 .inputs ul li{
@@ -265,7 +268,7 @@
   display: block;
   position: relative;
   float: left;
-  width: 100%;
+  width: 90%;
   height: 100px;
 	border-bottom: 1px solid #111111;
 }
@@ -337,17 +340,11 @@
 }
 
 .headingbox{
-	position:relative;
 	text-align:left;
 	padding-left: 15px;
 	padding-right: 15px;
 	padding-bottom: 2px;
 	padding-top: 5px;
-	border-top-left-radius:2em;
-	border-top-right-radius:0;
-	border-bottom-right-radius:2em;
-	border-bottom-left-radius:-2em;
-	border-bottom-left-radius:-2em;
 	background: white;
 	left: 4%;
 	font-weight: bold;
@@ -357,25 +354,26 @@
 }
 
 .poperror {
-	opacity:0;
+    opacity:0;
     visibility: visible;
-    width: 300px;
     background-color: white;
     border-radius: 6px;
     padding: 5px 0;
     position: absolute;
     z-index: 5;
-    !top: 100%;
-    !left: 100%;
-    margin-left: 65px;
-	margin-top: -15px;
-	-moz-box-shadow: 0 0 10px black;
-	-webkit-box-shadow: 0 0 10px black;
-	box-shadow: 0 0 10px black;
-	-webkit-transition: opacity 0.4s;
+    margin-left: 0px;
+    margin-right:20px;
+    margin-top: -15px;
+    -moz-box-shadow: 0 0 10px black;
+    -webkit-box-shadow: 0 0 10px black;
+    box-shadow: 0 0 10px black;
+    -webkit-transition: opacity 0.4s;
     -moz-transition: opacity 0.4s;
     -o-transition: opacity 0.4s;
     transition: opacity 0.4s;
+    background: white;
+    color:red;
+    font-style: italic;
 }
 
 
@@ -385,17 +383,17 @@
     position: absolute;
     bottom: 100%;
     left: 5%;
-    margin-left: -5px;
+    margin-left: 1%;
     border-width: 5px;
     border-style: solid;
-    border-color: transparent transparent white transparent;
+    border-color: transparent transparent red transparent;
 }
 
 .error{
 	color:red;
 	font-size:10px;
 	text-align:left;
-	width: 350px;
+	width: 90%;
 	margin-left:auto;
 	margin-right:auto;
 	margin-top:-12px;
@@ -408,12 +406,31 @@
 	opacity:0;
 }
 
+
+.inputboxWrap{
+  width:100%;
+}
+
 .column{
-	width:50%;
-	float:left;
+  width: 48%;
+  margin:1%;
+  float: left;
+  min-width:200px;
 }
 
-.outputs {
-    margin-top: 100px;
+.wrapshow{
+  width: 100%;
+  text-align: left;
+  float:left;
 }
 
+.back{
+	float:right;
+	border-radius:100%;
+}
+
+.back:hover{
+	cursor:pointer;
+	color:#fff;
+	background:red;
+}
