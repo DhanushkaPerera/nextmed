@@ -25,7 +25,7 @@
             <div class="fixed-table-toolbar">
                 <div class="bs-bars pull-left">
                     <div id="toolbar">
-                        <button id="addDrug" class="btn btn-success" >
+                        <button id="addDrug" onclick="addOp()" class="btn btn-success" >
                             <i class="glyphicon glyphicon-plus"></i> Add
                         </button>
                         <button id="editDrug" onclick="editOp()" class="btn btn-default" disabled="">
@@ -37,7 +37,7 @@
                     </div>
                 </div>
                 <div class="pull-right search">
-                    <input class="form-control" type="text" placeholder="Search">
+                    <input class="form-control" type="text" placeholder="Search Drugs">
                 </div>
 
             </div>
@@ -70,24 +70,28 @@
 
         </div>
         <div id="Alternatives" class="tab-pane fade">
-            <h3>Suppliers</h3>
+            <h3>Alternatives</h3>
             <div class="fixed-table-container">
                 <div class="table-responsive">
                     <table class="table">
-                        <thead id="tableContent">
-
+                        <thead>
+                        <tr>
+                            <th>Select</th>
+                            <th>#Drug No</th>
+                            <th>Genetic Name</th>
+                            <th>Brand Name</th>
+                            <th>Dosage Form</th>
+                            <th>Alternatives</th>
+                            <th>Compositions</th>
+                            <th>Dose Per Person</th>
+                            <th>Strength</th>
+                            <th>Health Tips</th>
+                            <th>Storage</th>
+                        </tr>
                         </thead>
                         <tbody>
                         <tr>
-                            <td><div class="checkbox">
-                                    <label><input type="checkbox" value=""></label>
-                                </div>
-                            </td>
-                            <td>Anna</td>
-                            <td>Pitt</td>
-                            <td>35</td>
-                            <td>New York</td>
-                            <td>USA</td>
+
                         </tr>
                         </tbody>
                     </table>
@@ -105,11 +109,25 @@
     var addBtn = document.getElementById('addDrug');
     var deleteBtn = document.getElementById('removeDrug');
     var editBtn = document.getElementById('editDrug');
+    var maxNo = 0;
     var checkedBoxes = [];
 
     $( document ).ready(function() {
         loadTable();
+        maxDrugNo();
     });
+
+    function maxDrugNo(){
+        jQuery.ajax({
+            type: "POST",
+            url: "maxDrugNo.php",
+            dataType: 'json',
+            data: {},
+            complete: function(r){
+                maxNo = r.responseText;
+            }
+        });
+    }
 
     function loadTable() {
         var count = 10;
@@ -117,7 +135,7 @@
         table.html("Loading..");
         jQuery.ajax({
             type: "POST",
-            url: "loadDrugs.php",
+            url: "retrieveDrugs.php",
             dataType: 'json',
             data: {count: count},
             complete: function(r){
@@ -162,21 +180,21 @@
     function deleteOp() {
         var length = checkedBoxes.length;
         var step;
-        var stockNos = [];
+        var drugNos = [];
         for(step=0;step<length;step++){
             var item = checkedBoxes[step];
             var stockNo = item.getAttribute('name');
             var index = checkedBoxes.indexOf(item);
             checkedBoxes.splice(index,1);
             length = checkedBoxes.length;
-            stockNos.push(stockNo);
+            drugNos.push(stockNo);
             var currentRow = "#row"+stockNo;
         }
         jQuery.ajax({
             type: "POST",
             url: "deleteDrugs.php",
             dataType: 'json',
-            data: {stockNos: stockNos},
+            data: {drugNos: drugNos},
             complete: function(r){
                 if (r.responseText.length > 5){
                     alert(r.responseText);
@@ -246,47 +264,33 @@
 
         $(currentRow).html('');
         $(currentRow).append('<td><div class="checkbox"><label><input onchange="checkEvent(this)" name="'+ID+'" type="checkbox" value=""></label></div></td></td>');
-        $(currentRow).append('<td> '+rowItem[1]+' </td>');
-        $(currentRow).append('<td> '+rowItem[2]+' </td>');
-        $(currentRow).append('<td> '+rowItem[3]+' </td>');
-        $(currentRow).append('<td> '+rowItem[4]+' </td>');
-        $(currentRow).append('<td> '+rowItem[5]+' </td>');
-        $(currentRow).append('<td> '+rowItem[6]+' </td>');
-        $(currentRow).append('<td> '+rowItem[7]+' </td>');
-        $(currentRow).append('<td> '+rowItem[8]+' </td>');
-        $(currentRow).append('<td> '+rowItem[9]+' </td>');
-        $(currentRow).append('<td> '+rowItem[10]+' </td>');
+        $(currentRow).append('<td>'+rowItem[1]+'</td>');
+        $(currentRow).append('<td>'+rowItem[2]+'</td>');
+        $(currentRow).append('<td>'+rowItem[3]+'</td>');
+        $(currentRow).append('<td>'+rowItem[4]+'</td>');
+        $(currentRow).append('<td>'+rowItem[5]+'</td>');
+        $(currentRow).append('<td>'+rowItem[6]+'</td>');
+        $(currentRow).append('<td>'+rowItem[7]+'</td>');
+        $(currentRow).append('<td>'+rowItem[8]+'</td>');
+        $(currentRow).append('<td>'+rowItem[9]+'</td>');
+        $(currentRow).append('<td>'+rowItem[10]+'</td>');
     }
 
     function addOp() {
         var table = $("#tablebody");
-        $(currentRow).html('');
-        $(currentRow).append('<td><button id="addDrug" onclick="saveEdit(this,'+rowItem[1]+')" class="btn btn-success" ><i class="glyphicon glyphicon-save"></i> Save </button></td>');
-        $(currentRow).append('<td><input type="text" value="'+rowItem[1]+'" readonly="true" ></td>');
-        $(currentRow).append('<td><input type="text" value="'+rowItem[2]+'"></td>');
-        $(currentRow).append('<td><input type="text" value="'+rowItem[3]+'"></td>');
-        $(currentRow).append('<td><input type="text" value="'+rowItem[4]+'"></td>');
-        $(currentRow).append('<td><input type="text" value="'+rowItem[5]+'"></td>');
-        $(currentRow).append('<td><input type="text" value="'+rowItem[6]+'"></td>');
-        $(currentRow).append('<td><input type="text" value="'+rowItem[7]+'"></td>');
-        $(currentRow).append('<td><input type="text" value="'+rowItem[8]+'"></td>');
-        $(currentRow).append('<td><input type="text" value="'+rowItem[9]+'"></td>');
-        $(currentRow).append('<td><input type="text" value="'+rowItem[10]+'"></td>');
-
-        jQuery.ajax({
-            type: "POST",
-            url: "loadDrugs.php",
-            dataType: 'json',
-            data: {count: count},
-            complete: function(r){
-                if (r.responseText.length > 10){
-                    table.html(r.responseText);
-                }
-                else{
-                    table.html("Failed");
-                }
-            }
-        });
+        maxNo++;
+        $(table).append('<tr id="row"'+maxNo+'><td><button id="addDrug" onclick="saveEdit(this,'+maxNo+')" class="btn btn-success" ><i class="glyphicon glyphicon-save"></i> Save </button></td>\
+          <td><input type="text" value="'+maxNo+'" readonly="true" ></td>\
+          <td><input type="text"  ></td>\
+          <td><input type="text"  ></td>\
+          <td><input type="text"  ></td>\
+          <td><input type="text"  ></td>\
+          <td><input type="text"  ></td>\
+          <td><input type="text"  ></td>\
+          <td><input type="text"  ></td>\
+          <td><input type="text"  ></td>\
+          <td><input type="text"  ></td>');
+        $(table).append('</tr>');
     }
 
 </script>

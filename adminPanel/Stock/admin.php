@@ -25,7 +25,7 @@
             <div class="fixed-table-toolbar">
                 <div class="bs-bars pull-left">
                     <div id="toolbar">
-                        <button id="addDrug" class="btn btn-success" >
+                        <button id="addDrug" onclick="addOp()" class="btn btn-success" >
                             <i class="glyphicon glyphicon-plus"></i> Add
                         </button>
                         <button id="editDrug" onclick="editOp()" class="btn btn-default" disabled="">
@@ -105,11 +105,25 @@
     var addBtn = document.getElementById('addDrug');
     var deleteBtn = document.getElementById('removeDrug');
     var editBtn = document.getElementById('editDrug');
+    var maxNo = 0;
     var checkedBoxes = [];
 
     $( document ).ready(function() {
         loadTable();
+        maxStockNo();
     });
+
+    function maxStockNo(){
+        jQuery.ajax({
+            type: "POST",
+            url: "maxStockNo.php",
+            dataType: 'json',
+            data: {},
+            complete: function(r){
+                maxNo = r.responseText;
+            }
+        });
+    }
 
     function loadTable() {
         var count = 10;
@@ -130,6 +144,7 @@
             }
         });
     }
+
 
     function checkEvent(checkBox){
         if(checkBox.checked){
@@ -260,33 +275,19 @@
 
     function addOp() {
         var table = $("#tablebody");
-        $(currentRow).html('');
-        $(currentRow).append('<td><button id="addDrug" onclick="saveEdit(this,'+rowItem[1]+')" class="btn btn-success" ><i class="glyphicon glyphicon-save"></i> Save </button></td>');
-        $(currentRow).append('<td><input type="text" value="'+rowItem[1]+'" readonly="true" ></td>');
-        $(currentRow).append('<td><input type="text" value="'+rowItem[2]+'"></td>');
-        $(currentRow).append('<td><input type="text" value="'+rowItem[3]+'"></td>');
-        $(currentRow).append('<td><input type="text" value="'+rowItem[4]+'"></td>');
-        $(currentRow).append('<td><input type="text" value="'+rowItem[5]+'"></td>');
-        $(currentRow).append('<td><input type="text" value="'+rowItem[6]+'"></td>');
-        $(currentRow).append('<td><input type="text" value="'+rowItem[7]+'"></td>');
-        $(currentRow).append('<td><input type="text" value="'+rowItem[8]+'"></td>');
-        $(currentRow).append('<td><input type="text" value="'+rowItem[9]+'"></td>');
-        $(currentRow).append('<td><input type="text" value="'+rowItem[10]+'"></td>');
-
-        jQuery.ajax({
-            type: "POST",
-            url: "loadDrugs.php",
-            dataType: 'json',
-            data: {count: count},
-            complete: function(r){
-                if (r.responseText.length > 10){
-                    table.html(r.responseText);
-                }
-                else{
-                    table.html("Failed");
-                }
-            }
-        });
+        maxNo++;
+        $(table).append('<tr id="row"'+maxNo+'><td><button id="addDrug" onclick="saveEdit(this,)" class="btn btn-success" ><i class="glyphicon glyphicon-save"></i> Save </button></td>\
+          <td><input type="text" value="'+maxNo+'" readonly="true" ></td>\
+          <td><input type="text"  ></td>\
+          <td><input type="text"  ></td>\
+          <td><input type="text"  ></td>\
+          <td><input type="text"  ></td>\
+          <td><input type="text"  ></td>\
+          <td><input type="text"  ></td>\
+          <td><input type="text"  ></td>\
+          <td><input type="text"  ></td>\
+          <td><input type="text"  ></td>');
+        $(table).append('</tr>');
     }
 
 </script>

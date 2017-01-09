@@ -8,7 +8,7 @@
 
 require("../../db/db.php");
 
-$drugN = $_REQUEST["drugN"];
+//$drugN = $_REQUEST["drugN"];
 
 //dealing with scripting attacks(unwanted html)
 //$nic = htmlspecialchars($nic);
@@ -23,7 +23,10 @@ $sql="SELECT * FROM drug";
 $result = mysqli_query($db,$sql);
 
 while( $rows = mysqli_fetch_assoc($result)){
-    echo '<tr>';
+    $id =  $rows['DrugNo'];
+    echo '<tr id="row'.$id.'">';
+    echo    '<td>'. '<div class="checkbox"><label><input onchange="checkEvent(this)" name="'.$id.'" type="checkbox" value=""></label>
+                                </div></td>';
     echo    '<td >'. $rows['DrugNo'].'</td>';
     echo    '<td >'. $rows['GeneticName'].'</td>';
     echo    '<td >'. $rows['BrandName'].'</td>';

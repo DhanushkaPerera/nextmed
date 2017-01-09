@@ -8,11 +8,11 @@ $dbpassword="60eb0f4f";
 $dbname="acsm_2a0677acd5113ea";
 
 //function to connect to the database
-$con = mysqli_connect($dbhost,$dbuser,$dbpassword,$dbname);
+$db = mysqli_connect($dbhost,$dbuser,$dbpassword,$dbname);
 
 
 
-if ($con) {
+if ($db) {
 
 }
 else {
