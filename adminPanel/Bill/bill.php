@@ -64,6 +64,8 @@ if(isset($_POST["search"])){
 			
 }
 
+
+
 ?>
 			
 			
@@ -100,7 +102,7 @@ if(isset($_POST["search"])){
 		<div class="column">
                     <div class="headingbox" id="hBoxNIC" > Brand Name  </div>
                     <div class="inputboxWrap">
-                        <input type="text" placeholder="" maxlength="13" name=nic onfocus="headingBoxActive('hBoxNIC')" onkeyup="validateNIC(this)"   onfocusout="upperCASE(this);hide('NICerror');validateoutNIC(this);validatedAll();" />
+                        <input type="text" placeholder="" maxlength="13" name=brandname onfocus="headingBoxActive('hBoxNIC')" onkeyup="validateNIC(this)"   onfocusout="upperCASE(this);hide('NICerror');validateoutNIC(this);validatedAll();" />
                     </div>
                     <div class="poperror" id="NICerror" ></div>
                     <div class="error" id="nicerror2" > error occured </div><br>
@@ -114,7 +116,7 @@ if(isset($_POST["search"])){
                      <!-- user First Name input -->
                     <div class="headingbox" id="hBoxFN" >   Generic Name </div>
                     <div class="inputboxWrap" >
-                        <input type="text"   name=firstname onfocus="headingBoxActive('hBoxFN')" onkeydown="validateString(this, 'nameerror')" onfocusout="hide('nameerror');validateoutString(this, 'nameerror2');validatedAll();" /><br>
+                        <input type="text"   name=genericname onfocus="headingBoxActive('hBoxFN')" onkeydown="validateString(this, 'nameerror')" onfocusout="hide('nameerror');validateoutString(this, 'nameerror2');validatedAll();" /><br>
                     </div>
                     <div class="poperror" id="nameerror" ></div>
                     <div class="error" id="nameerror2" > error occured </div><br>
@@ -126,7 +128,7 @@ if(isset($_POST["search"])){
                 </div>
 				
 				<div class="column">
-                    <div class="headingbox" id="hBoxNIC" > Dosage Form </div>
+                    <div class="headingbox" id="hBoxNIC" name=dosageform > Dosage Form </div>
                     <div class="inputboxWrap">
                         <select>
 						<option value="Capsule">Dosage Form</option>
@@ -234,15 +236,16 @@ autoNum();
 <?php
 
 
-if(isset($_POST["submit"])){
-	include('dbase.php');
+
 	
         $brandname = $_POST["brandname"];
-		$quantity = $_POST["quantity"];
+		$genericname = $_POST["genericname"];
 		
-		$sql = "select * from drug where DrugBrandName='$brandname'";
+		//$sql = "select * from drug where DrugBrandName='$brandname'";
+						
+		$sql = "select * from drug where DrugBrandName='$brandname' or GenericName='$genericname' ";
 
-			$res = mysqli_query($con,$sql);
+			$res = mysqli_query($db,$sql);
 			
 			while($row = mysqli_fetch_array($res)){
 				
@@ -272,7 +275,7 @@ if(isset($_POST["submit"])){
 
 
 
-}
+
 }
 ?>
 
