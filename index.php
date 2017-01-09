@@ -11,12 +11,14 @@
 <html>
 <title> NextMEd </title>
 <head>
+	<meta http-Equiv="Cache-Control" Content="no-cache" />
+	<meta http-Equiv="Pragma" Content="no-cache" />
+	<meta http-Equiv="Expires" Content="0" />
 	<meta charset="utf-8">
-   <link rel="stylesheet" type="text/css" href="stylesheet.css">
+   	<link rel="stylesheet" type="text/css" href="stylesheet.css">
+	<script src="jquery/jquery.min.js"></script>
 
-   <script src="jquery/jquery.min.js"></script>
-
-   <script>
+	<script>
 	function showContent(element) {
 		var contentitems = document.querySelectorAll(".showitem");
 		contentitems[0].className = 'contentitem';
@@ -90,19 +92,7 @@
 		});
 	});
 	</script>
-	<script>
-	function toggleElement(element){
-			if(element.style.visibility=="hidden"){
-				element.style.visibility="visible";
-				element.style.opacity="1";
-			}
-			else{
-				element.style.opacity="0";
-				setTimeout(function(){element.style.visibility="hidden";}, 500);
-			}
-		}
-	});
-	</script>
+
 </head>
 <body>
 	
