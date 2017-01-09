@@ -2,24 +2,22 @@
 <html>
 <head>
 	<meta charset="utf-8">
-   <link rel="stylesheet" type="text/css" href="style.css">
-   
-
+	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
+
 <body>
-    <div id="signup" name="Signup" action="All/signup_action.php" method="post" onsubmit="return password()">
-	<div class="close" onclick="parent.closeIFrame();"> X </div>
-			<br>
-			<div style="width:100%;text-align:center; ">
-            <h3>Customer Details</h3> </div>
-        <div class="sep"></div>
-		
-            <div class="inputs">
+    <div id="signup" name="Signup" action="" method="post">
+	<br>
+	<div style="width:100%;text-align:center; ">
+    <h3>Customer Details</h3> </div>
+    <div class="sep"></div>
+        <div class="inputs">
                 <!-- user NIC input -->
                 <div class="column">
                     <div class="headingbox" id="hBoxNIC" > National ID  </div>
                     <div class="inputboxWrap">
-                        <input type="text" placeholder="920290505v" maxlength="13" name=nic onfocus="headingBoxActive('hBoxNIC')" onkeyup="validateNIC(this)"   onfocusout="upperCASE(this);hide('NICerror');validateoutNIC(this);validatedAll();" />
+                        <!--input type="text" placeholder="920290505v" maxlength="13" name=nic onfocus="headingBoxActive('hBoxNIC')" onkeyup="validateNIC(this)"   onfocusout="upperCASE(this);hide('NICerror');validateoutNIC(this);validatedAll();" /-->
+						<input type="text" placeholder="920290505v" maxlength="13" name=nic>
                     </div>
                     <div class="poperror" id="NICerror" ></div>
                     <div class="error" id="nicerror2" > error occured </div><br>
@@ -33,7 +31,8 @@
                      <!-- user First Name input -->
                     <div class="headingbox" id="hBoxFN" >  Name </div>
                     <div class="inputboxWrap" >
-                        <input type="text"   name=name onfocus="headingBoxActive('hBoxFN')" onkeydown="validateString(this, 'nameerror')" onfocusout="hide('nameerror');validateoutString(this, 'nameerror2');validatedAll();" /><br>
+                        <!--input type="text"   name=name onfocus="headingBoxActive('hBoxFN')" onkeydown="validateString(this, 'nameerror')" onfocusout="hide('nameerror');validateoutString(this, 'nameerror2');validatedAll();" /><br-->
+						 <input type="text"   name=name>
                     </div>
                     <div class="poperror" id="nameerror" ></div>
                     <div class="error" id="nameerror2" > error occured </div><br>
@@ -49,8 +48,11 @@
                 <div style="width:100%;text-align:center; " >
                 
 
-                <input class="buttonDis"  type="submit" name=search value=Search id="submitButton" disabled onclick="validatedAll();parent.parent.closeIFrame();" >
-				                <button class="buttonS" onclick="parent.parent.closeIFrame();" > Cancel </button>
+                <input class="buttonDis"  type="submit" name=search value=Search id="submitButton" >
+				<button class="buttonS" type=reset > Cancel </button>
+				
+
+
 
                 </div>
 
@@ -70,36 +72,28 @@ if(isset($_POST["search"])){
 				
 		$sql = "select * from customer where NIC='$nic' or FName='$name' or  LName='$name'";
 
-			$res = mysqli_query($con,$sql);
-			$count =mysqli_fetch_array($res);
+			$res = mysqli_query($db,$sql);
+			
 
 			
 			if(mysqli_num_rows($res)>0){
-            if($count[1]==0 ){
-				echo "<p>neXtMEd registered customer </p>";
-			}
+				while($row = mysqli_fetch_array($res)){
+            
+			echo "<div style='margin-top:500px';>Registered customer</div>";
+			}}
 			else{
                 echo "Unregistered customer";
             }
 }
-}
+
 ?>
 
 </body>
-   <script>
+   <!--script>
    var nicValid = false;
    var fnameValid = false;
    var lnameValid = false;
-   var genderValid = false;
-   var bdayValid = false;
-   var addressValid = false;
-   var civilStatValid = false;
-   var occpValid = false;
-   var phNoValid = false;
-   var bdGrpValid = false;
-   var emailValid = false;
-   var passValid = false;
-   var passfirst = true;
+   
 
    function headingBoxActive(box){
 	var element = document.getElementById(box);
@@ -107,7 +101,7 @@ if(isset($_POST["search"])){
 	element.style.color = "white";
    }
 
-   function headingBoxAlert(box, thisValid){
+   /*function headingBoxAlert(box, thisValid){
 	if(!thisValid){
 		var element = document.getElementById(box);
 		element.style.background =  "#ff6768";
@@ -122,16 +116,16 @@ if(isset($_POST["search"])){
 
    function headingBoxInactive(box){
 
-   }
+   }*/
 
    function hide(id){
 		var element = document.getElementById(id);
 		element.style.opacity = "0";
    }
-   function show(id){
+   /*function show(id){
 		var element = document.getElementById(id);
 		element.style.opacity = "1";
-   }
+   }*/
 	function validateoutNIC(element){
 		var str = element.value;
 		var strl = str.length;
@@ -309,7 +303,7 @@ if(isset($_POST["search"])){
 		element.value = element.value.toUpperCase();
    }
 
-	function validateDate(element, errorCODE){
+	/*function validateDate(element, errorCODE){
 		var strN = element.value;
 		var str = element.value.split("-");
 		var notify = document.getElementById(errorCODE);
@@ -499,7 +493,7 @@ if(isset($_POST["search"])){
 			headingBoxAlert('hBoxPS', passValid);
 			headingBoxAlert('hBoxCP', passValid);
 		}
-	}
+	}*/
 
 	function validatedAll(){
 		//alert("nic "+nicValid+",fname "+fnameValid+",lname "+lnameValid+",genderValid "+ genderValid+",bdayValid "+ "bday" + bdayValid+ +  "phpNo" + phNoValid  + "email" + emailValid + passValid);
@@ -517,7 +511,7 @@ if(isset($_POST["search"])){
 		}
 	}
 	
-	function validateList(element, errorCODE){
+	/*function validateList(element, errorCODE){
 		var validList = false;
 		var name = element.getAttribute("name");
 		var str = element.value;
@@ -573,7 +567,7 @@ if(isset($_POST["search"])){
 	function notice(errorCODE){
 		var notify = document.getElementById(errorCODE);
 		notify.innerHTML = "this is a required field."
-	}
+	}*/
 	
 	function verifyNIC(element, notify)
     {
@@ -604,7 +598,7 @@ if(isset($_POST["search"])){
     
 	}
 
-	function toggleAnimate(button, elementID) {
+	/*function toggleAnimate(button, elementID) {
         element = document.getElementById(elementID);
         if (button.innerHTML=="Add more details"){
             button.innerHTML="Hide";
@@ -615,6 +609,6 @@ if(isset($_POST["search"])){
             element.style.maxHeight="0px";
         }
 
-    }
+    }*/
 
-	</script>
+	</script-->
