@@ -58,7 +58,7 @@ else{
 
 if((move_uploaded_file($image1,'photo/'.$_FILES['Image1']['name']))  ){ 
     
-$sql1="INSERT INTO `order` (NIC,DP,Address,DPTime,Telephone,Email,Image1,ImageName1,Image1Type,Image2,ImageName2,Image2Type,Image3,ImageName3,Image3Type,date) VALUES ('$nic ','$dp','$address','$time','$tele','$mail','$path1','$image_name1','$imagetype1','$path2','$image_name2','$imagetype2','$path3','$image_name3','$imagetype3',CURDATE())";
+$sql1="INSERT INTO `order` (NIC,DP,Address,DPTime,Telephone,Email,Image1,ImageName1,Image1Type,Image2,ImageName2,Image2Type,Image3,ImageName3,Image3Type) VALUES ('$nic ','$dp','$address','$time','$tele','$mail','$path1','$image_name1','$imagetype1','$path2','$image_name2','$imagetype2','$path3','$image_name3','$imagetype3')";
 
 $sql2="INSERT INTO reportorder(Email,date)  VALUES ('$mail',CURDATE())";
 
