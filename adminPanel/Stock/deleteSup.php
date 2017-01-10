@@ -8,7 +8,7 @@
 
 require("../../db/db.php");
 $noSet = "";
-foreach ($_POST['stockNos'] as $no) $noSet += $no+",";
+foreach ($_POST['supNos'] as $no) $noSet += $no+",";
 rtrim($noSet, ",");
 $sql = "DELETE from supplier WHERE supNo IN (". $noSet.");";
 

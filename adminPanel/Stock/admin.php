@@ -230,6 +230,8 @@
 
     function editOp(){
         var length = checkedBoxes.length;
+        deleteBtnSup.disabled = true;
+        editBtnSup.disabled= true;
         //alert(length);
         var step;
         var rowItem = {};
@@ -240,6 +242,7 @@
             checkedBoxes.splice(index,1);
             length = checkedBoxes.length;
             var currentRow = "#row"+id;
+            alert(currentRow);
             $(currentRow).has('td').each(function() {
                 $('td', $(this)).each(function(index, item) {
                     rowItem[index] = $(item).html();
@@ -501,9 +504,9 @@
         }
         jQuery.ajax({
             type: "POST",
-            url: "deleteDrugs.php",
+            url: "deleteSup.php",
             dataType: 'json',
-            data: {stockNos: stockNos},
+            data: {supNos: supNos},
             complete: function(r){
                 if (r.responseText.length > 5){
                     alert(r.responseText);
@@ -513,11 +516,13 @@
                 }
             }
         });
-        loadTable();
+        loadTableSup();
     }
 
     function editOpSup(){
         var length = checkedBoxesSup.length;
+        deleteBtnSup.disabled = true;
+        editBtnSup.disabled= true;
         //alert(length);
         var step;
         var rowItem = {};
@@ -528,13 +533,14 @@
             checkedBoxesSup.splice(index,1);
             length = checkedBoxesSup.length;
             var currentRow = "#row"+id;
+            alert(currentRow);
             $(currentRow).has('td').each(function() {
                 $('td', $(this)).each(function(index, item) {
                     rowItem[index] = $(item).html();
                 });
             });
             $(currentRow).html('');
-            $(currentRow).append('<td><button id="addDrug" onclick="saveEdit(this,'+rowItem[1]+')" class="btn btn-success" ><i class="glyphicon glyphicon-save"></i> Save </button></td>');
+            $(currentRow).append('<td><button onclick="saveEdit(this,'+rowItem[1]+')" class="btn btn-success" ><i class="glyphicon glyphicon-save"></i> Save </button></td>');
             $(currentRow).append('<td><input type="text" value="'+rowItem[1]+'" readonly="true" ></td>');
             $(currentRow).append('<td><input type="text" value="'+rowItem[2]+'"></td>');
             $(currentRow).append('<td><input type="text" value="'+rowItem[3]+'"></td>');
@@ -572,7 +578,7 @@
         });
 
         $(currentRow).html('');
-        $(currentRow).append('<td><div class="checkbox"><label><input onchange="checkEventSup(this)" name="'+ID+'" type="checkbox" value=""></label></div></td></td>');
+        $(currentRow).append('<td><div class="checkbox"><label><input onchange="checkEventSup(this)" name=s"'+ID+'" type="checkbox" value=""></label></div></td></td>');
         $(currentRow).append('<td> '+rowItem[1]+' </td>');
         $(currentRow).append('<td> '+rowItem[2]+' </td>');
         $(currentRow).append('<td> '+rowItem[3]+' </td>');
@@ -588,7 +594,7 @@
     function addOpSup() {
         var table = $("#tablebody");
         maxNoSup++;
-        $(table).append('<tr id="row"'+maxNoSup+'><td><button id="addDrug" onclick="saveEdit(this,)" class="btn btn-success" ><i class="glyphicon glyphicon-save"></i> Save </button></td>\
+        $(table).append('<tr id="rowS"'+maxNoSup+'><td><button id="addDrug" onclick="saveEditSup(this,'+maxNoSup+')" class="btn btn-success" ><i class="glyphicon glyphicon-save"></i> Save </button></td>\
           <td><input type="text" value="'+maxNoSup+'" readonly="true" ></td>\
           <td><input type="text"  ></td>\
           <td><input type="text"  ></td>\
