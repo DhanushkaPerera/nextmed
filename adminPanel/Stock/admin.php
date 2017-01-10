@@ -65,32 +65,54 @@
 
                         </tbody>
                     </table>
+                    <div class="col-md-12 text-center">
+                        <ul class="pagination pagination-lg pager" id="myPager"></ul>
+                    </div>
                 </div>
             </div>
 
         </div>
 		<div id="Suppliers" class="tab-pane fade">
 			<h3>Suppliers</h3>
+            <div class="fixed-table-toolbar">
+                <div class="bs-bars pull-left">
+                    <div id="toolbar">
+                        <button id="addSup" onclick="addOpSup()" class="btn btn-success" >
+                            <i class="glyphicon glyphicon-plus"></i> Add
+                        </button>
+                        <button id="editSup" onclick="editOpSup()" class="btn btn-default" disabled="">
+                            <i class="glyphicon glyphicon-edit"></i> Edit
+                        </button>
+                        <button id="removeSup" onclick="deleteOpSup()" class="btn btn-danger" disabled="">
+                            <i class="glyphicon glyphicon-remove"></i> Delete
+                        </button>
+                    </div>
+                </div>
+                <div class="pull-right search">
+                    <input class="form-control" type="text" placeholder="Search">
+                </div>
+
+            </div>
             <div class="fixed-table-container">
                 <div class="table-responsive">
                     <table class="table">
                         <thead id="tableContent">
-
+                            <tr>
+                                <th>Select</th>
+                                <th>#Supplier No</th>
+                                <th>Company Name</th>
+                                <th>Permenant Address</th>
+                                <th>Contact No</th>
+                                <th>Email Address</th>
+                            </tr>
                         </thead>
-                        <tbody>
-                        <tr>
-                            <td><div class="checkbox">
-                                    <label><input type="checkbox" value=""></label>
-                                </div>
-                            </td>
-                            <td>Anna</td>
-                            <td>Pitt</td>
-                            <td>35</td>
-                            <td>New York</td>
-                            <td>USA</td>
-                        </tr>
+                        <tbody id="supplierTable">
+
                         </tbody>
                     </table>
+                    <div class="col-md-12 text-center">
+                        <ul class="pagination pagination-lg pager" id="myPagerSup"></ul>
+                    </div>
                 </div>
             </div>
 		</div>
@@ -110,7 +132,9 @@
 
     $( document ).ready(function() {
         loadTable();
+        loadTableSup();
         maxStockNo();
+        maxSupplierNo();
     });
 
     function maxStockNo(){
@@ -126,17 +150,17 @@
     }
 
     function loadTable() {
-        var count = 10;
         var table = $("#tablebody");
         table.html("Loading..");
         jQuery.ajax({
             type: "POST",
             url: "loadDrugs.php",
             dataType: 'json',
-            data: {count: count},
+            data: {},
             complete: function(r){
                 if (r.responseText.length > 10){
                     table.html(r.responseText);
+                    $('#tablebody').pageMe({pagerSelector:'#myPager',showPrevNext:true,hidePageNumbers:false,perPage:10});
                 }
                 else{
                     table.html("Failed");
@@ -227,8 +251,8 @@
             $(currentRow).append('<td><input type="text" value="'+rowItem[2]+'"></td>');
             $(currentRow).append('<td><input type="text" value="'+rowItem[3]+'"></td>');
             $(currentRow).append('<td><input type="text" value="'+rowItem[4]+'"></td>');
-            $(currentRow).append('<td><input type="text" value="'+rowItem[5]+'"></td>');
-            $(currentRow).append('<td><input type="text" value="'+rowItem[6]+'"></td>');
+            $(currentRow).append('<td><input type="date" value="'+rowItem[5]+'"></td>');
+            $(currentRow).append('<td><input type="date" value="'+rowItem[6]+'"></td>');
             $(currentRow).append('<td><input type="text" value="'+rowItem[7]+'"></td>');
             $(currentRow).append('<td><input type="text" value="'+rowItem[8]+'"></td>');
             $(currentRow).append('<td><input type="text" value="'+rowItem[9]+'"></td>');
@@ -281,14 +305,303 @@
           <td><input type="text"  ></td>\
           <td><input type="text"  ></td>\
           <td><input type="text"  ></td>\
-          <td><input type="text"  ></td>\
-          <td><input type="text"  ></td>\
+          <td><input type="date"  ></td>\
+          <td><input type="date"  ></td>\
           <td><input type="text"  ></td>\
           <td><input type="text"  ></td>\
           <td><input type="text"  ></td>\
           <td><input type="text"  ></td>');
         $(table).append('</tr>');
     }
+
+    //table pagination
+    $.fn.pageMe = function(opts){
+        var $this = this,
+            defaults = {
+                perPage: 7,
+                showPrevNext: false,
+                hidePageNumbers: false
+            },
+            settings = $.extend(defaults, opts);
+
+        var listElement = $this;
+        var perPage = settings.perPage;
+        var children = listElement.children();
+        var pager = $('.pager');
+
+        if (typeof settings.childSelector!="undefined") {
+            children = listElement.find(settings.childSelector);
+        }
+
+        if (typeof settings.pagerSelector!="undefined") {
+            pager = $(settings.pagerSelector);
+        }
+
+        var numItems = children.size();
+        var numPages = Math.ceil(numItems/perPage);
+
+        pager.data("curr",0);
+
+        if (settings.showPrevNext){
+            $('<li><a href="#" class="prev_link">«</a></li>').appendTo(pager);
+        }
+
+        var curr = 0;
+        while(numPages > curr && (settings.hidePageNumbers==false)){
+            $('<li><a href="#" class="page_link">'+(curr+1)+'</a></li>').appendTo(pager);
+            curr++;
+        }
+
+        if (settings.showPrevNext){
+            $('<li><a href="#" class="next_link">»</a></li>').appendTo(pager);
+        }
+
+        pager.find('.page_link:first').addClass('active');
+        pager.find('.prev_link').hide();
+        if (numPages<=1) {
+            pager.find('.next_link').hide();
+        }
+        pager.children().eq(1).addClass("active");
+
+        children.hide();
+        children.slice(0, perPage).show();
+
+        pager.find('li .page_link').click(function(){
+            var clickedPage = $(this).html().valueOf()-1;
+            goTo(clickedPage,perPage);
+            return false;
+        });
+        pager.find('li .prev_link').click(function(){
+            previous();
+            return false;
+        });
+        pager.find('li .next_link').click(function(){
+            next();
+            return false;
+        });
+
+        function previous(){
+            var goToPage = parseInt(pager.data("curr")) - 1;
+            goTo(goToPage);
+        }
+
+        function next(){
+            goToPage = parseInt(pager.data("curr")) + 1;
+            goTo(goToPage);
+        }
+
+        function goTo(page){
+            var startAt = page * perPage,
+                endOn = startAt + perPage;
+
+            children.css('display','none').slice(startAt, endOn).show();
+
+            if (page>=1) {
+                pager.find('.prev_link').show();
+            }
+            else {
+                pager.find('.prev_link').hide();
+            }
+
+            if (page<(numPages-1)) {
+                pager.find('.next_link').show();
+            }
+            else {
+                pager.find('.next_link').hide();
+            }
+
+            pager.data("curr",page);
+            pager.children().removeClass("active");
+            pager.children().eq(page+1).addClass("active");
+
+        }
+    };
+
+    //Functions for the supplier table
+    var addBtnSup = document.getElementById('addSup');
+    var deleteBtnSup = document.getElementById('removeSup');
+    var editBtnSup = document.getElementById('editSup');
+    
+    var maxNoSup = 0;
+    var checkedBoxesSup = [];
+
+    function maxSupplierNo(){
+        jQuery.ajax({
+            type: "POST",
+            url: "maxSupNo.php",
+            dataType: 'json',
+            data: {},
+            complete: function(r){
+                maxNoSup = r.responseText;
+            }
+        });
+    }
+
+    function loadTableSup() {
+        var table = $("#supplierTable");
+        table.html("Loading..");
+        jQuery.ajax({
+            type: "POST",
+            url: "loadSup.php",
+            dataType: 'json',
+            data: {},
+            complete: function(r){
+                if (r.responseText.length > 10){
+                    table.html(r.responseText);
+                    $('#supplierTable').pageMe({pagerSelector:'#myPagerSup',showPrevNext:true,hidePageNumbers:false,perPage:10});
+                }
+                else{
+                    table.html("Failed");
+                }
+            }
+        });
+    }
+
+
+    function checkEventSup(checkBox){
+        if(checkBox.checked){
+            checkedEventSup(checkBox);
+        }
+        else{
+            uncheckedEventSup(checkBox);
+        }
+    }
+    function  checkedEventSup(checkBox) {
+
+        checkedBoxesSup.push(checkBox);
+
+        if(checkedBoxesSup.length==1){
+            deleteBtnSup.disabled = false;
+            editBtnSup.disabled = false;
+        }
+
+    }
+    function uncheckedEventSup(checkBox) {
+        var index = checkedBoxesSup.indexOf(checkBox);
+        checkedBoxesSup.splice(index,1);
+        if(checkedBoxesSup.length==0){
+            deleteBtnSup.disabled = true;
+            editBtnSup.disabled= true;
+        }
+
+    }
+
+    function deleteOpSup() {
+        var length = checkedBoxesSup.length;
+        var step;
+        var supNos = [];
+        for(step=0;step<length;step++){
+            var item = checkedBoxesSup[step];
+            var supNo = (item.getAttribute('name')).substring(1);
+            var index = checkedBoxesSup.indexOf(item);
+            checkedBoxesSup.splice(index,1);
+            length = checkedBoxesSup.length;
+            stockNos.push(supNo);
+            var currentRow = "#row"+supNo;
+        }
+        jQuery.ajax({
+            type: "POST",
+            url: "deleteDrugs.php",
+            dataType: 'json',
+            data: {stockNos: stockNos},
+            complete: function(r){
+                if (r.responseText.length > 5){
+                    alert(r.responseText);
+                }
+                else{
+                    alert("Delete Failed");
+                }
+            }
+        });
+        loadTable();
+    }
+
+    function editOpSup(){
+        var length = checkedBoxesSup.length;
+        //alert(length);
+        var step;
+        var rowItem = {};
+        for(step = 0;step<length;step++){
+            var item = checkedBoxesSup[step];
+            var id = item.getAttribute('name');
+            var index = checkedBoxesSup.indexOf(item);
+            checkedBoxesSup.splice(index,1);
+            length = checkedBoxesSup.length;
+            var currentRow = "#row"+id;
+            $(currentRow).has('td').each(function() {
+                $('td', $(this)).each(function(index, item) {
+                    rowItem[index] = $(item).html();
+                });
+            });
+            $(currentRow).html('');
+            $(currentRow).append('<td><button id="addDrug" onclick="saveEdit(this,'+rowItem[1]+')" class="btn btn-success" ><i class="glyphicon glyphicon-save"></i> Save </button></td>');
+            $(currentRow).append('<td><input type="text" value="'+rowItem[1]+'" readonly="true" ></td>');
+            $(currentRow).append('<td><input type="text" value="'+rowItem[2]+'"></td>');
+            $(currentRow).append('<td><input type="text" value="'+rowItem[3]+'"></td>');
+            $(currentRow).append('<td><input type="text" value="'+rowItem[4]+'"></td>');
+            $(currentRow).append('<td><input type="date" value="'+rowItem[5]+'"></td>');
+            $(currentRow).append('<td><input type="date" value="'+rowItem[6]+'"></td>');
+            $(currentRow).append('<td><input type="text" value="'+rowItem[7]+'"></td>');
+            $(currentRow).append('<td><input type="text" value="'+rowItem[8]+'"></td>');
+            $(currentRow).append('<td><input type="text" value="'+rowItem[9]+'"></td>');
+            $(currentRow).append('<td><input type="text" value="'+rowItem[10]+'"></td>');
+        }
+    }
+    function saveEditSup(editBtnSup,ID) {
+        var currentRow = $(editBtnSup).closest('tr');
+        var rowItem = {};
+        var index=1;
+        $(currentRow).children('td').children('input').each(function () {
+            rowItem[index] = this.value;
+            index++;
+        });
+
+        jQuery.ajax({
+            type: "POST",
+            url: "saveDrugs.php",
+            dataType: 'json',
+            data: {oldID:ID, rowItem: rowItem},
+            complete: function(r){
+                if (r.responseText.length > 1){
+                    alert(r.responseText);
+                }
+                else{
+                    table.html("Failed");
+                }
+            }
+        });
+
+        $(currentRow).html('');
+        $(currentRow).append('<td><div class="checkbox"><label><input onchange="checkEventSup(this)" name="'+ID+'" type="checkbox" value=""></label></div></td></td>');
+        $(currentRow).append('<td> '+rowItem[1]+' </td>');
+        $(currentRow).append('<td> '+rowItem[2]+' </td>');
+        $(currentRow).append('<td> '+rowItem[3]+' </td>');
+        $(currentRow).append('<td> '+rowItem[4]+' </td>');
+        $(currentRow).append('<td> '+rowItem[5]+' </td>');
+        $(currentRow).append('<td> '+rowItem[6]+' </td>');
+        $(currentRow).append('<td> '+rowItem[7]+' </td>');
+        $(currentRow).append('<td> '+rowItem[8]+' </td>');
+        $(currentRow).append('<td> '+rowItem[9]+' </td>');
+        $(currentRow).append('<td> '+rowItem[10]+' </td>');
+    }
+
+    function addOpSup() {
+        var table = $("#tablebody");
+        maxNoSup++;
+        $(table).append('<tr id="row"'+maxNoSup+'><td><button id="addDrug" onclick="saveEdit(this,)" class="btn btn-success" ><i class="glyphicon glyphicon-save"></i> Save </button></td>\
+          <td><input type="text" value="'+maxNoSup+'" readonly="true" ></td>\
+          <td><input type="text"  ></td>\
+          <td><input type="text"  ></td>\
+          <td><input type="text"  ></td>\
+          <td><input type="date"  ></td>\
+          <td><input type="date"  ></td>\
+          <td><input type="text"  ></td>\
+          <td><input type="text"  ></td>\
+          <td><input type="text"  ></td>\
+          <td><input type="text"  ></td>');
+        $(table).append('</tr>');
+    }
+
 
 </script>
 </html>

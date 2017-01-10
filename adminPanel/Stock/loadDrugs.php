@@ -9,7 +9,6 @@ require("../../db/db.php");
 $sql="SELECT * FROM drugstock";
 $result = mysqli_query($db,$sql);
 
-$count = $_POST['count'] ;
     while( $rows = mysqli_fetch_assoc($result)){
         $id = $rows['StockNo'];
         echo '<tr id="row'.$id.'">';
