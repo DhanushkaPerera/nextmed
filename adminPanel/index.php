@@ -122,7 +122,7 @@
 			</div>
 			<div class="contentitem" id="Orders" style="height:100%">
 			<div class="heading1"><div class="heading1"> Online orders </div>
-						<iframe src="ordering/vieworders.php" style="width:100%" frameborder="0" onload="resizeIframe(this)" > </iframe>
+						<iframe src="ordering/vieworders.php" style="width:100%;height:700px;" frameborder="0" > </iframe>
 			</div>
 			</div>
 			<div class="contentitem" id="User"> <div class="heading1">User Management  </div></div>
