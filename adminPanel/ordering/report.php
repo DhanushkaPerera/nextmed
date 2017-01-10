@@ -17,7 +17,7 @@ $this->ln(20);
     
 }
 
-$sql="SELECT count(email) as Number, date from `order`";
+$sql="SELECT count(Email) as Number, Date from reportorder";
 $result=mysqli_query($db,$sql);
 $pdf=new PDF();
 $pdf->AddPage();
@@ -33,7 +33,7 @@ while($row=mysqli_fetch_array($result))
   
   // cell with left and right borders
 
-$pdf->Cell(90,10,$row['date'],1,0,'C',0); // 1,0 
+$pdf->Cell(90,10,$row['Date'],1,0,'C',0); // 1,0 
 $pdf->Cell(90,10,$row['Number'] ,1,1,'C',0);
    
    
