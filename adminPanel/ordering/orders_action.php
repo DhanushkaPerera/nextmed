@@ -58,17 +58,20 @@ else{
 
 if((move_uploaded_file($image1,'photo/'.$_FILES['Image1']['name']))  ){ 
     
-$sql="INSERT INTO `order` (NIC,DP,Address,DPTime,Telephone,Email,Image1,ImageName1,Image1Type,Image2,ImageName2,Image2Type,Image3,ImageName3,Image3Type) VALUES ('$nic ','$dp','$address','$time','$tele','$mail','$path1','$image_name1','$imagetype1','$path2','$image_name2','$imagetype2','$path3','$image_name3','$imagetype3')";
+$sql1="INSERT INTO `order` (NIC,DP,Address,DPTime,Telephone,Email,Image1,ImageName1,Image1Type,Image2,ImageName2,Image2Type,Image3,ImageName3,Image3Type,date) VALUES ('$nic ','$dp','$address','$time','$tele','$mail','$path1','$image_name1','$imagetype1','$path2','$image_name2','$imagetype2','$path3','$image_name3','$imagetype3',CURDATE())";
 
+$sql2="INSERT INTO reportorder(Email,date)  VALUES ('$mail',CURDATE())";
 
-$result = mysqli_query($db,$sql);
+$result1 = mysqli_query($db,$sql1);
+$result2 = mysqli_query($db,$sql2);
 
- if (!$result) 
+ if (!$result1 and !$result2) 
 {
      
-    echo '<script language="javascript">';
-echo 'alert("Order not placed properly please try again ")';
-echo '</script>';
+    echo '<script language="javascript">
+ alert("Order not placed properly please try again ")
+window.location.href="orders.php";
+ </script>';
 }
 else
 {
@@ -108,7 +111,7 @@ Anura Pharmacy';
     $mail->Password   = "ucsc123456789"; // Your Gmail password
       
     // Compose
-    $mail->SetFrom($_POST['emailid'], $_POST['fullname']);
+    $mail->SetFrom($_POST['emailid'], "Anura pharmacy");
     $mail->AddReplyTo($_POST['emailid'], $_POST['fullname']);
     $mail->Subject = "Pharmacy order confirmaton";      // Subject (which isn't required)  
     $mail->MsgHTML($message);
