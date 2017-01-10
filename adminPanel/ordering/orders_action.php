@@ -68,9 +68,10 @@ $result2 = mysqli_query($db,$sql2);
  if (!$result1 and !$result2) 
 {
      
-    echo '<script language="javascript">';
-echo 'alert("Order not placed properly please try again ")';
-echo '</script>';
+    echo '<script language="javascript">
+ alert("Order not placed properly please try again ")
+window.location.href="orders.php";
+ </script>';
 }
 else
 {
