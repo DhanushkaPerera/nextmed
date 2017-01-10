@@ -36,11 +36,15 @@
                         </button>
                     </div>
                 </div>
-                <div class="pull-right search">
-                    <input class="form-control" type="text" placeholder="Search">
-                </div>
+                <div class="bs-bars pull-right">
+                    <div class="input-group pull-right">
+                    <input class="form-control pull-right" type="text" placeholder="Search">
+                        <span class="input-group-btn ">
+                        <button class="btn btn-secondary" type="button">Go!</button>
+                        </span>
+                    </div>
 
-            </div>
+                 </div>
             <br>
             <div class="fixed-table-container">
                 <div class="table-responsive">
@@ -303,7 +307,7 @@
     function addOp() {
         var table = $("#tablebody");
         maxNo++;
-        $(table).append('<tr id="row"'+maxNo+'><td><button id="addDrug" onclick="saveEdit(this,)" class="btn btn-success" ><i class="glyphicon glyphicon-save"></i> Save </button></td>\
+        $(table).append('<tr id="row"'+maxNo+'><td><button id="addDrug" onclick="saveEdit(this,'+maxNo+')" class="btn btn-success" ><i class="glyphicon glyphicon-save"></i> Save </button></td>\
           <td><input type="text" value="'+maxNo+'" readonly="true" ></td>\
           <td><input type="text"  ></td>\
           <td><input type="text"  ></td>\
@@ -419,7 +423,25 @@
 
         }
     };
-
+    function Search(serchThis) {
+        var table = $("#tablebody");
+        table.html("Loading..");
+        jQuery.ajax({
+            type: "POST",
+            url: "searchDrugs.php",
+            dataType: 'json',
+            data: {search:serchThis},
+            complete: function(r){
+                if (r.responseText.length > 10){
+                    table.html(r.responseText);
+                    $('#tablebody').pageMe({pagerSelector:'#myPager',showPrevNext:true,hidePageNumbers:false,perPage:10});
+                }
+                else{
+                    table.html("Failed");
+                }
+            }
+        });
+    }
     //Functions for the supplier table
     var addBtnSup = document.getElementById('addSup');
     var deleteBtnSup = document.getElementById('removeSup');
@@ -606,6 +628,26 @@
           <td><input type="text"  ></td>\
           <td><input type="text"  ></td>');
         $(table).append('</tr>');
+    }
+
+    function SearchSup(serchThis) {
+        var table = $("#tablebody");
+        table.html("Loading..");
+        jQuery.ajax({
+            type: "POST",
+            url: "searchDrugs.php",
+            dataType: 'json',
+            data: {search:serchThis},
+            complete: function(r){
+                if (r.responseText.length > 10){
+                    table.html(r.responseText);
+                    $('#tablebody').pageMe({pagerSelector:'#myPager',showPrevNext:true,hidePageNumbers:false,perPage:10});
+                }
+                else{
+                    table.html("Failed");
+                }
+            }
+        });
     }
 
 

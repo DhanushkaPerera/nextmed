@@ -6,7 +6,7 @@
  * Time: 10:04 AM
  */
 require("../../db/db.php");
-$sql="SELECT * FROM supplier";
+$sql="SELECT * FROM supplier WHERE Company_Name LIKE ".$_POST['search'];
 $result = mysqli_query($db,$sql);
 
     while( $rows = mysqli_fetch_assoc($result)){

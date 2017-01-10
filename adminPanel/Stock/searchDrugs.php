@@ -6,10 +6,10 @@
  * Time: 10:04 AM
  */
 require("../../db/db.php");
-$sql="SELECT * FROM drugstock";
+$sql="SELECT * FROM drugstock WHERE DrugBrandName LIKE ".$_POST['search'];
 $result = mysqli_query($db,$sql);
 
-    while( $rows = mysqli_fetch_assoc($result)){
+    while($rows = mysqli_fetch_assoc($result)){
         $id = $rows['StockNo'];
         echo '<tr id="row'.$id.'">';
         echo    '<td>'. '<div class="checkbox"><label><input onchange="checkEvent(this)" name="'.$id.'" type="checkbox" value=""></label>
