@@ -8,7 +8,6 @@
 require("../../db/db.php");
 $sql="SELECT * FROM drugstock";
 $result = mysqli_query($db,$sql);
-
     while( $rows = mysqli_fetch_assoc($result)){
         $id = $rows['StockNo'];
         echo '<tr id="row'.$id.'">';
@@ -25,7 +24,6 @@ $result = mysqli_query($db,$sql);
         echo    '<td >'. $rows['ReturnPolicy'].'</td>';
         echo    '<td >'. $rows['RetailPrice'].'</td>';
         echo '</tr>';
-        $count--;
     }
 mysqli_close($db);
 ?>

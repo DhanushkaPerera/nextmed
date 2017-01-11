@@ -1,3 +1,12 @@
+<?php
+session_start();
+if(isset($_SESSION['loginEmp'])&&$_SESSION['loginEmp']==1){
+
+}
+else{
+	header('location:/../testing/index.php');
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -113,7 +122,7 @@
 	<div class="contents">
 			<div class="contentitem showitem" id="Search">
 				<div class="heading1" style="display: inline-block;">Search Drugs</div><br>
-				<iframe id="iFrameSearch" src="Search/drugs.htm" style="width:100%" frameborder="0" onload="resizeIframe(this)" > </iframe>
+				<iframe id="iFrameSearch" src="Search/Search.php" style="width:100%" frameborder="0" onload="resizeIframe(this)" > </iframe>
 				
 			</div>
 			

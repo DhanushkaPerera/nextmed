@@ -15,89 +15,51 @@
 <body>
 
 <div class="container" style="margin-left:10px;">
-    <ul class="nav nav-tabs">
-        <li class="active"><a data-toggle="tab" href="#Search">Search</a></li>
-        <li><a data-toggle="tab" href="#Alternatives">Add Alternatives</a></li>
-    </ul>
-    <div style="background-color: transparent" class="tab-content">
-        <div id="Search" class="tab-pane fade in active">
-            <h3>Drugs</h3>
-            <div class="fixed-table-toolbar">
-                <div class="bs-bars pull-left">
-                    <div id="toolbar">
-                        <button id="addDrug" onclick="addOp()" class="btn btn-success" >
-                            <i class="glyphicon glyphicon-plus"></i> Add
-                        </button>
-                        <button id="editDrug" onclick="editOp()" class="btn btn-default" disabled="">
-                            <i class="glyphicon glyphicon-edit"></i> Edit
-                        </button>
-                        <button id="removeDrug" onclick="deleteOp()" class="btn btn-danger" disabled="">
-                            <i class="glyphicon glyphicon-remove"></i> Delete
-                        </button>
-                    </div>
-                </div>
-                <div class="pull-right search">
-                    <input id="searchBox" class="form-control" type="text" placeholder="Search Drugs">
-                </div>
-
+    <h3>Drugs</h3>
+    <div class="fixed-table-toolbar">
+        <div class="bs-bars pull-left">
+            <div id="toolbar">
+                <button id="addDrug" onclick="addOp()" class="btn btn-success" >
+                    <i class="glyphicon glyphicon-plus"></i> Add
+                </button>
+                <button id="editDrug" onclick="editOp()" class="btn btn-default" disabled="">
+                    <i class="glyphicon glyphicon-edit"></i> Edit
+                </button>
+                <button id="removeDrug" onclick="deleteOp()" class="btn btn-danger" disabled="">
+                    <i class="glyphicon glyphicon-remove"></i> Delete
+                </button>
             </div>
-            <br>
-            <div class="fixed-table-container">
-                <div class="table-responsive">
-                    <table class="table">
-                        <thead>
-                        <tr>
-                            <th>Select</th>
-                            <th>#Drug No</th>
-                            <th>Genetic Name</th>
-                            <th>Brand Name</th>
-                            <th>Dosage Form</th>
-                            <th>Alternatives</th>
-                            <th>Compositions</th>
-                            <th>Dose Per Person</th>
-                            <th>Strength</th>
-                            <th>Health Tips</th>
-                            <th>Storage</th>
-                        </tr>
-                        </thead>
-                        <tbody id="tablebody">
-
-                        </tbody>
-                    </table>
-                    <div class="col-md-12 text-center">
-                        <ul class="pagination pagination-lg pager" id="myPager"></ul>
-                    </div>
-                </div>
-            </div>
-
         </div>
-        <div id="Alternatives" class="tab-pane fade">
-            <h3>Alternatives</h3>
-            <div class="fixed-table-container">
-                <div class="table-responsive">
-                    <table class="table">
-                        <thead>
-                        <tr>
-                            <th>Select</th>
-                            <th>#Drug No</th>
-                            <th>Genetic Name</th>
-                            <th>Brand Name</th>
-                            <th>Dosage Form</th>
-                            <th>Alternatives</th>
-                            <th>Compositions</th>
-                            <th>Dose Per Person</th>
-                            <th>Strength</th>
-                            <th>Health Tips</th>
-                            <th>Storage</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
+        <div class="pull-right search">
+            <input id="searchBox" class="form-control" type="text" placeholder="Search Drugs">
+        </div>
 
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
+    </div>
+    <br>
+    <div class="fixed-table-container">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Select</th>
+                    <th>#Drug No</th>
+                    <th>Genetic Name</th>
+                    <th>Brand Name</th>
+                    <th>Dosage Form</th>
+                    <th>Alternatives</th>
+                    <th>Compositions</th>
+                    <th>Dose Per Person</th>
+                    <th>Strength</th>
+                    <th>Health Tips</th>
+                    <th>Storage</th>
+                </tr>
+                </thead>
+                <tbody id="tablebody">
+
+                </tbody>
+            </table>
+            <div class="col-md-12 text-center">
+                <ul class="pagination pagination-lg pager" id="myPager"></ul>
             </div>
         </div>
     </div>

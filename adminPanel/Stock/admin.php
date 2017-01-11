@@ -23,28 +23,38 @@
 		<div id="Drugs" class="tab-pane fade in active">
 			<h3>Drugs</h3>
             <div class="fixed-table-toolbar">
-                <div class="bs-bars pull-left">
-                    <div id="toolbar">
-                        <button id="addDrug" onclick="addOp()" class="btn btn-success" >
-                            <i class="glyphicon glyphicon-plus"></i> Add
-                        </button>
-                        <button id="editDrug" onclick="editOp()" class="btn btn-default" disabled="">
-                            <i class="glyphicon glyphicon-edit"></i> Edit
-                        </button>
-                        <button id="removeDrug" onclick="deleteOp()" class="btn btn-danger" disabled="">
-                            <i class="glyphicon glyphicon-remove"></i> Delete
-                        </button>
-                    </div>
-                </div>
-                <div class="bs-bars pull-right">
-                    <div class="input-group pull-right">
-                    <input class="form-control pull-right" type="text" placeholder="Search">
-                        <span class="input-group-btn ">
-                        <button class="btn btn-secondary" type="button">Go!</button>
-                        </span>
+                <div class="row">
+                    <div class=" col-sm-9">
+                        <div id="toolbar">
+                            <button id="addDrug" onclick="addOp()" class="btn btn-success" >
+                                <i class="glyphicon glyphicon-plus"></i> Add
+                            </button>
+                            <button id="editDrug" onclick="editOp()" class="btn btn-default" disabled="">
+                                <i class="glyphicon glyphicon-edit"></i> Edit
+                            </button>
+                            <button id="removeDrug" onclick="deleteOp()" class="btn btn-danger" disabled="">
+                                <i class="glyphicon glyphicon-remove"></i> Delete
+                            </button>
+                            <button onclick="loadTable()" class="btn btn-default" type="button" name="refresh" title="Refresh">
+                                <i class="glyphicon glyphicon-refresh icon-refresh"></i>
+                            </button>
+                        </div>
+
                     </div>
 
-                 </div>
+
+                    <div class=" col-sm-3">
+                        <div class="input-group">
+                            <input id="searchInputDrug" type="text" class="form-control" placeholder="Search for...">
+                            <span class="input-group-btn">
+                                 <button onclick="SearchDrugs()" class="btn btn-secondary" type="button"><i class="glyphicon glyphicon-search"></i></button>
+                        </span>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
             <br>
             <div class="fixed-table-container">
                 <div class="table-responsive">
@@ -79,23 +89,36 @@
 		<div id="Suppliers" class="tab-pane fade">
 			<h3>Suppliers</h3>
             <div class="fixed-table-toolbar">
-                <div class="bs-bars pull-left">
-                    <div id="toolbar">
-                        <button id="addSup" onclick="addOpSup()" class="btn btn-success" >
-                            <i class="glyphicon glyphicon-plus"></i> Add
-                        </button>
-                        <button id="editSup" onclick="editOpSup()" class="btn btn-default" disabled="">
-                            <i class="glyphicon glyphicon-edit"></i> Edit
-                        </button>
-                        <button id="removeSup" onclick="deleteOpSup()" class="btn btn-danger" disabled="">
-                            <i class="glyphicon glyphicon-remove"></i> Delete
-                        </button>
+                <div class="row">
+                    <div class="col-sm-9">
+                        <div id="toolbar">
+                            <button id="addSup" onclick="addOpSup()" class="btn btn-success" >
+                                <i class="glyphicon glyphicon-plus"></i> Add
+                            </button>
+                            <button id="editSup" onclick="editOpSup()" class="btn btn-default" disabled="">
+                                <i class="glyphicon glyphicon-edit"></i> Edit
+                            </button>
+                            <button id="removeSup" onclick="deleteOpSup()" class="btn btn-danger" disabled="">
+                                <i class="glyphicon glyphicon-remove"></i> Delete
+                            </button>
+                            <button onclick="loadTableSup()" class="btn btn-default" type="button" name="refresh" title="Refresh">
+                                <i class="glyphicon glyphicon-refresh icon-refresh"></i>
+                            </button>
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-sm-3">
+                        <div class="input-group">
+                            <input id="searchInputSup" type="text" class="form-control" placeholder="Search for...">
+                            <span class="input-group-btn">
+                                 <button onclick="SearchSup()" class="btn btn-secondary" type="button"><i class="glyphicon glyphicon-search"></i></button>
+                        </span>
+                        </div>
+
                     </div>
                 </div>
-                <div class="pull-right search">
-                    <input class="form-control" type="text" placeholder="Search">
-                </div>
-
             </div>
             <div class="fixed-table-container">
                 <div class="table-responsive">
@@ -164,6 +187,7 @@
             complete: function(r){
                 if (r.responseText.length > 10){
                     table.html(r.responseText);
+                    $('#myPager').html('');
                     $('#tablebody').pageMe({pagerSelector:'#myPager',showPrevNext:true,hidePageNumbers:false,perPage:10});
                 }
                 else{
@@ -423,18 +447,20 @@
 
         }
     };
-    function Search(serchThis) {
+    function SearchDrugs() {
+        var searchThis = $("#searchInputDrug").val();
         var table = $("#tablebody");
         table.html("Loading..");
         jQuery.ajax({
             type: "POST",
             url: "searchDrugs.php",
             dataType: 'json',
-            data: {search:serchThis},
+            data: {search:searchThis},
             complete: function(r){
-                if (r.responseText.length > 10){
+                if (r.responseText.length > 0){
                     table.html(r.responseText);
-                    $('#tablebody').pageMe({pagerSelector:'#myPager',showPrevNext:true,hidePageNumbers:false,perPage:10});
+                    $('#myPagerSup').html('');
+                   // $('#tablebody').pageMe({pagerSelector:'#myPager',showPrevNext:true,hidePageNumbers:false,perPage:10});
                 }
                 else{
                     table.html("Failed");
@@ -473,6 +499,7 @@
             complete: function(r){
                 if (r.responseText.length > 10){
                     table.html(r.responseText);
+                    $('#myPagerSup').html('');
                     $('#supplierTable').pageMe({pagerSelector:'#myPagerSup',showPrevNext:true,hidePageNumbers:false,perPage:10});
                 }
                 else{
@@ -630,18 +657,21 @@
         $(table).append('</tr>');
     }
 
-    function SearchSup(serchThis) {
-        var table = $("#tablebody");
+    function SearchSup() {
+        var searchThis = $("#searchInputSup").val();
+        console.log(searchThis);
+        var table = $("#supplierTable");
         table.html("Loading..");
         jQuery.ajax({
             type: "POST",
-            url: "searchDrugs.php",
+            url: "searchSup.php",
             dataType: 'json',
-            data: {search:serchThis},
+            data: {search:searchThis},
             complete: function(r){
                 if (r.responseText.length > 10){
                     table.html(r.responseText);
-                    $('#tablebody').pageMe({pagerSelector:'#myPager',showPrevNext:true,hidePageNumbers:false,perPage:10});
+                    $('#myPagerSup').html('');
+                    $('#supplierTable').pageMe({pagerSelector:'#myPagerSup',showPrevNext:true,hidePageNumbers:false,perPage:10});
                 }
                 else{
                     table.html("Failed");

@@ -6,8 +6,9 @@
  * Time: 10:04 AM
  */
 require("../../db/db.php");
-$sql="SELECT * FROM drugstock WHERE DrugBrandName LIKE ".$_POST['search'];
+$sql="SELECT * FROM drugstock WHERE DrugBrandName LIKE '%".$_POST['search']."%'";
 $result = mysqli_query($db,$sql);
+print_r($_POST['search']);
 
     while($rows = mysqli_fetch_assoc($result)){
         $id = $rows['StockNo'];
@@ -25,7 +26,6 @@ $result = mysqli_query($db,$sql);
         echo    '<td >'. $rows['ReturnPolicy'].'</td>';
         echo    '<td >'. $rows['RetailPrice'].'</td>';
         echo '</tr>';
-        $count--;
     }
 mysqli_close($db);
 ?>

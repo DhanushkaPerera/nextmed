@@ -1,7 +1,10 @@
 <?php
 	session_start();
-	if(isset($_SESSION['login'])&&$_SESSION['login']==1){
+	if(isset($_SESSION['loginCst'])&&$_SESSION['loginCst']==1){
 		header('location:/../testing/indexreg.php');
+	}
+	else if(isset($_SESSION['loginEmp'])&&$_SESSION['loginEmp']==1){
+		header('location:/../testing/adminPanel/index.php');
 	}
 	else{
 		

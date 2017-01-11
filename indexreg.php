@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	if(isset($_SESSION['login'])&&$_SESSION['login']==1){
+	if(isset($_SESSION['loginCst'])&&$_SESSION['loginCst']==1){
 		
 	}
 	else{
