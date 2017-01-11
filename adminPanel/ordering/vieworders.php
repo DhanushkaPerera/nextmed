@@ -178,7 +178,7 @@ echo  "<div margin:auto>
     
     <input class='button1' type='button' value='Completed orders'>
     </a>
-    <input class='button1' type='button' value='View report' onclick=window.open('report.php');> //Opening the pdf report on a new page
+    <input class='button1' type='button' value='View report' onclick=window.open('report.php');> 
     </a>
     </div>";
         
