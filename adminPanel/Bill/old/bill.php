@@ -5,7 +5,7 @@
     <title>Billing</title>
     <link rel="stylesheet" type="text/css" href="billnew.css">
 	<link rel="stylesheet" type="text/css" href="style.css">
-<script src="../../jquery/jquery.min.js"></script>
+<script src="../../../jquery/jquery.min.js"></script>
 
 
 </head>
