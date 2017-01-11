@@ -341,7 +341,6 @@
 	
 	function authenticateEmp(nic, password, note)
     {
-    	alert("EMP");
 	note.style.opacity="0";
 	var xmlhttp = new XMLHttpRequest();
 	xmlhttp.onreadystatechange = function() {
