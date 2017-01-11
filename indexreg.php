@@ -61,25 +61,26 @@
 	}
 
 	window.onclick = function(event) {
-	var items = document.querySelectorAll(".login");
-	var element = document.getElementById("loginB");
-	var lng = items.length;
-	var clicked = 0;
-	for(i=0;i<lng;i++){
-		if(event.target==items[i]){
-			clicked=1;
-			break;
+		/// hide login menu when clicked outside
+		var items = document.querySelectorAll(".login");
+		var element = document.getElementById("loginB");
+		var lng = items.length;
+		var clicked = 0;
+		for(i=0;i<lng;i++){
+			if(event.target==items[i]){
+				clicked=1;
+				break;
+			}
 		}
-	}
-	if (clicked==0) {
-		element.style.opacity="0";
-		setTimeout(function(){element.style.visibility="hidden";}, 500);
-	}
-	
-	var modal = document.getElementById("myModal");
-		if(event.target==modal){
-			modal.style.display = "none";
+		if (clicked==0) {
+			element.style.opacity="0";
+			setTimeout(function(){element.style.visibility="hidden";}, 500);
 		}
+
+		var modal = document.getElementById("myModal");
+			if(event.target==modal){
+				modal.style.display = "none";
+			}
 	}
 	</script>
 	<script>
@@ -106,27 +107,9 @@
 		});
 	});
 	</script>
-	<script>
-	function toggleElement(element){
-			if(element.style.visibility=="hidden"){
-				element.style.visibility="visible";
-				element.style.opacity="1";
-			}
-			else{
-				element.style.opacity="0";
-				setTimeout(function(){element.style.visibility="hidden";}, 500);
-			}
-		}
-	});
-	</script>
 </head>
 <body>
-	
-<div id="myModal" class="modal">
-	<div class="modal-content">
-	<iframe src="signup.htm" style="width:800px; height:1500px;border:0;margin:auto;"></iframe>
-	</div>
-</div>
+
 
 </div>
 
@@ -152,7 +135,7 @@
 			</div>
             <div class="contentitem" id="aroundus" style="height:100%">
 			<div class="heading1"> Around Us </div>
-			<iframe src="AroundUs/aroundusnew.php" id="iFrame1" frameborder="0" style=" onload="resizeIframe(this)" allowfullscreen></iframe>
+			<iframe src="AroundUs/aroundusnew.php" id="iFrame1" frameborder="0" onload="resizeIframe(this)" allowfullscreen></iframe>
 			</div>
 			
 			
@@ -223,7 +206,7 @@
 		</div>
 		</div>
 		</div>
-	</div>=
+	</div>
 
 
 	<div id="cf1" class="header1">
@@ -284,22 +267,12 @@
 		var element = document.getElementById('contentsID');
 		element.style.display="inline";
 	}
-	
-	function resizeIFrameToFitContent(iFrame) {
-		iFrame.width  = iFrame.contentWindow.document.body.scrollWidth;
-		iFrame.height = iFrame.contentWindow.document.body.scrollHeight;
-	}
 
-	window.addEventListener('DOMContentReady', function(e) {
-		alert("TEST");
-		var iFrame = document.getElementById( 'iFrame1' );
-		resizeIFrameToFitContent(iFrame);
-	} );
 
 	function hideSlides() {
-		//var slides = document.getElementById("cf");
+		var slides = document.getElementById("cf");
 		var header = document.getElementById("cf1");
-		//slides.style.opacity = "0";
+		slides.style.opacity = "0";
 		header.style.opacity = "0";
 		setTimeout(function(){slides.style.position = "absolute";}, 700);
 		
@@ -307,11 +280,11 @@
 	}
 	
 	function showSlides() {
-		//var slides = document.getElementById("cf");
+		var slides = document.getElementById("cf");
 		var header = document.getElementById("cf1");
-		//slides.style.opacity = "1";
+		slides.style.opacity = "1";
 		header.style.opacity = "1";
-		//slides.style.position = "relative";
+		slides.style.position = "relative";
 	}
 	
 	function activeMenu(menu){
@@ -340,7 +313,7 @@
 	function resizeIframe(obj) {
 
 		obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
-		alert( obj.contentWindow.document.body.scrollHeight);
+		//alert( obj.contentWindow.document.body.scrollHeight);
 	}
 </script>
 </body>

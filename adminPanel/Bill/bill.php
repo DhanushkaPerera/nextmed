@@ -65,6 +65,8 @@ if(isset($_POST["search"])){
 			
 }
 
+
+
 ?>
 			
 			
@@ -101,7 +103,7 @@ if(isset($_POST["search"])){
 		<div class="column">
                     <div class="headingbox" id="hBoxNIC" > Brand Name  </div>
                     <div class="inputboxWrap">
-                        <input type="text" placeholder="" maxlength="13" name=nic onfocus="headingBoxActive('hBoxNIC')" onkeyup="validateNIC(this)"   onfocusout="upperCASE(this);hide('NICerror');validateoutNIC(this);validatedAll();" />
+                        <input type="text" placeholder="" maxlength="13" name=brandname onfocus="headingBoxActive('hBoxNIC')" onkeyup="validateNIC(this)"   onfocusout="upperCASE(this);hide('NICerror');validateoutNIC(this);validatedAll();fillDosageForm();" />
                     </div>
                     <div class="poperror" id="NICerror" ></div>
                     <div class="error" id="nicerror2" > error occured </div><br>
@@ -115,7 +117,7 @@ if(isset($_POST["search"])){
                      <!-- user First Name input -->
                     <div class="headingbox" id="hBoxFN" >   Generic Name </div>
                     <div class="inputboxWrap" >
-                        <input type="text"   name=firstname onfocus="headingBoxActive('hBoxFN')" onkeydown="validateString(this, 'nameerror')" onfocusout="hide('nameerror');validateoutString(this, 'nameerror2');validatedAll();" /><br>
+                        <input type="text"   name=genericname onfocus="headingBoxActive('hBoxFN')" onkeydown="validateString(this, 'nameerror')" onfocusout="hide('nameerror');validateoutString(this, 'nameerror2');validatedAll();fillDosageForm();" /><br>
                     </div>
                     <div class="poperror" id="nameerror" ></div>
                     <div class="error" id="nameerror2" > error occured </div><br>
@@ -127,10 +129,10 @@ if(isset($_POST["search"])){
                 </div>
 				
 				<div class="column">
-                    <div class="headingbox" id="hBoxNIC" > Dosage Form </div>
+                    <div class="headingbox" id="hBoxNIC" name=dosageform > Dosage Form </div>
                     <div class="inputboxWrap">
-                        <select>
-						<option value="Capsule">Dosage Form</option>
+                        <select name=dosageform>
+						<!--option value="Capsule">Dosage Form</option>
 							<option value="Capsule">Capsule</option>
 	<option value="Tablet">Tablet</option>
 	<option value="Pill">Pill</option>
@@ -142,7 +144,7 @@ if(isset($_POST["search"])){
 	<option value="Lotion">Lotion</option>
 	<option value="Ointment">Ointment</option>
 	<option value="Ear drops">Ear drops</option>
-	<option value="Eye drops">Eye drops</option>
+	<option value="Eye drops">Eye drops</option-->
 </select>
 						
                     </div>
@@ -157,7 +159,7 @@ if(isset($_POST["search"])){
 				<div class="column">
                     <div class="headingbox" id="hBoxNIC" > Strength </div>
                     <div class="inputboxWrap">
-                        <select name=Strength  onfocus="headingBoxActive('hBoxSTR')" onfocusout="headingBoxInactive('hBoxSTR')" >
+                        <select name=Strength  onfocus="headingBoxActive('hBoxSTR')" onfocusout="headingBoxInactive('hBoxSTR');fillStrength();" >
 	<option value="" disabled selected  > Strength </option>
 	<option value="10mg">10mg</option>
 	<option value="10ml">10ml</option>
@@ -230,53 +232,57 @@ function autoNum(){
 }
 autoNum();
 });
-	
+
 </script>
-
-<?php
-
-
-if(isset($_POST["submit"])){
-	include('dbase.php');
-	
-        $brandname = $_POST["brandname"];
-		$quantity = $_POST["quantity"];
-		
-		$sql = "select * from drug where DrugBrandName='$brandname'";
-
-			$res = mysqli_query($con,$sql);
+<script>
+function fillDosageForm(){
+	var dose = "<?php 
+	$brandname = $_POST['brandname'];
+	$genericname = $_POST['genericname'];
+	$sql = 'select DosageForm from drug where DrugBrandName='.$brandname. 'or GeneticName='.$genericname;
+    $res = mysqli_query($db,$sql);
 			
 			while($row = mysqli_fetch_array($res)){
 				
-				echo "<table  align=left border=1>
-<tr>
-<th>Drug No</th>
-<th>Brand Name</th>
-<th>Quantity</th>
-<th>Price</th>
-<th>Allergic Conditions</th>
-<th>Storage</th>
-<th>Healthtips</th>
-</tr>
-
-<tr>
-<td>".$row['DrugNo']."</td>
-<td>".$row['DrugBrandName']."</td>
-<td>".$quantity."</td>
-<td>".$row['RetailPrice']."</td>
-<td>".$row['allergicConditions']."</td>
-<td>".$row['storage']."</td>
-<td>".$row['healthTips']."</td>
-
-
-
-</tr></table>";
-
+				
+				echo '<select>
+	
+					<option >'.$row['DosageForm'].'</option>
+	
+			</select>';
+			}?>";
+			var optionBox = document.getElementById('dosageform');	
+			optionBox.value=dose;
 
 
 }
+
+function fillStrength(){
+	var str = "<?php 
+	$dosageform = $_POST['dosageform'];
+	$sql = 'select Strength from drug where DosageForm='.$dosageform;
+    $res = mysqli_query($db,$sql);
+			
+			while($row = mysqli_fetch_array($res)){
+				
+				
+				echo '<select>
+	
+					<option >'.$row['Strength'].'</option>
+	
+			</select>';
+			}?>";
+			var optionBox = document.getElementById('Strength');	
+			optionBox.value=strength;
+
+
 }
-?>
+
+
+	
+</script>
+
+
 
     
 

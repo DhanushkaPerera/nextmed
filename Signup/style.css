@@ -20,21 +20,22 @@ body{
 
 .close{
 	text-align:center;
-	font-size: 16px;
+	font-size: 28px;
+    font-weight: bolder;
 	position:absolute;
-	right:8%;
-	border-radius: 10px;
-	color: #FF1717;
-	background: white;
+    top:2%;
+	right:9%;
+	color: white;
 	padding: 3px;
 	padding-left: 10px;
 	padding-right: 10px;
 	width:10px;
 	transition: all 1s ease-in-out;
+    -moz-user-select: none; -webkit-user-select: none; -ms-user-select:none; user-select:none;-o-user-select:none;
 }
 .close:hover{
-	color:white;
-	background: #FF1717;
+    color: #FF1717;
+    cursor: pointer;
 }
 
 #signup .header {

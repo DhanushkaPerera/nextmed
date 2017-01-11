@@ -7,7 +7,7 @@
 </head>
 <body>
     <form id="signup" name="Signup" action="../php/signup_action.php" method="post" onsubmit="return password()">
-	<div class="close" onclick="parent.closeIFrame();"> X </div>
+	<div class="close" onclick="parent.closeIFrame();"> &#10006; </div>
 			<br>
 			<div style="width:100%;text-align:center; ">
             <h3>Sign Up</h3> </div>
@@ -19,7 +19,7 @@
                     <!-- user NIC input -->
                     <div class="headingbox" id="hBoxNIC" > National ID  </div>
                     <div class="inputboxWrap">
-                        <input type="text" placeholder="920290505v" maxlength="13" name=nic onfocus="headingBoxActive('hBoxNIC')" onkeyup="validateNIC(this)"   onfocusout="upperCASE(this);hide('NICerror');validateoutNIC(this);validatedAll();" />
+                        <input type="text"  maxlength="13" name=nic onfocus="headingBoxActive('hBoxNIC')" onkeyup="validateNIC(this)"   onfocusout="upperCASE(this);hide('NICerror');validateoutNIC(this);validatedAll();" />
                     </div>
                     <div class="poperror" id="NICerror" ></div>
                     <div class="error" id="nicerror2" > error occured </div><br>
@@ -136,7 +136,7 @@
                         <div class="poperror" id="test" ></div>
                         <div class="error" id="adrerror2" > error occured </div><br>
 
-                        <div class="headingbox" id="hBoxAllergy"> Allergy Conditions </div>
+                        <div class="headingbox" id="hBoxAllergy"> Allergic Drugs </div>
                         <div class="inputboxWrap">
                             <input type="text"   onfocus="headingBoxActive('hBoxAllergy')" name=allergy onfocusout="validateAddr(this, 'allergyerror2');validatedAll();" /><br>
                         </div>
@@ -152,7 +152,7 @@
                     <input name="checked" id="checkAgree" value="1" type="checkbox" onclick="validatedAll()"/><label class="terms"  >I agree to the terms and conditions of the neXtMEd. </label>
                 </div>
                 <a href="Agreement/agreement.html#top">More information on Agreement</a><br>
-                <button class="buttonS" onclick="parent.parent.closeIFrame();" > Cancel </button>
+                <button type="button" class="buttonS" onclick="parent.parent.closeIFrame();" > Cancel </button>
 
                 <input class="buttonDis"  type="submit" name=submit value=Submit id="submitButton" disabled onclick="validatedAll();parent.parent.closeIFrame();" >
                 </div>
@@ -164,7 +164,7 @@
    var nicValid = false;
    var fnameValid = false;
    var lnameValid = false;
-   var genderValid = false;
+   var genderValid = true;
    var bdayValid = false;
    var addressValid = false;
    var civilStatValid = false;
@@ -576,11 +576,10 @@
 	}
 
 	function validatedAll(){
-
 		var element = document.getElementById("submitButton");
 		var elementCheck = document.getElementById("checkAgree");
 		var agree = elementCheck.checked;
-        //alert("nic "+nicValid+",fname "+fnameValid+",lname "+lnameValid+",genderValid "+ genderValid+",bdayValid "+ "bday" + bdayValid+ +  "phpNo" + phNoValid  + "email" + emailValid + passValid+agree);
+        console.log("nic "+nicValid+",fname "+fnameValid+",lname "+lnameValid+",genderValid "+ genderValid+",bdayValid "+ "bday" + bdayValid+ +  "phpNo" + phNoValid  + "email" + emailValid + passValid+agree);
 
 		if(nicValid && fnameValid && lnameValid && genderValid && bdayValid&& phNoValid && emailValid && passValid && agree){
 			element.className = "inputs buttonS";
@@ -619,12 +618,10 @@
 			headingBoxAlert('hBoxBG', bdGrpValid);
 
 		}
-		else if(name=="gender") {
-		genderValid = validList;
-		headingBoxAlert('hBoxGen', genderValid);
-		}
 	}
+    function validateGender(element,errorCODE){
 
+    }
 	function validateAddr(element, errorCODE){
 		var str = element.value;
 		var strl = str.length;
