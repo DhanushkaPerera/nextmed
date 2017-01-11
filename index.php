@@ -189,11 +189,6 @@
 	<div class="header">
 		<div style="display:table">
 		<div style="display: table-row;height: 100%;">
-		<div class="menubuttonimg"> 
-			<div style="display: table-cell;vertical-align: middle;height:100%;padding: 10px">
-				<img src="media\notification.png"  alt="notifications" style="width:auto;height:30px" onclick="toggleElement('note')">
-			</div>	
-		</div>
 		
 		<div class="menubuttonimg login" >
 				<div id="loginIcon">
@@ -257,15 +252,6 @@
 		<div style="display:table-cell;vertical-align:inline">
 		<div class="btn">
 		<a target="_blank" href="https://www.facebook.com/Nextmed-1257898250911790/?skip_nax_wizard=true"><img src="media\follow\fb.png" style="width:100%;" ><a>
-		</div>
-		<div class="btn btnln">
-		<img src="media\follow\in.png" style="width:100%;">
-		</div>
-		<div class="btn btntwt">
-		<img src="media\follow\tw.png" style="width:100%;">
-		</div>
-		<div class="btn btnyt">
-		<img src="media\follow\yt.png" style="width:100%;">
 		</div>
 		</div>
 

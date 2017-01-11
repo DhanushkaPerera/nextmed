@@ -111,8 +111,6 @@
 <body>
 
 
-</div>
-
 	<div class="nav">
 		<div class="sidemenuitem activemenu" onclick="hideContents();showSlides();activeMenu(this);" onmouseover="menuText(this);" onmouseout="menuImage(this);"> <img class="center" src="media\home.png" alt="Home" style="max-width:60px;height:90%;"> </div>
 		<div class="sidemenuitem" onclick="showContents();showContent('knowyourself');hideSlides();activeMenu(this);" onmouseover="menuText(this);" onmouseout="menuImage(this);"> <img class="center" src="media\knowyourself.png" alt="About you" style="max-width:60px;height:90%;"> </a> </div>
@@ -124,7 +122,12 @@
 		<img class="boxshadow" src="media\logo.png" style="max-width:90px;height:100px;" >
 	</div>
 
-		
+    <div id="cf" class="slideshow">
+        <img src="media\transimg1.jpg" style="width:100%;" >
+        <img src="media\transimg2.jpg" style="width:100%;">
+        <img src="media\transimg3.jpg" style="width:100%;">
+        <img src="media\transimg4.jpg" style="width:100%;">
+    </div>
 
 		<div class="contents" id="contentsID" > 
 
@@ -168,11 +171,7 @@
 	<div class="header">
 		<div style="display:table">
 		<div style="display: table-row;height: 100%;">
-		<div class="menubuttonimg"> 
-			<div style="display: table-cell;vertical-align: middle;height:100%;padding: 10px">
-				<img src="media\notification.png"  alt="notifications" style="width:auto;height:30px" onclick="toggleElement('note')">
-			</div>	
-		</div>
+
 		
 		<div class="menubuttonimg login" id="loginIcon">
 			
@@ -233,15 +232,6 @@
 		<div style="display:table-cell;vertical-align:inline">
 		<div class="btn">
 		<a target="_blank" href="https://www.facebook.com/Nextmed-1257898250911790/?skip_nax_wizard=true"><img src="media\follow\fb.png" style="width:100%;" ><a>
-		</div>
-		<div class="btn btnln">
-		<img src="media\follow\in.png" style="width:100%;">
-		</div>
-		<div class="btn btntwt">
-		<img src="media\follow\tw.png" style="width:100%;">
-		</div>
-		<div class="btn btnyt">
-		<img src="media\follow\yt.png" style="width:100%;">
 		</div>
 		</div>
 
