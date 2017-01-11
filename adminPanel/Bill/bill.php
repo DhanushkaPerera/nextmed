@@ -24,8 +24,9 @@
 			<div class="headingbox" id="hBoxNIC"  > National ID  </div>
 			<div style="width:100%;text-align:center;">
 			<input type="text" placeholder="920290505v" maxlength="13" name=nic onfocus="headingBoxActive('hBoxNIC')" onkeyup="validateNIC(this)" autofocus onfocusout="upperCASE(this);hide('NICerror');validateoutNIC(this);validatedAll();" />
-						<div class="headingbox" id="hBoxNIC"  > Name  </div>
-			<div style="width:100%;text-align:center;"><input type="text" placeholder="920290505v" maxlength="13" name=name onfocus="headingBoxActive('hBoxNIC')" onkeyup="validateNIC(this)" autofocus onfocusout="upperCASE(this);hide('NICerror');validateoutNIC(this);validatedAll();" />
+			<div class="headingbox" id="hBoxNIC"  > Name  </div>
+			<div style="width:100%;text-align:center;">
+			<input type="text" placeholder="Dhanushka" maxlength="40" name=name onfocus="headingBoxActive('hBoxNIC')" onkeyup="validateNIC(this)" autofocus onfocusout="upperCASE(this);hide('NICerror');validateoutNIC(this);validatedAll();" />
 			<!--div class="headingbox" id="hBoxNIC" required > National ID  </div>
 			<div style="width:100%;text-align:center;">
 			<input type="text" placeholder="920290505v" maxlength="13" name=nic onfocus="headingBoxActive('hBoxNIC')" onkeyup="validateNIC(this)" autofocus onfocusout="upperCASE(this);hide('NICerror');validateoutNIC(this);validatedAll();" /-->
@@ -216,7 +217,8 @@ if(isset($_POST["search"])){
 $( document ).ready(function() {
 	/*alert('test');*/
 function autoNum(){
-		var last = "<?php $sql='select InvoiceNo from invoice where InvoiceNo = (select max(InvoiceNo) from invoice)';
+		var last = "<?php 
+		$sql='select InvoiceNo from invoice where InvoiceNo = (select max(InvoiceNo) from invoice)';
 		$res = mysqli_query($db,$sql);
 		if(mysqli_num_rows($res)>0){
 				while($array = mysqli_fetch_array($res)){

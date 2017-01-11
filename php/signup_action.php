@@ -40,11 +40,15 @@ $sql="INSERT INTO signup (NIC,FName,LName,Gender,DOB,Address,Status,Contact,Emai
 
 
 
-if ($db->query($sql) === TRUE) {
-    echo "New record created successfully";
-} else {
-    echo "Error: " . $sql . "<br>" . $db->error;
-}
+$result = mysqli_query($db,$sql);
 
+if ($result) {
+     echo '<script>alert("Registration successful")</script> ';
+     
+}
+else {
+     
+    echo '<script>alert("Registration unsuccessful!Please try again!  ")</script>';
+}
 
 ?>

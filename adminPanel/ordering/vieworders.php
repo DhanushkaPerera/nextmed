@@ -15,10 +15,10 @@ echo'
 </style>
         
         ';
-echo"</head>";
+echo"</head>;
     
-echo "<body >";
-echo "<table border=1 cellspacing=0 cellpadding=4 > " ;
+<body >;
+<table border=1 cellspacing=0 cellpadding=4 > " ;
 echo"<tr bgcolor=grey>";
 echo"<td align=center>";
 echo "<font size=4>";
@@ -123,12 +123,6 @@ while($row=mysqli_fetch_array($result))
     <img src="' .$row['Image1']. '" alt="large" height=300 width=300 /><br />
     Copy-1</span></a></div>';
 
-
- 
-    
- 
-   
-    
     echo "<br>";
      echo"</td>";
     echo"<td align=center >";
@@ -166,12 +160,12 @@ while($row=mysqli_fetch_array($result))
     
   
  echo "<br>";
-      echo"</td>";
-    echo "<td align=center>";
+ echo"</td>";
+ echo "<td align=center>";
     
 echo "<a href='transfer.php?del=";
 echo $row['OrderNo.'];
-echo "'><input type='button' class='button' value='Complete'></a>";
+echo "'><input type='button' class='button' value='Complete'></a>"; //Transfer0
 echo "<br>";
 echo"</td>";
     echo "</tr>";
@@ -183,6 +177,8 @@ echo  "<div margin:auto>
  <a href='completedorders.php'>
     
     <input class='button1' type='button' value='Completed orders'>
+    </a>
+    <input class='button1' type='button' value='View report' onclick=window.open('report.php');> 
     </a>
     </div>";
         
