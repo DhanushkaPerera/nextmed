@@ -12,25 +12,32 @@
 
 <body>
 	<div class = "bill">
-	<div class = "drugs"><form id="customer" name="customer"   method="post" onsubmit="return password()" style="min-width:200px;">
-			<div style="width:100%;text-align:center;">
-            <h3>Customer Deatils</h3> 
-			</div>
+		<div class = "drugs">
+			<form id="customer" name="customer"   method="post" onsubmit="return password()" style="min-width:200px;">
+				<div style="width:100%;text-align:center;">
+					<h3>Customer Deatils</h3> 
+				</div>
 			
-		<div class="sep"></div>
+				<div class="sep"></div>
 		
      <div class ="inputs" >
-			
+			<div class="column">
 			<div class="headingbox" id="hBoxNIC"  > National ID  </div>
-			<div style="width:100%;text-align:center;">
+			<!--div style="width:100%;text-align:center;"-->
+			
 			<input type="text" placeholder="920290505v" maxlength="13" name=nic onfocus="headingBoxActive('hBoxNIC')" onkeyup="validateNIC(this)" autofocus onfocusout="upperCASE(this);hide('NICerror');validateoutNIC(this);validatedAll();" />
+			</div>
+			<div class="column">
 			<div class="headingbox" id="hBoxNIC"  > Name  </div>
-			<div style="width:100%;text-align:center;">
-			<input type="text" placeholder="Dhanushka" maxlength="40" name=name onfocus="headingBoxActive('hBoxNIC')" onkeyup="validateNIC(this)" autofocus onfocusout="upperCASE(this);hide('NICerror');validateoutNIC(this);validatedAll();" />
+			<!--div style="width:100%;text-align:center;"-->
+			<input type="text" placeholder="Dhanushka Geethmi" maxlength="13" name=name onfocus="headingBoxActive('hBoxNIC')" onkeyup="validateNIC(this)" autofocus onfocusout="upperCASE(this);hide('NICerror');validateoutNIC(this);validatedAll();" />
+			</div>
 			<!--div class="headingbox" id="hBoxNIC" required > National ID  </div>
 			<div style="width:100%;text-align:center;">
 			<input type="text" placeholder="920290505v" maxlength="13" name=nic onfocus="headingBoxActive('hBoxNIC')" onkeyup="validateNIC(this)" autofocus onfocusout="upperCASE(this);hide('NICerror');validateoutNIC(this);validatedAll();" /-->
-			<input class="btnSearch"  type="submit" name=search value=SEARCH id="searchButton" ><br>
+			<div class="column">
+			<input class="btnSearch"  type="submit" name=search value=Search  ><br>
+			</div>
 			</div>
 	</form>
 	<div>
@@ -88,18 +95,21 @@ if(isset($_POST["search"])){
 		<div class="sep"></div>
 			
 		<div class ="inputs">
-		
+		<div class="column">
 		<div class="headingbox" id="hBoxON" > Order No </div>
 			<div style="width:100%;text-align:center;">
             <input readonly id=order type="text" value="" autofocus name=orderno onfocus="headingBoxActive('hBoxON')" onkeydown="validateString(this, 'nameerror')" onfocusout="hide('nameerror');validateoutString(this, 'nameerror2');validatedAll();" /><br>
 			</div>
-			
+			</div>
+		<div class="column" style="height:84px;">
 			<div class="headingbox" id="hBoxOM"> Order Method </div>
 			<div style="width:100%;text-align:center;">
 			<input type="radio" onfocus="headingBoxActive('hBoxOM')" autofocus name=ReturnPolicy onfocusout="validatePhoneNo(this, 'returnperror');validatedAll();"/>Online
 			<input type="radio" onfocus="headingBoxActive('hBoxOM')" autofocus name=ReturnPolicy onfocusout="validatePhoneNo(this, 'returnperror');validatedAll();"/>General<br>
 			</div>
-		
+		</div>
+		<div class="column" style="height:84px;">
+		</div>
 		<div class="column">
                     <div class="headingbox" id="hBoxNIC" > Brand Name  </div>
                     <div class="inputboxWrap">
@@ -113,11 +123,11 @@ if(isset($_POST["search"])){
 
                 </div>
 
-                <div class="column" style="clear: right;">
+                <div class="column"  >
                      <!-- user First Name input -->
                     <div class="headingbox" id="hBoxFN" >   Generic Name </div>
                     <div class="inputboxWrap" >
-                        <input type="text"   name=genericname onfocus="headingBoxActive('hBoxFN')" onkeydown="validateString(this, 'nameerror')" onfocusout="hide('nameerror');validateoutString(this, 'nameerror2');validatedAll();fillDosageForm();" /><br>
+                        <input type="text"   name=genericname onfocus="headingBoxActive('hBoxFN')" onkeydown="validateString(this, 'nameerror')" onfocusout="hide('nameerror');validateoutString(this, 'nameerror2');validatedAll();" /><br>
                     </div>
                     <div class="poperror" id="nameerror" ></div>
                     <div class="error" id="nameerror2" > error occured </div><br>
@@ -128,7 +138,10 @@ if(isset($_POST["search"])){
 
                 </div>
 				
-				<div class="column">
+				<div class="column" style="height:90px;">
+				</div>
+				
+				<div class="column" >
                     <div class="headingbox" id="hBoxNIC" name=dosageform > Dosage Form </div>
                     <div class="inputboxWrap">
                         <select name=dosageform>
@@ -159,7 +172,7 @@ if(isset($_POST["search"])){
 				<div class="column">
                     <div class="headingbox" id="hBoxNIC" > Strength </div>
                     <div class="inputboxWrap">
-                        <select name=Strength  onfocus="headingBoxActive('hBoxSTR')" onfocusout="headingBoxInactive('hBoxSTR');fillStrength();" >
+                        <select name=Strength  onfocus="headingBoxActive('hBoxSTR')" onfocusout="headingBoxInactive('hBoxSTR');" >
 	<option value="" disabled selected  > Strength </option>
 	<option value="10mg">10mg</option>
 	<option value="10ml">10ml</option>
@@ -181,11 +194,13 @@ if(isset($_POST["search"])){
                 
 
                 <div style="width:100%;text-align:center; " >
+                <div class="column2">
+				
                 
-
-                <input class="buttonDis"  type="submit" name=submit value=Search id="submitButton" disabled onclick="validatedAll();parent.parent.closeIFrame();" >
-				                <button class="buttonS" onclick="parent.parent.closeIFrame();" > Cancel </button>
-
+			<input class="btnSearch"  type="submit" name=submit value=Search id="searchButton" disabled onclick="validatedAll();parent.parent.closeIFrame();" >
+				          
+				<!--button class="btnSearch" onclick="parent.parent.closeIFrame();" > Cancel </button-->
+</div>
                 </div>
 
 		</div>
@@ -217,8 +232,7 @@ if(isset($_POST["search"])){
 $( document ).ready(function() {
 	/*alert('test');*/
 function autoNum(){
-		var last = "<?php 
-		$sql='select InvoiceNo from invoice where InvoiceNo = (select max(InvoiceNo) from invoice)';
+		var last = "<?php $sql='select InvoiceNo from invoice where InvoiceNo = (select max(InvoiceNo) from invoice)';
 		$res = mysqli_query($db,$sql);
 		if(mysqli_num_rows($res)>0){
 				while($array = mysqli_fetch_array($res)){
@@ -234,44 +248,32 @@ autoNum();
 });
 
 </script>
-<script>
+<!--script>
 function fillDosageForm(){
-	var dose = "<?php 
-	$brandname = $_POST['brandname'];
-	$genericname = $_POST['genericname'];
-	$sql = 'select DosageForm from drug where DrugBrandName='.$brandname. 'or GeneticName='.$genericname;
-    $res = mysqli_query($db,$sql);
-			
-			while($row = mysqli_fetch_array($res)){
-				
-				
-				echo '<select>
-	
-					<option >'.$row['DosageForm'].'</option>
-	
-			</select>';
-			}?>";
-			var optionBox = document.getElementById('dosageform');	
-			optionBox.value=dose;
+	jQuery.ajax({
+            type: "POST",
+            url: "saveDrugs.php",
+            dataType: 'json',
+            data: {oldID:ID, rowItem: rowItem},
+            complete: function(r){
+                if (r.responseText.length > 1){
+                    alert(r.responseText);
+                }
+                else{
+                    table.html("Failed");
+                }
+            }
+        });
+
+
+		var optionBox = document.getElementById('dosageform');	
+		optionBox.value=dose;
 
 
 }
 
 function fillStrength(){
-	var str = "<?php 
-	$dosageform = $_POST['dosageform'];
-	$sql = 'select Strength from drug where DosageForm='.$dosageform;
-    $res = mysqli_query($db,$sql);
-			
-			while($row = mysqli_fetch_array($res)){
-				
-				
-				echo '<select>
-	
-					<option >'.$row['Strength'].'</option>
-	
-			</select>';
-			}?>";
+	var str = "";
 			var optionBox = document.getElementById('Strength');	
 			optionBox.value=strength;
 
@@ -280,6 +282,9 @@ function fillStrength(){
 
 
 	
+</script-->
+<script>
+
 </script>
 
 

@@ -410,12 +410,7 @@ body{
   width:100%;
 }
 
-.column{
-  width: 48%;
-  margin:1%;
-  float: left;
-  min-width:200px;
-}
+
 
 .wrapshow{
   width: 100%;
