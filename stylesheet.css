@@ -69,7 +69,8 @@ img{
 .footerB{
 	position:absolute;
 	width:100%;
-	color:black;
+	color: #313cdd;
+	font-weight: bold;
 	text-align:center;
 	min-width: 200px;
 	height:1%;
