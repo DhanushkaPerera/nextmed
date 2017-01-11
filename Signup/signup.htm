@@ -19,7 +19,7 @@
                     <!-- user NIC input -->
                     <div class="headingbox" id="hBoxNIC" > National ID  </div>
                     <div class="inputboxWrap">
-                        <input type="text"  maxlength="13" name=nic onfocus="headingBoxActive('hBoxNIC')" onkeyup="validateNIC(this)"   onfocusout="upperCASE(this);hide('NICerror');validateoutNIC(this);validatedAll();" />
+                        <input id="nicIn" type="text"  maxlength="13" name=nic onfocus="headingBoxActive('hBoxNIC')" onkeyup="validateNIC(this)"   onfocusout="upperCASE(this);hide('NICerror');validateoutNIC(this);validatedAll();" />
                     </div>
                     <div class="poperror" id="NICerror" ></div>
                     <div class="error" id="nicerror2" > error occured </div><br>
@@ -388,6 +388,7 @@
 		var str = element.value.split("-");
 		var notify = document.getElementById(errorCODE);
 		var age = calculate_age(str[1],str[2],str[0]);
+        var nic = document.getElementById("nicIn").value;
 
 		if(strN.length==0) {
 			notify.innerHTML = "Birthday must be specified";
@@ -396,7 +397,20 @@
 			bdayValid = false;
 			headingBoxAlert('hBoxBdate', bdayValid);
 		}
-
+        else if(nic.length==10 && nic.substring(0,2)!=str[0].substring(2)){
+            notify.innerHTML = "Birthday doesn't match with ID";
+            element.style.border = "2px solid #ff6768";
+            notify.style.opacity="1";
+            bdayValid = false;
+            headingBoxAlert('hBoxBdate', bdayValid);
+        }
+        else if(nic.length==13 && nic.substring(2,4)!=str[0].substring(2)){
+            notify.innerHTML = "Birthday doesn't match with ID";
+            element.style.border = "2px solid #ff6768";
+            notify.style.opacity="1";
+            bdayValid = false;
+            headingBoxAlert('hBoxBdate', bdayValid);
+        }
 		else if(age<18){
 			notify.innerHTML = "sorry you must be at least 18 years old.";
 			element.style.border = "2px solid #ff6768";
