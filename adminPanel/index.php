@@ -122,12 +122,12 @@ else{
 	<div class="contents">
 			<div class="contentitem showitem" id="Search">
 				<div class="heading1" style="display: inline-block;">Search Drugs</div><br>
-				<iframe id="iFrameSearch" src="Search/Search.php" style="width:100%" frameborder="0" onload="resizeIframe(this)" > </iframe>
+				<iframe id="iFrameSearch" src="Search/Search.php" style="height:800px;width:100%" frameborder="0" onload="resizeIframe(this)" > </iframe>
 				
 			</div>
 			
 			<div class="contentitem" id="Billing"><div class="heading1"> Billing </div>
-			<iframe src="Bill/bill.php" style="width:100%" frameborder="0" onload="resizeIframe(this)" > </iframe>
+			<iframe src="Bill/old/bill.php" style="width:100%" frameborder="0" onload="resizeIframe(this)" > </iframe>
 			</div>
 			<div class="contentitem" id="Orders" style="height:100%">
 			<div class="heading1"><div class="heading1"> Online orders </div>
@@ -201,15 +201,16 @@ else{
 		image[0].style.visibility="visible";
 	}
 
+
+
+
+</script>
+<script>
 	function resizeIframe(obj) {
 
 		obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
 		//alert( obj.contentWindow.document.body.scrollHeight);
 	}
-
-
-</script>
-<script>
 	function resizeIframeID(elemelentID) {
 
 		var obj = document.getElementById(elemelentID);
