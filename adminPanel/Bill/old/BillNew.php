@@ -16,6 +16,8 @@
     <div class="col-sm-12">
         <div class="well">
             <h2>Customer Details</h2>
+			
+			
             <p>Invoice <strong>#90-98792</strong></p>
             <p>March 30, 2013</p>
             <p>Account Name: BootstrapMaster.com</p>
