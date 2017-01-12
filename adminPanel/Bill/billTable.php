@@ -6,32 +6,49 @@
     <title>admin</title>
 
     <link href="../css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="../css/jquery-ui.css" rel="stylesheet" type="text/css" />
     <link href="../../assets/bootstrap-table/src/bootstrap-table.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="../../jquery/jquery.min.js"></script>
     <script type="text/javascript" src="../js/bootstrap.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui.js"></script>
+    <script type="text/javascript" src="../js/jquery.validate.min.js"></script>
+    <style>
+        .errorMsg  {
+            display:none;
+            background: red;
+            font-size:12px;
+            width: auto;
+            color: #000000;
+            z-index: 99;
+            border: 2px solid white;
+            /* for IE */
+            /* CSS3 standard */
+        }
+    </style>
+
 
 </head>
 
 <body>
 
 <div class="container" style="margin-left:10px;">
-    <h3>Drugs</h3>
+    <h3>Billing Items</h3>
     <div class="fixed-table-toolbar">
         <div class="bs-bars pull-left">
             <div id="toolbar">
-                <button id="addDrug" onclick="addOp()" class="btn btn-success" >
+                <button id="addItem" onclick="addOp()" class="btn btn-success" >
                     <i class="glyphicon glyphicon-plus"></i> Add
                 </button>
-                <button id="editDrug" onclick="editOp()" class="btn btn-default" disabled="">
+                <button id="editItem" onclick="editOp()" class="btn btn-default" disabled="">
                     <i class="glyphicon glyphicon-edit"></i> Edit
                 </button>
-                <button id="removeDrug" onclick="deleteOp()" class="btn btn-danger" disabled="">
+                <button id="removeItem" onclick="deleteOp()" class="btn btn-danger" disabled="">
                     <i class="glyphicon glyphicon-remove"></i> Delete
                 </button>
             </div>
         </div>
         <div class="pull-right search">
-            <input id="searchBox" class="form-control" type="text" placeholder="Search Drugs">
+            <input id="searchBox" class="form-control" type="text" placeholder="Search Items">
         </div>
 
     </div>
@@ -42,16 +59,12 @@
                 <thead>
                 <tr>
                     <th>Select</th>
-                    <th>#Drug No</th>
-                    <th>Genetic Name</th>
+                    <th>#Item No</th>
                     <th>Brand Name</th>
                     <th>Dosage Form</th>
-                    <th>Alternatives</th>
-                    <th>Compositions</th>
-                    <th>Dose Per Person</th>
-                    <th>Strength</th>
-                    <th>Health Tips</th>
-                    <th>Storage</th>
+                    <th>Quantity</th>
+                    <th>Unit Price</th>
+                    <th>Price</th>
                 </tr>
                 </thead>
                 <tbody id="tablebody">
@@ -70,22 +83,21 @@
 </body>
 <script>
     // Global variables
-    var addBtn = document.getElementById('addDrug');
-    var deleteBtn = document.getElementById('removeDrug');
-    var editBtn = document.getElementById('editDrug');
+    var addBtn = document.getElementById('addItem');
+    var deleteBtn = document.getElementById('removeItem');
+    var editBtn = document.getElementById('editItem');
     var maxNo = 0;
     var checkedBoxes = [];
 
     $( document ).ready(function() {
-        loadTable();
-        maxDrugNo();
+        maxItemNo();
 
     });
 
-    function maxDrugNo(){
+    function maxItemNo(){
         jQuery.ajax({
             type: "POST",
-            url: "maxDrugNo.php",
+            url: "maxItemNo.php",
             dataType: 'json',
             data: {},
             complete: function(r){
@@ -191,7 +203,7 @@
                 });
             });
             $(currentRow).html('');
-            $(currentRow).append('<td><button id="addDrug" onclick="saveEdit(this,'+rowItem[1]+')" class="btn btn-success" ><i class="glyphicon glyphicon-save"></i> Save </button></td>');
+            $(currentRow).append('<td><button id="addItem" onclick="saveEdit(this,'+rowItem[1]+')" class="btn btn-success" ><i class="glyphicon glyphicon-save"></i> Save </button></td>');
             $(currentRow).append('<td><input type="text" value="'+rowItem[1]+'" readonly="true" ></td>');
             $(currentRow).append('<td><input type="text" value="'+rowItem[2]+'"></td>');
             $(currentRow).append('<td><input type="text" value="'+rowItem[3]+'"></td>');
@@ -245,10 +257,10 @@
     function addOp() {
         var table = $("#tablebody");
         maxNo++;
-        $(table).append('<tr id="row"'+maxNo+'><td><button id="addDrug" onclick="saveEdit(this,'+maxNo+')" class="btn btn-success" ><i class="glyphicon glyphicon-save"></i> Save </button></td>\
+        $(table).append('<tr  id="row"'+maxNo+'><td><button id="addItem" onclick="saveEdit(this,'+maxNo+')" class="btn btn-success" ><i class="glyphicon glyphicon-save"></i> Save </button></td>\
           <td><input type="text" value="'+maxNo+'" readonly="true" ></td>\
-          <td><input type="text"  ></td>\
-          <td><input type="text"  ></td>\
+          <td class="ui-widget"><input class="BrandName" onfocusout="validateBrandName(this)" title="tooltip" type="text"></td>\
+          <td class="ui-widget"><input class="DosageForm" onfocusout="validateDosageForm(this)" type="text"></td>\
           <td><input type="text"  ></td>\
           <td><input type="text"  ></td>\
           <td><input type="text"  ></td>\
@@ -257,6 +269,7 @@
           <td><input type="text"  ></td>\
           <td><input type="text"  ></td>');
         $(table).append('</tr>');
+        initialize();
     }
 
     function Search(){
@@ -264,107 +277,85 @@
 
     }
 
-    //table pagination
-    $.fn.pageMe = function(opts){
-        var $this = this,
-            defaults = {
-                perPage: 7,
-                showPrevNext: false,
-                hidePageNumbers: false
-            },
-            settings = $.extend(defaults, opts);
+</script>
+<script src="../js/pagination.js"></script>
+<script>
+    var availableBrands = [
+        "ActionScript",
+        "AppleScript",
+        "Asp",
+        "BASIC",
+        "C",
+        "C++",
+        "Clojure",
+        "COBOL",
+        "ColdFusion",
+        "Erlang",
+        "Fortran",
+        "Groovy",
+        "Haskell",
+        "Java",
+        "JavaScript",
+        "Lisp",
+        "Perl",
+        "PHP",
+        "Python",
+        "Ruby",
+        "Scala",
+        "Scheme"
+    ];
+    function initialize(){
+        alert('test');
 
-        var listElement = $this;
-        var perPage = settings.perPage;
-        var children = listElement.children();
-        var pager = $('.pager');
-
-        if (typeof settings.childSelector!="undefined") {
-            children = listElement.find(settings.childSelector);
-        }
-
-        if (typeof settings.pagerSelector!="undefined") {
-            pager = $(settings.pagerSelector);
-        }
-
-        var numItems = children.size();
-        var numPages = Math.ceil(numItems/perPage);
-
-        pager.data("curr",0);
-
-        if (settings.showPrevNext){
-            $('<li><a href="#" class="prev_link">«</a></li>').appendTo(pager);
-        }
-
-        var curr = 0;
-        while(numPages > curr && (settings.hidePageNumbers==false)){
-            $('<li><a href="#" class="page_link">'+(curr+1)+'</a></li>').appendTo(pager);
-            curr++;
-        }
-
-        if (settings.showPrevNext){
-            $('<li><a href="#" class="next_link">»</a></li>').appendTo(pager);
-        }
-
-        pager.find('.page_link:first').addClass('active');
-        pager.find('.prev_link').hide();
-        if (numPages<=1) {
-            pager.find('.next_link').hide();
-        }
-        pager.children().eq(1).addClass("active");
-
-        children.hide();
-        children.slice(0, perPage).show();
-
-        pager.find('li .page_link').click(function(){
-            var clickedPage = $(this).html().valueOf()-1;
-            goTo(clickedPage,perPage);
-            return false;
-        });
-        pager.find('li .prev_link').click(function(){
-            previous();
-            return false;
-        });
-        pager.find('li .next_link').click(function(){
-            next();
-            return false;
+        $('.BrandName').each(function(i, obj) {
+            $(obj).autocomplete({
+                source: availableBrands
+            });
         });
 
-        function previous(){
-            var goToPage = parseInt(pager.data("curr")) - 1;
-            goTo(goToPage);
+    }
+    function  validateBrandName(input) {
+        if (!contains.call(availableBrands,input.value)){
+            input.style.background = "#FFBDB7";
+            $(input).tooltip({
+                content: "Invalid Brand Name",
+                tooltipClass: "errorMsg"
+            });
         }
 
-        function next(){
-            goToPage = parseInt(pager.data("curr")) + 1;
-            goTo(goToPage);
+        else{
+            input.style.background = "#FFF";
+            $(input).tooltip({
+                disabled: true
+            });
         }
 
-        function goTo(page){
-            var startAt = page * perPage,
-                endOn = startAt + perPage;
+    }
+    var contains = function(needle) {
+        // Per spec, the way to identify NaN is that it is not equal to itself
+        var findNaN = needle !== needle;
+        var indexOf;
 
-            children.css('display','none').slice(startAt, endOn).show();
+        if(!findNaN && typeof Array.prototype.indexOf === 'function') {
+            indexOf = Array.prototype.indexOf;
+        } else {
+            indexOf = function(needle) {
+                var i = -1, index = -1;
 
-            if (page>=1) {
-                pager.find('.prev_link').show();
-            }
-            else {
-                pager.find('.prev_link').hide();
-            }
+                for(i = 0; i < this.length; i++) {
+                    var item = this[i];
 
-            if (page<(numPages-1)) {
-                pager.find('.next_link').show();
-            }
-            else {
-                pager.find('.next_link').hide();
-            }
+                    if((findNaN && item !== item) || item === needle) {
+                        index = i;
+                        break;
+                    }
+                }
 
-            pager.data("curr",page);
-            pager.children().removeClass("active");
-            pager.children().eq(page+1).addClass("active");
-
+                return index;
+            };
         }
+
+        return indexOf.call(this, needle) > -1;
     };
 
 </script>
