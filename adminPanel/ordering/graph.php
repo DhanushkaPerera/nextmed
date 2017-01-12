@@ -17,7 +17,7 @@ Else, you will get JavaScript errors. -->
 <?php
 
     // Form the SQL query that returns the top 10 most populous countries
-    $sql = "SELECT count(Email) as Number, Date from reportorder";
+    $sql = "Select count(Email) as Number,Date from reportorder GROUP BY Date";
 
     // Execute the query, or else return the error message.
     $result =mysqli_query($db,$sql);
