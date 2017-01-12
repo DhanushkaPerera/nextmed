@@ -1,5 +1,5 @@
 <?php
-require_once("includes/db.php");
+require("../../db/db.php");
 
 require("fpdf/fpdf.php");
 
