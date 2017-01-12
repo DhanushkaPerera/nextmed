@@ -179,7 +179,7 @@ echo  "<div margin:auto>
     <input class='button1' type='button' value='Completed orders'>
     </a>
     <input class='button1' type='button' value='View report' onclick=window.open('report.php');> 
-    </a>
+    <input class='button1' type='button' value='View chart' onclick=window.open('graph.php');>
     </div>";
         
 echo"</body>";
