@@ -1,7 +1,7 @@
 <?php
 
-//importing db.php in the includes folder
-require("includes/db.php");
+//importing db.php in the db folder
+require("../../db/db.php");
 
 
 $nic = $_POST["NIC"];

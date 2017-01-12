@@ -1,17 +1,11 @@
-
-        <?php
-            require("includes/db.php");
-
-            $sql="SELECT * FROM complete ";
-            $result=mysqli_query($db,$sql);
+ <?php
+require("../../db/db.php");
+$sql="SELECT * FROM complete ";
+$result=mysqli_query($db,$sql);
 echo"<head>";
 echo'
-        <link rel="stylesheet" href="view.css">
-            <head>
-
-        
-        ';
-echo"</head>";
+<link rel="stylesheet" href="view.css">
+</head>';
     
 echo "<body >";
 echo "<table border=1 cellspacing=0 cellpadding=4 > " ;

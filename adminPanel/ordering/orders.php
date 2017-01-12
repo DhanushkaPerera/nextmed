@@ -2,7 +2,77 @@
   <head>
     <style>input.textfill {
         float: right;
-    }</style>
+    }
+	  
+		.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 80%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0} 
+    to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+/* The Close Button */
+.close {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-header {
+    padding: 2px 16px;
+    background-color: #5cb85c;
+    color: white;
+}
+
+.modal-body {padding: 2px 16px;}
+
+.modal-footer {
+    padding: 2px 16px;
+    background-color: #5cb85c;
+    color: white;
+}
+	  </style>
     <link type="text/css" rel="stylesheet" href="order.css" >
             <script type="text/javascript">
                       
@@ -61,7 +131,7 @@ function removekid(div) {
     </head>
 
 <body bgcolor="#E6E6FA">
-  <form id=orders name="orders" action="orders_action.php" method="post" enctype="multipart/form-data" onsubmit="return Validate(this);">
+  <form id=orders name="orders" action="orders_action.php" method="post" enctype="multipart/form-data" onsubmit="return Validate(this);return test()">
     <table align="">
       <tr>
         <td height="40">
@@ -89,7 +159,7 @@ function removekid(div) {
         <td height="50">
           <span class="headingbox">Expected Time &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp </span>
           <span style="width:100%;text-align:center;">
-            <input type="time" id=time autofocus name=DPTime onfocusout="hid('timeerror2');" onfocus="show('timeerror2');" min="09:00:00" max="22:00:00" />
+            <input type="time" id=time autofocus name=DPTime onfocusout="hid('timeerror2');" onfocus="show('timeerror2');" min="09:00:00" max="22:00:00" onblur="test()" />
             <br>
           </span>
           <span class="poperror" id="timeerror2"> Pharmacy is opened from 9AM to 10PM </span>
@@ -157,7 +227,32 @@ function removekid(div) {
             <div id="dlg-footer">
                 <button onclick="dlgLogin()">Ok</button>
             </div>
-        </div>
+</div>
+
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <h2>Warning</h2>
+    </div>
+    <div class="modal-body">
+      <p>Some text in the Modal Body</p>
+      <p>Some other text...</p>
+    </div>
+    <div class="modal-footer">
+      <h3></h3>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+
+
 <script type="text/javascript">
         function hid(id){
 		var element = document.getElementById(id);
@@ -167,6 +262,8 @@ function removekid(div) {
 		var element = document.getElementById(id);
 		element.style.opacity = "1";
    }
+	
+	
    
 
 
@@ -206,8 +303,8 @@ function Validate(oForm) {
                 whitebg.style.display = "none";
                 dlg.style.display = "none";
             }
-            
-            function showDialog(){
+         
+	function showDialog(){
                 var whitebg = document.getElementById("white-background");
                 var dlg = document.getElementById("dlgbox");
                 whitebg.style.display = "block";
@@ -218,9 +315,101 @@ function Validate(oForm) {
                 
                 dlg.style.left = (winWidth/2) - 480/2 + "px";
                 dlg.style.top = "150px";
+            }   
+            
+	
+	
+	
+	
+	
+	function dlgLogin2(){
+                var whitebg = document.getElementById("grey-background");
+                var dlg = document.getElementById("dialogbox");
+                whitebg.style.display = "none";
+                dlg.style.display = "none";
             }
+            
+            function showDialog2(){
+                var whitebg = document.getElementById("grey-background");
+                var dlg = document.getElementById("dialogbox");
+                whitebg.style.display = "block";
+                dlg.style.display = "block";
+                
+                var winWidth = window.innerWidth;
+                var winHeight = window.innerHeight;
+                
+                dlg.style.left = (winWidth/2) - 480/2 + "px";
+                dlg.style.top = "150px";
+            }
+	
+	
+	function test(){
+	var element = document.getElementById("time").value;
+	var d = new Date();
+  var m = d.getMinutes();
+  var h = d.getHours();
+   if(h == '0') {h = 24}
+  
+  var currentTime = h+"."+m;
+  console.log(currentTime);
+ 
+  // get input time
+  var time = element.split(":");
+  var hour = time[0];
+  if(hour == '00') {hour = 24}
+  var min = time[1];
+  
+  var inputTime = hour+"."+min;
+  console.log(inputTime);
+  
+  var totalTime = currentTime - inputTime;
+  console.log(totalTime);
+  
+  if ((Math.abs(totalTime)) > 2) {
+	  
+  	 document.getElementById('time').style.background ='white';
+	
+	  
+	 
+  } 
+  else {
+     document.getElementById('time').style.background ='#e35152';
+	modal.style.display = "block";
+modal.querySelector('.modal-body').innerHTML="<p>Wrong time</p>";
+       
+  }
+}
+	
+	
           	
          </script> 
+<script>
+// Get the modal
+var modal = document.getElementById('myModal');
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+    modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
 
     </body>
 </html>

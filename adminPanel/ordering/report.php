@@ -1,5 +1,5 @@
 <?php
-require_once("includes/db.php");
+require("../../db/db.php");
 
 require("fpdf/fpdf.php");
 
@@ -17,7 +17,7 @@ $this->ln(20);
     
 }
 
-$sql="SELECT count(Email) as Number, Date from reportorder";
+$sql="Select count(Email) as Number,Date from reportorder GROUP BY Date";
 $result=mysqli_query($db,$sql);
 $pdf=new PDF();
 $pdf->AddPage();

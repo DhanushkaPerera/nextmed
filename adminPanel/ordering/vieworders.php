@@ -1,5 +1,5 @@
  <?php
-            require("includes/db.php");
+            require("../../db/db.php");
 
             $sql="SELECT * FROM `order` ";
             $result=mysqli_query($db,$sql);
@@ -15,9 +15,9 @@ echo'
 </style>
         
         ';
-echo"</head>;
+echo"</head>
     
-<body >;
+<body >
 <table border=1 cellspacing=0 cellpadding=4 > " ;
 echo"<tr bgcolor=grey>";
 echo"<td align=center>";
