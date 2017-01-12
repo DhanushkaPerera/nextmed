@@ -7,11 +7,11 @@
  */
 
 require("../../db/db.php");
-$sql="SELECT QtyType FROM drugstock WHERE ";
+$sql="SELECT QtyType FROM drugstock WHERE BrandName LIKE '%".$_POST['brand']."%' AND DosageForm LIKE '%".$_POST['dosageForm']."%';";
+
 $result = mysqli_query($db,$sql);
-
+echo $db->error;
 while( $rows = mysqli_fetch_assoc($result)){
-    $brandNames[] = $rows['BrandName'];
-
+    $qtyType= $rows['QtyType'];
+    echo $qtyType;
 }
-echo json_encode($brandNames);

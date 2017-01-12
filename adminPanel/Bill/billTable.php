@@ -30,6 +30,45 @@
 </head>
 
 <body>
+<div class="modal fade" id="showOptions" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Following Drugs are Available</h4>
+            </div>
+            <div class="modal-body">
+                <div class="fixed-table-container">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>Select</th>
+                                <th>#Stock No</th>
+                                <th>Brand Name</th>
+                                <th>Dosage Form</th>
+                                <th>Remaining Quantity</th>
+                                <th>Expiration Date</th>
+                                <th>Unit Price</th>
+                            </tr>
+                            </thead>
+                            <tbody id="tableOptions">
+
+                            </tbody>
+                        </table>
+                        <div class="col-md-12 text-center">
+                            <ul class="pagination pagination-lg pager" id="myPager"></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div class="container" style="margin-left:10px;">
     <h3>Billing Items</h3>
@@ -63,6 +102,7 @@
                     <th>Brand Name</th>
                     <th>Dosage Form</th>
                     <th>Quantity</th>
+                    <th>Expiration Date</th>
                     <th>Unit Price</th>
                     <th>Price</th>
                 </tr>
@@ -91,7 +131,7 @@
 
     $( document ).ready(function() {
         maxItemNo();
-
+        $('#myModal').modal('show');
     });
 
     function maxItemNo(){
@@ -261,8 +301,8 @@
           <td><input type="text" value="'+maxNo+'" readonly="true" ></td>\
           <td class="ui-widget"><input class="BrandName" onfocus="autoCompleteBrandNames()" onfocusout="validateBrandName(this)" title="tooltip" type="text"></td>\
           <td class="ui-widget"><input class="DosageForm" onfocus="autoCompleteDosageForms()" onfocusout="validateDosageForm(this)" title="tooltip" type="text"></td>\
-          <td><input type="text"  ></td>\
-          <td><input type="text"  ></td>\
+          <td class="ui-widget"><input class="Quantity" onfocus="showQtyType(this)" onfocusout=validateQty(this) type="text" title="tooltip" ></td>\
+          <td class="ui-widget"><input class="UnitPrice" type="text"  ></td>\
           <td><input type="text"  ></td>\
           <td><input type="text"  ></td>\
           <td><input type="text"  ></td>\
@@ -282,42 +322,50 @@
 <script>
     var availableBrands = [];
     var DosageForms = [];
+    var selectedBrand ="";
+    var selectedDosageForm="";
+    var QtyType="";
 
     function getAvailableBrands() {
+        availableBrands = [];
         jQuery.ajax({
             type: "POST",
             url: "getBrands.php",
             dataType: 'json',
             data: {},
             complete: function(r){
-                if (r.responseText.length > 1){
-                    availableBrands = JSON.parse(r.responseText);
-                    alert(availableBrands);
+                    var value = JSON.parse(r.responseText);
+                    if(!(value instanceof Array)){
+                        availableBrands.push(value);
+                    }
+                    else{
+                        availableBrands = value;
+                    }
                 }
-                else{
 
-                }
-            }
+
         });
     }
 
     function getAvailableDosageForms(brand) {
+        DosageForms = [];
         jQuery.ajax({
             type: "POST",
             url: "getDosageForms.php",
             dataType: 'json',
             data: {brand:brand},
             complete: function(r){
-                if (r.responseText.length > 1){
-                    DosageForms = JSON.parse(r.responseText);
+                var value = JSON.parse(r.responseText);
+                if(!(value instanceof Array)){
+                    DosageForms.push(value);
                 }
                 else{
-
+                    DosageForms = value;
                 }
             }
         });
     }
-    function getQtyType() {
+    function getQtyType(brand,form) {
         jQuery.ajax({
             type: "POST",
             url: "getQtyType.php",
@@ -325,10 +373,9 @@
             data: {brand:brand,dosageForm:form},
             complete: function(r){
                 if (r.responseText.length > 1){
-                    DosageForms = JSON.parse(r.responseText);
+                    QtyType = r.responseText;
                 }
                 else{
-
                 }
             }
         });
@@ -346,6 +393,7 @@
             });
         });
     }
+
     function autoCompleteDosageForms(){
         $('.DosageForm').each(function(i, obj) {
             $(obj).autocomplete({
@@ -369,13 +417,16 @@
             $(input).tooltip({
                 disabled: true
             });
-            getAvailableDosageForms(input.value);
+            selectedBrand = input.value;
+            getAvailableDosageForms(selectedBrand);
         }
 
     }
 
     // Dosage Form validation based on the value of the selected
     function  validateDosageForm(input) {
+        console.log(input.value);
+        console.log(DosageForms);
         if (!contains.call(DosageForms,input.value)){
             input.style.background = "#FFBDB7";
             $(input).tooltip({
@@ -389,10 +440,44 @@
             $(input).tooltip({
                 disabled: true
             });
-            getQtyType();
+            selectedDosageForm = input.value;
+            getQtyType(selectedBrand,selectedDosageForm);
         }
 
     }
+
+    // Function to show quantity types
+    function showQtyType(input) {
+        $(input).tooltip({
+            content: QtyType,
+        });
+    }
+    // Validate Quantity, if the required quanity is not available alert the user
+    //If the drug is allergic to customer alternatives should be shown
+
+    function validateQty(input){
+        //First get the drug if it's available sorted according to drugs that are close to expire but
+        // at least have 30 days to expire
+        // if it's less than 90 days issue a warning
+        var matchingDrugs;
+        jQuery.ajax({
+            type: "POST",
+            url: "getDrug.php",
+            dataType: 'json',
+            data: {brand:selectedBrand,dosageForm:selectedDosageForm,quantity:input.value},
+            complete: function(r){
+                if (r.responseText.length > 1){
+                    matchingDrugs = r.responseText;
+                }
+                else{
+                }
+            }
+        });
+        $('#tableOptions').html('');
+        
+
+    }
+    //Array Search function
     var contains = function(needle) {
         // Per spec, the way to identify NaN is that it is not equal to itself
         var findNaN = needle !== needle;
@@ -419,6 +504,5 @@
 
         return indexOf.call(this, needle) > -1;
     };
-
 </script>
 </html>

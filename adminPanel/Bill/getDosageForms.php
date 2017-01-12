@@ -11,7 +11,7 @@ $sql="SELECT DosageForm FROM drug WHERE Brandname ='".$_POST['brand']."'";
 $result = mysqli_query($db,$sql);
 
 while( $rows = mysqli_fetch_assoc($result)){
-    $DosageForms[] = $rows['DosageForm'];
+    $DosageForms = $rows['DosageForm'];
 
 }
 echo json_encode($DosageForms);
