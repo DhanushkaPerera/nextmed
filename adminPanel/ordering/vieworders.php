@@ -1,5 +1,5 @@
  <?php
-            require("includes/db.php");
+            require("../../db/db.php");
 
             $sql="SELECT * FROM `order` ";
             $result=mysqli_query($db,$sql);
