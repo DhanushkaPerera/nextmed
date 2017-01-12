@@ -259,8 +259,8 @@
         maxNo++;
         $(table).append('<tr  id="row"'+maxNo+'><td><button id="addItem" onclick="saveEdit(this,'+maxNo+')" class="btn btn-success" ><i class="glyphicon glyphicon-save"></i> Save </button></td>\
           <td><input type="text" value="'+maxNo+'" readonly="true" ></td>\
-          <td class="ui-widget"><input class="BrandName" onfocusout="validateBrandName(this)" title="tooltip" type="text"></td>\
-          <td class="ui-widget"><input class="DosageForm" onfocusout="validateDosageForm(this)" type="text"></td>\
+          <td class="ui-widget"><input class="BrandName" onfocus="autoCompleteBrandNames()" onfocusout="validateBrandName(this)" title="tooltip" type="text"></td>\
+          <td class="ui-widget"><input class="DosageForm" onfocus="autoCompleteDosageForms()" onfocusout="validateDosageForm(this)" title="tooltip" type="text"></td>\
           <td><input type="text"  ></td>\
           <td><input type="text"  ></td>\
           <td><input type="text"  ></td>\
@@ -282,7 +282,6 @@
 <script>
     var availableBrands = [];
     var DosageForms = [];
-    var selectedBrand="";
 
     function getAvailableBrands() {
         jQuery.ajax({
@@ -293,6 +292,7 @@
             complete: function(r){
                 if (r.responseText.length > 1){
                     availableBrands = JSON.parse(r.responseText);
+                    alert(availableBrands);
                 }
                 else{
 
@@ -301,12 +301,12 @@
         });
     }
 
-    function getAvailableDosageForms() {
+    function getAvailableDosageForms(brand) {
         jQuery.ajax({
             type: "POST",
             url: "getDosageForms.php",
             dataType: 'json',
-            data: {brand:selectedBrand},
+            data: {brand:brand},
             complete: function(r){
                 if (r.responseText.length > 1){
                     DosageForms = JSON.parse(r.responseText);
@@ -321,13 +321,25 @@
 
     function initialize(){
         getAvailableBrands();
+    }
+
+    // autoComplete Data retrieval from database
+    function autoCompleteBrandNames(){
         $('.BrandName').each(function(i, obj) {
             $(obj).autocomplete({
                 source: availableBrands
             });
         });
-
     }
+    function autoCompleteDosageForms(){
+        $('.DosageForm').each(function(i, obj) {
+            $(obj).autocomplete({
+                source: DosageForms
+            });
+        });
+    }
+
+    //Brand Name validation
     function  validateBrandName(input) {
         if (!contains.call(availableBrands,input.value)){
             input.style.background = "#FFBDB7";
@@ -339,18 +351,15 @@
 
         else{
             input.style.background = "#FFF";
-            selectedBrand = input.value;
             $(input).tooltip({
                 disabled: true
             });
-            $('.DosageForm').each(function(i, obj) {
-                $(obj).autocomplete({
-                    source: DosageForms
-                });
-            });
+            getAvailableDosageForms(input.value);
         }
 
     }
+
+    // Dosage Form validation based on the value of the selected
     function  validateDosageForm(input) {
         if (!contains.call(DosageForms,input.value)){
             input.style.background = "#FFBDB7";

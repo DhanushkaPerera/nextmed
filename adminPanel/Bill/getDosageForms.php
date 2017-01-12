@@ -7,7 +7,7 @@
  */
 
 require("../../db/db.php");
-$sql="SELECT DosageForm FROM drug WHERE Brandname ='".$_POST['BrandName']."'";
+$sql="SELECT DosageForm FROM drug WHERE Brandname ='".$_POST['brand']."'";
 $result = mysqli_query($db,$sql);
 
 while( $rows = mysqli_fetch_assoc($result)){

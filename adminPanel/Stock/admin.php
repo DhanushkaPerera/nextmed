@@ -270,7 +270,6 @@
             checkedBoxes.splice(index,1);
             length = checkedBoxes.length;
             var currentRow = "#row"+id;
-            alert(currentRow);
             $(currentRow).has('td').each(function() {
                 $('td', $(this)).each(function(index, item) {
                     rowItem[index] = $(item).html();
@@ -482,7 +481,6 @@
             checkedBoxesSup.splice(index,1);
             length = checkedBoxesSup.length;
             var currentRow = "#row"+id;
-            alert(currentRow);
             $(currentRow).has('td').each(function() {
                 $('td', $(this)).each(function(index, item) {
                     rowItem[index] = $(item).html();
