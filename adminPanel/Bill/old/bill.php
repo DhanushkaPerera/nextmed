@@ -45,7 +45,7 @@
 			
 			<?php
 
-require("../../db/db.php");
+require("../../../db/db.php");
 
 
 if(isset($_POST["search"])){
