@@ -98,7 +98,7 @@ echo "
     
 echo "<a href='transfer.php?del=";
 echo $row['OrderNo.'];
-echo "'><input type='button' class='btn-success' value='Complete'></a>"; //Transfer0
+echo "'><input type='button' class='btn btn-success' value='Complete'></a>"; //Transfer0
 echo "<br>";
 echo"</td>";
 
