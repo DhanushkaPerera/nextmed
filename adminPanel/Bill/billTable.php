@@ -317,7 +317,22 @@
             }
         });
     }
+    function getQtyType() {
+        jQuery.ajax({
+            type: "POST",
+            url: "getQtyType.php",
+            dataType: 'json',
+            data: {brand:brand,dosageForm:form},
+            complete: function(r){
+                if (r.responseText.length > 1){
+                    DosageForms = JSON.parse(r.responseText);
+                }
+                else{
 
+                }
+            }
+        });
+    }
 
     function initialize(){
         getAvailableBrands();
@@ -374,6 +389,7 @@
             $(input).tooltip({
                 disabled: true
             });
+            getQtyType();
         }
 
     }

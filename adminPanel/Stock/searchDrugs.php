@@ -16,7 +16,7 @@ print_r($_POST['search']);
         echo    '<td>'. '<div class="checkbox"><label><input onchange="checkEvent(this)" name="'.$id.'" type="checkbox" value=""></label>
                                 </div></td>';
         echo    '<td >'. $rows['StockNo'].'</td>';
-        echo    '<td >'. $rows['DrugBrandName'].'</td>';
+        echo    '<td >'. $rows['BrandName'].'</td>';
         echo    '<td >'. $rows['DosageForm'].'</td>';
         echo    '<td >'. $rows['SupplierName'].'</td>';
         echo    '<td >'. $rows['PurchaseDate'].'</td>';
