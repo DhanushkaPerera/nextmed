@@ -259,8 +259,8 @@
         maxNo++;
         $(table).append('<tr  id="row"'+maxNo+'><td><button id="addItem" onclick="saveEdit(this,'+maxNo+')" class="btn btn-success" ><i class="glyphicon glyphicon-save"></i> Save </button></td>\
           <td><input type="text" value="'+maxNo+'" readonly="true" ></td>\
-          <td class="ui-widget"><input class="BrandName" onfocusout="validateBrandName(this)" title="tooltip" type="text"></td>\
-          <td class="ui-widget"><input class="DosageForm" onfocusout="validateDosageForm(this)" type="text"></td>\
+          <td class="ui-widget"><input class="BrandName" onfocus="autoCompleteBrandNames()" onfocusout="validateBrandName(this)" title="tooltip" type="text"></td>\
+          <td class="ui-widget"><input class="DosageForm" onfocus="autoCompleteDosageForms()" onfocusout="validateDosageForm(this)" title="tooltip" type="text"></td>\
           <td><input type="text"  ></td>\
           <td><input type="text"  ></td>\
           <td><input type="text"  ></td>\
@@ -280,40 +280,81 @@
 </script>
 <script src="../js/pagination.js"></script>
 <script>
-    var availableBrands = [
-        "ActionScript",
-        "AppleScript",
-        "Asp",
-        "BASIC",
-        "C",
-        "C++",
-        "Clojure",
-        "COBOL",
-        "ColdFusion",
-        "Erlang",
-        "Fortran",
-        "Groovy",
-        "Haskell",
-        "Java",
-        "JavaScript",
-        "Lisp",
-        "Perl",
-        "PHP",
-        "Python",
-        "Ruby",
-        "Scala",
-        "Scheme"
-    ];
-    function initialize(){
-        alert('test');
+    var availableBrands = [];
+    var DosageForms = [];
 
+    function getAvailableBrands() {
+        jQuery.ajax({
+            type: "POST",
+            url: "getBrands.php",
+            dataType: 'json',
+            data: {},
+            complete: function(r){
+                if (r.responseText.length > 1){
+                    availableBrands = JSON.parse(r.responseText);
+                    alert(availableBrands);
+                }
+                else{
+
+                }
+            }
+        });
+    }
+
+    function getAvailableDosageForms(brand) {
+        jQuery.ajax({
+            type: "POST",
+            url: "getDosageForms.php",
+            dataType: 'json',
+            data: {brand:brand},
+            complete: function(r){
+                if (r.responseText.length > 1){
+                    DosageForms = JSON.parse(r.responseText);
+                }
+                else{
+
+                }
+            }
+        });
+    }
+    function getQtyType() {
+        jQuery.ajax({
+            type: "POST",
+            url: "getQtyType.php",
+            dataType: 'json',
+            data: {brand:brand,dosageForm:form},
+            complete: function(r){
+                if (r.responseText.length > 1){
+                    DosageForms = JSON.parse(r.responseText);
+                }
+                else{
+
+                }
+            }
+        });
+    }
+
+    function initialize(){
+        getAvailableBrands();
+    }
+
+    // autoComplete Data retrieval from database
+    function autoCompleteBrandNames(){
         $('.BrandName').each(function(i, obj) {
             $(obj).autocomplete({
                 source: availableBrands
             });
         });
-
     }
+    function autoCompleteDosageForms(){
+        $('.DosageForm').each(function(i, obj) {
+            $(obj).autocomplete({
+                source: DosageForms
+            });
+        });
+    }
+
+    //Brand Name validation
     function  validateBrandName(input) {
         if (!contains.call(availableBrands,input.value)){
             input.style.background = "#FFBDB7";
@@ -328,6 +369,27 @@
             $(input).tooltip({
                 disabled: true
             });
+            getAvailableDosageForms(input.value);
+        }
+
+    }
+
+    // Dosage Form validation based on the value of the selected
+    function  validateDosageForm(input) {
+        if (!contains.call(DosageForms,input.value)){
+            input.style.background = "#FFBDB7";
+            $(input).tooltip({
+                content: "Invalid Dosage Form",
+                tooltipClass: "errorMsg"
+            });
+        }
+
+        else{
+            input.style.background = "#FFF";
+            $(input).tooltip({
+                disabled: true
+            });
+            getQtyType();
         }
 
     }
