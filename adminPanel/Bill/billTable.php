@@ -280,33 +280,47 @@
 </script>
 <script src="../js/pagination.js"></script>
 <script>
-    var availableBrands = [
-        "ActionScript",
-        "AppleScript",
-        "Asp",
-        "BASIC",
-        "C",
-        "C++",
-        "Clojure",
-        "COBOL",
-        "ColdFusion",
-        "Erlang",
-        "Fortran",
-        "Groovy",
-        "Haskell",
-        "Java",
-        "JavaScript",
-        "Lisp",
-        "Perl",
-        "PHP",
-        "Python",
-        "Ruby",
-        "Scala",
-        "Scheme"
-    ];
-    function initialize(){
-        alert('test');
+    var availableBrands = [];
+    var DosageForms = [];
+    var selectedBrand="";
 
+    function getAvailableBrands() {
+        jQuery.ajax({
+            type: "POST",
+            url: "getBrands.php",
+            dataType: 'json',
+            data: {},
+            complete: function(r){
+                if (r.responseText.length > 1){
+                    availableBrands = JSON.parse(r.responseText);
+                }
+                else{
+
+                }
+            }
+        });
+    }
+
+    function getAvailableDosageForms() {
+        jQuery.ajax({
+            type: "POST",
+            url: "getDosageForms.php",
+            dataType: 'json',
+            data: {brand:selectedBrand},
+            complete: function(r){
+                if (r.responseText.length > 1){
+                    DosageForms = JSON.parse(r.responseText);
+                }
+                else{
+
+                }
+            }
+        });
+    }
+
+
+    function initialize(){
+        getAvailableBrands();
         $('.BrandName').each(function(i, obj) {
             $(obj).autocomplete({
                 source: availableBrands
@@ -319,6 +333,29 @@
             input.style.background = "#FFBDB7";
             $(input).tooltip({
                 content: "Invalid Brand Name",
+                tooltipClass: "errorMsg"
+            });
+        }
+
+        else{
+            input.style.background = "#FFF";
+            selectedBrand = input.value;
+            $(input).tooltip({
+                disabled: true
+            });
+            $('.DosageForm').each(function(i, obj) {
+                $(obj).autocomplete({
+                    source: DosageForms
+                });
+            });
+        }
+
+    }
+    function  validateDosageForm(input) {
+        if (!contains.call(DosageForms,input.value)){
+            input.style.background = "#FFBDB7";
+            $(input).tooltip({
+                content: "Invalid Dosage Form",
                 tooltipClass: "errorMsg"
             });
         }
