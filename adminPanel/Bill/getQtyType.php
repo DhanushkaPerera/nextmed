@@ -11,7 +11,7 @@ $sql="SELECT QtyType FROM drugstock WHERE BrandName LIKE '%".$_POST['brand']."%'
 
 $result = mysqli_query($db,$sql);
 echo $db->error;
-while( $rows = mysqli_fetch_assoc($result)){
-    $qtyType= $rows['QtyType'];
-    echo $qtyType;
-}
+$rows = mysqli_fetch_assoc($result);
+$qtyType= $rows['QtyType'];
+echo $qtyType;
+
