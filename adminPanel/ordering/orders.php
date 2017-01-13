@@ -25,7 +25,8 @@
     margin: auto;
     padding: 0;
     border: 1px solid #888;
-    width: 80%;
+    width: 60%;
+	
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
     -webkit-animation-name: animatetop;
     -webkit-animation-duration: 0.4s;
@@ -61,20 +62,25 @@
 
 .modal-header {
     padding: 2px 16px;
-    background-color: #5cb85c;
+    background-color: #e35152;
     color: white;
+	
 }
 
-.modal-body {padding: 2px 16px;}
+.modal-body {padding: 2px 16px;
+height: 5%;
+}
 
 .modal-footer {
     padding: 2px 16px;
-    background-color: #5cb85c;
+    background-color: #e35152Red;
     color: white;
 }
 	  </style>
     <link type="text/css" rel="stylesheet" href="order.css" >
-            <script type="text/javascript">
+            
+	  
+	  <script type="text/javascript">
                       
                 
            var textbox = function(me){
@@ -131,7 +137,7 @@ function removekid(div) {
     </head>
 
 <body bgcolor="#E6E6FA">
-  <form id=orders name="orders" action="orders_action.php" method="post" enctype="multipart/form-data" onsubmit="return Validate(this);return test()">
+  <form id=orders name="orders" action="orders_action.php" method="post" enctype="multipart/form-data" onsubmit="return Validate(this);">
     <table align="">
       <tr>
         <td height="40">
@@ -159,7 +165,7 @@ function removekid(div) {
         <td height="50">
           <span class="headingbox">Expected Time &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp </span>
           <span style="width:100%;text-align:center;">
-            <input type="time" id=time autofocus name=DPTime onfocusout="hid('timeerror2');" onfocus="show('timeerror2');" min="09:00:00" max="22:00:00" onblur="test()" />
+            <input type="time" id=time autofocus name=DPTime onfocusout="hid('timeerror2');" onfocus="show('timeerror2');" min="09:00:00" max="22:00:00" onblur="timeError()" />
             <br>
           </span>
           <span class="poperror" id="timeerror2"> Pharmacy is opened from 9AM to 10PM </span>
@@ -235,14 +241,14 @@ function removekid(div) {
   <div class="modal-content">
     <div class="modal-header">
       <span class="close">&times;</span>
-      <h2>Modal Header</h2>
+      <h2>Alert</h2>
     </div>
     <div class="modal-body">
       <p>Some text in the Modal Body</p>
       <p>Some other text...</p>
     </div>
     <div class="modal-footer">
-      <h3>Modal Footer</h3>
+      <h3></h3>
     </div>
   </div>
 
@@ -343,7 +349,7 @@ function Validate(oForm) {
             }
 	
 	
-	function test(){
+	function timeError(){
 	var element = document.getElementById("time").value;
 	var d = new Date();
   var m = d.getMinutes();
@@ -362,20 +368,20 @@ function Validate(oForm) {
   var inputTime = hour+"."+min;
   console.log(inputTime);
   
-  var totalTime = currentTime - inputTime;
+  var totalTime =   inputTime-currentTime;
   console.log(totalTime);
   
-  if ((Math.abs(totalTime)) > 2) {
+  if (totalTime<1  ) {
+	  document.getElementById('time').style.background ='#e35152';
+	modal.style.display = "block";
+modal.querySelector('.modal-body').innerHTML="<p>Dear customer please enter a time one hour in advance! Thank you! </p>";
 	  
-  	 document.getElementById('time').style.background ='white';
-	
-	  
-	 
+  
+ 
   } 
   else {
-     document.getElementById('time').style.background ='#e35152';
-	modal.style.display = "block";
-modal.querySelector('.modal-body').innerHTML="<p>Wrong time</p>";
+	  	 document.getElementById('time').style.background ='white';
+     
        
   }
 }
@@ -388,15 +394,12 @@ modal.querySelector('.modal-body').innerHTML="<p>Wrong time</p>";
 var modal = document.getElementById('myModal');
 
 // Get the button that opens the modal
-var btn = document.getElementById("myBtn");
+
 
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
 
 // When the user clicks the button, open the modal 
-btn.onclick = function() {
-    modal.style.display = "block";
-}
 
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
