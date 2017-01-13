@@ -1,8 +1,8 @@
 <?php
 
-require("../../db/db.php");
+require_once("includes/db.php");
 
-require("src/fusioncharts.php");
+require("charts/fusioncharts.php");
 
 
 ?>
@@ -12,12 +12,12 @@ require("src/fusioncharts.php");
 When you make your own charts, make sure that the path to this JS file is correct.
 Else, you will get JavaScript errors. -->
 
-<script type="text/javascript" src="http://static.fusioncharts.com/code/latest/fusioncharts.js"></script>
+<script type="text/javascript" src="charts/fusioncharts.js"></script>
 
 <?php
 
     // Form the SQL query that returns the top 10 most populous countries
-    $sql = "Select count(Email) as Number,Date from reportorder GROUP BY Date";
+    $sql = "Select count(Email) as Number,Date from reportorder GROUP BY date";
 
     // Execute the query, or else return the error message.
     $result =mysqli_query($db,$sql);
@@ -35,11 +35,13 @@ Else, you will get JavaScript errors. -->
               "usePlotGradientColor"=> "0",
               "plotBorderAlpha"=> "10",
               "showXAxisLine"=> "1",
+			   "xAxisName"=> "Date",
               "xAxisLineColor" => "#999999",
               "showValues" => "0",
               "divlineColor" => "#999999",
               "divLineIsDashed" => "1",
-              "showAlternateHGridColor" => "0"
+              "showAlternateHGridColor" => "0",
+			   "yAxisName"=> "Number of online orders"
             )
         );
 
