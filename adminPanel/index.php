@@ -142,7 +142,7 @@ else{
 			<iframe  src="BackupSystem/backup.php" style="width:120%" frameborder="0" onload="resizeIframe(this)" > </iframe>
 		</div>
 			<div class="contentitem" id="Notice"> <div class="heading1">Public notice </div>
-				<iframe  src="Notices/Notice.php" style="width:120%" frameborder="0" onload="resizeIframe(this)" > </iframe>
+				<iframe  src="addinfo/addinfo.php" style="width:120%" frameborder="0" onload="resizeIframe(this)" > </iframe>
 			</div>
 		<div class="contentitem" id="UserManage"> <div class="heading1">User Manage </div>
 			<iframe  src="" style="width:120%" frameborder="0" onload="resizeIframe(this)" > </iframe>
