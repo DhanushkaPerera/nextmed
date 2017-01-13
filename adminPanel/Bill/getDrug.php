@@ -7,15 +7,22 @@
  */
 
 require("../../db/db.php");
-$sql="SELECT * FROM drugstock WHERE BrandName LIKE '%".$_POST['brand']."%' AND DosageForm LIKE '%".$_POST['dosageForm']."%' AND Expired=0 AND RemainingQty >= ".intval($_POST['quantity'])." ORDER BY ExpireDate DESC;" ;
+$sql="SELECT * FROM drugstock WHERE BrandName LIKE '%".$_POST['brand']."%' AND DosageForm LIKE '%".$_POST['dosageForm']."%' AND Expired=0 AND RemainingQty >= ".intval($_POST['quantity'])." ORDER BY ExpireDate ASC;" ;
 $result = mysqli_query($db,$sql);
-while( $rows = mysqli_fetch_assoc($result)){
-    $table[]['StockNo'] = $rows['StockNo'];
-    $table[]['BrandName'] = $rows['BrandName'];
-    $table[]['DosageForm'] = $rows['DosageForm'];
-    $table[]['RemainingQty'] = $rows['RemainingQty'];
-    $table[]['ExpireDate'] = $rows['ExpireDate'];
-    $table[]['UnitPrice'] = $rows['RetailPrice'];
+if(mysqli_num_rows($result)>0){
+    while( $rows = mysqli_fetch_assoc($result)){
+        $id =  $rows['StockNo'];
+        echo '<tr id="rowSO'.$id.'">';
+        echo    '<td>'. '<div class="checkbox"><label><input class="optionsDrugs" onchange="optionSelect(this)" name="'.$id.'" type="radio" value="'.$id.'"></label></div></td>';
+        echo    '<td >'. $rows['StockNo'].'</td>';
+        echo    '<td >'. $rows['BrandName'].'</td>';
+        echo    '<td >'. $rows['DosageForm'].'</td>';
+        echo    '<td >'. $rows['RemainingQty'].'</td>';
+        echo    '<td >'. $rows['ExpireDate'].'</td>';
+        echo    '<td >'. $rows['RetailPrice'].'</td>';
+        echo '</tr>';
+    }
 }
-
-echo json_encode($table);
+else{
+    echo "The drug is not available";
+}

@@ -3,7 +3,7 @@
 
 <html>
 <head>
-    <title>admin</title>
+    <title>Billing</title>
 
     <link href="../css/bootstrap.css" rel="stylesheet" type="text/css" />
     <link href="../../assets/bootstrap-table/src/bootstrap-table.css" rel="stylesheet" type="text/css" />
