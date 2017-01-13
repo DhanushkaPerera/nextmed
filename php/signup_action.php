@@ -1,7 +1,7 @@
 <?php
 
 //importing db.php
-require("../db/db1.php");
+require("../db/db.php");
 
 $nic=$_POST["nic"];
 $fname=$_POST["firstname"];
