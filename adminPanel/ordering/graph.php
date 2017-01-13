@@ -2,7 +2,7 @@
 
 require("../../db/db.php");
 
-require("src/fusioncharts.php");
+require("charts/fusioncharts.php");
 
 
 ?>
@@ -12,12 +12,12 @@ require("src/fusioncharts.php");
 When you make your own charts, make sure that the path to this JS file is correct.
 Else, you will get JavaScript errors. -->
 
-<script type="text/javascript" src="http://static.fusioncharts.com/code/latest/fusioncharts.js"></script>
+<script type="text/javascript" src="charts/fusioncharts.js"></script>
 
 <?php
 
     // Form the SQL query that returns the top 10 most populous countries
-    $sql = "Select count(Email) as Number,Date from reportorder GROUP BY Date";
+    $sql = "Select count(Email) as Number,Date from reportorder GROUP BY date";
 
     // Execute the query, or else return the error message.
     $result =mysqli_query($db,$sql);
@@ -35,11 +35,13 @@ Else, you will get JavaScript errors. -->
               "usePlotGradientColor"=> "0",
               "plotBorderAlpha"=> "10",
               "showXAxisLine"=> "1",
+			   "xAxisName"=> "Date",
               "xAxisLineColor" => "#999999",
               "showValues" => "0",
               "divlineColor" => "#999999",
               "divLineIsDashed" => "1",
-              "showAlternateHGridColor" => "0"
+              "showAlternateHGridColor" => "0",
+			   "yAxisName"=> "Number of online orders"
             )
         );
 
@@ -60,7 +62,7 @@ Else, you will get JavaScript errors. -->
 
 /*Create an object for the column chart using the FusionCharts PHP class constructor. Syntax for the constructor is ` FusionCharts("type of chart", "unique chart id", width of the chart, height of the chart, "div id to render the chart", "data format", "data source")`. Because we are using JSON data to render the chart, the data format will be `json`. The variable `$jsonEncodeData` holds all the JSON data for the chart, and will be passed as the value for the data source parameter of the constructor.*/
 
-        $columnChart = new FusionCharts("column2D", "myFirstChart" , 600, 300, "chart-1", "json", $jsonEncodedData);
+        $columnChart = new FusionCharts("column2D", "myFirstChart" , 700, 500, "chart-1", "json", $jsonEncodedData);
 
         // Render the chart
         $columnChart->render();

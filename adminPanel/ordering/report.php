@@ -17,7 +17,7 @@ $this->ln(20);
     
 }
 
-$sql="Select count(Email) as Number,Date from reportorder GROUP BY Date";
+$sql="SELECT count(Email) as Number, Date from reportorder";
 $result=mysqli_query($db,$sql);
 $pdf=new PDF();
 $pdf->AddPage();
