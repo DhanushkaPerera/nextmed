@@ -25,7 +25,7 @@ $pdf->AliasNbPages();
 $pdf->SetFont('Arial','B',12);
 
 $pdf->Cell(90,10,'Date',1,0,'C',0);
-$pdf->Cell(90,10,'Number of orders',1,1,'C',0);
+$pdf->Cell(90,10,'Number of online orders',1,1,'C',0);
  
 
 while($row=mysqli_fetch_array($result))
