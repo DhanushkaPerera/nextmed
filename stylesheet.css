@@ -304,12 +304,14 @@ contactus{
 
 .menubuttonimg {
 	float: left;
+	background: #00ddd2;
 	height:100%;
 	text-align: center;
 	vertical-align: middle;
 	top: 0;
 	bottom: 0;
-  transition: all 0.4s;
+	transition: all 0.4s;
+
 }
 
 .menubuttonimg:hover {
