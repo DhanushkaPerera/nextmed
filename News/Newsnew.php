@@ -45,8 +45,8 @@
 		</div>
 		
 		<div class = "news3">
-			<p> Do you love to deal </br> with pharmaceutical drugs? </p>
-			<p> Have a dream to become </br> a pharmacist? </p>
+			<!--p> Do you love to deal </br> with pharmaceutical drugs? </p>
+			<p> Have a dream to become </br> a pharmacist? </p-->
 			<p> Vacancy at </br> Anura Pharmacy (Pvt) Ltd </p>
 			<!--input class = "button" type = "submit" name = "submit" value = "Register Now"-->
 			<a href="vacancy.html"><button class="button">Apply Now</button></a>
