@@ -214,12 +214,12 @@
 				</div>
 				<div class="error" id="passError"> error </div>
 				<br>
-				<input class="button buttonlogin login" name="submit" value="Login" onclick="authenticateUser('emailin', 'passin', 'passError')" >
+				<input type="button" class="button buttonlogin login" name="submit" value="Login" onclick="authenticateUser('emailin', 'passin', 'passError')" >
 				<br>
 				<br>
 				<hr class="login">
 				Or<br>
-				<input class="button buttonlogin login" value="Sign up" style="vertical-align:middle;" onclick="showSignUp()">
+				<input type="button" class="button buttonlogin login" value="Sign up" style="vertical-align:middle;" onclick="showSignUp()">
 				</div>
 			</form>
 			</div>
