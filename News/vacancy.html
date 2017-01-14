@@ -6,110 +6,147 @@
    
 
 </head>
+
 <body>
-    <form id = "vacancy" name="vacancy"  action=""  method=post ><br>
-
-	<div style="width:100%;text-align:center;">
     
-	</div>
-	<div class="sep"></div>
+	<form id = "vacancy" name="vacancy"  action="applyvacancy.php"  method=post enctype="multipart/form-data">
+	
+		<div class="close" onclick="parent.closeIFrame();"> &#10006; </div>
 
-<div class = "inputs">
+		<div style="width:100%;text-align:center;">
+			<h3> Application Form <h3>
+		</div>
 	
-	<div class="headingbox" id="hBoxDBN" > Full Name </div>
-	<div style="width:100%;text-align:center;">
-    <input type="text" placeholder="Drug Brand Name"  onfocus="headingBoxActive('hBoxDBN')" onfocusout="headingBoxInactive('hBoxDBN')"   name=name /></br>
-	</div>
-	
-	<div class="headingbox" id="hBoxREPO"> Gender </div>
-	<div style="width:100%;text-align:center;">
-	<input type=radio name=ReturnPolicy value=Male onfocus="headingBoxActive('hBoxREPO')" onfocusout="headingBoxInactive('hBoxREPO')"/>Male     <input type=radio name=ReturnPolicy value=Female onfocus="headingBoxActive('hBoxREPO')" onfocusout="headingBoxInactive('hBoxREPO')" />Female<br>
-	</div>
+		<div class="sep"></div>
 
-	<div class="headingbox" id="hBoxDA" >Date of Birth </div>
-	<div style="width:100%;text-align:center;">
-    <input type="date" placeholder="Date of Birth" onfocus="headingBoxActive('hBoxDA')" onfocusout="headingBoxInactive('hBoxDA')" name=dob ></br>
-	</div>
+		<div class = "inputs">
 	
+			<div class="column">
+		
+				<!--Full Name-->
+				<div class="headingbox" id="hBoxDBN" > Full Name </div>
+				<div class="inputboxWrap">
+					<input type="text"   name=fullname onfocus="headingBoxActive('hBoxFN')" onkeydown="validateString(this, 'nameerror')" onfocusout="hide('nameerror');validateoutString(this, 'nameerror2');validatedAll();" /><br>
+				</div>
+				
+				<div style="height:80px;">
+				<!--Gender-->
+				<div class="headingbox" id="hBoxREPO"> Gender </div>
+				<div style="padding: 10px" class="inputboxWrap">
+					<input type="radio" name="gender" value="male"> Male
+                    <input type="radio" name="gender" value="female"> Female<br>
+				</div>
+				</div>
+
+				<!--Date Of Birth-->
+				<div class="headingbox" id="hBoxDA" >Date of Birth </div>
+				<div class="inputboxWrap">
+					<input name=dob   type="text" onfocus="headingBoxActive('hBoxBdate');(this.type='date')" onfocusout="(this.type='text');validateDate(this, 'bderror2');validatedAll();" id="date"><br>
+				</div>
 	
-	<div class="headingbox" id="hBoxCOM" > Permanent Addrass  </div>
-	<div style="width:100%;text-align:center;">
-    <input type="text" placeholder="Permanent Addrass" onfocus="headingBoxActive('hBoxCOM')" onfocusout="headingBoxInactive('hBoxCOM')"  name=add /><br>
-	</div>
-	
-	<div class="headingbox" id="hBoxBG"> Current living District </div>
-	<div style="width:100%;text-align:center;">
+				<!--Permanent Address-->
+				<div class="headingbox" id="hBoxCOM" > Permanent Addrass  </div>
+				<div class="inputboxWrap">
+					<input type="text"   onfocus="headingBoxActive('hBoxAdrs')" name=address onfocusout="validateAddr(this, 'adrerror2');validatedAll();" /><br>
+				</div>
+				
+				<!--Current Living District-->
+				<div class="headingbox" id="hBoxBG"> Current living District </div>
+				<div class="inputboxWrap">
 
 	
 			
-			<select name=dis  onfocusout="validateList(this, 'bldgrperror')" onfocus="headingBoxInactive('hBoxBG')"  >
-			<option value="Ampara" >Ampara</option>
-			<option value="Anuradhapura" >Anuradhapura</option>
-			<option value="Badulla" >Badulla</option>
-			<option value="Batticaloa">Batticaloa</option>
-			<option value="Colombo">Colombo</option>
-			<option value="Galle">Galle</option>
-			<option value="Gampaha" selected="selected">Gampaha</option>
-			<option value="Hambantota">Hambantota</option>
-			<option value="Jaffna">Jaffna</option>
-			<option value="Kalutara">Kalutara</option>
-			<option value="Kandy">Kandy</option>
-			<option value="Kegalle">Kegalle</option>
-			<option value="Kilinochchi">Kilinochchi</option>
-			<option value="Kurunegala">Kurunegala</option>
-			<option value="Mannar">Mannar</option>
-			<option value="Matale">Matale</option>
-			<option value="Matara">Matara</option>
-			<option value="Moneragala">Moneragala</option>
-			<option value="Mullaitivu">Mullaitivu</option>
-			<option value="Nuwara Eliya">Nuwara Eliya</option>
-			<option value="Polonnaruwa">Polonnaruwa</option>
-			<option value="Puttalam">Puttalam</option>
-			<option value="Ratnapura">Ratnapura</option>
-			<option value="Trincomalee">Trincomalee</option>
-			<option value="Vavuniya">Vavuniya</option>
-			<option value="Divorced">AB-</option>
-			</select>
-			</div>
-			<div class="headingbox" id="hBoxCO" > Contact Number  </div>
-	<div style="width:100%;text-align:center;">
-    <input type="text" placeholder="Contact Number" onfocus="headingBoxActive('hBoxCO')" onfocusout="headingBoxInactive('hBoxCO')"  name=Cn /><br>
-	</div>
+					<select name=district  onfocusout="validateList(this, 'bldgrperror')" onfocus="headingBoxInactive('hBoxBG')"  >
+					<option value="Ampara" >Ampara</option>
+					<option value="Anuradhapura" >Anuradhapura</option>
+					<option value="Badulla" >Badulla</option>
+					<option value="Batticaloa">Batticaloa</option>
+					<option value="Colombo">Colombo</option>
+					<option value="Galle">Galle</option>
+					<option value="Gampaha" selected="selected">Gampaha</option>
+					<option value="Hambantota">Hambantota</option>
+					<option value="Jaffna">Jaffna</option>
+					<option value="Kalutara">Kalutara</option>
+					<option value="Kandy">Kandy</option>
+					<option value="Kegalle">Kegalle</option>
+					<option value="Kilinochchi">Kilinochchi</option>
+					<option value="Kurunegala">Kurunegala</option>
+					<option value="Mannar">Mannar</option>
+					<option value="Matale">Matale</option>
+					<option value="Matara">Matara</option>
+					<option value="Moneragala">Moneragala</option>
+					<option value="Mullaitivu">Mullaitivu</option>
+					<option value="Nuwara Eliya">Nuwara Eliya</option>
+					<option value="Polonnaruwa">Polonnaruwa</option>
+					<option value="Puttalam">Puttalam</option>
+					<option value="Ratnapura">Ratnapura</option>
+					<option value="Trincomalee">Trincomalee</option>
+					<option value="Vavuniya">Vavuniya</option>
+					<option value="Divorced">AB-</option>
+					</select>
+					</div>
+			</div><!--End of column-->
+		
+			<div class="column" style="clear: right;">
+			
+				<!--Contact Number-->
+				<div class="headingbox" id="hBoxCO" > Contact Number  </div>
+				<div class="inputboxWrap">
+					<input type="text" maxlength=10; onfocus="headingBoxActive('hBoxPN')"   name=contactno onfocusout="validatePhoneNo(this, 'phoneerror');validatedAll();"/><br>
+				</div>
+		
+				<!--NIC-->
+				<div class="headingbox" id="hBoxH" > NIC </div>
+				<div class="inputboxWrap">
+					<input id="nicIn" type="text"  maxlength="13" name=nic onfocus="headingBoxActive('hBoxNIC')" onkeyup="validateNIC(this)"   onfocusout="upperCASE(this);hide('NICerror');validateoutNIC(this);validatedAll();" />
+				</div>
+				
+				<!--Email-->
+				<div class="headingbox" id="hBoxEM"> E-mail </div>
+				<div class="inputboxWrap">
+					<input type="text"    name=email onfocus="headingBoxActive('hBoxEM')" onfocusout="validateEmail(this, 'emailerror');hide('emailerror2');validatedAll();" onfocus="show('emailerror2');" /><br>
+				</div>
+				
+				<div style="height:80px;">
+				<!--Experience-->
+				<div class="headingbox" id="hBoxREP"> Do you have experiences as a pharmacist ? </div>
+				<div style="padding: 10px" class="inputboxWrap">
+					<input type="radio" name="experience" value="yes"> Yes
+                    <input type="radio" name="experience" value="no"> No
+				</div>
+				</div>
+				
+				<!--If there are experience, Information-->
+				<div class="headingbox" id="hBoxE"> If Yes give information, where and how long? </div>
+				<div class="inputboxWrap">
+					<input type="text"   name=information onfocus="headingBoxActive('hBoxFN')" onkeydown="validateString(this, 'nameerror')" onfocusout="hide('nameerror');validateoutString(this, 'nameerror2');validatedAll();" /><br>
+				</div>
+				
+				<!--Upload CV-->
+				<div class="headingbox" id="hBoxE"> Upload your CV </div>
+				<div class="inputboxWrap">
+				<span>
+				<input type="file" accept="application/pdf" placeholder="choose file"  name=userfile onfocus="headingBoxActive('hBoxE')" onfocusout="headingBoxInactive('hBoxE')" /><br>
+				</span>
+				</div>
+
+				<input type="hidden" name="MAX_FILE_SIZE" value="2000000">
+				
+			</div><!--End of column-->
 	
-	<div class="headingbox" id="hBoxH" > NIC </div>
-	<div style="width:100%;text-align:center;">
-    <input type="text" placeholder="NIC" name=nic onfocus="headingBoxActive('hBoxH')" onfocusout="headingBoxInactive('hBoxH')"  /><br>
-	</div>
-	
-	<div class="headingbox" id="hBoxEM"> E-mail </div>
 			<div style="width:100%;text-align:center;">
-			<input type="text" placeholder="e-mail"  name=emailaddress onfocus="headingBoxActive('hBoxEM')" onfocusout="headingBoxInactive('hBoxEM')" /><br>
+				<!--Submit Button-->
+				<input class="buttonS"  type="submit" name=submit value=SUBMIT   />
+				<!--Cancel Button-->
+				<input class="buttonS"  type="reset" name=cancel value=CANCEL   />
 			</div>
 			
-	Upload your CV:<input name="cv" type="file" value="Upload"/>
-	
-	
-	<!--div class="headingbox" id="hBoxREP"> Do you have experiences as a pharmacist ? </div>
-	<div style="width:100%;text-align:center;">
-	<input type=radio name=yes value=Yes onfocus="headingBoxActive('hBoxREP')" onfocusout="headingBoxInactive('hBoxREP')"/>Yes     <input type=radio name=no value=no onfocus="headingBoxActive('hBoxREP')" onfocusout="headingBoxInactive('hBoxREP')" />No<br>
-	</div>
-	
-<div class="headingbox" id="hBoxE"> If Yes give information, where and how long? </div>
-			<div style="width:100%;text-align:center;">
-			<input type="text" placeholder=""  name=emailaddress onfocus="headingBoxActive('hBoxE')" onfocusout="headingBoxInactive('hBoxE')" /><br>
-			</div-->
-	
-	<div style="width:100%;text-align:center;">
-	<input class="buttonS"  type="submit" name=submit value=SUBMIT   />
-	<input class="buttonS"  type="reset" name=cancel value=CANCEL   />
-	</div>
+	</form><!--End of Form-->		
 			
-			
-			
-			
-			
-			</body>
-			<script>
+</body>
+
+<script>
+
    function headingBoxActive(box){
 	var element = document.getElementById(box);
 	element.style.background =  "#0099cc";
