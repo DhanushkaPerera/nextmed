@@ -272,7 +272,7 @@
             type: "POST",
             url: "searchDrugs.php",
             dataType: 'json',
-            data: {search:searchThis},
+            data: {search:searchValue},
             complete: function(r){
                 if (r.responseText.length > 10){
                     table.html(r.responseText);

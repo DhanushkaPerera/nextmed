@@ -6,7 +6,7 @@
  * Time: 10:04 AM
  */
 require("../../db/db.php");
-$sql="SELECT * FROM drugstock WHERE DrugBrandName LIKE '%".$_POST['search']."%'";
+$sql="SELECT * FROM drugstock WHERE BrandName LIKE '%".$_POST['search']."%'";
 $result = mysqli_query($db,$sql);
 print_r($_POST['search']);
 
