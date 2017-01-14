@@ -4,6 +4,7 @@
 <head> 
 	<title> Around Us</title>
 	<link rel = "stylesheet" href = "aroundusnew.css" />
+
 </head>
 
 <body>
@@ -22,9 +23,12 @@
 	<div class = "rightnav">
 		<div class = "hospital">
 			<form id = "" action = "" method = "post">
-				<label> Enter the location </label><br>
+				<div class="topic">
+				<label style="font-size:18px;"> Enter the location </label><br>
+				</div>
 				<!--input name = "location" type = "text" size = "30" /-->
-				<select name="location" type="text">
+				<div class="option">
+				<select class="select" name="location" type="text">
 					<option value="Gampaha"> Gampaha </option>
 					<option value="Ragame"> Ragama </option>
 					<option value="Wattupitiawala"> Wattupitiawala </option>
@@ -43,15 +47,21 @@
 					<option value="Bokalagama"> Bokalagama </option>
 					<option value="Hiripitiya"> Hiripitiya </option>
 				</select>
-				<input class = "buttonSub1" name = "submitbutton1" type = "submit" value = "Search" onclick="searchHospital('result')"/>
+				</div>
+				<div class="button">
+				<input id="btn1" class = "buttonSub" name = "submitbutton1" type = "submit" value = "Search" onclick="searchHospital('result')"/>
+				</div>
 			</form>	
 		</div>
 		
 		<div class = "doctor">
 			<form id = "" action = "" method = "post">
-				<label> Enter the category </label><br>
+				<div class="topic">
+				<label style="font-size:18px;"> Enter the category </label><br>
+				</div>
 				<!--input name = "special" type = "text" size = "30" /-->
-				<select name="special" type="text">
+				<div class="option">
+				<select style="align:centre;" class="select" name="special" type="text">
 					<option value="Paediatric Surgeon"> Paediatric Surgeon </option>
 					<option value="Cancer Specialist"> Cancer Specialist </option>
 					<option value="Denito Urinary Surgeon"> Denito Urinary Surgeon </option>
@@ -68,7 +78,10 @@
 					<option value="Oncologist"> Oncologist </option>
 					<option value="Dermatologist"> Dermatologist </option>
 				</select>
-				<input class = "buttonSub2" name = "submitbutton2" type = "submit" value = "Search" onclick="searchDoctor('result')"/>
+				</div>
+				<div class="button">
+				<input id="btn1" class = "buttonSub" name = "submitbutton2" type = "submit" value = "Search" onclick="searchDoctor('result')"/>
+				</div>
 			</form>	
 		</div>
 	</div>
