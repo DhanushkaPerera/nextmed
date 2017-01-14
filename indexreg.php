@@ -262,7 +262,6 @@
 	function hideSlides() {
 		var slides = document.getElementById("cf");
 		slides.style.opacity = "0";
-		header.style.opacity = "0";
 		setTimeout(function(){slides.style.position = "absolute";}, 700);
 		
 		
@@ -271,7 +270,6 @@
 	function showSlides() {
 		var slides = document.getElementById("cf");
 		slides.style.opacity = "1";
-		header.style.opacity = "1";
 		slides.style.position = "relative";
 	}
 	
