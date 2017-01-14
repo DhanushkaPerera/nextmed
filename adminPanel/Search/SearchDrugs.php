@@ -7,9 +7,23 @@
  */
 
 require("../../db/db.php");
-$sql="SELECT * FROM drug WHERE BrandName LIKE '%".$_POST['search']."%'";
-$result = mysqli_query($db,$sql);
-print_r($_POST['search']);
+if($_POST['searchOption']==="brand") {
+    $sql = "SELECT * FROM drug WHERE BrandName LIKE '%" . $_POST['search'] . "%'";
+    $result = mysqli_query($db,$sql);
+}
+else if ($_POST['searchOption']==="alt"){
+    $sql = "SELECT * FROM drug WHERE BrandName LIKE '%" . $_POST['search'] . "%' AND DosageForm LIKE '%" . $_POST['dosageForm']."%'";
+    $result = mysqli_query($db,$sql);
+    $rows = mysqli_fetch_assoc($result);
+    $alternatives =  preg_split('/[\s*,\s*]*,+[\s*,\s*]*/', $rows['Alternatives']);
+    $alternatives = implode('.*|.*',$alternatives);
+    $sql = "SELECT * FROM drug WHERE BrandName REGEXP '.*" . $alternatives . ".*' AND DosageForm LIKE '%" . $_POST['dosageForm']."%'";
+    $result = mysqli_query($db,$sql);
+}
+else if($_POST['searchOption']==="gen") {
+    $sql = "SELECT * FROM drug WHERE GeneticName LIKE '%" . $_POST['search'] . "%' AND DosageForm LIKE '%" . $_POST['dosageForm']."%'";
+    $result = mysqli_query($db,$sql);
+}
 
 while($rows = mysqli_fetch_assoc($result)){
     $id = $rows['DrugNo'];
