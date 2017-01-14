@@ -102,7 +102,7 @@
 <div id="myModal" class="modal">
 	<div class="modal-content">
 
-	<iframe id="modalFrame" src="Signup/signup.htm" onload="resizeIframe(this)"></iframe>
+	<iframe id="modalFrame" src="Signup/signup.htm" style="height: 1200px"></iframe>
 	</div>
 </div>
 
