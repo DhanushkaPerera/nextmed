@@ -21,7 +21,8 @@
 					
 				if($res){
 					while($row = mysqli_fetch_array($res)){
-						echo $row['postnews']."<br>".$row['date']."<br/><br/>";
+						/*echo $row['postnews']."<br>".$row['date']."<br/><br/>";*/
+						echo $row['date']."<br>".$row['postnews']."<br/><br/>";
 					}
 				}
 				else{
@@ -37,19 +38,20 @@
 	<div class = "reg">
 	
 		<div class = "news1">
-			<p> We are here Everyday </br> Except poya days </p>
+			<p> Anura Pharmacy opens Everyday </br> Except poya days </p>
+			<p> From 8.00 am </br> To 8.00 pm</p>
 		</div>
 		
-		<div class = "news2">
+		<!--div class = "news2">
 			<p> Open at 8.00 am </br> Close at 8.00 pm</p>
-		</div>
+		</div-->
 		
 		<div class = "news3">
 			<!--p> Do you love to deal </br> with pharmaceutical drugs? </p>
 			<p> Have a dream to become </br> a pharmacist? </p-->
 			<p> Vacancy at </br> Anura Pharmacy (Pvt) Ltd </p>
 			<!--input class = "button" type = "submit" name = "submit" value = "Register Now"-->
-			<a href="vacancy.html"><button class="button">Apply Now</button></a>
+			<a href="vacancy.html"><button class="button" style="align:center;">Apply Now</button></a>
 		</div>
 		
 	</div>
