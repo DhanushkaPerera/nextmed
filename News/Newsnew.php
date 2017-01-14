@@ -3,10 +3,11 @@
 <head>
 	<title> Pharmacy News </title>
 	<link rel = "stylesheet" href = "pharmacynews.css" /> 
+	
 </head>
 
 <body>
-	
+		
 	<div class = "notice">
 		<!--h2> News >> </h2-->
 		<div id = "MyDivName" class = "scroll"> 

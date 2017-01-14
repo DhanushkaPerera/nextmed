@@ -223,11 +223,12 @@ form{
 	width:50%;
 	color:#fff;
 	font-size:15px;
-	border:1px solid #fff;
+	border:1px solid #0066ff;
 }
 
 .buttonSub:hover{
 	background:#45a0ff;
+	border:1px solid #45a0ff;
 }
 
 
