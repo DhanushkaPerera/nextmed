@@ -122,10 +122,10 @@
 
 
 <div id="cf" class="slideshow">
-	<img src="media\transimg1.jpg" style="width:100%;" >
-	<img src="media\transimg2.jpg" style="width:100%;">
-	<img src="media\transimg3.jpg" style="width:100%;">
-	<img src="media\transimg4.jpg" style="width:100%;">
+	<img src="media\transimg1.png" style="width:100%;" >
+	<img src="media\transimg2.png" style="width:100%;">
+	<img src="media\transimg3.png" style="width:100%;">
+	<img src="media\transimg4.png" style="width:100%;">
 </div>
 
 		<div class="contents" id="contentsID" >
@@ -214,12 +214,12 @@
 				</div>
 				<div class="error" id="passError"> error </div>
 				<br>
-				<input class="button buttonlogin login" name="submit" value="Login" onclick="authenticateUser('emailin', 'passin', 'passError')" >
+				<input type="button" class="button buttonlogin login" name="submit" value="Login" onclick="authenticateUser('emailin', 'passin', 'passError')" >
 				<br>
 				<br>
 				<hr class="login">
 				Or<br>
-				<input class="button buttonlogin login" value="Sign up" style="vertical-align:middle;" onclick="showSignUp()">
+				<input type="button" class="button buttonlogin login" value="Sign up" style="vertical-align:middle;" onclick="showSignUp()">
 				</div>
 			</form>
 			</div>
@@ -228,9 +228,9 @@
 		</div>
 	</div>
 	
-	<div id="cf1" class="header1">
+	<!--div id="cf1" class="header1">
 	<img src="media\log1.png">
-	</div>
+	</div-->
 
 
 

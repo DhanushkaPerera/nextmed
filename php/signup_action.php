@@ -1,7 +1,7 @@
 <?php
 
 //importing db.php
-require("../db/db1.php");
+require("../db/db.php");
 
 $nic=$_POST["nic"];
 $fname=$_POST["firstname"];
@@ -36,7 +36,7 @@ else{
 
 
 
-$sql="INSERT INTO signup (NIC,FName,LName,Gender,DOB,Address,Status,Contact,Email,Password) VALUES ('$nic','$fname','$lname', '$gender','$dob','$address','$status','$contact','$email', '$epassword')";
+$sql="INSERT INTO customer (NIC,FName,LName,Gender,DOB,Address,Status,Contact,Email,Password) VALUES ('$nic','$fname','$lname', '$gender','$dob','$address','$status','$contact','$email', '$epassword')";
 
 
 
