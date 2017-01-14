@@ -29,7 +29,7 @@
                             <button id="addDrug" onclick="addOp()" class="btn btn-success" >
                                 <i class="glyphicon glyphicon-plus"></i> Add
                             </button>
-                            <button id="editDrug" onclick="editOp()" class="btn btn-default" disabled="">
+                            <button id="editDrug" onclick="editOp()" class="btn btn-info" disabled="">
                                 <i class="glyphicon glyphicon-edit"></i> Edit
                             </button>
                             <button id="removeDrug" onclick="deleteOp()" class="btn btn-danger" disabled="">
@@ -95,7 +95,7 @@
                             <button id="addSup" onclick="addOpSup()" class="btn btn-success" >
                                 <i class="glyphicon glyphicon-plus"></i> Add
                             </button>
-                            <button id="editSup" onclick="editOpSup()" class="btn btn-default" disabled="">
+                            <button id="editSup" onclick="editOpSup()" class="btn btn-info" disabled="">
                                 <i class="glyphicon glyphicon-edit"></i> Edit
                             </button>
                             <button id="removeSup" onclick="deleteOpSup()" class="btn btn-danger" disabled="">

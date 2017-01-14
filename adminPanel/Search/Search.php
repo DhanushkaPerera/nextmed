@@ -14,15 +14,15 @@
 
 <body>
 
-<div class="container" style="margin-left:10px;">
+<div class="container" style="margin-left:10px;width:98%;">
     <h3>Drugs</h3>
     <div class="fixed-table-toolbar">
-        <div class="col-sm-9">
+        <div class="col-sm-8">
             <div id="toolbar">
                 <button id="addDrug" onclick="addOp()" class="btn btn-success" >
                     <i class="glyphicon glyphicon-plus"></i> Add
                 </button>
-                <button id="editDrug" onclick="editOp()" class="btn btn-default" disabled="">
+                <button id="editDrug" onclick="editOp()" class="btn btn-info" disabled="">
                     <i class="glyphicon glyphicon-edit"></i> Edit
                 </button>
                 <button id="removeDrug" onclick="deleteOp()" class="btn btn-danger" disabled="">
@@ -30,12 +30,20 @@
                 </button>
             </div>
         </div>
-        <div class="col-sm-3">
+        <div class="col-sm-4">
             <div class="input-group">
                 <input id="searchInputDrug" type="text" class="form-control" placeholder="Search for...">
+                <span class="input-group-addon" style="padding: 0"></span>
+                <select onchange="selectedSearchMethod(this)" id="searchOption" class="selectpicker form-control" data-live-search="true" title="Please select a search method">
+                    <option value="brand" >Brand Name</option>
+                    <option value="gen" >Genetic Name</option>
+                    <option value="alt" >Alternatives</option>
+                </select>
+                <span style="display: none;padding: 0" id="searchInputDosageSplit" class="input-group-addon" ></span>
+                <input style="display: none" id="searchInputDosage" type="text" class="form-control" placeholder="Dosage Form">
                 <span class="input-group-btn">
-                                 <button onclick="SearchDrugs()" class="btn btn-secondary" type="button"><i class="glyphicon glyphicon-search"></i></button>
-                        </span>
+                    <button onclick="SearchDrugs()" class="btn btn-secondary" type="button"><i class="glyphicon glyphicon-search"></i></button>
+                </span>
             </div>
         </div>
     </div>
@@ -111,7 +119,7 @@
             complete: function(r){
                 if (r.responseText.length > 10){
                     table.html(r.responseText);
-                    $('#tablebody').pageMe({pagerSelector:'#myPager',showPrevNext:true,hidePageNumbers:false,perPage:10});
+                    $('#tablebody').pageMe({pagerSelector:'#myPager',showPrevNext:true,hidePageNumbers:false,perPage:4});
                 }
                 else{
                     table.html("Failed");
@@ -263,16 +271,28 @@
           <td><input type="text"  ></td>');
         $(table).append('</tr>');
     }
-
+    function selectedSearchMethod(input) {
+        console.log('here');
+        if(input.value=="alt"){
+            $('#searchInputDosageSplit').show();
+            $('#searchInputDosage').show();
+        }
+        else{
+            $('#searchInputDosageSplit').hide();
+            $('#searchInputDosage').hide();
+        }
+    }
     function SearchDrugs(){
         var searchValue = $('#searchInputDrug').val();
+        var searchOption = $('#searchOption').val();
+        var dosageForm = $('#searchInputDosage').val();
         var table = $("#tablebody");
         table.html("Loading..");
         jQuery.ajax({
             type: "POST",
             url: "searchDrugs.php",
             dataType: 'json',
-            data: {search:searchValue},
+            data: {search:searchValue,searchOption:searchOption,dosageForm:dosageForm},
             complete: function(r){
                 if (r.responseText.length > 10){
                     table.html(r.responseText);

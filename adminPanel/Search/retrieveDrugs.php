@@ -35,7 +35,7 @@ while( $rows = mysqli_fetch_assoc($result)){
     echo    '<td >'. $rows['Compositions'].'</td>';
     echo    '<td >'. $rows['DosePerPerson'].'</td>';
     echo    '<td >'. $rows['Strength'].'</td>';
-    echo    '<td >'. $rows['HealthTips'].'</td>';
-    echo    '<td >'. $rows['Storage'].'</td>';
+    echo    '<td >'. $rows['healthTips'].'</td>';
+    echo    '<td >'. $rows['storage'].'</td>';
     echo '</tr>';
 }
