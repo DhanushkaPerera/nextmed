@@ -67,8 +67,8 @@ echo "
     
      
 
-    echo'<div class="ienlarger"><a href='.( $row['Image1'] ).'><img src="' .$row['Image1']. '" alt="thumb" class="resize_thumb" /><span>
-    <img src="' .$row['Image1']. '" alt="large" height=50 width=50 /><br />
+    echo'<div class="ienlarger"><a href=../ordering/'.( $row['Image1'] ).'><img src="../ordering/' .$row['Image1']. '" alt="thumb" class="resize_thumb" /><span>
+    <img src="../ordering/' .$row['Image1']. '" alt="large" height=50 width=50 /><br />
     Copy-1</span></a></div>';
 
     echo "<br>";
@@ -82,7 +82,7 @@ echo "
     }
     else{
       
-     echo'<div class="ienlarger"><a href='.( $row['Image2'] ).'><img src="' .$row['Image2']. '" alt="thumb" class="resize_thumb" /><span>
+     echo'<div class="ienlarger"><a href=..'.( $row['Image2'] ).'><img src="' .$row['Image2']. '" alt="thumb" class="resize_thumb" /><span>
     <img src="' .$row['Image2']. '" alt="large" height=50 width=50 /><br />
     Copy-2</span></a></div>';
 
