@@ -557,7 +557,7 @@
 
     function SearchSup() {
         var searchThis = $("#searchInputSup").val();
-        console.log(searchThis);
+        //console.log(searchThis);
         var table = $("#supplierTable");
         table.html("Loading..");
         jQuery.ajax({

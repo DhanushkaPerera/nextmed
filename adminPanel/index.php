@@ -110,8 +110,8 @@ else{
 	<div class="nav">
 		<img class="boxshadow" src="..\media\logo.png" style="max-width:120px;height:60px;" >
 		<div class="sidemenuitem  activemenu" onclick="showContent('Search');activeMenu(this);" onmouseover="menuText(this);" onmouseout="menuImage(this);"> <img class="center"  src="media\search.png" alt="Search" style="height:90%;"> </div>
-		<div class="sidemenuitem" onclick="showContent('Billing');activeMenu(this);" onmouseover="menuText(this);" onmouseout="menuImage(this);"> <img class="center" src="media\billing-icon.png" alt="Billing" style="height:90%;"> </a> </div>
 		<div class="sidemenuitem" onclick="showContent('Orders');activeMenu(this);" onmouseover="menuText(this);" onmouseout="menuImage(this);"> <img class="center" src="media\leaveyourorder.png" alt="Online Orders" style="height:90%;"> </a></div>
+		<div class="sidemenuitem" onclick="showContent('Billing');activeMenu(this);" onmouseover="menuText(this);" onmouseout="menuImage(this);"> <img class="center" src="media\billing-icon.png" alt="Billing" style="height:90%;"> </a> </div>
 		<div class="sidemenuitem" onclick="showContent('Stock');activeMenu(this);" onmouseover="menuText(this);" onmouseout="menuImage(this);"> <img class="center" src="media\stock-manage.png" alt="Stock Management" style="height:90%;"> </div>
 		<div class="sidemenuitem" onclick="showContent('Backup');activeMenu(this);" onmouseover="menuText(this);" onmouseout="menuImage(this);"> <img class="center" src="media\backup.png" alt="Backup" style="height:90%;"> </div>
 		<div class="sidemenuitem" onclick="showContent('Notice');activeMenu(this);" onmouseover="menuText(this);" onmouseout="menuImage(this);"> <img class="center" src="media\notice.png" alt="Notices" style="height:90%;"> </div>

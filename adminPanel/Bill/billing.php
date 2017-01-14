@@ -3,8 +3,12 @@
 
 <html>
 <head>
-    <title>admin</title>
+    <title>Billing</title>
 
+    <link href="../css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="../../assets/bootstrap-table/src/bootstrap-table.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="../../jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/bootstrap.js"></script>
     <link href="../css/bootstrap.css" rel="stylesheet" type="text/css" />
     <link href="../css/jquery-ui.css" rel="stylesheet" type="text/css" />
     <link href="../../assets/bootstrap-table/src/bootstrap-table.css" rel="stylesheet" type="text/css" />
@@ -26,11 +30,201 @@
         }
         .ui-autocomplete {z-index:111199 !important;}
     </style>
-
-
 </head>
+<style>
+
+    .loader {
+        border: 16px solid #f3f3f3; /* Light grey */
+        border-top: 16px solid #3498db; /* Blue */
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        animation: spin 10s linear infinite;
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+</style>
 
 <body>
+<div class="container" id="processing" style="margin-left:10px;">
+    <h3 id="header">Online Orders</h3>
+    <?php
+    require("../../db/db.php");
+    $sql="SELECT * FROM `order` ";
+    $result=mysqli_query($db,$sql);
+    echo "
+<form method='POST'><table class='table table-striped table-responsive'>
+    <thead>
+    <tr>
+        <th class='center'>Order No</th>
+        <th text-align='center'>NIC</th>
+        <th>Delivery/Pickup</th>
+        <th class='center'>Expect Time</th>
+        <th class='center'>Telephone No</th>
+        <th class='center'>Copy1</th>
+		<th class='center'>Copy2</th>
+		<th class='center'>Copy3</th>
+    </tr>
+    </thead>";
+
+    while($row=mysqli_fetch_array($result))
+    {
+        echo"
+	
+	
+    <tr id='rowNum".$row['OrderNo.']."'>
+	<td >".$row['OrderNo.']."</td>
+	<td >".$row['NIC']."</td>
+	<td >".$row['DP']."</td>
+	<td >".$row['DPTime']."</td>
+	<td >".$row['Telephone']."</td>";
+
+        echo"<td  height=50px>";
+
+
+
+        echo'<div class="ienlarger"><a href='.( $row['Image1'] ).'><img src="' .$row['Image1']. '" alt="thumb" class="resize_thumb" /><span>
+    <img src="' .$row['Image1']. '" alt="large" height=50 width=50 /><br />
+    Copy-1</span></a></div>';
+
+        echo "<br>";
+        echo"</td>";
+
+        echo"<td align=center >";
+
+
+        if($row['Image2']=="No copy"){
+            echo "No copy";
+        }
+        else{
+
+            echo'<div class="ienlarger"><a href='.( $row['Image2'] ).'><img src="' .$row['Image2']. '" alt="thumb" class="resize_thumb" /><span>
+    <img src="' .$row['Image2']. '" alt="large" height=50 width=50 /><br />
+    Copy-2</span></a></div>';
+
+        }
+
+
+
+        echo "<br>";
+        echo"</td>";
+        echo"<td align=center >";
+
+
+        if($row['Image3']=="No copy"){
+            echo "No copy";
+        }
+        else{
+
+            echo'<div class="ienlarger"><a href='.( $row['Image3'] ).'><img src="' .$row['Image3']. '" alt="thumb" class="resize_thumb" /><span>
+    <img src="' .$row['Image3']. '" alt="large" height=50 width=50 /><br />
+    Copy-3</span></a></div>';
+
+        }
+
+
+
+        echo "<br>";
+        echo"</td>";
+
+        echo "<td align=center>";
+
+
+        echo "<button onclick='loading(this)' name='processorder' class='btn btn-success' >Process Order</button>";
+        echo "<br>";
+        echo"</td>";
+
+
+
+        echo"</tr>";
+
+    }
+
+    echo"</table></form>";
+
+
+    ?>
+    <script>
+
+        function  loading(button) {
+            $(button).html('<div class="loader"></div>');
+        }
+    </script>
+
+</div>
+<div class="container" style="margin-left:10px;">
+
+    <div class="row header">
+
+
+        <!--div class="col-sm-12">
+            <div class="well">
+                <h2>Customer Details</h2>
+                <div>
+
+
+                <div class="col-sm-4">
+
+                NIC
+                <input type="text" placeholder="920290505v" class="form-control"   maxlength="13" name=nic onfocus="headingBoxActive('hBoxNIC')" onkeyup="validateNIC(this)" autofocus onfocusout="upperCASE(this);hide('NICerror');validateoutNIC(this);validatedAll();" />
+                </div>
+                <input class="btnSearch"  type="submit" name=search value=SEARCH id="searchButton" ><br>
+                </div>
+            </div>
+        </div--><!--/col-->
+        <div class="col-sm-12">
+            <h3>Customer Details</h3>
+            <div class="well">
+                <form class="form-inline" method="post">
+                    <div class="form-group">
+                        <label for="email">NIC</label>
+                        <input type="text" class="form-control" name="nic" id="email" placeholder="935643090V">
+                    </div>
+
+                    <button type="submit" name="search" class="btn btn-info" >Search</button>
+                </form>
+                <?php
+
+                require("../../db/db.php");
+
+
+                if(isset($_POST["search"])){
+
+
+                    $nic = $_POST["nic"];
+
+                    /*$name = $_POST["name"];*/
+
+
+                    $sql = "select * from customer where NIC='$nic' ";
+
+                    $res = mysqli_query($db,$sql);
+                    $count=mysqli_num_rows($res);
+                    if ($count>0){
+
+                        while($row = mysqli_fetch_array($res)){
+                            echo "<p></p><p>Name: ".$row['FName']."</p><p>Gender: ".$row['Gender']."</p>";
+                            session_start();
+                            $_SESSION["CstAllergicDrugs"]=$row['AllergicDrugs'];
+                        }}
+                    else{
+                        echo "Not Registered";
+                    }
+
+                }
+                ?>
+
+            </div>
+
+        </div>
+
+    </div><!--/row-->
+</div>
+<!-- Billing module with table -->
 <div class="modal fade" id="showOptionsModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -79,44 +273,44 @@
             </div>
             <div class="modal-body">
                 <div class="container">
-                <form>
-                    <div class="form-group row">
-                        <label for="ItemNo-input" class="col-sm-2 col-form-label">Item No</label>
-                        <div class="col-sm-7">
-                            <input class="form-control" type="text" id="ItemNo-input" readonly>
+                    <form>
+                        <div class="form-group row">
+                            <label for="ItemNo-input" class="col-sm-2 col-form-label">Item No</label>
+                            <div class="col-sm-7">
+                                <input class="form-control" type="text" id="ItemNo-input" readonly>
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="BrandName-input" class="col-sm-2 col-form-label">Brand Name</label>
-                        <div class="col-sm-7 ui-widget">
-                            <input  class="form-control BrandName" onfocus="autoCompleteBrandNames()" onfocusout="validateBrandName(this)" title="tooltip" type="text" id="BrandName-input">
+                        <div class="form-group row">
+                            <label for="BrandName-input" class="col-sm-2 col-form-label">Brand Name</label>
+                            <div class="col-sm-7 ui-widget">
+                                <input  class="form-control BrandName" onfocus="autoCompleteBrandNames()" onfocusout="validateBrandName(this)" title="tooltip" type="text" id="BrandName-input">
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="DosageForm-input" class="col-sm-2 col-form-label">Dosage Form</label>
-                        <div class="col-sm-7 ui-widget">
-                            <input disabled class="form-control DosageForm" onfocus="autoCompleteDosageForms()" onfocusout="validateDosageForm(this)" title="tooltip" type="text" id="DosageForm-input">
+                        <div class="form-group row">
+                            <label for="DosageForm-input" class="col-sm-2 col-form-label">Dosage Form</label>
+                            <div class="col-sm-7 ui-widget">
+                                <input disabled class="form-control DosageForm" onfocus="autoCompleteDosageForms()" onfocusout="validateDosageForm(this)" title="tooltip" type="text" id="DosageForm-input">
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="Quantity-input" class="col-sm-2 col-form-label">Quantity</label>
-                        <div class="col-sm-7 ui-widget">
-                            <input disabled class="form-control Quantity" onfocus="showQtyType(this)" onfocusout=validateQty(this) type="text" title="tooltip" id="Quantity-input">
+                        <div class="form-group row">
+                            <label for="Quantity-input" class="col-sm-2 col-form-label">Quantity</label>
+                            <div class="col-sm-7 ui-widget">
+                                <input disabled class="form-control Quantity" onfocus="showQtyType(this)" onfocusout=validateQty(this) type="text" title="tooltip" id="Quantity-input">
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="ExpireDate-input" class="col-sm-2 col-form-label">Expiration Date</label>
-                        <div class="col-sm-7 ui-widget">
-                            <input disabled class="form-control" type="date" id="ExpireDate-input">
+                        <div class="form-group row">
+                            <label for="ExpireDate-input" class="col-sm-2 col-form-label">Expiration Date</label>
+                            <div class="col-sm-7 ui-widget">
+                                <input disabled class="form-control" type="date" id="ExpireDate-input">
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="UnitPrice-input" class="col-sm-2 col-form-label">Unit Price</label>
-                        <div class="col-sm-7 ui-widget">
-                            <input disabled class="form-control" type="text" id="UnitPrice-input">
+                        <div class="form-group row">
+                            <label for="UnitPrice-input" class="col-sm-2 col-form-label">Unit Price</label>
+                            <div class="col-sm-7 ui-widget">
+                                <input disabled class="form-control" type="text" id="UnitPrice-input">
+                            </div>
                         </div>
-                    </div>
-                </form>
+                    </form>
                 </div>
             </div>
             <div class="modal-footer">
@@ -126,10 +320,10 @@
         </div>
     </div>
 </div>
-<div class="container" style="margin-left:10px;">
+<div class="container" style="margin-left:10px;min-height: 500px;margin-bottom: 20px">
     <h3>Billing Items</h3>
     <div class="fixed-table-toolbar">
-        <div class="col-sm-9">
+        <div class="bs-bars pull-left">
             <div id="toolbar">
                 <button id="addItem" onclick="addItemOp()" class="btn btn-success" >
                     <i class="glyphicon glyphicon-plus"></i> Add
@@ -139,15 +333,10 @@
                 </button>
             </div>
         </div>
-        <div class="col-sm-3">
-            <div class="input-group">
-                <input id="searchInputSup" type="text" class="form-control" placeholder="Search for...">
-                <span class="input-group-btn">
-                                 <button onclick="SearchItems()" class="btn btn-secondary" type="button"><i class="glyphicon glyphicon-search"></i></button>
-                        </span>
-            </div>
+        <div class="pull-right search">
+            <input id="searchBox" class="form-control" type="text" placeholder="Search Items">
         </div>
-        <br>
+
     </div>
     <br>
     <div class="fixed-table-container">
@@ -287,8 +476,8 @@
             dataType: 'json',
             data: {ItemNo:maxNo,BrandName:selectedBrand,DosageForm:selectedDosageForm,Quantity:quantity,ExpirationDate:ExpireDate,UnitPrice:UnitPrice,ItemPrice:ItemPrice},
             complete: function(r){
-                    alert(r.responseText);
-                    //loadTable();
+                alert(r.responseText);
+                //loadTable();
             }
         });
     }
@@ -296,25 +485,7 @@
 
 
     function Search(){
-        var searchValue = $('#searchBox').val();
-        var table = $("#supplierTable");
-        table.html("Loading..");
-        jQuery.ajax({
-            type: "POST",
-            url: "searchSup.php",
-            dataType: 'json',
-            data: {search:searchThis},
-            complete: function(r){
-                if (r.responseText.length > 10){
-                    table.html(r.responseText);
-                    $('#myPagerSup').html('');
-                    $('#supplierTable').pageMe({pagerSelector:'#myPagerSup',showPrevNext:true,hidePageNumbers:false,perPage:10});
-                }
-                else{
-                    table.html("Failed");
-                }
-            }
-        });
+        var searchValue = $('#searchBox').value;
 
     }
 
@@ -375,14 +546,14 @@
             dataType: 'json',
             data: {},
             complete: function(r){
-                    var value = JSON.parse(r.responseText);
-                    if(!(value instanceof Array)){
-                        availableBrands.push(value);
-                    }
-                    else{
-                        availableBrands = value;
-                    }
+                var value = JSON.parse(r.responseText);
+                if(!(value instanceof Array)){
+                    availableBrands.push(value);
                 }
+                else{
+                    availableBrands = value;
+                }
+            }
 
 
         });
@@ -429,9 +600,9 @@
     // autoComplete Data retrieval from database
     function autoCompleteBrandNames(){
         console.log(availableBrands);
-            $('#BrandName-input').autocomplete({
-                source: availableBrands
-            });
+        $('#BrandName-input').autocomplete({
+            source: availableBrands
+        });
     }
 
     function autoCompleteDosageForms(){

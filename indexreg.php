@@ -123,16 +123,16 @@
 	</div>
 
     <div id="cf" class="slideshow">
-        <img src="media\transimg1.jpg" style="width:100%;" >
-        <img src="media\transimg2.jpg" style="width:100%;">
-        <img src="media\transimg3.jpg" style="width:100%;">
-        <img src="media\transimg4.jpg" style="width:100%;">
-    </div>
+	<img src="media\transimg1.png" style="width:100%;" >
+	<img src="media\transimg2.png" style="width:100%;">
+	<img src="media\transimg3.png" style="width:100%;">
+	<img src="media\transimg4.png" style="width:100%;">
+</div>
 
 		<div class="contents" id="contentsID" > 
 
 			<div class="contentitem showitem" id="knowyourself"><div class="heading1"> Know About Yourself </div>
-			<iframe src="knowyourself/knowYourselffinal.php" id="iFrame1" onload="resizeIframe(this)" frameborder="0"></iframe>
+			<iframe src="knowyourself/knowYourselffinal.php" id="iFrame1" style="height: 1100px" frameborder="0"></iframe>
 			
 
 			</div>
@@ -151,7 +151,7 @@
 			
 			<div class="contentitem" id="healthtips"> 
 			<div class="heading1">Healthtips </div>
-			<iframe src="healthtips/healthtips.html" id="iFrame1" onload="resizeIframe(this)" frameborder="0" style="width:100%;height:1800px;position:relative;border:5px solid #d1eefd" allowfullscreen></iframe>
+			<iframe src="healthtips/healthtips.html" id="iFrame1" frameborder="0" style="width:100%;height:1000px;position:relative;" allowfullscreen></iframe>
 			</div>
 			
 			
@@ -208,9 +208,9 @@
 	</div>
 
 
-	<div id="cf1" class="header1">
+	<!--div id="cf1" class="header1">
 	<img src="media\log1.png">
-	</div>
+	</div-->
 
 
 
@@ -261,9 +261,7 @@
 
 	function hideSlides() {
 		var slides = document.getElementById("cf");
-		var header = document.getElementById("cf1");
 		slides.style.opacity = "0";
-		header.style.opacity = "0";
 		setTimeout(function(){slides.style.position = "absolute";}, 700);
 		
 		
@@ -271,9 +269,7 @@
 	
 	function showSlides() {
 		var slides = document.getElementById("cf");
-		var header = document.getElementById("cf1");
 		slides.style.opacity = "1";
-		header.style.opacity = "1";
 		slides.style.position = "relative";
 	}
 	

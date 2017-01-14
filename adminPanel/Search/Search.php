@@ -17,7 +17,7 @@
 <div class="container" style="margin-left:10px;">
     <h3>Drugs</h3>
     <div class="fixed-table-toolbar">
-        <div class="bs-bars pull-left">
+        <div class="col-sm-9">
             <div id="toolbar">
                 <button id="addDrug" onclick="addOp()" class="btn btn-success" >
                     <i class="glyphicon glyphicon-plus"></i> Add
@@ -30,11 +30,16 @@
                 </button>
             </div>
         </div>
-        <div class="pull-right search">
-            <input id="searchBox" class="form-control" type="text" placeholder="Search Drugs">
+        <div class="col-sm-3">
+            <div class="input-group">
+                <input id="searchInputDrug" type="text" class="form-control" placeholder="Search for...">
+                <span class="input-group-btn">
+                                 <button onclick="SearchDrugs()" class="btn btn-secondary" type="button"><i class="glyphicon glyphicon-search"></i></button>
+                        </span>
+            </div>
         </div>
-
     </div>
+    <br>
     <br>
     <div class="fixed-table-container">
         <div class="table-responsive">
@@ -259,9 +264,24 @@
         $(table).append('</tr>');
     }
 
-    function Search(){
-        var searchValue = $('#searchBox').value;
-
+    function SearchDrugs(){
+        var searchValue = $('#searchInputDrug').val();
+        var table = $("#tablebody");
+        table.html("Loading..");
+        jQuery.ajax({
+            type: "POST",
+            url: "searchDrugs.php",
+            dataType: 'json',
+            data: {search:searchValue},
+            complete: function(r){
+                if (r.responseText.length > 10){
+                    table.html(r.responseText);
+                }
+                else{
+                    table.html("Failed");
+                }
+            }
+        });
     }
 
     //table pagination
