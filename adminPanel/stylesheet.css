@@ -290,7 +290,7 @@ html, body {
 
 
 .header {
-	position: absolute;
+	position: fixed;
 	height:4%;
     text-align:center;
 	top: 0;

@@ -342,7 +342,7 @@ contactus{
 
 
 .header {
-	position: absolute;
+	position: fixed;
 	height:6%;
     text-align:center;
 	top: 0;
