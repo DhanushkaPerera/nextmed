@@ -175,7 +175,45 @@
         </div>
     </div>
 </div>
+<br>
+<div class="row">
 
+    <div class="col-lg-4 col-sm-5 notice">
+        <div class="well">
+            <h3> Healthtips</h3>
+
+            <div class="panel panel-default">
+                <div class="panel-heading"><h4>Panadol</h4></div>
+                <div class="panel-body">Drink lot of water</div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading"><h4>Panadol</h4></div>
+                <div class="panel-body">Drink lot of water</div>
+            </div>
+        </div>
+    </div><!--/col-->
+
+    <div class="col-lg-4 col-lg-offset-4 col-sm-5 col-sm-offset-2 recap">
+        <table class="table table-clear">
+            <tbody>
+            <tr>
+                <td class="left"><strong id="SubTotalPrice" >Subtotal</strong></td>
+                <td class="right"></td>
+            </tr>
+            <tr>
+                <td class="left"><strong id="totalDiscount" >Discount</strong></td>
+                <td class="right"></td>
+            </tr>
+            <tr>
+                <td class="left"><strong>Total</strong></td>
+                <td class="right"><strong></strong></td>
+            </tr>
+            </tbody>
+        </table>
+        <a href="page-invoice.html#" class="btn btn-info" onclick="javascript:window.print();"><i class="fa fa-print"></i> Print Bill </a>
+    </div><!--/col-->
+
+</div><!--/row-->
 
 <!--<div class="result">		</div>-->
 </body>
@@ -330,7 +368,8 @@
     var QtyType="";
     var SelectedStock = "";
     var maxNo = 0;
-
+    var TotalPrice = 0;
+    var TotalDiscount =0;
     $('#showOptionsModal').on('hidden.bs.modal', function () {
         $('#addItemModal').css('opacity', 1);
     })
@@ -543,6 +582,10 @@
                 var data =  JSON.parse(r.responseText);
                 ExpireDate = data.ExpireDate;
                 UnitPrice = data.RetailPrice;
+                TotalPrice += UnitPrice;
+                TotalDiscount += data.Discount;
+                $('#SubTotalPrice').html(TotalPrice);
+                $('#totalDiscount').html(TotalDiscount);
                 $('#ExpireDate-input').val(ExpireDate);
                 $('#UnitPrice-input').val(UnitPrice);
                 $('#showOptionsModal').modal('hide');

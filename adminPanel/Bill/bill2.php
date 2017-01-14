@@ -4,7 +4,6 @@
 <html>
 <head>
     <title>Billing</title>
-
     <link href="../css/bootstrap.css" rel="stylesheet" type="text/css" />
     <link href="../../assets/bootstrap-table/src/bootstrap-table.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="../../jquery/jquery.min.js"></script>
@@ -12,7 +11,59 @@
 
 </head>
 <style>
+	.ienlarger {
+		float: left;
+		clear: none; /* set to left or right if needed */
+		/* space between thumbs and wrapping text when there is any text around it */
+	}
 
+	.ienlarger a {
+		display:block;
+		text-decoration: none;
+		/* add cursor:default; to this rule to disable the hand cursor */
+	}
+
+	.ienlarger a:hover{ /* dont move this positioning to normal state */
+		position:relative;
+	}
+
+	.ienlarger span img {
+		border: 1px solid #FFFFFF; /* adds a border around the image */
+		margin-bottom: 8px; /* pushes the text down from the image */
+	}
+
+	.ienlarger a span {  /* this is for the large image and the caption */
+		position: absolute;
+		display:none;
+		color: #FFCC00; /* caption text colour */
+		text-decoration: none;
+		font-family: Arial, Helvetica, sans-serif;
+		font-size: 13px; /* caption text size */
+		background-color: #000000;
+		font-weight: bold;
+		padding-top: 10px;
+		padding-right: 10px;
+		padding-bottom: 13px;
+		padding-left: 10px;
+	}
+
+	.ienlarger img { /* leave or IE puts a border around links */
+		border-width: 0;
+	}
+
+	.ienlarger a:hover span {
+		display:block;
+		top: 50px;
+		right:30px;
+		z-index: 100;
+
+
+	}
+
+	.resize_thumb {
+		width: 90px; /* enter desired thumb width here */
+		height : 80px;
+	}
 .loader {
     border: 16px solid #f3f3f3; /* Light grey */
     border-top: 16px solid #3498db; /* Blue */
@@ -68,7 +119,7 @@ echo "
      
 
     echo'<div class="ienlarger"><a href=../ordering/'.( $row['Image1'] ).'><img src="../ordering/' .$row['Image1']. '" alt="thumb" class="resize_thumb" /><span>
-    <img src="../ordering/' .$row['Image1']. '" alt="large" height=50 width=50 /><br />
+    <img src="../ordering/' .$row['Image1']. '" alt="large" height=300 width=300 /><br />
     Copy-1</span></a></div>';
 
     echo "<br>";
@@ -82,8 +133,8 @@ echo "
     }
     else{
       
-     echo'<div class="ienlarger"><a href=..'.( $row['Image2'] ).'><img src="' .$row['Image2']. '" alt="thumb" class="resize_thumb" /><span>
-    <img src="' .$row['Image2']. '" alt="large" height=50 width=50 /><br />
+     echo'<div class="ienlarger"><a href=../ordering/'.( $row['Image2'] ).'><img src="../ordering/' .$row['Image2']. '" alt="thumb" class="resize_thumb" /><span>
+    <img src="../ordering/' .$row['Image2']. '" alt="large" height=300 width=300 /><br />
     Copy-2</span></a></div>';
 
     }
@@ -100,8 +151,8 @@ echo "
     }
     else{
       
-     echo'<div class="ienlarger"><a href='.( $row['Image3'] ).'><img src="' .$row['Image3']. '" alt="thumb" class="resize_thumb" /><span>
-    <img src="' .$row['Image3']. '" alt="large" height=50 width=50 /><br />
+     echo'<div class="ienlarger"><a href=../ordering/'.( $row['Image3'] ).'><img src="../ordering/' .$row['Image3']. '" alt="thumb" class="resize_thumb" /><span>
+    <img src="../ordering/' .$row['Image3']. '" alt="large" height=300 width=300 /><br />
     Copy-3</span></a></div>';
 
     }
@@ -114,7 +165,7 @@ echo "
 	   echo "<td align=center>";
     
 
-echo "<button onclick='loading(this)' name='processorder' class='btn btn-success' >Process Order</button>"; 
+echo "<button onclick='loading(this)' type='button' name='processorder' class='btn btn-success' >Process Order</button>";
 echo "<br>";
 echo"</td>";
 
