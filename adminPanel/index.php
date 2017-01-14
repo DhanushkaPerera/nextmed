@@ -122,7 +122,7 @@ else{
 	<div class="contents">
 			<div class="contentitem showitem" id="Search">
 				<div class="heading1" style="display: inline-block;">Search Drugs</div><br>
-				<iframe id="iFrameSearch" src="Search/Search.php" style="height:800px;width:100%" frameborder="0" onload="resizeIframe(this)" > </iframe>
+				<iframe id="iFrameSearch" src="Search/Search.php" style="height:900px;width:100%" frameborder="0" onload="resizeIframe(this)" > </iframe>
 				
 			</div>
 			
@@ -136,7 +136,7 @@ else{
 			</div>
 			<div class="contentitem" id="User"> <div class="heading1">User Management  </div></div>
 			<div class="contentitem" id="Stock"> <div class="heading1">Stock Management</div>
-			<iframe src="Stock/admin.php" style="width:120%" frameborder="0" onload="resizeIframe(this)" > </iframe>
+			<iframe src="Stock/admin.php" style="height:800px;width:120%" frameborder="0"  > </iframe>
 			</div>
 		<div class="contentitem" id="Backup"> <div class="heading1">Backup System</div>
 			<iframe  src="BackupSystem/backup.php" style="width:120%" frameborder="0" onload="resizeIframe(this)" > </iframe>
