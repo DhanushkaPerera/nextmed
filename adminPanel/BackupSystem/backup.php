@@ -15,7 +15,7 @@
     </head>
 <body>
 <div class="tile">
-    <img class="center" src="../media/backupicon.png">
+    <a href="backupfinal.php"><img class="center" src="../media/backupicon.png"></a>
     Backup
     <hr class="custom">
 </div>
@@ -27,5 +27,4 @@
 </div>
 </body>
 </html>
-
 
