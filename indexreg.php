@@ -175,7 +175,7 @@
 		
 		<div class="menubuttonimg login" id="loginIcon">
 			
-				<div style="display: table-cell;vertical-align: middle;height:100%;padding: 10px;">
+				<div style="display: table-cell;vertical-align: middle;height:100%;padding: 10px; cursor:pointer;">
 					<img src="media\login.png" style="width:auto;height:30px;"  >
 				</div>
 				<div class="userlabel">
