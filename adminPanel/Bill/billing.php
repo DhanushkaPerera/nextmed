@@ -187,7 +187,7 @@ echo "<td align=center>";
     
 echo "<a href='transfer.php?del=";
 echo $row['OrderNo.'];
-echo "'><input type='button' id='completed'  class='btn btn-success' value='Completed' disabled=' '></a>"; //Transfer0
+echo "'><input type='button' id='completed'  class='btn btn-success' value='Completed' ></a>"; //Transfer0
 echo "<br>";
 echo"</td>";
     echo "</tr>";
