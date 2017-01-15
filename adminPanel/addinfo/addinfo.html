@@ -8,26 +8,65 @@
 <body>
 
 	<div class="addinfo">
-	
-		<a href="../../News/addnews.html">
-		<div class="infocategory" id="sendnews">
+		
+		<!---POST NEWS-->
+		<div id="news" class="infocategory" onclick="addNews()">
 			<h3>POST<br>NEWS</h3>
 		</div>
-		</a>
 		
-		<a href="../../AroundUs/regdoctor.html">
-		<div class="infocategory">
+		<!--REGISTER HOSPITAL-->
+		<div class="infocategory" onclick="registerHospital()">
 			<h3>REGISTER<br>HOSPITAL<h3>
 		</div>
-		</a>
 		
-		<a href="../../AroundUs/reghospital.html">
-		<div class="infocategory">
+		<!--REGISTER DOCTOR-->
+		<div class="infocategory" onclick="registerDoctor()">
 			<h3>REGISTER<br>DOCTOR</h3>
 		</div>
-		</a>
 	
 	</div>
+	
+	<div id="result">
+		
+	</div>
+	
+<script>
+	/*display add news application*/
+	function addNews() {
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+		document.getElementById("result").innerHTML = this.responseText;
+    }
+	};
+	xhttp.open("GET", "addnews.html", true);
+	xhttp.send();
+	}
+
+	/*display register hospital application*/
+	function registerHospital() {
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+		document.getElementById("result").innerHTML = this.responseText;
+    }
+	};
+	xhttp.open("GET", "reghospital.html", true);
+	xhttp.send();
+	}
+	
+	/*display register doctor application*/
+	function registerDoctor() {
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+		document.getElementById("result").innerHTML = this.responseText;
+    }
+	};
+	xhttp.open("GET", "regdoctor.html", true);
+	xhttp.send();
+	}
+</script>
 
 </body>
 

@@ -1,8 +1,6 @@
 <?php
 	
-		require("../db/db.php");
-		
-		if(isset($_POST["buttonSub"])){
+		require("../../db/db.php");
 			
 			//Retrieve Data
 			$sql = "INSERT INTO doctor(name,category,hospital) VALUES ('$_POST[name]' , '$_POST[category]' , '$_POST[hospital]')";
@@ -16,8 +14,6 @@
 			else{
 				echo "Error : " . mysqli_error($db); 
 			}
-		
-		}
 		
 		//Close connectionection
 		mysqli_close($db);
