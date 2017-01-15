@@ -40,7 +40,7 @@
 	
 		<div class = "news1">
 			<p> Anura Pharmacy opens Everyday </br> Except poya days </p>
-			<p> From 8.00 am </br> To 8.00 pm</p>
+			<p> From 9.00 am </br> To 10.00 pm</p>
 		</div>
 		
 		<!--div class = "news2">

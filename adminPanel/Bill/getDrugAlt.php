@@ -31,6 +31,7 @@ if(mysqli_num_rows($result)>0) {
         echo '<td >' . $rows['RemainingQty'] . '</td>';
         echo '<td >' . $rows['ExpireDate'] . '</td>';
         echo '<td >' . $rows['RetailPrice'] . '</td>';
+        echo    '<td >'. $rows['Discount'].'</td>';
         echo '</tr>';
     }
     echo '<tr>';
