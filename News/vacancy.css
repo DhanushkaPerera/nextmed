@@ -3,6 +3,24 @@ body{
   width:100%;
 }
 
+.exit{
+	color:#fff;
+	width:30px;
+	height:30px;
+	border-radius:100%;
+	font-size:20px;
+	font-weight:bold;
+	background:#dcdcfb;
+	cursor:pointer;
+	float:right;
+	border:1px solid #dcdcfb;
+}
+
+.exit:hover{
+	background:#fff;
+	color:red;
+}
+
 #vacancy {
   margin:auto;
   margin-top:5px;
@@ -30,8 +48,8 @@ body{
 	padding-left: 10px;
 	padding-right: 10px;
 	width:10px;
-	transition: all 1s ease-in-out;
-    -moz-user-select: none; -webkit-user-select: none; -ms-user-select:none; user-select:none;-o-user-select:none;
+	/*transition: all 1s ease-in-out;
+    -moz-user-select: none; -webkit-user-select: none; -ms-user-select:none; user-select:none;-o-user-select:none;*/
 }
 .close:hover{
     color: #FF1717;

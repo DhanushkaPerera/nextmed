@@ -10,8 +10,9 @@
 <body>
     
 	<form id = "vacancy" name="vacancy"  action="applyvacancy.php"  method=post enctype="multipart/form-data">
-	
-		<div class="close" onclick="parent.closeIFrame();"> &#10006; </div>
+		
+		<button class="exit" onclick="goBack()"> X </button>
+		<!--div class="close" onclick="goBack()"> &#10006; </div--->
 
 		<div style="width:100%;text-align:center;">
 			<h3> Application Form <h3>
@@ -140,12 +141,17 @@
 				<!--Cancel Button-->
 				<input class="buttonS"  type="reset" name=cancel value=CANCEL   />
 			</div>
+	</div>
 			
 	</form><!--End of Form-->		
 			
 </body>
 
 <script>
+	
+	function goBack(){
+		window.history.back();
+	}
 
    function headingBoxActive(box){
 	var element = document.getElementById(box);

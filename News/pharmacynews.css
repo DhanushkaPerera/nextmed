@@ -32,7 +32,7 @@ body{
 */
 .news3{
 	 padding:1%;
-	 height:150px;
+	 height:250px;
 	 width:98%;
 	 margin:0;
 	 background:#99bbff;
@@ -57,8 +57,8 @@ body{
 		margin-left:5%; 
 		background-color: #f2f2ff;
 		width: 75%;
-		height:350px;
-		/*overflow: scroll;*/
+		height:450px;
+		overflow: scroll;
 		float:left;
 		border-radius:5px;
 }
@@ -148,10 +148,11 @@ body{
 	width:50%;
 	color:#fff;
 	font-size:15px;
-	border:1px solid #fff;
+	border:1px solid #0066ff;
 	font-family:Oswald script=all rev=1, Adobe Blank;
 }
 
 .button:hover{
 	background:#45a0ff;
+	border:1px solid #45a0ff;
 }

@@ -8,48 +8,50 @@
 
 <body>
 	<div class="doctor">
-	<h1>Register a Doctor </h1> 
+ 
 	<div class="main">
 	
 		<form id="register" name="regdoctors" action="regdoctor.php" method="post"><br>
 		
-		<button class="back" onclick="goBack()">X</button>
+		<button class="exit" onclick="goBack()"> X </button>
 			
 			<div style="width:100%;text-align:center;">
-    
+				<h3>Register a Doctor </h3>
 			</div>
 			<div class="sep"></div>
 			
 			<div class="inputs">
-			<table>
-				<tr>
-				<div style="width:100%;text-align:center;">
-				<td><label>Name</label></td>
-				<td><input name="name" type="text" placeholder="Name"></td>
+				
+				<div class="column">
+
+				<div class="headingbox" id="hBoxNews"> Name </div>
+				<div class="inputboxWrap">
+				<input name="name" type="text" placeholder="Name"></td>
+				</div>
+				
+				<div class="headingbox" id="hBoxNews" > Hospital </div>
+				<div class="inputboxWrap">
+				<input name = "hospital" type="text" placeholder="Hospital"></td>
 				</div>
 				</tr>
 				
-				<tr>
-				<div style="width:100%;text-align:center;">
-				<td><label>Hospital</label></td>
-				<td><input name = "hospital" type="text" placeholder="Hospital"></td>
 				</div>
-				</tr>
+
+				<div class="column" style="clear: right;">
+
+				<div class="headingbox" id="hBoxNews" > Category </div>
+				<div class="inputboxWrap">
+				<input name="category" type="text" placeholder="Category"></td>
+				</div>
+
+				</div>
 				
-				<tr>
 				<div style="width:100%;text-align:center;">
-				<td><label>Category</label></td>
-				<td><input name="category" type="text" placeholder="Category"></td>
+				<input class="buttonSub"  type="submit" name=submit value=Submit />
+				<input class="buttonCan"  type="reset" name=cancel value=Cancel />
 				</div>
-				</tr>
+
 				
-				<tr>
-				<div style="width:100%;text-align:center;">
-				<td><input class="buttonSub"  type="submit" name=submit value=Submit   /></td>
-				<td><input class="buttonCan"  type="reset" name=cancel value=Cancel   /></td>
-				</div>
-				</tr>
-			</table>
 				
 			</div>
 
