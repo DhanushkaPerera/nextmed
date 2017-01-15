@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 
 
+<!DOCTYPE html>
+
+
 <html>
 <head>
     <link href="../css/bootstrap.css" rel="stylesheet" type="text/css" />
@@ -176,25 +179,43 @@
 
         }
 
+echo "<br>";
+ echo"</td>";
+       
+	   echo "<td align=center>";
+		
+		 echo "<td align=center>";
+    
+echo "<a href='transfer.php?del=";
+echo $row['OrderNo.'];
+echo "'><input type='button' class='button' value='Process order'></a>"; //Transfer0
+echo "<br>";
+echo"</td>";
+    echo "</tr>";
+    
+    
 
 
-        echo "<br>";
-        echo"</td>";
-
-        echo "<td align=center>";
-
-
-        echo "<button onclick='loading(this)' type='button' name='processorder' class='btn btn-success' >Process Order</button>";
-        echo "<br>";
-        echo"</td>";
+    
+   } 
 
 
 
-        echo"</tr>";
+    
 
-    }
+    echo"</table>";
+	echo  "
+ <a href='completedorders.php'>
+ <button  type='button' name='processorder' class='btn btn-success' >Completed orders</button>
+  </a>
+   
+    <button  type='button' name='processorder' class='btn btn-success' onclick=window.open('report.php') >View report</button>
+  <button  type='button' name='processorder' class='btn btn-success'  onclick=window.open('graph.php') >View chart</button>
+   
+    </div>";
+        
+echo"</form>";
 
-    echo"</table></form>";
 
 
     ?>
@@ -871,3 +892,6 @@
     };
 </script>
 </html>
+    
+  
+ 
