@@ -7,7 +7,7 @@
  */
 
 require("../../db/db.php");
-$sql = "INSERT INTO bill (InvoiceNo,ItemNo,BrandName,DosageForm,Quantity,ExpirationDate,UnitPrice,ItemPrice) VALUES (
+$sql = "INSERT INTO bill (InvoiceNo,ItemNo,BrandName,DosageForm,Quantity,ExpirationDate,UnitPrice,ItemPrice,Discount,HealthTips, SaleDate) VALUES (
                             ".$_POST['invoiceNo'].",
                             ".$_POST['ItemNo'].",
                             '".$_POST['BrandName']."',
@@ -15,7 +15,10 @@ $sql = "INSERT INTO bill (InvoiceNo,ItemNo,BrandName,DosageForm,Quantity,Expirat
                             ".$_POST['Quantity'].",
                             '".$_POST['ExpirationDate']."',
                             ".$_POST['UnitPrice'].",
-                            ".$_POST['Discount'].")";
+                            ".$_POST['ItemPrice'].",
+                            ".$_POST['Discount'].",
+                            '".$_POST['HealthTips']."',
+                            now() )";
 
 
 if ($db->query($sql) === TRUE) {

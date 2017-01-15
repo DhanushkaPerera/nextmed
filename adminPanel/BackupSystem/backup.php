@@ -19,12 +19,13 @@
     Backup
     <hr class="custom">
 </div>
+<!--
 <div class="tile">
     <img class="center" src="../media/restoreicon.png">
 
     Restore
     <hr class="custom">
-</div>
+</div>-->
 </body>
 </html>
 

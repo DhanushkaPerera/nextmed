@@ -209,8 +209,8 @@
 				<hr class="login">
 				<div class="inputs">
 				<br>
-				<input type="text" style="width:200px;" placeholder="User Id (email)" class="login" name="email" id="emailin" ><br>
-				<input type="password" style="width:200px;" placeholder="Password"  class="login" name="password" id="passin" ><br>
+				<input type="text" style="width:200px;" placeholder="User Id (email)" class="login" name="email" id="emailin" autocomplete="off" ><br>
+				<input type="password" style="width:200px;" placeholder="Password"  class="login" name="password" id="passin" autocomplete="off" ><br>
 				</div>
 				<div class="error" id="passError"> error </div>
 				<br>

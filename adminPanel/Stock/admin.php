@@ -45,7 +45,7 @@
 
                     <div class=" col-sm-3">
                         <div class="input-group">
-                            <input id="searchInputDrug" type="text" class="form-control" placeholder="Search for...">
+                            <input id="searchInputDrug" type="text" class="form-control" placeholder="Search by Brand Name">
                             <span class="input-group-btn">
                                  <button onclick="SearchDrugs()" class="btn btn-secondary" type="button"><i class="glyphicon glyphicon-search"></i></button>
                         </span>
@@ -111,7 +111,7 @@
 
                     <div class="col-sm-3">
                         <div class="input-group">
-                            <input id="searchInputSup" type="text" class="form-control" placeholder="Search for...">
+                            <input id="searchInputSup" type="text" class="form-control" placeholder="Search by Company Name">
                             <span class="input-group-btn">
                                  <button onclick="SearchSup()" class="btn btn-secondary" type="button"><i class="glyphicon glyphicon-search"></i></button>
                         </span>

@@ -24,7 +24,7 @@
             /* for IE */
             /* CSS3 standard */
         }
-        .ui-autocomplete {z-index:111199 !important;}
+        .ui-autocomplete {z-index:111190 !important;}
     </style>
 
 
@@ -122,7 +122,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                <button id="addItemButton" type="button" onclick="addItemtoTable()" class="btn btn-primary" disabled="">Add Item</button>
+                <button id="addItemButton" type="button" onclick="setHealthTips()" class="btn btn-primary" disabled="">Add Item</button>
             </div>
         </div>
     </div>
@@ -176,46 +176,42 @@
             </div>
         </div>
     </div>
+    <br>
+    <div class="row">
+
+        <div class="col-sm-7 notice">
+            <div class="well">
+                <h3> Health Tips</h3>
+                <div id="HealthTips">
+
+                </div>
+            </div>
+        </div><!--/col-->
+
+        <div class="col-sm-5 recap">
+            <table class="table table-clear">
+                <tbody>
+                <tr>
+                    <td class="left"><strong >Subtotal</strong></td>
+                    <td class="right" id="SubTotalPrice" ></td>
+                </tr>
+                <tr>
+                    <td class="left"><strong >Discount</strong></td>
+                    <td class="right" id="totalDiscount" ></td>
+                </tr>
+                <tr>
+                    <td class="left"><strong>Total</strong></td>
+                    <td class="right"><strong></strong></td>
+                </tr>
+                </tbody>
+            </table>
+            <a href="page-invoice.html#" class="btn btn-info" onclick="javascript:window.print();"><i class="fa fa-print"></i> Print Bill </a>
+        </div><!--/col-->
+
+    </div><!--/row-->
 </div>
 <br>
-<div class="row">
 
-    <div class="col-lg-4 col-sm-5 notice">
-        <div class="well">
-            <h3> Health Tips</h3>
-
-            <div class="panel panel-default">
-                <div class="panel-heading"><h4>Panadol</h4></div>
-                <div class="panel-body">Drink lot of water</div>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading"><h4>Panadol</h4></div>
-                <div class="panel-body">Drink lot of water</div>
-            </div>
-        </div>
-    </div><!--/col-->
-
-    <div class="col-lg-4 col-lg-offset-4 col-sm-5 col-sm-offset-2 recap">
-        <table class="table table-clear">
-            <tbody>
-            <tr>
-                <td class="left"><strong >Subtotal</strong></td>
-                <td class="right" id="SubTotalPrice" ></td>
-            </tr>
-            <tr>
-                <td class="left"><strong >Discount</strong></td>
-                <td class="right" id="totalDiscount" ></td>
-            </tr>
-            <tr>
-                <td class="left"><strong>Total</strong></td>
-                <td class="right"><strong></strong></td>
-            </tr>
-            </tbody>
-        </table>
-        <a href="page-invoice.html#" class="btn btn-info" onclick="javascript:window.print();"><i class="fa fa-print"></i> Print Bill </a>
-    </div><!--/col-->
-
-</div><!--/row-->
 
 <!--<div class="result">		</div>-->
 </body>
@@ -242,7 +238,6 @@
                 if (r.responseText.length > 10){
                     table.html(r.responseText);
                     $('#tablebody').pageMe({pagerSelector:'#myPager',showPrevNext:true,hidePageNumbers:false,perPage:5});
-                    loadTable();
                 }
                 else{
                     table.html("Failed");
@@ -312,32 +307,38 @@
     function addItemtoTable() {
         $('#addItemModal').modal('hide');
         var table = $("#tablebody");
+        UnitPrice = parseFloat(Math.round(UnitPrice * 100) / 100).toFixed(2);
         var ItemPrice = UnitPrice * quantity;
+        ItemPrice = parseFloat(Math.round(ItemPrice * 100) / 100).toFixed(2);
         TotalDiscount += CurrentDiscount;
-        TotalPrice +=ItemPrice;
-        $(table).append('<tr  id="row"'+maxItemNo+'><td><div class="checkbox"><label><input onchange="checkedEvent(this)" name=s"'+maxItemNo+'" type="checkbox" value=""></label></div></td></td>\
-          <td>'+maxItemNo+'</td>\
-          <td>'+selectedBrand+'</td>\
-          <td>'+selectedDosageForm+'</td>\
-          <td>'+quantity+'</td>\
-          <td>'+ExpireDate+'</td>\
-          <td>'+UnitPrice+'</td>\
-          <td>'+ItemPrice+'</td>');
-        $(table).append('</tr>');
+        TotalDiscount = parseFloat(Math.round(TotalDiscount * 100) / 100).toFixed(2);
+        TotalPrice += Number(ItemPrice);
+        TotalPrice = parseFloat(Math.round(TotalPrice * 100) / 100).toFixed(2);
         jQuery.ajax({
             type: "POST",
             url: "addItem.php",
             dataType: 'json',
 
-            data: {invoiceNo:maxInvoiceNo,ItemNo:maxItemNo,BrandName:selectedBrand,DosageForm:selectedDosageForm,Quantity:quantity,ExpirationDate:ExpireDate,UnitPrice:UnitPrice,ItemPrice:ItemPrice,Discount:CurrentDiscount},
+            data: {invoiceNo:maxInvoiceNo,ItemNo:maxItemNo,BrandName:selectedBrand,DosageForm:selectedDosageForm,Quantity:quantity,ExpirationDate:ExpireDate,UnitPrice:UnitPrice,ItemPrice:ItemPrice,Discount:CurrentDiscount,HealthTips:HealthTips},
             complete: function(r){
+                console.log(r.responseText);
                 if(r.responseText==="Added Successfully") {
+                    $(table).append('<tr  id="row"'+maxItemNo+'><td><div class="checkbox"><label><input onchange="checkedEvent(this)" name=s"'+maxItemNo+'" type="checkbox" value=""></label></div></td></td>\
+                      <td>'+maxItemNo+'</td>\
+                      <td>'+selectedBrand+'</td>\
+                      <td>'+selectedDosageForm+'</td>\
+                      <td>'+quantity+'</td>\
+                      <td>'+ExpireDate+'</td>\
+                      <td>'+UnitPrice+'</td>\
+                      <td align="right">'+ItemPrice+'</td>');
+                    $(table).append('</tr>');
                     $('#SubTotalPrice').html(TotalPrice);
                     $('#totalDiscount').html(TotalDiscount);
+                    getHealthTips();
                     maxItemNo++;
                 }
                 else{
-                    alert("Operation Failed");
+                    alert(r.responseText);
                 }
                     //loadTable();
             }
@@ -345,7 +346,31 @@
 
     }
 
+    function setHealthTips() {
+        jQuery.ajax({
+            type: "POST",
+            url: "getHealthTip.php",
+            dataType: 'json',
+            data: {BrandName:selectedBrand,DosageForm:selectedDosageForm},
+            complete: function(r){
+                HealthTips = JSON.parse(r.responseText);
+                HealthTips = HealthTips.healthTips;
+                addItemtoTable();
+            }
+        });
+    }
 
+    function getHealthTips() {
+        jQuery.ajax({
+            type: "POST",
+            url: "getHealthTips.php",
+            dataType: 'json',
+            data: {InvoiceNo:maxInvoiceNo},
+            complete: function(r){
+                $('#HealthTips').html(r.responseText);
+            }
+        });
+    }
 
     function Search(){
         var searchValue = $('#searchBox').val();
@@ -377,6 +402,7 @@
     var DosageForms = [];
     var selectedBrand ="";
     var selectedDosageForm="";
+    var HealthTips = "";
     var quantity = "";
     var ExpireDate = "";
     var QtyType="";
@@ -411,6 +437,7 @@
         $('#Quantity-input').css( "background", "#eee" );
         $('#ExpireDate-input').val('');
         $('#UnitPrice-input').val('');
+        $('#addItemButton').prop( "disabled", true );
         getAvailableBrands();
         $('#BrandName-input').css( "background", "white" );
         $('#ItemNo-input').val(maxItemNo);
@@ -588,6 +615,7 @@
                 var opt = matchingDrugs.slice(-1);
                 if(opt=="1"){
                     $('#showOptionsHeader').html('This Drug is Available in following Stocks');
+                    $('#showOptionsHeader').css( "background", "none" );
                 }
                 else if(opt=="2"){
                     $('#showOptionsHeader').html('This Drug is not Available, but following alternatives were found in following Stocks');
@@ -627,6 +655,7 @@
                 console.log(matchingDrugs);
                 if(opt==1){
                     $('#showOptionsHeader').html('Following Alternatives are available in Stocks');
+                    $('#showOptionsHeader').css( "background", "none" );
                 }
                 else if(opt==2){
                     $('#showOptionsHeader').html('No alternatives were found');

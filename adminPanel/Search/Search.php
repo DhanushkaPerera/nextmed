@@ -17,7 +17,7 @@
 <div class="container" style="margin-left:10px;width:98%;">
     <h3>Drugs</h3>
     <div class="fixed-table-toolbar">
-        <div class="col-sm-8">
+        <div class="col-sm-6">
             <div id="toolbar">
                 <button id="addDrug" onclick="addOp()" class="btn btn-success" >
                     <i class="glyphicon glyphicon-plus"></i> Add
@@ -26,21 +26,21 @@
                     <i class="glyphicon glyphicon-edit"></i> Edit
                 </button>
                 <button id="removeDrug" onclick="deleteOp()" class="btn btn-danger" disabled="">
-                    <i class="glyphicon glyphicon-remove"></i> Delete
+                    <i class="glyphicon glyphicon-trash"></i> Delete
                 </button>
             </div>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-6">
             <div class="input-group">
-                <input id="searchInputDrug" type="text" class="form-control" placeholder="Search for...">
+                <input id="searchInputDrug" type="text" class="form-control" placeholder="Brand Name">
                 <span class="input-group-addon" style="padding: 0"></span>
+                <input style="display: none" id="searchInputDosage" type="text" class="form-control" placeholder="Dosage Form">
+                <span style="display: none;padding: 0" id="searchInputDosageSplit" class="input-group-addon" ></span>
                 <select onchange="selectedSearchMethod(this)" id="searchOption" class="selectpicker form-control" data-live-search="true" title="Please select a search method">
                     <option value="brand" >Brand Name</option>
                     <option value="gen" >Genetic Name</option>
                     <option value="alt" >Alternatives</option>
                 </select>
-                <span style="display: none;padding: 0" id="searchInputDosageSplit" class="input-group-addon" ></span>
-                <input style="display: none" id="searchInputDosage" type="text" class="form-control" placeholder="Dosage Form">
                 <span class="input-group-btn">
                     <button onclick="SearchDrugs()" class="btn btn-secondary" type="button"><i class="glyphicon glyphicon-search"></i></button>
                 </span>
@@ -55,7 +55,7 @@
                 <thead>
                 <tr>
                     <th>Select</th>
-                    <th>#Drug No</th>
+                    <th>Drug No</th>
                     <th>Genetic Name</th>
                     <th>Brand Name</th>
                     <th>Dosage Form</th>
@@ -204,7 +204,9 @@
                 });
             });
             $(currentRow).html('');
-            $(currentRow).append('<td><button id="addDrug" onclick="saveEdit(this,'+rowItem[1]+')" class="btn btn-success" ><i class="glyphicon glyphicon-save"></i> Save </button></td>');
+            $(currentRow).append('<td style="text-align: center" "><button id="addDrug" onclick="saveEdit(this,'+rowItem[1]+')" class="btn btn-success btn-sm" ><i class="glyphicon glyphicon-save"></i> Save </button>' +
+                '<br><br><button onclick="loadTable()" class="btn btn-danger btn-sm" ><i class="glyphicon glyphicon-remove"></i> Cancel </button>' +
+                '</td>');
             $(currentRow).append('<td><input type="text" value="'+rowItem[1]+'" readonly="true" ></td>');
             $(currentRow).append('<td><input type="text" value="'+rowItem[2]+'"></td>');
             $(currentRow).append('<td><input type="text" value="'+rowItem[3]+'"></td>');
@@ -258,8 +260,8 @@
     function addOp() {
         var table = $("#tablebody");
         maxNo++;
-        $(table).append('<tr id="row"'+maxNo+'><td><button id="addDrug" onclick="saveEdit(this,'+maxNo+')" class="btn btn-success" ><i class="glyphicon glyphicon-save"></i> Save </button></td>\
-          <td><input type="text" value="'+maxNo+'" readonly="true" ></td>\
+        $(table).append('<td style="text-align: center" "><button id="addDrug" onclick="saveEdit(this,'+maxNo+')" class="btn btn-success btn-sm" ><i class="glyphicon glyphicon-save"></i> Save </button>\
+        <br><br><button onclick="loadTable()" class="btn btn-danger btn-sm" ><i class="glyphicon glyphicon-remove"></i> Cancel </button></td>\
           <td><input type="text"  ></td>\
           <td><input type="text"  ></td>\
           <td><input type="text"  ></td>\
@@ -272,14 +274,21 @@
         $(table).append('</tr>');
     }
     function selectedSearchMethod(input) {
-        console.log('here');
+
         if(input.value=="alt"){
             $('#searchInputDosageSplit').show();
             $('#searchInputDosage').show();
+            $('#searchInputDrug').prop("placeholder","Brand Name");
         }
         else{
             $('#searchInputDosageSplit').hide();
             $('#searchInputDosage').hide();
+            if(input.value=="brand"){
+                $('#searchInputDrug').prop("placeholder","Brand Name");
+            }
+            else{
+                $('#searchInputDrug').prop("placeholder","Genetic Name");
+            }
         }
     }
     function SearchDrugs(){
