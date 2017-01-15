@@ -140,8 +140,8 @@
 
 
 
-        echo'<div class="ienlarger"><a href=../ordering/'.( $row['Image1'] ).'><img src="../ordering/' .$row['Image1']. '" alt="thumb" class="resize_thumb" /><span>
-    <img src="../ordering/' .$row['Image1']. '" alt="large" height=300 width=300 /><br />
+        echo'<div class="ienlarger"><a ><img src="../ordering/' .$row['Image1']. '" alt="thumb" class="resize_thumb" /><span>
+    <img src="../ordering/' .$row['Image1']. '" alt="large" height=400 width=400 /><br />
     Copy-1</span></a></div>';
 
         echo "<br>";
@@ -155,8 +155,8 @@
         }
         else{
 
-            echo'<div class="ienlarger"><a href=../ordering/'.( $row['Image2'] ).'><img src="../ordering/' .$row['Image2']. '" alt="thumb" class="resize_thumb" /><span>
-    <img src="../ordering/' .$row['Image2']. '" alt="large" height=300 width=300 /><br />
+            echo'<div class="ienlarger"><a ><img src="../ordering/' .$row['Image2']. '" alt="thumb" class="resize_thumb" /><span>
+    <img src="../ordering/' .$row['Image2']. '" alt="large" height=400 width=400 /><br />
     Copy-2</span></a></div>';
 
         }
@@ -173,8 +173,8 @@
         }
         else{
 
-            echo'<div class="ienlarger"><a href=../ordering/'.( $row['Image3'] ).'><img src="../ordering/' .$row['Image3']. '" alt="thumb" class="resize_thumb" /><span>
-    <img src="../ordering/' .$row['Image3']. '" alt="large" height=300 width=300 /><br />
+            echo'<div class="ienlarger"><a><img src="../ordering/' .$row['Image3']. '" alt="thumb" class="resize_thumb" /><span>
+    <img src="../ordering/' .$row['Image3']. '" alt="large" height=400 width=400 /><br />
     Copy-3</span></a></div>';
 
         }
@@ -184,7 +184,7 @@ echo "<br>";
    
 		
 		 echo "<td align=center>";
-		 echo "<input type='button'onclick='change()' id='processorder'  class='btn btn-success' value='Process order'>";
+		 echo "<input type='button' id='processorder'  class='btn btn-success' value='Process order' onclick='enableButton2()' ";
         echo "<br>";
         echo"</td>";
 		 echo "<td align=center>";
@@ -192,7 +192,7 @@ echo "<br>";
     
 echo "<a href='transfer.php?del=";
 echo $row['OrderNo.'];
-echo "'><input type='button'  class='btn btn-success' value='Completed'></a>"; //Transfer0
+echo "'><input type='button' id='completed'  class='btn btn-success' value='Completed' disabled=' '></a>"; //Transfer0
 echo "<br>";
 echo"</td>";
     echo "</tr>";
@@ -226,9 +226,12 @@ echo"</form>";
     ?>
     <script>
 
-        function  loading(button) {
-            $(button).html('<div class="loader"></div>');
+       
+        function enableButton2() {
+            document.getElementById("completed").disabled = false;
+			document.getElementById("processorder").disabled =true;
         }
+    
     </script>
 
 </div>
