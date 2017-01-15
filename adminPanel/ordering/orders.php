@@ -150,9 +150,9 @@ function removekid(div) {
       </tr>
       <tr>
         <td height=50 colspan="2">
-          <span class="headingboxs"  style="align=center">Pick up</span>
+          <span class="headingboxs"  style="align=right">Pick up</span>
           <input type=radio name=DP required value="Pickup" align=center>
-          <span style="  float: center;">
+          <span style="  float: left;">
             <span class="headingboxs">
               Delivery</span>
             <input class="textfill" type=radio name=DP required value="Delivery" onmouseup="textbox(this)" />
@@ -374,7 +374,7 @@ function Validate(oForm) {
   if (totalTime<1  ) {
 	  document.getElementById('time').style.background ='#e35152';
 	modal.style.display = "block";
-modal.querySelector('.modal-body').innerHTML="<p>Dear customer please enter a time one hour in advance! Thank you! </p>";
+modal.querySelector('.modal-body').innerHTML="<p>Dear customer please enter a time one hour in advance from the current time to prevent any inconveniences! Thank you! </p>";
 	  
   
  
