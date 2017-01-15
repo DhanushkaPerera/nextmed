@@ -7,7 +7,7 @@
  */
 
 require("../../db/db.php");
-$sql="SELECT * FROM bill";
+$sql="SELECT * FROM bill WHERE InvoiceNo=".$_POST['InvoiceNo'];
 $result = mysqli_query($db,$sql);
 while( $rows = mysqli_fetch_assoc($result)){
     $id = $rows['ItemNo'];
@@ -20,8 +20,7 @@ while( $rows = mysqli_fetch_assoc($result)){
     echo    '<td >'. $rows['Quantity'].'</td>';
     echo    '<td >'. $rows['ExpirationDate'].'</td>';
     echo    '<td >'. $rows['UnitPrice'].'</td>';
-    echo    '<td >'. $rows['ItemPrice'].'</td>';
-    echo    '<td >'. $rows['Discount'].'</td>';
+    echo    '<td align="right" >'. $rows['ItemPrice'].'</td>';
     echo '</tr>';
 }
 mysqli_close($db);

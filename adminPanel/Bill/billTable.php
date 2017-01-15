@@ -193,15 +193,23 @@
                 <tbody>
                 <tr>
                     <td class="left"><strong >Subtotal</strong></td>
-                    <td class="right" id="SubTotalPrice" ></td>
+                    <td align="right" class="right" id="SubTotalPrice" ></td>
                 </tr>
                 <tr>
                     <td class="left"><strong >Discount</strong></td>
-                    <td class="right" id="totalDiscount" ></td>
+                    <td align="right" class="right" id="totalDiscount" ></td>
                 </tr>
                 <tr>
                     <td class="left"><strong>Total</strong></td>
-                    <td class="right"><strong></strong></td>
+                    <td align="right" class="right" id="totalPrice"><strong></strong></td>
+                </tr>
+                <tr>
+                    <td class="left"><strong>Amount Paid</strong></td>
+                    <td align="right" class="right"><input onfocusout="calcBalance(this)" style="text-align:right;" type="text"><strong></strong></td>
+                </tr>
+                <tr>
+                    <td class="left"><strong>Balance</strong></td>
+                    <td align="right" class="right" id="balancePrice"><strong></strong></td>
                 </tr>
                 </tbody>
             </table>
@@ -228,12 +236,13 @@
 
     function loadTable() {
         var table = $("#tablebody");
+        getHealthTips();
         table.html("Loading..");
         jQuery.ajax({
             type: "POST",
             url: "loadItems.php",
             dataType: 'json',
-            data: {count: count},
+            data: {InvoiceNo:maxInvoiceNo},
             complete: function(r){
                 if (r.responseText.length > 10){
                     table.html(r.responseText);
@@ -247,6 +256,7 @@
     }
 
     function checkEvent(checkBox){
+        console.log('here');
         if(checkBox.checked){
             checkedEvent(checkBox);
         }
@@ -286,9 +296,9 @@
         }
         jQuery.ajax({
             type: "POST",
-            url: "deleteItems.php",
+            url: "deleteItem.php",
             dataType: 'json',
-            data: {ItemNos: ItemNos,invoiceNo:maxInvoiceNo},
+            data: {ItemNos: ItemNos,InvoiceNo:maxInvoiceNo},
             complete: function(r){
                 if (r.responseText.length > 5){
                     alert(r.responseText);
@@ -307,12 +317,17 @@
     function addItemtoTable() {
         $('#addItemModal').modal('hide');
         var table = $("#tablebody");
+        console.log(UnitPrice);
+        console.log(quantity);
+        TotalPrice = Number(TotalPrice);
+        TotalPrice += Number(UnitPrice * quantity);
+        console.log(TotalPrice);
         UnitPrice = parseFloat(Math.round(UnitPrice * 100) / 100).toFixed(2);
         var ItemPrice = UnitPrice * quantity;
         ItemPrice = parseFloat(Math.round(ItemPrice * 100) / 100).toFixed(2);
         TotalDiscount += CurrentDiscount;
         TotalDiscount = parseFloat(Math.round(TotalDiscount * 100) / 100).toFixed(2);
-        TotalPrice += Number(ItemPrice);
+
         TotalPrice = parseFloat(Math.round(TotalPrice * 100) / 100).toFixed(2);
         jQuery.ajax({
             type: "POST",
@@ -323,7 +338,7 @@
             complete: function(r){
                 console.log(r.responseText);
                 if(r.responseText==="Added Successfully") {
-                    $(table).append('<tr  id="row"'+maxItemNo+'><td><div class="checkbox"><label><input onchange="checkedEvent(this)" name=s"'+maxItemNo+'" type="checkbox" value=""></label></div></td></td>\
+                    $(table).append('<tr  id="row"'+maxItemNo+'><td><div class="checkbox"><label><input onchange="checkEvent(this)" name="'+maxItemNo+'" type="checkbox" value=""></label></div></td></td>\
                       <td>'+maxItemNo+'</td>\
                       <td>'+selectedBrand+'</td>\
                       <td>'+selectedDosageForm+'</td>\
@@ -334,6 +349,10 @@
                     $(table).append('</tr>');
                     $('#SubTotalPrice').html(TotalPrice);
                     $('#totalDiscount').html(TotalDiscount);
+                    var FinalTotalPrice = TotalPrice - TotalDiscount;
+                    FinalTotalPrice = parseFloat(Math.round(FinalTotalPrice * 100) / 100).toFixed(2);
+                    $('#totalPrice').html(FinalTotalPrice);
+
                     getHealthTips();
                     maxItemNo++;
                 }
@@ -371,7 +390,12 @@
             }
         });
     }
-
+    function calcBalance(input) {
+        var paid = input.value;
+        var balance = paid - (TotalPrice-TotalDiscount);
+        balance = parseFloat(Math.round(balance * 100) / 100).toFixed(2);
+        $('#balancePrice').html(balance);
+    }
     function Search(){
         var searchValue = $('#searchBox').val();
         var table = $("#supplierTable");
