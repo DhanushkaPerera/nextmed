@@ -126,25 +126,30 @@ p{
 	 border-collapse:collapse;
 	 border:1px solid black;
 	 border-radius:10%;
-	 
- }
+}
+ 
  th{
-	background-color:  #1a53ff;
-			color: white;
+	/*background:linear-gradient(#3399ff,#1a75ff);*/
+	background:#bfbfbf;
+	color:#fff;
 			
  }
  th,td{
 	 border:1px solid #808080; 
-	 padding:5px;
+	 padding:10px;
 	 text-align:center;
  }
+ 
+ table,th,td{
+	border:1px solid #fff;
+}
 
  
  tr:nth-child(even){
-	 background-color:#cce6ff;
+	 background-color:#99ccff;
  }
  tr:nth-child(odd){
-	 background-color:#99b3ff;
+	 background-color:#99bbff;
  }
 
 .rightnav{
