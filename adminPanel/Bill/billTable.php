@@ -31,12 +31,12 @@
 </head>
 
 <body>
-<div class="modal fade" id="showOptionsModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="showOptionsModal" tabindex="-1" role="dialog" aria-labelledby="showOptionsHeader">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">This Drug is Available in following Stocks</h4>
+                <h4 class="modal-title" id="showOptionsHeader"></h4>
             </div>
             <div class="modal-body" id="showOptionsModalBody">
                 <div class="fixed-table-container">
@@ -101,7 +101,7 @@
                     <div class="form-group row">
                         <label for="Quantity-input" class="col-sm-2 col-form-label">Quantity</label>
                         <div class="col-sm-7 ui-widget">
-                            <input disabled class="form-control Quantity" onfocus="showQtyType(this)" onfocusout=validateQty(this) type="text" title="tooltip" id="Quantity-input">
+                            <input disabled class="form-control Quantity" onfocus="showQtyType(this)" onfocusout=getDrugs(this) type="text" title="tooltip" id="Quantity-input">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -121,7 +121,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                <button id="addItemButton" type="button" onclick="addItemtoTable()" class="btn btn-primary" disabled="">addItem</button>
+                <button id="addItemButton" type="button" onclick="addItemtoTable()" class="btn btn-primary" disabled="">Add Item</button>
             </div>
         </div>
     </div>
@@ -180,7 +180,7 @@
 
     <div class="col-lg-4 col-sm-5 notice">
         <div class="well">
-            <h3> Healthtips</h3>
+            <h3> Health Tips</h3>
 
             <div class="panel panel-default">
                 <div class="panel-heading"><h4>Panadol</h4></div>
@@ -224,7 +224,6 @@
     var checkedBoxes = [];
 
     $( document ).ready(function() {
-        maxItemNo();
         $('#myModal').modal('show');
     });
 
@@ -312,6 +311,7 @@
         var table = $("#tablebody");
         var ItemPrice = UnitPrice * quantity;
         $(table).append('<tr  id="row"'+maxNo+'><td><div class="checkbox"><label><input onchange="checkEventSup(this)" name=s"'+maxNo+'" type="checkbox" value=""></label></div></td></td>\
+          <td>'+maxNo+'</td>\
           <td>'+selectedBrand+'</td>\
           <td>'+selectedDosageForm+'</td>\
           <td>'+quantity+'</td>\
@@ -325,10 +325,10 @@
             dataType: 'json',
             data: {ItemNo:maxNo,BrandName:selectedBrand,DosageForm:selectedDosageForm,Quantity:quantity,ExpirationDate:ExpireDate,UnitPrice:UnitPrice,ItemPrice:ItemPrice},
             complete: function(r){
-                    alert(r.responseText);
                     //loadTable();
             }
         });
+        maxNo++;
     }
 
 
@@ -367,9 +367,10 @@
     var ExpireDate = "";
     var QtyType="";
     var SelectedStock = "";
-    var maxNo = 0;
+    var maxNo = 1;
     var TotalPrice = 0;
     var TotalDiscount =0;
+    var customerAllergicDrugs = ['Panadol','Calpol'];
     $('#showOptionsModal').on('hidden.bs.modal', function () {
         $('#addItemModal').css('opacity', 1);
     })
@@ -385,15 +386,20 @@
         ExpireDate = "";
         QtyType="";
         SelectedStock = "";
-        maxItemNo();
-        maxNo++;
-
+        $('#BrandName-input').val('');
+        $('#DosageForm-input').val('');
+        $('#DosageForm-input').prop( "disabled", true );
+        $('#BrandName-input').css( "background", "#eee" );
+        $('#Quantity-input').val('');
+        $('#Quantity-input').prop( "disabled", true);
+        $('#Quantity-input').css( "background", "#eee" );
         getAvailableBrands();
         $('#BrandName-input').css( "background", "white" );
         $('#ItemNo-input').val(maxNo);
         $('#addItemModal').modal('show');
     }
 
+    /*
     function maxItemNo(){
         jQuery.ajax({
             type: "POST",
@@ -404,7 +410,7 @@
                 maxNo = r.responseText;
             }
         });
-    }
+    }*/
 
     function getAvailableBrands() {
         availableBrands = [];
@@ -467,7 +473,7 @@
 
     // autoComplete Data retrieval from database
     function autoCompleteBrandNames(){
-        console.log(availableBrands);
+        //console.log(availableBrands);
             $('#BrandName-input').autocomplete({
                 source: availableBrands
             });
@@ -506,8 +512,8 @@
 
     // Dosage Form validation based on the value of the selected
     function  validateDosageForm(input) {
-        console.log(input.value);
-        console.log(DosageForms);
+        //console.log(input.value);
+        //console.log(DosageForms);
         if (!contains.call(DosageForms,input.value)){
             input.style.background = "#FFBDB7";
             $(input).tooltip({
@@ -538,23 +544,37 @@
     // Validate Quantity, if the required quanity is not available alert the user
     //If the drug is allergic to customer alternatives should be shown
 
-    function validateQty(input){
+    function getDrugs(input){
         //First get the drug if it's available sorted according to drugs that are close to expire but
         // at least have 30 days to expire
         // if it's less than 90 days issue a warning
-        quantity = input.value;
+        quantity = $(input).val();
         var matchingDrugs=[];
+        $('#selectOptionButton').prop( "disabled", true );
         jQuery.ajax({
             type: "POST",
             url: "getDrug.php",
             dataType: 'json',
-            data: {brand:selectedBrand,dosageForm:selectedDosageForm,quantity:quantity},
+            data: {brand:selectedBrand,dosageForm:selectedDosageForm,quantity:quantity,allergicDrugs:customerAllergicDrugs},
             complete: function(r){
                 matchingDrugs = r.responseText;
-                $('#tableOptions').html(matchingDrugs);
+                //console.log(matchingDrugs.slice(-1));
+                $('#tableOptions').html(matchingDrugs.slice(0,-1));
+                var opt = matchingDrugs.slice(-1);
+                if(opt=="1"){
+                    $('#showOptionsHeader').html('This Drug is Available in following Stocks');
+                }
+                else if(opt=="2"){
+                    $('#showOptionsHeader').html('This Drug is not Available, but following alternatives were found in following Stocks');
+                    $('#showOptionsHeader').css( "background", "#ffbf00" );
+
+                }
+                else if(opt=="3"){
+                    $('#showOptionsHeader').html('This Drug is not Available');
+                    $('#showOptionsHeader').css( "background", "red" );
+                }
             },
         });
-        console.log(matchingDrugs);
         $('#tableOptions').html('Loading');
         $('#showOptionsModal').modal({backdrop: 'static', keyboard: false})
         $('#showOptionsModal').modal('show');
@@ -562,6 +582,41 @@
         $('#showOptionsModal').css('z-index', 100000);
         $('#addItemModal').css('opacity', 0.2);
     }
+
+    function getUserAlternativeDrug(){
+        //First get the drug if it's available sorted according to drugs that are close to expire but
+        // at least have 30 days to expire
+        // if it's less than 90 days issue a warning
+        var matchingDrugs=[];
+        $('#selectOptionButton').prop( "disabled", true );
+        jQuery.ajax({
+            type: "POST",
+            url: "getDrugAlt.php",
+            dataType: 'json',
+            data: {brand:selectedBrand,dosageForm:selectedDosageForm,quantity:quantity,allergicDrugs:customerAllergicDrugs},
+            complete: function(r){
+                matchingDrugs = r.responseText;
+                $('#tableOptions').html(matchingDrugs.slice(0,-1));
+                var opt = matchingDrugs.slice(-1);
+                console.log(opt);
+                console.log(matchingDrugs);
+                if(opt==1){
+                    $('#showOptionsHeader').html('Following Alternatives are available in Stocks');
+                }
+                else if(opt==2){
+                    $('#showOptionsHeader').html('No alternatives were found');
+                    $('#showOptionsHeader').css( "background", "red" );
+                }
+            },
+        });
+        $('#tableOptions').html('Loading');
+        $('#showOptionsModal').modal({backdrop: 'static', keyboard: false})
+        $('#showOptionsModal').modal('show');
+        $('#showOptionsModal').css('opacity', 1);
+        $('#showOptionsModal').css('z-index', 100000);
+        $('#addItemModal').css('opacity', 0.2);
+    }
+
     function optionSelect(option){
         var selectOptionButton = document.getElementById('selectOptionButton');
         selectOptionButton.disabled = false;
@@ -570,8 +625,22 @@
         });
         option.checked = true;
         SelectedStock = option.getAttribute('name');
-
     }
+
+    function optionSelectAlt(option){
+        var selectOptionButton = document.getElementById('selectOptionButton');
+        selectOptionButton.disabled = false;
+        $('.optionsDrugs').each(function(i, obj) {
+            obj.checked = false;
+        });
+        option.checked = true;
+        SelectedStock = option.getAttribute('name');
+        selectedBrand = $('#BrandName'+SelectedStock).html();
+        selectedDosageForm = $('#DosageForm'+SelectedStock).html();
+        $('#BrandName-input').val(selectedBrand);
+        $('#DosageForm-input').val(selectedDosageForm);
+    }
+
     function selectedOption(){
         jQuery.ajax({
             type: "POST",
@@ -592,7 +661,7 @@
                 $('#addItemButton').prop( "disabled", false );
             }
         });
-        $('#showOptionsModalBody').html('Loading..');
+        $('#tableOptions').html('Loading..');
 
     }
     function cancel(){

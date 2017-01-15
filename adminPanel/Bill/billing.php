@@ -585,6 +585,7 @@ echo"</form>";
         var table = $("#tablebody");
         var ItemPrice = UnitPrice * quantity;
         $(table).append('<tr  id="row"'+maxNo+'><td><div class="checkbox"><label><input onchange="checkEventSup(this)" name=s"'+maxNo+'" type="checkbox" value=""></label></div></td></td>\
+          <td>'+maxNo+'</td>\\
           <td>'+selectedBrand+'</td>\
           <td>'+selectedDosageForm+'</td>\
           <td>'+quantity+'</td>\
@@ -740,7 +741,7 @@ echo"</form>";
 
     // autoComplete Data retrieval from database
     function autoCompleteBrandNames(){
-        console.log(availableBrands);
+        //console.log(availableBrands);
         $('#BrandName-input').autocomplete({
             source: availableBrands
         });
@@ -779,8 +780,8 @@ echo"</form>";
 
     // Dosage Form validation based on the value of the selected
     function  validateDosageForm(input) {
-        console.log(input.value);
-        console.log(DosageForms);
+        //console.log(input.value);
+        //console.log(DosageForms);
         if (!contains.call(DosageForms,input.value)){
             input.style.background = "#FFBDB7";
             $(input).tooltip({
@@ -817,17 +818,19 @@ echo"</form>";
         // if it's less than 90 days issue a warning
         quantity = input.value;
         var matchingDrugs=[];
+        console.log(selectedDosageForm+selectedBrand+quantity);
         jQuery.ajax({
             type: "POST",
             url: "getDrug.php",
             dataType: 'json',
             data: {brand:selectedBrand,dosageForm:selectedDosageForm,quantity:quantity},
             complete: function(r){
+                //console.log('here');
                 matchingDrugs = r.responseText;
                 $('#tableOptions').html(matchingDrugs);
             },
         });
-        console.log(matchingDrugs);
+        //console.log(matchingDrugs);
         $('#tableOptions').html('Loading');
         $('#showOptionsModal').modal({backdrop: 'static', keyboard: false})
         $('#showOptionsModal').modal('show');
