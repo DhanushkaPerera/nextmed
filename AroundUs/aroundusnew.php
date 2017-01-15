@@ -26,25 +26,21 @@
 				<div class="topic">
 				<label style="font-size:18px;"> Enter the location </label><br>
 				</div>
-				<!--input name = "location" type = "text" size = "30" /-->
+				
 				<div class="option">
-				<select class="select" name="location" type="text">
+				<select class="select" name="location" type="text" >
 				
 				<?php
 					require("../db/db.php");
-									
-					$sql = "SELECT location FROM hospital ORDER BY location ASC";
-									
+						
+					$sql = "SELECT DISTINCT location FROM hospital ORDER BY location ASC";
+					
 					$res = mysqli_query($db,$sql);
 									
-					if($res){
-						/*echo "<li>";*/
-										
+					if($res){			
 						while($row = mysqli_fetch_array($res)){
 							echo "<option>".$row['location']."</option>";
 						}
-										
-						/*echo "</li>";*/
 					}
 					else{
 						echo "Error : " . mysqli_error($db); 
@@ -53,31 +49,9 @@
 					//close connection
 					mysqli_close($db);
 				?>
-				
-				
-				
-				
-				
-				
-					<!--option value="Gampaha"> Gampaha </option>
-					<option value="Ragame"> Ragama </option>
-					<option value="Wattupitiawala"> Wattupitiawala </option>
-					<option value="Negambo"> Negambo </option>
-					<option value="Minuwangoda">  Minuwangoda </option>
-					<option value="Dompe"> Dompe </option>
-					<option value="Divulapitiya"> Divulapitiya </option>
-					<option value="Kiribathgoda"> Kiribathgoda </option>
-					<option value="Pamunuwa"> Pamunuwa </option>
-					<option value="Udupila"> Udupila </option>
-					<option value="Biyagama"> Biyagama </option>
-					<option value="Seeduwa"> Seeduwa </option>
-					<option value="Kapala Kanda"> Kapala Kanda </option>
-					<option value="Radawana"> Radawana </option>
-					<option value="Akkaragama"> Akkaragama </option>
-					<option value="Bokalagama"> Bokalagama </option>
-					<option value="Hiripitiya"> Hiripitiya </option-->
 				</select>
 				</div>
+				
 				<div class="button">
 				<input id="btn1" class = "buttonSub" name = "submitbutton1" type = "submit" value = "Search" onclick="searchHospital('result')"/>
 				</div>
@@ -87,26 +61,29 @@
 		<div class = "doctor">
 			<form id = "" action = "" method = "post">
 				<div class="topic">
-				<label style="font-size:18px;"> Enter the specialized area </label><br>
+				<label style="font-size:18px;"> Enter the specialist area </label><br>
 				</div>
-				<!--input name = "special" type = "text" size = "30" /-->
 				<div class="option">
 				<select style="align:centre;" class="select" name="special" type="text">
-					<!--option value="Paediatric Surgeon"> Paediatric Surgeon </option>
-					<option value="Cancer Specialist"> Cancer Specialist </option>
-					<option value="Denito Urinary Surgeon"> Denito Urinary Surgeon </option>
-					<option value="Neuro Surgeon"> Neuro Surgeon </option>
-					<option value="Gynaecologist">  Gynaecologist </option>
-					<option value="Paediatrician"> Paediatrician </option>
-					<option value="Gynaecologist"> Gynaecologist</option>
-					<option value="Psychiatrist"> Psychiatrist </option>
-					<option value="Surgeon"> Surgeon </option>
-					<option value="Neuro Physician"> Neuro Physician </option>
-					<option value="Cardiologist"> Cardiologist </option>
-					<option value="Physician"> Physician </option>
-					<option value="Eye Surgeon"> Eye Surgeon </option>
-					<option value="Oncologist"> Oncologist </option>
-					<option value="Dermatologist"> Dermatologist </option-->
+				
+				<?php
+					require("../db/db.php");
+						
+					$sql = "SELECT DISTINCT category FROM doctor ORDER BY category ASC";
+					$res = mysqli_query($db,$sql);
+									
+					if($res){			
+						while($row = mysqli_fetch_array($res)){
+							echo "<option>".$row['category']."</option>";
+						}
+					}
+					else{
+						echo "Error : " . mysqli_error($db); 
+					}
+					
+					//close connection
+					mysqli_close($db);
+				?>
 				</select>
 				</div>
 				<div class="button">
@@ -114,12 +91,12 @@
 				</div>
 			</form>	
 		</div>
-	</div>
+	</div><!--END OF rightnav DIV-->
 	
 	<div class = "result">
 			
 			<p>Find out what are the details of hospitals in Gampaha District <br> 
-			and the doctors who are specialists for specialized areas, <br>
+			and the doctors who are specialists for specialist areas, <br>
 			You can search for more details.</p>
 	
 <?php
