@@ -7,7 +7,7 @@
  */
 
 require("../../db/db.php");
-$sql="SELECT ExpireDate,RetailPrice FROM drugstock WHERE StockNo = ".$_POST['StockNo'].";" ;
+$sql="SELECT ExpireDate,RetailPrice,Discount FROM drugstock WHERE StockNo = ".$_POST['StockNo'].";" ;
 //$sql1 ="UPDATE drugstock SET RemainingQty = RemainingQty - ".$_POST['quantity']." WHERE StockNo = ".$_POST['StockNo'].";";
 $result = mysqli_query($db,$sql);
 $rows = mysqli_fetch_assoc($result);

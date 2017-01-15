@@ -7,20 +7,19 @@
  */
 
 require("../../db/db.php");
-
-$sql = "INSERT INTO bill (ItemNo,BrandName,DosageForm,Quantity,ExpirationDate,UnitPrice,ItemPrice,InvoiceNo) VALUES (
-                             ".$_POST['ItemNo'].",
-                            ".$_POST['BrandName'].",
-                            ".$_POST['DosageForm'].",
+$sql = "INSERT INTO bill (InvoiceNo,ItemNo,BrandName,DosageForm,Quantity,ExpirationDate,UnitPrice,ItemPrice) VALUES (
+                            ".$_POST['invoiceNo'].",
+                            ".$_POST['ItemNo'].",
+                            '".$_POST['BrandName']."',
+                            '".$_POST['DosageForm']."',
                             ".$_POST['Quantity'].",
-                            ".$_POST['ExpirationDate'].",
+                            '".$_POST['ExpirationDate']."',
                             ".$_POST['UnitPrice'].",
-                            ".$_POST['ItemPrice'].",
-                            ".$_POST['InvoiceNo'].")";
+                            ".$_POST['Discount'].")";
 
 
 if ($db->query($sql) === TRUE) {
-    echo "Saved Successfully";
+    echo "Added Successfully";
 } else {
     echo "Error: " . $sql . "<br>" . $db->error;
 }

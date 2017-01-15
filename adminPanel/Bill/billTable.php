@@ -50,7 +50,8 @@
                                 <th>Dosage Form</th>
                                 <th>Remaining Quantity</th>
                                 <th>Expiration Date</th>
-                                <th>Unit Price</th>
+                                <th>Unit Price (Rs.) </th>
+                                <th>Discount</th>
                             </tr>
                             </thead>
                             <tbody id="tableOptions">
@@ -128,6 +129,7 @@
 </div>
 <div class="container" style="margin-left:10px;">
     <h3>Billing Items</h3>
+    <h4>Invoice No: </h4>
     <div class="fixed-table-toolbar">
         <div class="col-sm-9">
             <div id="toolbar">
@@ -161,8 +163,8 @@
                     <th>Dosage Form</th>
                     <th>Quantity</th>
                     <th>Expiration Date</th>
-                    <th>Unit Price</th>
-                    <th>Item Price</th>
+                    <th>Unit Price (Rs.)</th>
+                    <th>Item Price (Rs.)</th>
                 </tr>
                 </thead>
                 <tbody id="tablebody">
@@ -197,12 +199,12 @@
         <table class="table table-clear">
             <tbody>
             <tr>
-                <td class="left"><strong id="SubTotalPrice" >Subtotal</strong></td>
-                <td class="right"></td>
+                <td class="left"><strong >Subtotal</strong></td>
+                <td class="right" id="SubTotalPrice" ></td>
             </tr>
             <tr>
-                <td class="left"><strong id="totalDiscount" >Discount</strong></td>
-                <td class="right"></td>
+                <td class="left"><strong >Discount</strong></td>
+                <td class="right" id="totalDiscount" ></td>
             </tr>
             <tr>
                 <td class="left"><strong>Total</strong></td>
@@ -224,7 +226,7 @@
     var checkedBoxes = [];
 
     $( document ).ready(function() {
-        $('#myModal').modal('show');
+        getMaxInvoiceNo();
     });
 
 
@@ -239,7 +241,8 @@
             complete: function(r){
                 if (r.responseText.length > 10){
                     table.html(r.responseText);
-                    $('#tablebody').pageMe({pagerSelector:'#myPager',showPrevNext:true,hidePageNumbers:false,perPage:10});
+                    $('#tablebody').pageMe({pagerSelector:'#myPager',showPrevNext:true,hidePageNumbers:false,perPage:5});
+                    loadTable();
                 }
                 else{
                     table.html("Failed");
@@ -277,20 +280,20 @@
     function deleteOp() {
         var length = checkedBoxes.length;
         var step;
-        var drugNos = [];
+        var ItemNos = [];
         for(step=0;step<length;step++){
             var item = checkedBoxes[step];
-            var stockNo = item.getAttribute('name');
+            var itemNo = item.getAttribute('name');
             var index = checkedBoxes.indexOf(item);
             checkedBoxes.splice(index,1);
             length = checkedBoxes.length;
-            drugNos.push(stockNo);
+            ItemNos.push(itemNo);
         }
         jQuery.ajax({
             type: "POST",
             url: "deleteItems.php",
             dataType: 'json',
-            data: {drugNos: drugNos},
+            data: {ItemNos: ItemNos,invoiceNo:maxInvoiceNo},
             complete: function(r){
                 if (r.responseText.length > 5){
                     alert(r.responseText);
@@ -310,8 +313,10 @@
         $('#addItemModal').modal('hide');
         var table = $("#tablebody");
         var ItemPrice = UnitPrice * quantity;
-        $(table).append('<tr  id="row"'+maxNo+'><td><div class="checkbox"><label><input onchange="checkEventSup(this)" name=s"'+maxNo+'" type="checkbox" value=""></label></div></td></td>\
-          <td>'+maxNo+'</td>\
+        TotalDiscount += CurrentDiscount;
+        TotalPrice +=ItemPrice;
+        $(table).append('<tr  id="row"'+maxItemNo+'><td><div class="checkbox"><label><input onchange="checkedEvent(this)" name=s"'+maxItemNo+'" type="checkbox" value=""></label></div></td></td>\
+          <td>'+maxItemNo+'</td>\
           <td>'+selectedBrand+'</td>\
           <td>'+selectedDosageForm+'</td>\
           <td>'+quantity+'</td>\
@@ -323,12 +328,21 @@
             type: "POST",
             url: "addItem.php",
             dataType: 'json',
-            data: {ItemNo:maxNo,BrandName:selectedBrand,DosageForm:selectedDosageForm,Quantity:quantity,ExpirationDate:ExpireDate,UnitPrice:UnitPrice,ItemPrice:ItemPrice},
+
+            data: {invoiceNo:maxInvoiceNo,ItemNo:maxItemNo,BrandName:selectedBrand,DosageForm:selectedDosageForm,Quantity:quantity,ExpirationDate:ExpireDate,UnitPrice:UnitPrice,ItemPrice:ItemPrice,Discount:CurrentDiscount},
             complete: function(r){
+                if(r.responseText==="Added Successfully") {
+                    $('#SubTotalPrice').html(TotalPrice);
+                    $('#totalDiscount').html(TotalDiscount);
+                    maxItemNo++;
+                }
+                else{
+                    alert("Operation Failed");
+                }
                     //loadTable();
             }
         });
-        maxNo++;
+
     }
 
 
@@ -367,9 +381,11 @@
     var ExpireDate = "";
     var QtyType="";
     var SelectedStock = "";
-    var maxNo = 1;
+    var maxItemNo = 1;
+    var maxInvoiceNo = 0;
     var TotalPrice = 0;
     var TotalDiscount =0;
+    var currentDiscount = 0;
     var customerAllergicDrugs = ['Panadol','Calpol'];
     $('#showOptionsModal').on('hidden.bs.modal', function () {
         $('#addItemModal').css('opacity', 1);
@@ -393,24 +409,27 @@
         $('#Quantity-input').val('');
         $('#Quantity-input').prop( "disabled", true);
         $('#Quantity-input').css( "background", "#eee" );
+        $('#ExpireDate-input').val('');
+        $('#UnitPrice-input').val('');
         getAvailableBrands();
         $('#BrandName-input').css( "background", "white" );
-        $('#ItemNo-input').val(maxNo);
+        $('#ItemNo-input').val(maxItemNo);
         $('#addItemModal').modal('show');
     }
 
-    /*
-    function maxItemNo(){
+
+    function getMaxInvoiceNo(){
         jQuery.ajax({
             type: "POST",
-            url: "maxItemNo.php",
+            url: "maxInvoiceNo.php",
             dataType: 'json',
             data: {},
             complete: function(r){
-                maxNo = r.responseText;
+                maxInvoiceNo = r.responseText;
+                maxInvoiceNo++;
             }
         });
-    }*/
+    }
 
     function getAvailableBrands() {
         availableBrands = [];
@@ -474,12 +493,18 @@
     // autoComplete Data retrieval from database
     function autoCompleteBrandNames(){
         //console.log(availableBrands);
+        availableBrands = availableBrands.filter( function( item, index, inputArray ) {
+            return inputArray.indexOf(item) == index;
+        });
             $('#BrandName-input').autocomplete({
                 source: availableBrands
             });
     }
 
     function autoCompleteDosageForms(){
+        DosageForms = DosageForms.filter( function( item, index, inputArray ) {
+            return inputArray.indexOf(item) == index;
+        });
         $('.DosageForm').each(function(i, obj) {
             $(obj).autocomplete({
                 source: DosageForms
@@ -651,10 +676,7 @@
                 var data =  JSON.parse(r.responseText);
                 ExpireDate = data.ExpireDate;
                 UnitPrice = data.RetailPrice;
-                TotalPrice += UnitPrice;
-                TotalDiscount += data.Discount;
-                $('#SubTotalPrice').html(TotalPrice);
-                $('#totalDiscount').html(TotalDiscount);
+                CurrentDiscount = Number(data.Discount) * quantity;
                 $('#ExpireDate-input').val(ExpireDate);
                 $('#UnitPrice-input').val(UnitPrice);
                 $('#showOptionsModal').modal('hide');
