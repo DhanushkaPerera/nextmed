@@ -1,7 +1,7 @@
 <html>
   <head>
     <style>input.textfill {
-        float: right;
+        float: center;
     }
 	  
 		.modal {
@@ -77,7 +77,7 @@ height: 5%;
     color: white;
 }
 	  </style>
-    <link type="text/css" rel="stylesheet" href="order.css" >
+    <link type="text/css" rel="stylesheet" href="ordering.css" >
             
 	  
 	  <script type="text/javascript">
@@ -140,19 +140,19 @@ function removekid(div) {
   <form id=orders name="orders" action="orders_action.php" method="post" enctype="multipart/form-data" onsubmit="return Validate(this);">
     <table align="">
       <tr>
-        <td height="40">
+        <td height="40" width="500">
           <br>
-          <span class="headingbox" id="hBoxNIC"> National ID &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp&nbsp&nbsp&nbsp&nbsp </span>
+          <span class="headingbox" id="hBoxNIC"> National ID &nbsp &nbsp &nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp </span>
           <span style="width:100%;text-align:center;">
             <input type="text" placeholder="920290505v" maxlength="13" name=NIC required autofocus />
           </span>
         </td>
       </tr>
       <tr>
-        <td height=50>
-          <span class="headingboxs">Pick up</span>
-          <input type=radio name=DP required value="Pickup">
-          <span style="  float: right;">
+        <td height=50 colspan="2">
+          <span class="headingboxs"  style="align=center">Pick up</span>
+          <input type=radio name=DP required value="Pickup" align=center>
+          <span style="  float: center;">
             <span class="headingboxs">
               Delivery</span>
             <input class="textfill" type=radio name=DP required value="Delivery" onmouseup="textbox(this)" />
@@ -189,7 +189,7 @@ function removekid(div) {
             <input type="text" autofocus name=Email placeholder="xxx@gmail.com" />
            
           </span>
-          <span class="error" id="emailerror"> error occured </span>
+    
           
         </td>
       </tr>
