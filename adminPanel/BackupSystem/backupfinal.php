@@ -1,4 +1,7 @@
+
+
 <?php
+
 include("../../db/db.php");
 
 /*avoid from warning*/
@@ -65,17 +68,29 @@ function backup_tables($host,$user,$pass,$name,$tables = '*')
 
 
 backup_tables($dbhost,$dbuser,$dbpassword,$dbname);
-
-
+/*print("<script type='text/javascript'>window.alert('You have not provided a backup to restore.')</script>");*/
+echo "<p style='font-family:Oswald script=all rev=1, Adobe Blank; font-size:20px; color:green;'>Backup Successful...</p>";
 ?>
 
-<script>
-         
-            function backup() {
-               alert ('This is a warning message!');
-               document.write ('Saved Successfully');
-            }
-         
- </script>
+
+ <!--script>
+
+	function backup(result)
+    {
+	var display =document.getElementById(result);
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange = function() {
+		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+			display.innerHTML = xmlhttp.responseText;
+			var str = xmlhttp.responseText;
+			display.innerHTML = xmlhttp.responseText;
+			
+		}
+	};
+	xmlhttp.open("GET", "searchhospital.php", true);
+	xmlhttp.send();
+    
+	}
+ </script-->
 
 
