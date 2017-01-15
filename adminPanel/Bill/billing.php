@@ -181,19 +181,24 @@
 
 echo "<br>";
  echo"</td>";
-       
-	   echo "<td align=center>";
+   
 		
 		 echo "<td align=center>";
+		 echo "<input type='button'onclick='change()' id='processorder'  class='btn btn-success' value='Process order'>";
+        echo "<br>";
+        echo"</td>";
+		 echo "<td align=center>";
+  
     
 echo "<a href='transfer.php?del=";
 echo $row['OrderNo.'];
-echo "'><input type='button' class='button' value='Process order'></a>"; //Transfer0
+echo "'><input type='button'  class='btn btn-success' value='Completed'></a>"; //Transfer0
 echo "<br>";
 echo"</td>";
     echo "</tr>";
     
     
+      
 
 
     
