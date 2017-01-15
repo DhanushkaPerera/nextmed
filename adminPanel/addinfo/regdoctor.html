@@ -12,8 +12,6 @@
 	<div class="main">
 	
 		<form id="register" name="regdoctors" action="regdoctor.php" method="post"><br>
-		
-		<button class="exit" onclick="goBack()"> X </button>
 			
 			<div style="width:100%;text-align:center;">
 				<h3>Register a Doctor </h3>
@@ -21,29 +19,21 @@
 			<div class="sep"></div>
 			
 			<div class="inputs">
-				
-				<div class="column">
 
 				<div class="headingbox" id="hBoxNews"> Name </div>
-				<div class="inputboxWrap">
+				<div class="inputboxWrap" >
 				<input name="name" type="text" placeholder="Name"></td>
 				</div>
 				
 				<div class="headingbox" id="hBoxNews" > Hospital </div>
-				<div class="inputboxWrap">
+				<div class="inputboxWrap" >
 				<input name = "hospital" type="text" placeholder="Hospital"></td>
 				</div>
 				</tr>
-				
-				</div>
-
-				<div class="column" style="clear: right;">
 
 				<div class="headingbox" id="hBoxNews" > Category </div>
-				<div class="inputboxWrap">
+				<div class="inputboxWrap" >
 				<input name="category" type="text" placeholder="Category"></td>
-				</div>
-
 				</div>
 				
 				<div style="width:100%;text-align:center;">
@@ -62,9 +52,3 @@
 <body>
 
 </html>
-
-<script>
-function goBack() {
-    window.history.back();
-}
-</script>

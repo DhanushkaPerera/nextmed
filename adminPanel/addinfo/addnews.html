@@ -3,14 +3,12 @@
 	<head> 
 		<meta charset="utf-8">
 		<title> Admin - public notice </title>
-		<link rel = "stylesheet" type="text/css" href = "addinfo.css" />
+		<link rel = "stylesheet" type="text/css" href = "addnews.css" />
 	</head>
 	
 	<body>
 	
 	<form id="newsreg" name="NewsReg" action="sendnews.php" method="post">
-	
-	<button class="exit" onclick="goBack()"> X </button>
 	
 			<br>
 			<div style="width:100%;text-align:center; ">
@@ -24,21 +22,24 @@
 				<!-- POST DATE-->
 				<div class="headingbox" id="hBoxDate" > Date </div>
                  <div class="inputboxWrap">
-                     <input name=postdate   type="text" onfocus="headingBoxActive('hBoxDate');(this.type='date')" onfocusout="(this.type='text');validateDate(this, 'derror2');validatedAll();" id="date"><br>
+                     <input name=postdate   type="date" onfocus="headingBoxActive('hBoxDate');(this.type='date')" onfocusout="(this.type='text');validateDate(this, 'derror2');validatedAll();" id="date"><br>
                  </div>
                  <div class="error" id="derror2" > error occured </div><br>
 				
 				<!--POST NEWS-->
+				<div class="postnews">
 				<div class="headingbox" id="hBoxNews" > News </div>
                 <div class="inputboxWrap" >
                      <textarea type="text"   name=public_notice rows="10" cols="140" onfocus="headingBoxActive('hBoxNews')" onkeydown="validateString(this, 'postnewserror')" onfocusout="hide('postnewserror');validateoutString(this, 'postnewserror2');validatedAll();"></textarea><br>
                 </div>
                 <div class="poperror" id="postnewserror" ></div>
                 <div class="error" id="postnewserror2" > error occured </div><br>
+				</div>
 				
 				<!--SUBMIT BUTTON-->
 				<div style="width:100%;text-align:center; " >
 				<input class="buttonSub"  type="submit" name=btnSubmit value=Submit id="submitButton"/>
+				<input class="buttonCan"  type="submit" name=cancel value=Cancel id="cancelButton"/>
 				</div>
 				
 		</div>
@@ -47,9 +48,3 @@
 			
 	</body>
 </html>
-
-<script>
-function goBack() {
-    window.history.back();
-}
-</script>

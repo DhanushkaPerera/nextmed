@@ -29,7 +29,37 @@
 				<!--input name = "location" type = "text" size = "30" /-->
 				<div class="option">
 				<select class="select" name="location" type="text">
-					<option value="Gampaha"> Gampaha </option>
+				
+				<?php
+					require("../db/db.php");
+									
+					$sql = "SELECT location FROM hospital ORDER BY location ASC";
+									
+					$res = mysqli_query($db,$sql);
+									
+					if($res){
+						/*echo "<li>";*/
+										
+						while($row = mysqli_fetch_array($res)){
+							echo "<option>".$row['location']."</option>";
+						}
+										
+						/*echo "</li>";*/
+					}
+					else{
+						echo "Error : " . mysqli_error($db); 
+					}
+					
+					//close connection
+					mysqli_close($db);
+				?>
+				
+				
+				
+				
+				
+				
+					<!--option value="Gampaha"> Gampaha </option>
 					<option value="Ragame"> Ragama </option>
 					<option value="Wattupitiawala"> Wattupitiawala </option>
 					<option value="Negambo"> Negambo </option>
@@ -45,7 +75,7 @@
 					<option value="Radawana"> Radawana </option>
 					<option value="Akkaragama"> Akkaragama </option>
 					<option value="Bokalagama"> Bokalagama </option>
-					<option value="Hiripitiya"> Hiripitiya </option>
+					<option value="Hiripitiya"> Hiripitiya </option-->
 				</select>
 				</div>
 				<div class="button">
@@ -57,12 +87,12 @@
 		<div class = "doctor">
 			<form id = "" action = "" method = "post">
 				<div class="topic">
-				<label style="font-size:18px;"> Enter the category </label><br>
+				<label style="font-size:18px;"> Enter the specialized area </label><br>
 				</div>
 				<!--input name = "special" type = "text" size = "30" /-->
 				<div class="option">
 				<select style="align:centre;" class="select" name="special" type="text">
-					<option value="Paediatric Surgeon"> Paediatric Surgeon </option>
+					<!--option value="Paediatric Surgeon"> Paediatric Surgeon </option>
 					<option value="Cancer Specialist"> Cancer Specialist </option>
 					<option value="Denito Urinary Surgeon"> Denito Urinary Surgeon </option>
 					<option value="Neuro Surgeon"> Neuro Surgeon </option>
@@ -76,7 +106,7 @@
 					<option value="Physician"> Physician </option>
 					<option value="Eye Surgeon"> Eye Surgeon </option>
 					<option value="Oncologist"> Oncologist </option>
-					<option value="Dermatologist"> Dermatologist </option>
+					<option value="Dermatologist"> Dermatologist </option-->
 				</select>
 				</div>
 				<div class="button">
@@ -89,7 +119,7 @@
 	<div class = "result">
 			
 			<p>Find out what are the details of hospitals in Gampaha District <br> 
-			and the doctors who are specialists for each category, <br>
+			and the doctors who are specialists for specialized areas, <br>
 			You can search for more details.</p>
 	
 <?php

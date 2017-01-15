@@ -1,6 +1,6 @@
 <?php
 
-		require("../db/db.php");
+		require("../../db/db.php");
 		
 		$sql = "INSERT INTO news(postnews,date)
 			VALUES ('$_POST[public_notice]','$_POST[postdate]')";

@@ -1,6 +1,6 @@
 <?php
 	
-		require("../db/db.php");
+		require("../../db/db.php");
 			
 			//RETRIEVE DATA
 			$sql = "INSERT INTO hospital(hospitalname,location,telephonenum) VALUES ('$_POST[hospitalname]' , '$_POST[location]' , '$_POST[telephonenum]')";
