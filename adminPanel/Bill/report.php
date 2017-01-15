@@ -8,7 +8,7 @@ class PDF extends FPDF{
 function Header(){
     
 $this->setFont('Arial','B',14);
-$this->Image("../../media/logo.png");    
+$this->Image("logo.png");    
 
 $this->ln(20);
 }
@@ -22,11 +22,15 @@ $result=mysqli_query($db,$sql);
 $pdf=new PDF();
 $pdf->AddPage();
 $pdf->AliasNbPages();
+$pdf->SetFont('Arial','B',20);
+$pdf->SetFillColor(255,255,255);
+$pdf->Cell(45,20,' ',0,0,'C',1);
+$pdf->Cell(90,20,'Online orders on daily basis',0,1,'C',1);
 $pdf->SetFont('Arial','B',16);
-
 $pdf->SetFillColor(51,153,255);
 $pdf->Cell(90,15,'Date',1,0,'C',1);
 $pdf->Cell(90,15,'Number of orders',1,1,'C',1);
+ 
  
 
 while($row=mysqli_fetch_array($result))
