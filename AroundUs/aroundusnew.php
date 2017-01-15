@@ -114,7 +114,7 @@
 				echo "<table border = 1 >
 					<tr>
 					<th> Hospitlal Name </th>
-					<th> Location </th>
+					<th> Specialist Area </th>
 					<th> Telephone Number </th>
 					</tr>";
 				while($row = mysqli_fetch_array($res)){

@@ -136,7 +136,7 @@ function removekid(div) {
             </script>
     </head>
 
-<body bgcolor="#E6E6FA">
+<body >
   <form id=orders name="orders" action="orders_action.php" method="post" enctype="multipart/form-data" onsubmit="return Validate(this);">
     <table align="">
       <tr>

@@ -180,7 +180,10 @@ html, body {
 
 .sidemenuitem {
 	color:white;
-	padding: 1em;
+	padding-bottom: 1em;
+	padding-right: 1em;
+	padding-top: 1em;
+	padding-left: 0.5em;
 	min-height: 30px;
 	text-align: center;
 	vertical-align: middle;

@@ -114,14 +114,14 @@ else{
 		<div class="sidemenuitem" onclick="showContent('Billing');activeMenu(this);" onmouseover="menuText(this);" onmouseout="menuImage(this);"> <img class="center" src="media\billing-icon.png" alt="Billing" style="height:90%;"> </a> </div>
 		<div class="sidemenuitem" onclick="showContent('Stock');activeMenu(this);" onmouseover="menuText(this);" onmouseout="menuImage(this);"> <img class="center" src="media\stock-manage.png" alt="Stock Management" style="height:90%;"> </div>
 		<div class="sidemenuitem" onclick="showContent('Backup');activeMenu(this);" onmouseover="menuText(this);" onmouseout="menuImage(this);"> <img class="center" src="media\backup.png" alt="Backup" style="height:90%;"> </div>
-		<div class="sidemenuitem" onclick="showContent('Notice');activeMenu(this);" onmouseover="menuText(this);" onmouseout="menuImage(this);"> <img class="center" src="media\notice.png" alt="Notices" style="height:90%;"> </div>
-		<div class="sidemenuitem" onclick="showContent('UserManage');activeMenu(this);" onmouseover="menuText(this);" onmouseout="menuImage(this);"> <img class="center" src="media\user-manage.png" alt="User Management" style="height:90%;"> </div>
+		<div class="sidemenuitem" onclick="showContent('Notice');activeMenu(this);" onmouseover="menuText(this);" onmouseout="menuImage(this);"> <img class="center" src="media\notice.png" alt="Operations" style="height:90%;"> </div>
+		<!--div class="sidemenuitem" onclick="showContent('UserManage');activeMenu(this);" onmouseover="menuText(this);" onmouseout="menuImage(this);"> <img class="center" src="media\user-manage.png" alt="User Management" style="height:90%;"> </div-->
 	</div>
 	
 
 	<div class="contents">
 			<div class="contentitem showitem" id="Search">
-				<div class="heading1" style="display: inline-block;">Search Drugs</div><br>
+				<div class="heading1" style="display: inline-block;">Search for Alternatives</div><br>
 				<iframe id="iFrameSearch" src="Search/Search.php" style="height:900px;width:100%" frameborder="0" onload="resizeIframe(this)" > </iframe>
 				
 			</div>
@@ -130,19 +130,19 @@ else{
 			<iframe src="Bill/billing.php" style="height:1300px;width:100%" frameborder="0" onload="resizeIframe(this)" > </iframe>
 			</div>
 			
-			<div class="contentitem" id="User"> <div class="heading1">User Management  </div></div>
+			
 			<div class="contentitem" id="Stock"> <div class="heading1">Stock Management</div>
 			<iframe src="Stock/admin.php" style="height:800px;width:120%" frameborder="0"  > </iframe>
 			</div>
 		<div class="contentitem" id="Backup"> <div class="heading1">Backup System</div>
 			<iframe  src="BackupSystem/backup.php" style="width:120%" frameborder="0" onload="resizeIframe(this)" > </iframe>
 		</div>
-			<div class="contentitem" id="Notice"> <div class="heading1">Public notice </div>
+			<div class="contentitem" id="Notice"> <div class="heading1">Operations </div>
 				<iframe  src="addinfo/addinfo.html" style="width:120%" frameborder="0" onload="resizeIframe(this)" > </iframe>
 			</div>
-		<div class="contentitem" id="UserManage"> <div class="heading1">User Manage </div>
+		<!--div class="contentitem" id="UserManage"> <div class="heading1">User Manage </div>
 			<iframe  src="" style="width:120%" frameborder="0" onload="resizeIframe(this)" > </iframe>
-		</div>
+		</div-->
 
 
 	</div>
