@@ -181,13 +181,8 @@
 
 echo "<br>";
  echo"</td>";
-   
 		
-		 echo "<td align=center>";
-		 echo "<input type='button' id='processorder'  class='btn btn-success' value='Process order' onclick='enableButton2()' ";
-        echo "<br>";
-        echo"</td>";
-		 echo "<td align=center>";
+echo "<td align=center>";
   
     
 echo "<a href='transfer.php?del=";
