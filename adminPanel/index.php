@@ -127,7 +127,7 @@ else{
 			</div>
 			
 			<div class="contentitem" id="Billing"><div class="heading1"> Billing </div>
-			<iframe src="Bill/billing.php" style="width:100%" frameborder="0" onload="resizeIframe(this)" > </iframe>
+			<iframe src="Bill/billing.php" style="height:1300px;width:100%" frameborder="0" onload="resizeIframe(this)" > </iframe>
 			</div>
 			
 			<div class="contentitem" id="User"> <div class="heading1">User Management  </div></div>
