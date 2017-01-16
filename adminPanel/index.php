@@ -127,7 +127,7 @@ else{
 			</div>
 			
 			<div class="contentitem" id="Billing"><div class="heading1"> Billing </div>
-			<iframe src="Bill/billing.php" style="height:1300px;width:100%" frameborder="0" onload="resizeIframe(this)" > </iframe>
+			<iframe src="Bill/billing1.php" style="height:1300px;width:100%" frameborder="0" onload="resizeIframe(this)" > </iframe>
 			</div>
 			
 			
@@ -138,7 +138,7 @@ else{
 			<iframe  src="BackupSystem/backup.php" style="width:120%" frameborder="0" onload="resizeIframe(this)" > </iframe>
 		</div>
 			<div class="contentitem" id="Notice"> <div class="heading1">Operations </div>
-				<iframe  src="addinfo/addinfo.html" style="width:120%" frameborder="0" onload="resizeIframe(this)" > </iframe>
+				<iframe  src="addinfo/addinfo.html" style="height:1000px;width:120%" frameborder="0" > </iframe>
 			</div>
 		<!--div class="contentitem" id="UserManage"> <div class="heading1">User Manage </div>
 			<iframe  src="" style="width:120%" frameborder="0" onload="resizeIframe(this)" > </iframe>
@@ -149,12 +149,7 @@ else{
 
 
 	<div class="header">
-		<div class="menubuttonimg">
-			<img src="media\notification.png"  alt="notifications" style="height:100%" onclick="toggleElement('notify')">
-			<div class="notifybox" id="notify">
-				<img src="media\under-construction.gif"  alt="notifications" style="height:100%">
-			</div>
-			</div>
+
 		<div class="menubuttonimg login"  >
 			<img src="media\login.png" style="height:100%;" id="loginIcon" >
 			<div class="loginbox login" id="loginB">

@@ -119,6 +119,7 @@
             complete: function(r){
                 if (r.responseText.length > 10){
                     table.html(r.responseText);
+                    $('#myPager').html('');
                     $('#tablebody').pageMe({pagerSelector:'#myPager',showPrevNext:true,hidePageNumbers:false,perPage:4});
                 }
                 else{

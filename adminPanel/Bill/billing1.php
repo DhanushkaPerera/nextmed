@@ -347,7 +347,7 @@
                             </tr>
                             </tbody>
                         </table>
-                        <a href="page-invoice.html#" class="btn btn-info" onclick="javascript:window.print();"><i class="fa fa-print"></i> Print Bill </a>
+                        <a class="btn btn-info" onclick="javascript:window.print();"><i class="fa fa-print"></i> Print Bill </a>
                     </div><!--/col-->
 
                 </div><!--/row-->
