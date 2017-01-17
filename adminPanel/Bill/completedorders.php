@@ -103,9 +103,9 @@
 <div class="container" id="processing" style="margin-left:10px;">
     <h3 id="header">Completed Orders</h3>
     <?php
-    require("../../db/db.php");
-    $sql="SELECT * FROM `complete` ";
-    $result=mysqli_query($db,$sql);
+    require("../../db/db.php"); //provides database connection
+    $sql="SELECT * FROM `complete` "; //SQL query toretrieve all details from complete table
+    $result=mysqli_query($db,$sql); // performs a query against the database
     echo "
 <form method='POST'><table class='table table-striped table-responsive'>
     <thead>
@@ -197,9 +197,9 @@ echo"</form>";
 
         
 echo  "
- <a href='vieworders.php'>
+ <a href='vieworders.php'> //Directing to complted orders table when clicked
     	
-  <button  type='button'  class='btn btn-success'  >Back</button>
+  <button  type='button'  class='btn btn-success'  >Back</button> 
     
     </a>
     </div>";

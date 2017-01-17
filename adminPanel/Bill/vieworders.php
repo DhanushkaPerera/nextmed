@@ -95,10 +95,10 @@
 <div class="container" id="processing" style="margin-left:10px;">
 	<h3 id="header">Online Orders</h3>
 	<?php
-	require("../../db/db.php");
-	$sql="SELECT * FROM `order` ";
-	$result=mysqli_query($db,$sql);
-	echo "
+	 require("../../db/db.php"); //provides database connection
+    $sql="SELECT * FROM `order` "; //SQL query toretrieve all details from order table
+    $result=mysqli_query($db,$sql); // performs a query against the database
+    echo "
 <form method='POST'><table class='table table-striped table-responsive'>
     <thead>
     <tr>
@@ -186,10 +186,10 @@
 	echo"</table>";
 	echo  "
  <a href='completedorders.php'>
- <button  type='button' name='processorder' class='btn btn-success' >Completed orders</button>
+ <button  type='button' name='processorder' class='btn btn-success' >Completed orders</button> //view completed orders
   </a>
    
-    <button  type='button' name='processorder' class='btn btn-success' onclick=window.open('report.php') >View report</button>
+    <button  type='button' name='processorder' class='btn btn-success' onclick=window.open('report.php') >View report</button> 
   <button  type='button' name='processorder' class='btn btn-success'  onclick=window.open('graph.php') >View chart</button>
    
     </div>";

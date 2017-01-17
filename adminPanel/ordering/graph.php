@@ -1,8 +1,8 @@
 <?php
 
-require("../../db/db.php");
+require("../../db/db.php"); //provides database connection
 
-require("charts/fusioncharts.php");
+require("charts/fusioncharts.php"); //loading the library for charts
 
 
 ?>
@@ -16,13 +16,13 @@ Else, you will get JavaScript errors. -->
 
 <?php
 
-    // Form the SQL query that returns the top 10 most populous countries
-    $sql = "Select count(Email) as Number,Date from reportorder GROUP BY date";
+    
+    $sql = "Select count(Email) as Number,Date from reportorder GROUP BY date"; //sql query to get the number of orders on each day
 
-    // Execute the query, or else return the error message.
+    // Execute the query
     $result =mysqli_query($db,$sql);
 
-    // If the query returns a valid response, prepare the JSON string
+    // If the query returns a valid response prepare the JSON string
     if ($result) {
         // The `$arrData` array holds the chart attributes and data
         $arrData = array(
@@ -60,8 +60,9 @@ Else, you will get JavaScript errors. -->
 
         $jsonEncodedData = json_encode($arrData);
 
-/*Create an object for the column chart using the FusionCharts PHP class constructor. Syntax for the constructor is ` FusionCharts("type of chart", "unique chart id", width of the chart, height of the chart, "div id to render the chart", "data format", "data source")`. Because we are using JSON data to render the chart, the data format will be `json`. The variable `$jsonEncodeData` holds all the JSON data for the chart, and will be passed as the value for the data source parameter of the constructor.*/
 
+
+		//fusinchart(type of chart,chart id,chart width,height,division id to render the chart,data format,data source)
         $columnChart = new FusionCharts("column2D", "myFirstChart" , 700, 500, "chart-1", "json", $jsonEncodedData);
 
         // Render the chart
