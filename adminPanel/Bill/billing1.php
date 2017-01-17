@@ -123,7 +123,7 @@
                                 <th>Remaining Quantity</th>
                                 <th>Expiration Date</th>
                                 <th>Unit Price (Rs.) </th>
-                                <th>Discount</th>
+                                <th>Discount (Rs.) </th>
                             </tr>
                             </thead>
                             <tbody id="tableOptions">
@@ -219,10 +219,12 @@
                             <form class="form-inline" method="post">
                                 <div class="form-group">
                                     <label for="email">NIC</label>
-                                    <input type="text" class="form-control" name="nic" id="email" placeholder="935643090V">
+                                    <input type="text" class="form-control" name="nic" id="customerNIC" placeholder="935643090V">
                                 </div>
+                                <button type="button" name="search" class="btn btn-info" onclick="customerInfo()" >Search</button>
+                                <div id="customerData">
 
-                                <button type="submit" name="search" class="btn btn-info" >Search</button>
+                                </div>
                             </form>
                             <?php
 
@@ -578,7 +580,18 @@
     $('#showOptionsModal').on('hidden.bs.modal', function () {
         $('#addItemModal').css('opacity', 1);
     })
-
+    function customerInfo(){
+        var NIC = $('#customerNIC').val();
+        jQuery.ajax({
+            type: "POST",
+            url: "getCustomerInfo.php",
+            dataType: 'json',
+            data: {nic:NIC},
+            complete: function(r){
+                $('#customerData').html(r.responseText);
+            }
+        });
+    }
     function addItemOp(){
 
         availableBrands = [];
@@ -721,7 +734,6 @@
             $('#DosageForm-input').prop( "disabled", false );
             $('#DosageForm-input').css( "background", "white" );
         }
-
     }
 
     // Dosage Form validation based on the value of the selected
@@ -780,7 +792,7 @@
                     $('#showOptionsHeader').css( "background", "none" );
                 }
                 else if(opt=="2"){
-                    $('#showOptionsHeader').html('This Drug is not Available, but following alternatives were found in following Stocks');
+                    $('#showOptionsHeader').html('This Drug is not Available, but following alternatives were found in Stocks');
                     $('#showOptionsHeader').css( "background", "#ffbf00" );
 
                 }
@@ -868,6 +880,7 @@
                 ExpireDate = data.ExpireDate;
                 UnitPrice = data.RetailPrice;
                 CurrentDiscount = Number(data.Discount) * quantity;
+                //$('#BrandName-input').val(SelectedBrand);
                 $('#ExpireDate-input').val(ExpireDate);
                 $('#UnitPrice-input').val(UnitPrice);
                 $('#showOptionsModal').modal('hide');
