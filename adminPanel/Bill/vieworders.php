@@ -186,7 +186,7 @@
 	echo"</table>";
 	echo  "
  <a href='completedorders.php'>
- <button  type='button' name='processorder' class='btn btn-success' >Completed orders</button> //view completed orders
+ <button  type='button' name='processorder' class='btn btn-success' >Completed orders</button> 
   </a>
    
     <button  type='button' name='processorder' class='btn btn-success' onclick=window.open('report.php') >View report</button> 
