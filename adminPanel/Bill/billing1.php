@@ -123,7 +123,7 @@
                                 <th>Remaining Quantity</th>
                                 <th>Expiration Date</th>
                                 <th>Unit Price (Rs.) </th>
-                                <th>Discount (Rs.) </th>
+                                <th>Discount</th>
                             </tr>
                             </thead>
                             <tbody id="tableOptions">
@@ -851,6 +851,7 @@
             $('#DosageForm-input').prop( "disabled", false );
             $('#DosageForm-input').css( "background", "white" );
         }
+
     }
 
     // Dosage Form validation based on the value of the selected
@@ -909,7 +910,7 @@
                     $('#showOptionsHeader').css( "background", "none" );
                 }
                 else if(opt=="2"){
-                    $('#showOptionsHeader').html('This Drug is not Available, but following alternatives were found in Stocks');
+                    $('#showOptionsHeader').html('This Drug is not Available, but following alternatives were found in following Stocks');
                     $('#showOptionsHeader').css( "background", "#ffbf00" );
 
                 }
@@ -997,7 +998,6 @@
                 ExpireDate = data.ExpireDate;
                 UnitPrice = data.RetailPrice;
                 CurrentDiscount = Number(data.Discount) * quantity;
-                //$('#BrandName-input').val(SelectedBrand);
                 $('#ExpireDate-input').val(ExpireDate);
                 $('#UnitPrice-input').val(UnitPrice);
                 $('#showOptionsModal').modal('hide');
