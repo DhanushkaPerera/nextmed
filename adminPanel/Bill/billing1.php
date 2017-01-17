@@ -265,7 +265,7 @@
             </div>
             <div class="container" style="margin-left:10px;">
                 <h3>Billing Items</h3>
-                <h4>Invoice No: </h4>
+                <h4 id="invoiceNoText">Invoice No: </h4>
                 <div class="fixed-table-toolbar">
                     <div class="col-sm-9">
                         <div id="toolbar">
@@ -637,6 +637,7 @@
             data: {},
             complete: function(r){
                 maxInvoiceNo = r.responseText;
+                $('#invoiceNoText').html('Invoice No: '+maxInvoiceNo);
                 maxInvoiceNo++;
             }
         });
