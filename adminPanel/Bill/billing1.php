@@ -590,8 +590,8 @@
             dataType: 'json',
             data: {nic:NIC},
             complete: function(r){
-                var data = r.responseText;
-                customerAllergicDrugs = data.allergicDrugs;
+                var data = JSON.parse(r.responseText);
+                customerAllergicDrugs = data.AllergicDrugs;
                 customerAllergicDrugs = customerAllergicDrugs.split(', ');
                 $('#customerData').html(data.FName+" "+data.LName);
             }

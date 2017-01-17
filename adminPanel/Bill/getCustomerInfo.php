@@ -15,8 +15,8 @@
         $count = mysqli_num_rows($res);
 
         if ($count == 1) {
-            $row = mysqli_fetch_array($res);
-            echo json_encode($DosageForms);
+            $row = mysqli_fetch_assoc($res);
+            echo json_encode($row);
         }
     }
 ?>
