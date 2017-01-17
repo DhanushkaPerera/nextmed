@@ -580,17 +580,134 @@
     $('#showOptionsModal').on('hidden.bs.modal', function () {
         $('#addItemModal').css('opacity', 1);
     })
-    function customerInfo(){
-        var NIC = $('#customerNIC').val();
-        jQuery.ajax({
-            type: "POST",
-            url: "getCustomerInfo.php",
-            dataType: 'json',
-            data: {nic:NIC},
-            complete: function(r){
-                $('#customerData').html(r.responseText);
+    /*validate nic*/
+    function validateNIC(element){
+        var notify = document.getElementById("NICerror");
+        var str = element.value;
+        var charsToSearch = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "V", "v"];
+        var charsToSearch1 = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
+        if(str.length>10){
+            for(i=0;i<str.length;i++){
+                theChar = str.charAt(i);
+                if (charsToSearch1.indexOf(theChar) == -1) {
+                    notify.style.opacity="1";
+                    notify.innerHTML = "New NIC can contain only numbers";
+                    break;
+                }
+                if(i==str.length-1) notify.style.opacity="0";
             }
-        });
+        }
+        else{
+            for(i=0;i<str.length;i++){
+                theChar = str.charAt(i);
+                if (charsToSearch.indexOf(theChar) == -1) {
+                    notify.style.opacity="1";
+                    notify.innerHTML = "Old NIC can contain only numbers and V";
+                    break;
+                }
+                if(i==str.length-1) notify.style.opacity="0";
+            }
+        }
+
+    }
+    function upperCASE(element){
+        element.value = element.value.toUpperCase();
+    }
+    function hide(id){
+        var element = document.getElementById(id);
+        element.style.opacity = "0";
+    }
+    function validateoutNIC(element){
+        var str = element.value;
+        var strl = str.length;
+        var notify = document.getElementById("nicerror2");
+        var charsToSearch = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "V", "v"];
+        var charsToSearch1 = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
+
+        if(strl==0){
+            notify.innerHTML = "Not a valid NIC";
+            nicValid = false;
+            headingBoxAlert('hBoxNIC', nicValid);
+            element.style.border = "2px solid #ff6768";
+            notify.style.opacity="1";
+        }
+        else if(strl!=10 && strl!=13&&strl!=0){
+            notify.innerHTML = "Not a valid NIC";
+            nicValid = false;
+            headingBoxAlert('hBoxNIC', nicValid);
+            element.style.border = "2px solid #ff6768";
+            notify.style.opacity="1";
+        }
+        else{
+            if(str.length>10){
+                if(str.charAt(0)!="1" && str.charAt(0)!="2"){
+                    notify.innerHTML = "Not a valid NIC";
+                    element.style.border = "2px solid #ff6768";
+                    notify.style.opacity="1";
+                    nicValid = false;
+                    headingBoxAlert('hBoxNIC', nicValid);
+                }
+                else if(str.charAt(0)=="1" && str.charAt(1)!="9"){
+                    notify.innerHTML = "Not a valid NIC";
+                    element.style.border = "2px solid #ff6768";
+                    notify.style.opacity="1";
+                    nicValid = false;
+                    headingBoxAlert('hBoxNIC', nicValid);
+                }
+                else{
+                    for(i=0;i<str.length;i++){
+                        theChar = str.charAt(i);
+
+                        if (charsToSearch1.indexOf(theChar) == -1) {
+                            notify.innerHTML = "Not a valid NIC";
+                            element.style.border = "2px solid #ff6768";
+                            notify.style.opacity="1";
+                            nicValid = false;
+                            headingBoxAlert('hBoxNIC', nicValid);
+                            break;
+                        }
+                        if(i==str.length-1) {
+                            notify.style.opacity="0";
+                            element.style.border = "none";
+                            verifyNIC(element, notify);
+                        }
+                    }
+                }
+            }
+            else{
+                for(i=0;i<str.length;i++){
+                    theChar = str.charAt(i);
+                    if (charsToSearch.indexOf(theChar) == -1) {
+                        notify.innerHTML = "Not a valid NIC";
+                        element.style.border = "2px solid #ff6768";
+                        notify.style.opacity="1";
+                        nicValid = false;
+                        headingBoxAlert('hBoxNIC', nicValid);
+                        break;
+                    }
+                    if(i==str.length-1){
+                        notify.style.opacity="0";
+                        element.style.border = "none";
+                        verifyNIC(element, notify);
+                    }
+                }
+            }
+        }
+    }
+    function validatedAll(){
+        var element = document.getElementById("submitButton");
+        var elementCheck = document.getElementById("checkAgree");
+        var agree = elementCheck.checked;
+        console.log("nic "+nicValid+",fname "+fnameValid+",lname "+lnameValid+",genderValid "+ genderValid+",bdayValid "+ "bday" + bdayValid+ +  "phpNo" + phNoValid  + "email" + emailValid + passValid+agree);
+
+        if(nicValid && fnameValid && lnameValid && genderValid && bdayValid&& phNoValid && emailValid && passValid && agree){
+            element.className = "inputs buttonS";
+            element.disabled = false;
+        }
+        else{
+            element.className = "inputs buttonDis";
+            element.disabled = true;
+        }
     }
     function addItemOp(){
 
