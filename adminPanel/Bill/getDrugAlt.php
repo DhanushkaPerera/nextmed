@@ -18,7 +18,7 @@ $alternatives = array_diff($alternatives,$_POST['allergicDrugs']);
 print_r($alternatives);
 $alternatives = implode('|',$alternatives);
 print_r($alternatives);
-$sql = "SELECT * FROM drugstock WHERE BrandName REGEXP '" . $alternatives . "' AND DosageForm LIKE '%" . $_POST['dosageForm']."%' AND Expired=0 AND RemainingQty >= ".intval($_POST['quantity'])." ORDER BY ExpireDate ASC;";
+$sql = "SELECT * FROM drugstock WHERE BrandName REGEXP '" . $alternatives . "' AND DosageForm LIKE '%" . $_POST['dosageForm']."%' AND RemainingQty >= ".intval($_POST['quantity'])."AND (ExpireDate NOT BETWEEN (now() - INTERVAL 1 MONTH) AND now()) ORDER BY ExpireDate ASC;";
 $result = mysqli_query($db,$sql);
 if(mysqli_num_rows($result)>0) {
     while ($rows = mysqli_fetch_assoc($result)) {

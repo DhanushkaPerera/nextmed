@@ -562,8 +562,9 @@
 </script>
 <script src="../js/pagination.js"></script>
 <script>
-    var availableBrands = [];
-    var DosageForms = [];
+    // Public variables for functions
+    var availableBrands = []; // An array to be used in autocomplete of brand names
+    var DosageForms = []; // An array to be used in autocomplete of dosage forms
     var selectedBrand ="";
     var selectedDosageForm="";
     var HealthTips = "";
@@ -576,10 +577,11 @@
     var TotalPrice = 0;
     var TotalDiscount =0;
     var currentDiscount = 0;
-    var customerAllergicDrugs = ['Panadol','Calpol'];
+    var customerAllergicDrugs = [];
     $('#showOptionsModal').on('hidden.bs.modal', function () {
         $('#addItemModal').css('opacity', 1);
     })
+    //function to retrieve customer info  based on customer nic
     function customerInfo(){
         var NIC = $('#customerNIC').val();
         jQuery.ajax({
@@ -588,12 +590,17 @@
             dataType: 'json',
             data: {nic:NIC},
             complete: function(r){
-                $('#customerData').html(r.responseText);
+                var data = r.responseText;
+                customerAllergicDrugs = data.allergicDrugs;
+                customerAllergicDrugs = customerAllergicDrugs.split(', ');
+                $('#customerData').html(data.FName+" "+data.LName);
             }
         });
     }
-    function addItemOp(){
 
+    //This function will add Items to the bil
+    function addItemOp(){
+        //Initializing variables
         availableBrands = [];
         DosageForms = [];
         selectedBrand ="";
@@ -603,6 +610,8 @@
         ExpireDate = "";
         QtyType="";
         SelectedStock = "";
+
+        //Initializing add item module input fields
         $('#BrandName-input').val('');
         $('#DosageForm-input').val('');
         $('#DosageForm-input').prop( "disabled", true );
@@ -619,7 +628,7 @@
         $('#addItemModal').modal('show');
     }
 
-
+    //This function will fetch max invoice no from database
     function getMaxInvoiceNo(){
         jQuery.ajax({
             type: "POST",
@@ -633,6 +642,7 @@
         });
     }
 
+    // function get availabe brands from database
     function getAvailableBrands() {
         availableBrands = [];
         jQuery.ajax({
@@ -654,6 +664,7 @@
         });
     }
 
+    //function to get available dosage forms according to the selected brand name
     function getAvailableDosageForms(brand) {
         DosageForms = [];
         jQuery.ajax({
@@ -672,6 +683,8 @@
             }
         });
     }
+
+    //Type of the quantity will be retrieved from the database
     function getQtyType(brand,form) {
         jQuery.ajax({
             type: "POST",
@@ -688,13 +701,12 @@
         });
     }
 
-    function initialize(){
-        getAvailableBrands();
-    }
 
     // autoComplete Data retrieval from database
     function autoCompleteBrandNames(){
         //console.log(availableBrands);
+
+        // This function will remove duplicate entries from the available brands array
         availableBrands = availableBrands.filter( function( item, index, inputArray ) {
             return inputArray.indexOf(item) == index;
         });
@@ -702,6 +714,7 @@
             source: availableBrands
         });
     }
+
 
     function autoCompleteDosageForms(){
         DosageForms = DosageForms.filter( function( item, index, inputArray ) {
@@ -716,6 +729,7 @@
 
     //Brand Name validation
     function  validateBrandName(input) {
+        //If the typed brandname contains in the array then it will be displayed as a valid brand name.
         if (!contains.call(availableBrands,input.value)){
             input.style.background = "#FFBDB7";
             $(input).tooltip({
@@ -723,7 +737,6 @@
                 tooltipClass: "errorMsg"
             });
         }
-
         else{
             input.style.background = "#FFF";
             $(input).tooltip({
@@ -736,7 +749,7 @@
         }
     }
 
-    // Dosage Form validation based on the value of the selected
+    // Dosage Form validation based on the value of the selected brand name
     function  validateDosageForm(input) {
         //console.log(input.value);
         //console.log(DosageForms);
@@ -773,7 +786,6 @@
     function getDrugs(input){
         //First get the drug if it's available sorted according to drugs that are close to expire but
         // at least have 30 days to expire
-        // if it's less than 90 days issue a warning
         quantity = $(input).val();
         var matchingDrugs=[];
         $('#selectOptionButton').prop( "disabled", true );
@@ -781,6 +793,7 @@
             type: "POST",
             url: "getDrug.php",
             dataType: 'json',
+            // data is posted to php file using a json object created here
             data: {brand:selectedBrand,dosageForm:selectedDosageForm,quantity:quantity,allergicDrugs:customerAllergicDrugs},
             complete: function(r){
                 matchingDrugs = r.responseText;
@@ -888,9 +901,6 @@
             }
         });
         $('#tableOptions').html('Loading..');
-
-    }
-    function cancel(){
 
     }
     //Array Search function

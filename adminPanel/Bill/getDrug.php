@@ -7,7 +7,7 @@
  */
 
 require("../../db/db.php");
-$sql="SELECT * FROM drugstock WHERE BrandName LIKE '%".$_POST['brand']."%' AND DosageForm LIKE '%".$_POST['dosageForm']."%' AND Expired=0 AND RemainingQty >= ".intval($_POST['quantity'])." ORDER BY ExpireDate ASC;" ;
+$sql="SELECT * FROM drugstock WHERE BrandName LIKE '%".$_POST['brand']."%' AND DosageForm LIKE '%".$_POST['dosageForm']."%'  AND RemainingQty >= ".intval($_POST['quantity'])." AND (ExpireDate NOT BETWEEN (now() - INTERVAL 1 MONTH) AND now())  ORDER BY ExpireDate ASC;" ;
 $result = mysqli_query($db,$sql);
 
 if(mysqli_num_rows($result)>0){
@@ -41,7 +41,7 @@ else {
     $rows = mysqli_fetch_assoc($result);
     $alternatives =  preg_split('/[\s*,\s*]*,+[\s*,\s*]*/', $rows['Alternatives']);
     $alternatives = implode('|',$alternatives);
-    $sql = "SELECT * FROM drugstock WHERE BrandName REGEXP '" . $alternatives . "' AND DosageForm LIKE '%" . $_POST['dosageForm']."%' AND Expired=0 AND RemainingQty >= ".intval($_POST['quantity'])." ORDER BY ExpireDate ASC;";
+    $sql = "SELECT * FROM drugstock WHERE BrandName REGEXP '" . $alternatives . "' AND DosageForm LIKE '%" . $_POST['dosageForm']."%'  AND RemainingQty >= ".intval($_POST['quantity'])." AND (ExpireDate NOT BETWEEN (now() - INTERVAL 1 MONTH) AND now()) ORDER BY ExpireDate ASC;";
     $result = mysqli_query($db,$sql);
     if(mysqli_num_rows($result)>0){
         if(in_array(trim($_POST['brand']),$_POST['allergicDrugs'])){
