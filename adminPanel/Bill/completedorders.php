@@ -197,7 +197,7 @@ echo"</form>";
 
         
 echo  "
- <a href='billing.php'>
+ <a href='vieworders.php'>
     	
   <button  type='button'  class='btn btn-success'  >Back</button>
     

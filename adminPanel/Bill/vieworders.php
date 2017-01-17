@@ -181,16 +181,7 @@
 		echo"</td>";
 		echo "</tr>";
 
-
-
-
-
-
 	}
-
-
-
-
 
 	echo"</table>";
 	echo  "
@@ -208,14 +199,4 @@
 
 
 	?>
-	<script>
-
-
-		function enableButton2() {
-			document.getElementById("completed").disabled = false;
-			document.getElementById("processorder").disabled =true;
-		}
-
-	</script>
-
-</div>
+	
