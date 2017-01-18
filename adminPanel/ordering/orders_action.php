@@ -107,8 +107,8 @@ Anura Pharmacy';
     $mail->Encoding = '7bit';
     
     // Authentication  
-    $mail->Username   = "sunethpereraucsc@gmail.com"; // Your full Gmail address
-    $mail->Password   = "ucsc123456789"; // Your Gmail password
+    $mail->Username   = "sunethpereraucsc@gmail.com"; 
+    $mail->Password   = "ucsc123456789"; 
       
     // Compose
     $mail->SetFrom($_POST['emailid'], "Anura pharmacy");

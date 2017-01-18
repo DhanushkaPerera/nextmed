@@ -22,6 +22,11 @@ $result=mysqli_query($db,$sql);
 $pdf=new PDF();
 $pdf->AddPage();
 $pdf->AliasNbPages();
+$pdf->SetFont('Arial','B',20);
+$pdf->SetFillColor(255,255,255);
+$pdf->Cell(45,15,' ',0,0,'C',1);
+$pdf->Cell(90,15,'Number of orders on daily basis',0,1,'C',1);
+
 $pdf->SetFont('Arial','B',16); //font settings
 
 $pdf->SetFillColor(51,153,255); //colour settings
