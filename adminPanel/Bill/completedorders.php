@@ -137,7 +137,7 @@
 
 
 
-        echo'<div class="ienlarger"><a href=../ordering/'.( $row['Image1'] ).'><img src="../ordering/' .$row['Image1']. '" alt="thumb" class="resize_thumb" /><span>
+        echo'<div class="ienlarger"><a ><img src="../ordering/' .$row['Image1']. '" alt="thumb" class="resize_thumb" /><span>
     <img src="../ordering/' .$row['Image1']. '" alt="large" height=300 width=300 /><br />
     Copy-1</span></a></div>';
 
@@ -152,7 +152,7 @@
         }
         else{
 
-            echo'<div class="ienlarger"><a href=../ordering/'.( $row['Image2'] ).'><img src="../ordering/' .$row['Image2']. '" alt="thumb" class="resize_thumb" /><span>
+            echo'<div class="ienlarger"><a ><img src="../ordering/' .$row['Image2']. '" alt="thumb" class="resize_thumb" /><span>
     <img src="../ordering/' .$row['Image2']. '" alt="large" height=300 width=300 /><br />
     Copy-2</span></a></div>';
 
@@ -170,7 +170,7 @@
         }
         else{
 
-            echo'<div class="ienlarger"><a href=../ordering/'.( $row['Image3'] ).'><img src="../ordering/' .$row['Image3']. '" alt="thumb" class="resize_thumb" /><span>
+            echo'<div class="ienlarger"><a ><img src="../ordering/' .$row['Image3']. '" alt="thumb" class="resize_thumb" /><span>
     <img src="../ordering/' .$row['Image3']. '" alt="large" height=300 width=300 /><br />
     Copy-3</span></a></div>';
 
