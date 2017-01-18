@@ -323,32 +323,6 @@ function Validate(oForm) {
                 dlg.style.top = "150px";
             }   
             
-	
-	
-	
-	
-	
-	function dlgLogin2(){
-                var whitebg = document.getElementById("grey-background");
-                var dlg = document.getElementById("dialogbox");
-                whitebg.style.display = "none";
-                dlg.style.display = "none";
-            }
-            
-            function showDialog2(){
-                var whitebg = document.getElementById("grey-background");
-                var dlg = document.getElementById("dialogbox");
-                whitebg.style.display = "block";
-                dlg.style.display = "block";
-                
-                var winWidth = window.innerWidth;
-                var winHeight = window.innerHeight;
-                
-                dlg.style.left = (winWidth/2) - 480/2 + "px";
-                dlg.style.top = "150px";
-            }
-	
-	
 	function timeError(){
 	var element = document.getElementById("time").value;
 	var d = new Date();

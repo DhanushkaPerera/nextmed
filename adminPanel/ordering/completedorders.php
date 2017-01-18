@@ -2,7 +2,7 @@
 
 
 <html>
-<head>
+<head> //importing style sheet containung libraries
     <link href="../css/bootstrap.css" rel="stylesheet" type="text/css" />
     <link href="../../assets/bootstrap-table/src/bootstrap-table.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="../../jquery/jquery.min.js"></script>
@@ -17,85 +17,7 @@
 
 </head>
 <style>
-    .errorMsg  {
-        display:none;
-        background: red;
-        font-size:12px;
-        width: auto;
-        color: #000000;
-        z-index: 111199;
-        border: 2px solid white;
-        /* for IE */
-        /* CSS3 standard */
-    }
-    .ui-autocomplete {z-index:111199 !important;}
-
-    .ienlarger {
-        float: left;
-        clear: none; /* set to left or right if needed */
-        /* space between thumbs and wrapping text when there is any text around it */
-    }
-
-    .ienlarger a {
-        display:block;
-        text-decoration: none;
-        /* add cursor:default; to this rule to disable the hand cursor */
-    }
-
-    .ienlarger a:hover{ /* dont move this positioning to normal state */
-        position:relative;
-    }
-
-    .ienlarger span img {
-        border: 1px solid #FFFFFF; /* adds a border around the image */
-        margin-bottom: 8px; /* pushes the text down from the image */
-    }
-
-    .ienlarger a span {  /* this is for the large image and the caption */
-        position: absolute;
-        display:none;
-        color: #FFCC00; /* caption text colour */
-        text-decoration: none;
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: 13px; /* caption text size */
-        background-color: #000000;
-        font-weight: bold;
-        padding-top: 10px;
-        padding-right: 10px;
-        padding-bottom: 13px;
-        padding-left: 10px;
-    }
-
-    .ienlarger img { /* leave or IE puts a border around links */
-        border-width: 0;
-    }
-
-    .ienlarger a:hover span {
-        display:block;
-        top: 50px;
-        right:30px;
-        z-index: 100;
-
-
-    }
-
-    .resize_thumb {
-        width: 90px; /* enter desired thumb width here */
-        height : 80px;
-    }
-    .loader {
-        border: 16px solid #f3f3f3; /* Light grey */
-        border-top: 16px solid #3498db; /* Blue */
-        border-radius: 50%;
-        width: 50px;
-        height: 50px;
-        animation: spin 10s linear infinite;
-    }
-
-    @keyframes spin {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
-    }
+   
 
 </style>
 
@@ -103,11 +25,11 @@
 <div class="container" id="processing" style="margin-left:10px;">
     <h3 id="header">Completed Orders</h3>
     <?php
-    require("../../db/db.php");
-    $sql="SELECT * FROM `complete` ";
-    $result=mysqli_query($db,$sql);
+    require("../../db/db.php"); //provides database connection
+    $sql="SELECT * FROM `complete` "; //SQL query toretrieve all details from complete table
+    $result=mysqli_query($db,$sql); // performs a query against the database
     echo "
-<form method='POST'><table class='table table-striped table-responsive'>
+<form method='POST'><table class='table table-striped table-responsive'> //retrieving the table"
     <thead>
     <tr>
         <th class='center'>Order No</th>
@@ -136,7 +58,7 @@
         echo"<td  height=50px>";
 
 
-
+//displaying 3 images that can be enlarged when hovered
         echo'<div class="ienlarger"><a href=../ordering/'.( $row['Image1'] ).'><img src="../ordering/' .$row['Image1']. '" alt="thumb" class="resize_thumb" /><span>
     <img src="../ordering/' .$row['Image1']. '" alt="large" height=300 width=300 /><br />
     Copy-1</span></a></div>';
@@ -197,7 +119,7 @@ echo"</form>";
 
         
 echo  "
- <a href='vieworders.php'>
+ <a href='vieworders.php'>  //Directing to complted orders table when clicked
     	
   <button  type='button'  class='btn btn-success'  >Back</button>
     

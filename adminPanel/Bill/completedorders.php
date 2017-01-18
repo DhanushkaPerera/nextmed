@@ -103,9 +103,9 @@
 <div class="container" id="processing" style="margin-left:10px;">
     <h3 id="header">Completed Orders</h3>
     <?php
-    require("../../db/db.php");
-    $sql="SELECT * FROM `complete` ";
-    $result=mysqli_query($db,$sql);
+    require("../../db/db.php"); //provides database connection
+    $sql="SELECT * FROM `complete` "; //SQL query toretrieve all details from complete table
+    $result=mysqli_query($db,$sql); // performs a query against the database
     echo "
 <form method='POST'><table class='table table-striped table-responsive'>
     <thead>
@@ -137,7 +137,7 @@
 
 
 
-        echo'<div class="ienlarger"><a href=../ordering/'.( $row['Image1'] ).'><img src="../ordering/' .$row['Image1']. '" alt="thumb" class="resize_thumb" /><span>
+        echo'<div class="ienlarger"><a ><img src="../ordering/' .$row['Image1']. '" alt="thumb" class="resize_thumb" /><span>
     <img src="../ordering/' .$row['Image1']. '" alt="large" height=300 width=300 /><br />
     Copy-1</span></a></div>';
 
@@ -152,7 +152,7 @@
         }
         else{
 
-            echo'<div class="ienlarger"><a href=../ordering/'.( $row['Image2'] ).'><img src="../ordering/' .$row['Image2']. '" alt="thumb" class="resize_thumb" /><span>
+            echo'<div class="ienlarger"><a ><img src="../ordering/' .$row['Image2']. '" alt="thumb" class="resize_thumb" /><span>
     <img src="../ordering/' .$row['Image2']. '" alt="large" height=300 width=300 /><br />
     Copy-2</span></a></div>';
 
@@ -170,7 +170,7 @@
         }
         else{
 
-            echo'<div class="ienlarger"><a href=../ordering/'.( $row['Image3'] ).'><img src="../ordering/' .$row['Image3']. '" alt="thumb" class="resize_thumb" /><span>
+            echo'<div class="ienlarger"><a ><img src="../ordering/' .$row['Image3']. '" alt="thumb" class="resize_thumb" /><span>
     <img src="../ordering/' .$row['Image3']. '" alt="large" height=300 width=300 /><br />
     Copy-3</span></a></div>';
 
@@ -197,9 +197,9 @@ echo"</form>";
 
         
 echo  "
- <a href='billing.php'>
+ <a href='vieworders.php'> 
     	
-  <button  type='button'  class='btn btn-success'  >Back</button>
+  <button  type='button'  class='btn btn-success'  >Back</button> 
     
     </a>
     </div>";

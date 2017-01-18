@@ -207,7 +207,7 @@
     </ul>
     <div style="background-color: transparent" class="tab-content">
         <div id="OnlineOrders" class="tab-pane fade in active">
-            <iframe src="bill2.php" style="width:100%;height: 900px;" frameborder=0></iframe>
+            <iframe src="vieworders.php" style="width:100%;height: 900px;" frameborder=0></iframe>
         </div>
         <div id="Bill" class="tab-pane fade">
             <h3>Bill</h3>
