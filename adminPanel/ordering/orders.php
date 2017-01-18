@@ -209,7 +209,14 @@ function removekid(div) {
         <input type="button" id="add" onclick="addkid()" value="+" />
                         
       </div></td></tr>
-        
+                <script>
+                document.getElementById("uploadBtn" ).onchange = function()  {
+            document.getElementById("uploadFile").value = this.value;
+        };
+    </script>
+               
+           
+        </div></td></tr>
       <tr>
         <td colspan=5 align=center>
           <input class="button" type=submit name=submit value=Place>
@@ -248,38 +255,43 @@ function removekid(div) {
 </div>
 
 
+
+
+
+
 <script type="text/javascript">
-        function hid(id){  //function to hide the element
+        function hid(id){
 		var element = document.getElementById(id);
 		element.style.opacity = "0";
    }
    function show(id){
-		var element = document.getElementById(id); //function to display the element
+		var element = document.getElementById(id);
 		element.style.opacity = "1";
    }
 	
-	  document.getElementById("uploadBtn" ).onchange = function()  {
-            document.getElementById("uploadFile").value = this.value;
-        };
+	
+   
 
-var _validFileExtensions = [".jpg", ".jpeg", ".bmp", ".gif", ".png"];    
+
+          
+           var _validFileExtensions = [".jpg", ".jpeg", ".bmp", ".gif", ".png"];    
 function Validate(oForm) {
-    var arrInputs = oForm.getElementsByTagName("input"); //get all elements of type input
+    var arrInputs = oForm.getElementsByTagName("input");
     for (var i = 0; i < arrInputs.length; i++) {
-        var oInput = arrInputs[i]; //looping each tag element in the array arrInputs
-        if (oInput.type == "file") { //checking whether the input type is a file
+        var oInput = arrInputs[i];
+        if (oInput.type == "file") {
             var sFileName = oInput.value;
             if (sFileName.length > 0) {
-                var Valid = false;
+                var blnValid = false;
                 for (var j = 0; j < _validFileExtensions.length; j++) {
                     var sCurExtension = _validFileExtensions[j];
-                    if (sFileName.substr(sFileName.length - sCurExtension.length, sCurExtension.length).toLowerCase() == sCurExtension.toLowerCase()) { //chcecking whether the strings 
-                        Valid = true;
+                    if (sFileName.substr(sFileName.length - sCurExtension.length, sCurExtension.length).toLowerCase() == sCurExtension.toLowerCase()) {
+                        blnValid = true;
                         break;
                     }
                 }
                 
-                if (!blnValid) { //if its not an image type triggering the alert box with the message
+                if (!blnValid) {
                    
                     showDialog();
                     
@@ -291,8 +303,6 @@ function Validate(oForm) {
   
     return true;
 }
-	
-//functions related to the custom alert boxes	
     function dlgLogin(){
                 var whitebg = document.getElementById("white-background");
                 var dlg = document.getElementById("dlgbox");
@@ -313,6 +323,73 @@ function Validate(oForm) {
                 dlg.style.top = "150px";
             }   
             
+	
+	
+	
+	
+	
+	function dlgLogin2(){
+                var whitebg = document.getElementById("grey-background");
+                var dlg = document.getElementById("dialogbox");
+                whitebg.style.display = "none";
+                dlg.style.display = "none";
+            }
+            
+            function showDialog2(){
+                var whitebg = document.getElementById("grey-background");
+                var dlg = document.getElementById("dialogbox");
+                whitebg.style.display = "block";
+                dlg.style.display = "block";
+                
+                var winWidth = window.innerWidth;
+                var winHeight = window.innerHeight;
+                
+                dlg.style.left = (winWidth/2) - 480/2 + "px";
+                dlg.style.top = "150px";
+            }
+	
+	
+	function timeError(){
+	var element = document.getElementById("time").value;
+	var d = new Date();
+  var m = d.getMinutes();
+  var h = d.getHours();
+   if(h == '0') {h = 24}
+  
+  var currentTime = h+"."+m;
+  console.log(currentTime);
+ 
+  // get input time
+  var time = element.split(":");
+  var hour = time[0];
+  if(hour == '00') {hour = 24}
+  var min = time[1];
+  
+  var inputTime = hour+"."+min;
+  console.log(inputTime);
+  
+  var totalTime =   inputTime-currentTime;
+  console.log(totalTime);
+  
+  if (totalTime<1  ) {
+	  document.getElementById('time').style.background ='#e35152';
+	modal.style.display = "block";
+modal.querySelector('.modal-body').innerHTML="<p>Dear customer please enter a time one hour in advance from the current time to prevent any inconveniences! Thank you! </p>";
+	  
+  
+ 
+  } 
+  else {
+	  	 document.getElementById('time').style.background ='white';
+     
+       
+  }
+}
+	
+	
+          	
+         </script> 
+<script>
 // Get the modal
 var modal = document.getElementById('myModal');
 
@@ -335,50 +412,7 @@ window.onclick = function(event) {
         modal.style.display = "none";
     }
 }
-
-//function for the time in advance	
-	function timeError(){
-	var element = document.getElementById("time").value;
-	var d = new Date();
-  var m = d.getMinutes();
-  var h = d.getHours();
-   if(h == '0') {h = 24} //taking as 24 hour clock
-  
-  var currentTime = h+"."+m;
-  console.log(currentTime); //write the current time value to the browser control
- 
-  // get input time
-  var time = element.split(":"); //splitting the input time
-  var hour = time[0]; //0th index of array has number of hours
-  if(hour == '00') {hour = 24}
-  var min = time[1]; //1st index of array has number of minutes
-  
-  var inputTime = hour+"."+min;
-  console.log(inputTime); //write the input time value to the browser control
-  
-  var timeDifference =   inputTime-currentTime;
-  console.log(timeDifference); //write the difference in time value to the browser control
-  
-  if (timeDifference<1  ) {
-	  document.getElementById('time').style.background ='#e35152'; //change the time box colour to maroon
-	modal.style.display = "block";
-modal.querySelector('.modal-body').innerHTML="<p>Dear customer please enter a time one hour in advance from the current time to prevent any inconveniences! Thank you! </p>";  //getting the first element in the modal named .modal-body and display the following text in it
-	  
-  
- 
-  } 
-  else {
-	  	 document.getElementById('time').style.background ='white';
-     
-       
-  }
-}
-	
-	
-          	
-         </script> 
-
-
+</script>
 
     </body>
 </html>
