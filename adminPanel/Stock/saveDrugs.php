@@ -9,7 +9,7 @@
 require("../../db/db.php");
 
 $sql = "UPDATE drugstock SET StockNo='". $_POST['rowItem'][1]."',
-                                DrugBrandName= '". $_POST['rowItem'][2]."',
+                                BrandName= '". $_POST['rowItem'][2]."',
                                 DosageForm= '". $_POST['rowItem'][3]."',
                                 SupplierName= '". $_POST['rowItem'][4]."',
                                 PurchaseDate= '". $_POST['rowItem'][5]."',

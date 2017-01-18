@@ -20,7 +20,7 @@ $drugN = $_REQUEST["drugN"];
 //$password = quote_smart($password, $db);
 
 
-$sql="SELECT * FROM drug where DrugBrandName='$drugN'";
+$sql="SELECT * FROM drug where BrandName='$drugN'";
 $result = mysqli_query($db,$sql);
 
  if(mysqli_num_rows($result)==0){

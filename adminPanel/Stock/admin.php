@@ -120,6 +120,7 @@
                     </div>
                 </div>
             </div>
+            <br>
             <div class="fixed-table-container">
                 <div class="table-responsive">
                     <table class="table">
@@ -247,6 +248,9 @@
             complete: function(r){
                 if (r.responseText.length > 5){
                     alert(r.responseText);
+                    checkedBoxes = [];
+                    deleteBtn.disabled = true;
+                    editBtn.disabled= true;
                 }
                 else{
                     alert("Delete Failed");
@@ -258,9 +262,8 @@
 
     function editOp(){
         var length = checkedBoxes.length;
-        deleteBtnSup.disabled = true;
-        editBtnSup.disabled= true;
-        //alert(length);
+        deleteBtn.disabled = true;
+        editBtn.disabled= true;
         var step;
         var rowItem = {};
         for(step = 0;step<length;step++){
@@ -268,6 +271,10 @@
             var id = item.getAttribute('name');
             var index = checkedBoxes.indexOf(item);
             checkedBoxes.splice(index,1);
+            if(checkedBoxes.length==0){
+                deleteBtn.disabled = true;
+                editBtn.disabled= true;
+            }
             length = checkedBoxes.length;
             var currentRow = "#row"+id;
             $(currentRow).has('td').each(function() {
@@ -539,7 +546,7 @@
     }
 
     function addOpSup() {
-        var table = $("#tablebody");
+        var table = $("#supplierTable");
         maxNoSup++;
         $(table).append('<tr id="rowS"'+maxNoSup+'><td><button id="addDrug" onclick="saveEditSup(this,'+maxNoSup+')" class="btn btn-success" ><i class="glyphicon glyphicon-save"></i> Save </button></td>\
           <td><input type="text" value="'+maxNoSup+'" readonly="true" ></td>\
